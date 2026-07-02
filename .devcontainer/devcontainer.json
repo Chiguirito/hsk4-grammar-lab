@@ -1,0 +1,12 @@
+{
+  "name": "HSK 4 Grammar Lab",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "postAttachCommand": "python3 -m http.server 8000",
+  "forwardPorts": [8000],
+  "portsAttributes": {
+    "8000": {
+      "label": "HSK 4 Grammar Lab",
+      "onAutoForward": "openBrowserOnce"
+    }
+  }
+}
