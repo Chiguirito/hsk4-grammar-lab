@@ -8,8 +8,11 @@
 
   /* ---------------- utilities ---------------- */
   const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  // **…** → accent highlight (used inside cn / py / en strings)
+  // **…** → accent highlight (used inside cn / py / en strings; escapes HTML)
   const fmt = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<b class="hl">$1</b>');
+  // same, but allows raw HTML (quiz questions/choices/explanations may contain <span class="zh"> etc.)
+  const fmtHtml = s => String(s).replace(/\*\*(.+?)\*\*/g, '<b class="hl">$1</b>');
+  const plain = s => String(s).replace(/<[^>]+>/g, "").replace(/\*\*/g, "");
   const stripMarks = s => String(s).replace(/\*\*/g, "");
   const el = (tag, cls, html) => {
     const e = document.createElement(tag);
@@ -165,12 +168,12 @@
     sec.items.forEach((item, idx) => {
       const q = el("div", "q");
       q.appendChild(el("div", "q-num", "QUESTION " + (idx + 1) + " / " + sec.items.length));
-      q.appendChild(el("div", "q-text", fmt(item.q)));
-      const wrap = el("div", "q-choices" + (item.choices.every(c => stripMarks(c).length <= 14) ? " cols" : ""));
-      const expl = el("div", "q-expl hidden", item.expl ? fmt(item.expl) : "");
+      q.appendChild(el("div", "q-text", fmtHtml(item.q)));
+      const wrap = el("div", "q-choices" + (item.choices.every(c => plain(c).length <= 14) ? " cols" : ""));
+      const expl = el("div", "q-expl hidden", item.expl ? fmtHtml(item.expl) : "");
       let answeredThis = false;
       item.choices.forEach((c, ci) => {
-        const b = el("button", null, fmt(c));
+        const b = el("button", null, fmtHtml(c));
         b.onclick = () => {
           if (answeredThis) return;
           answeredThis = true;
