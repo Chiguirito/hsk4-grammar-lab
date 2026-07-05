@@ -12,7 +12,7 @@ registerPage({
       title: 'The big idea: quantity is a <span class="zh hl">tail</span>, not a lead-in',
       short: "Big idea",
       html: `
-<p>Chinese time expressions split into two teams. <b>Point-in-time</b> (когда? — 昨天, 三点) stands <b>before</b> the verb. <b>Amount-of-time</b> and <b>number-of-times</b> are complements — they hang <b>after</b> the verb and measure it:</p>
+<p>Chinese time expressions split into two teams. <b>Point-in-time</b> (<i>when?</i> — 昨天, 三点) stands <b>before</b> the verb. <b>Amount-of-time</b> and <b>number-of-times</b> are complements — they hang <b>after</b> the verb and measure it:</p>
 <div class="pattern">Subj + V + <span class="slot">了/过</span> + <span class="slot">duration / count</span><small>等<b>了十分钟</b> · 去<b>过两次</b> — the measurement is the tail of the verb</small></div>
 <p>The drama starts when the verb also has an object: <b>the tail and the object both want the seat right behind the verb</b>. Every rule on this page is about who wins that seat.</p>
 <div class="callout cmp"><span class="co-title">🇬🇧 🇩🇪 🇪🇸 Half familiar, half trap</span>
@@ -33,7 +33,7 @@ The arrange-the-words task loves handing you a verb, an object, and a 三年/两
         ['<b>Repeat the verb</b>', '<span class="zh">V + O + V + 了 + duration</span>', '<span class="zh">他<b class="hl">学</b>汉语<b class="hl">学了三年</b>。</span> <span class="py-hint">Tā xué Hànyǔ xué le sān nián.</span>'],
         ['<b>Duration inside</b> (+ optional 的)', '<span class="zh">V + 了 + duration (+的) + O</span>', '<span class="zh">他学<b class="hl">了三年（的）</b>汉语。</span> <span class="py-hint">Tā xué le sān nián (de) Hànyǔ.</span>'],
         ['<b>Topicalize</b>', '<span class="zh">O + Subj + V + 了 + duration</span>', '<span class="zh">汉语他<b class="hl">学了三年</b>。</span> <span class="py-hint">Hànyǔ tā xué le sān nián.</span>'],
-        ['<b>Pronoun object</b> — special!', '<span class="zh">V + 了 + pronoun + duration</span>', '<span class="zh">我等<b class="hl">了他半个小时</b>。</span> <span class="py-hint">Wǒ děng le tā bàn gè xiǎoshí.</span> — pronoun FIRST, duration after'],
+        ['<b>Pronoun object</b> — special!', '<span class="zh">V + 了 + pronoun + duration</span>', '<span class="zh">我等<b class="hl">了他半个小时</b>。</span> <span class="py-hint">Wǒ děng le tā bàn ge xiǎoshí.</span> — pronoun FIRST, duration after'],
         ['<b>Never</b>', '<span class="zh">✗ V + O + duration</span>', '<span class="zh">✗ 他学汉语三年。 ✗ 我等他了半个小时。</span>']
       ]
     },
@@ -48,12 +48,12 @@ The arrange-the-words task loves handing you a verb, an object, and a 三年/两
         { tag: "duration", cn: "我们等**了十分钟**，车才来。", py: "Wǒmen děng le shí fēnzhōng, chē cái lái.", en: "We waited ten minutes before the bus finally came.", note: "No object → duration sits directly after V了. (才 = later than hoped, from the 就/才 topic.)" },
         { tag: "repeat V", cn: "他**学**汉语**学了三年**。", py: "Tā xué Hànyǔ xué le sān nián.", en: "He studied Chinese for three years.", note: "Layout 2: say the verb twice — first with the object, then with the duration." },
         { tag: "的", cn: "我学**了三年的**汉语。", py: "Wǒ xué le sān nián de Hànyǔ.", en: "I studied three years of Chinese.", note: "Layout 3: duration squeezes between verb and object, optionally glued with 的." },
-        { tag: "pronoun", cn: "我等**了他半个小时**，他才出现。", py: "Wǒ děng le tā bàn gè xiǎoshí, tā cái chūxiàn.", en: "I waited half an hour for him before he showed up.", note: "Pronouns are the exception: they cut in line, BEFORE the duration. ✗等了半个小时他." },
+        { tag: "pronoun", cn: "我等**了他半个小时**，他才出现。", py: "Wǒ děng le tā bàn ge xiǎoshí, tā cái chūxiàn.", en: "I waited half an hour for him before he showed up.", note: "Pronouns are the exception: they cut in line, BEFORE the duration. ✗等了半个小时他." },
         { tag: "double 了", cn: "我学汉语**学了三年了**，还是觉得难。", py: "Wǒ xué Hànyǔ xué le sān nián le, háishi juéde nán.", en: "I've been studying Chinese for three years now, and it still feels hard.", note: "Second 了 at sentence end = 'and counting'. Without it, the three years are over." },
         { tag: "negation", cn: "他病得很厉害，**三天没**来上课。", py: "Tā bìng de hěn lìhai, sān tiān méi lái shàngkè.", en: "He was really ill — he didn't come to class for three days.", note: "Negation flips the order: the duration of NOT doing goes BEFORE 没 + verb." },
         { tag: "次", cn: "我去**过两次**北京，都是夏天去的。", py: "Wǒ qù guo liǎng cì Běijīng, dōu shì xiàtiān qù de.", en: "I've been to Beijing twice, both times in summer.", note: "Frequency behaves like duration: after V过, before a noun object. (是…的 nails down the 'when'.)" },
         { tag: "遍", cn: "这部电影太好看了，我看**了三遍**。", py: "Zhè bù diànyǐng tài hǎokàn le, wǒ kàn le sān biàn.", en: "That movie is so good I watched it three times through.", note: "遍 = complete run-throughs, start to finish. 三次 would just mean three occasions." },
-        { tag: "趟", cn: "上个月我回**了一趟**老家。", py: "Shàng gè yuè wǒ huí le yí tàng lǎojiā.", en: "Last month I made a trip back to my hometown.", note: "趟 counts round trips — it only pairs with movement verbs like 去、来、回、跑." },
+        { tag: "趟", cn: "上个月我回**了一趟**老家。", py: "Shàng ge yuè wǒ huí le yí tàng lǎojiā.", en: "Last month I made a trip back to my hometown.", note: "趟 counts round trips — it only pairs with movement verbs like 去、来、回、跑." },
         { tag: "顿", cn: "考完试，我们在饭馆好好儿吃**了一顿**。", py: "Kǎo wán shì, wǒmen zài fànguǎn hǎohāor chī le yí dùn.", en: "After the exam we treated ourselves to a proper meal at a restaurant.", note: "顿 counts meals — and scoldings! 批评了一顿 works exactly the same way." },
         { tag: "pronoun", cn: "我见**过他两次**，但是印象不深。", py: "Wǒ jiàn guo tā liǎng cì, dànshì yìnxiàng bù shēn.", en: "I've met him twice, but I don't remember him well.", note: "Same pronoun privilege with counts: 见过他两次, never ✗见过两次他." }
       ]
@@ -144,11 +144,11 @@ Counts and durations use 两: <span class="zh">两次、两遍、两年、两个
       short: "Error clinic",
       intro: "One word-order disease per patient. These are the exact bugs the exam builds distractors from.",
       items: [
-        { wrong: "我等了半个小时他。", right: "我等了他半个小时。", py: "Wǒ děng le tā bàn gè xiǎoshí.", en: "I waited for him for half an hour.", expl: "Pronouns never trail the duration. V了 + pronoun + duration: 等了他半个小时." },
+        { wrong: "我等了半个小时他。", right: "我等了他半个小时。", py: "Wǒ děng le tā bàn ge xiǎoshí.", en: "I waited for him for half an hour.", expl: "Pronouns never trail the duration. V了 + pronoun + duration: 等了他半个小时." },
         { wrong: "他学汉语了三年。", right: "他学汉语学了三年。／他学了三年的汉语。", py: "Tā xué Hànyǔ xué le sān nián.", en: "He studied Chinese for three years.", expl: "✗V + O + 了 + duration doesn't exist. Either copy the verb (学…学了) or tuck the duration inside (学了三年的汉语)." },
         { wrong: "我没睡觉三天。", right: "我三天没睡觉了。", py: "Wǒ sān tiān méi shuìjiào le.", en: "I haven't slept for three days.", expl: "Negation flips the order: you measure the GAP, so the duration goes before 没 + verb." },
-        { wrong: "这篇课文很重要，老师让我们读一次。", right: "这篇课文很重要，老师让我们读一遍。", py: "Zhè piān kèwén hěn zhòngyào, lǎoshī ràng wǒmen dú yí biàn.", en: "This text is important — the teacher had us read it all the way through once.", expl: "Not a grammar bug but a meaning bug: a complete pass through the text is 遍. 一次 would only count the occasion, not the run-through." },
-        { wrong: "我昨天游泳了一个小时。", right: "我昨天游了一个小时的泳。／我昨天游泳游了一个小时。", py: "Wǒ zuótiān yóu le yí gè xiǎoshí de yǒng.", en: "I swam for an hour yesterday.", expl: "游泳 is a separable verb: 泳 is its built-in object, so the duration must split it — 游了一个小时（的）泳 — or the verb gets copied. (Full story in the 离合词 topic.)" },
+        { wrong: "上个星期我去了一遍上海。", right: "上个星期我去了一趟上海。", py: "Shàng ge xīngqī wǒ qù le yí tàng Shànghǎi.", en: "I made a trip to Shanghai last week.", expl: "遍 counts a start-to-finish run through CONTENT (读一遍课文, 看一遍电影) — a journey has no content to run through. Movement verbs take 趟 (the whole errand) or plain 次: 去了一趟／一次上海." },
+        { wrong: "我昨天游泳了一个小时。", right: "我昨天游了一个小时的泳。／我昨天游泳游了一个小时。", py: "Wǒ zuótiān yóu le yí ge xiǎoshí de yǒng.", en: "I swam for an hour yesterday.", expl: "游泳 is a separable verb: 泳 is its built-in object, so the duration must split it — 游了一个小时（的）泳 — or the verb gets copied. (Full story in the 离合词 topic.)" },
         { wrong: "我见过三次他。", right: "我见过他三次。", py: "Wǒ jiàn guo tā sān cì.", en: "I've met him three times.", expl: "Counts obey the same pronoun rule as durations: 见过 + 他 + 三次. Pronoun first, tail after." },
         { wrong: "他来了中国两年。", right: "他来中国两年了。", py: "Tā lái Zhōngguó liǎng nián le.", en: "He's been in China for two years.", expl: "来 is instantaneous — you can't 'come' for two years. The duration counts time SINCE arrival, so it follows the object and the sentence needs a final 了." }
       ]
@@ -162,13 +162,13 @@ Counts and durations use 两: <span class="zh">两次、两遍、两年、两个
       intro: "Eight items, because this topic IS word order. Find the verb, then decide: repeat it, split it, or let the pronoun cut in.",
       items: [
         { tiles: ["我", "学", "汉语", "学了", "三年"], py: "Wǒ xué Hànyǔ xué le sān nián.", en: "I studied Chinese for three years.", hint: "Verb copy: V + O + V了 + duration." },
-        { tiles: ["我们", "坐了", "十个小时", "的", "飞机"], py: "Wǒmen zuò le shí gè xiǎoshí de fēijī.", en: "We were on the plane for ten hours.", hint: "Duration inside: V了 + duration + 的 + object." },
-        { tiles: ["我", "等了", "你", "半个小时"], py: "Wǒ děng le nǐ bàn gè xiǎoshí.", en: "I waited half an hour for you.", hint: "Pronoun cuts in front of the duration." },
-        { tiles: ["他", "去过", "两次", "上海"], py: "Tā qù guo liǎng cì Shànghǎi.", en: "He has been to Shanghai twice.", hint: "Count before a place-name object is the exam's preferred order.", alt: [["他", "去过", "上海", "两次"]] },
+        { tiles: ["我们", "坐了", "十个小时", "的", "飞机"], py: "Wǒmen zuò le shí ge xiǎoshí de fēijī.", en: "We were on the plane for ten hours.", hint: "Duration inside: V了 + duration + 的 + object." },
+        { tiles: ["我", "等了", "你", "半个小时"], py: "Wǒ děng le nǐ bàn ge xiǎoshí.", en: "I waited half an hour for you.", hint: "Pronoun cuts in front of the duration." },
+        { tiles: ["他", "去过", "两次", "上海"], py: "Tā qù guo liǎng cì Shànghǎi.", en: "He has been to Shanghai twice.", hint: "Count before a place-name object is the exam's preferred order.", alt: [["他", "去过", "上海", "两次"], ["上海", "他", "去过", "两次"]] },
         { tiles: ["这部", "电影", "我", "看了", "三遍"], py: "Zhè bù diànyǐng wǒ kàn le sān biàn.", en: "I've watched this movie three times through.", hint: "Topicalize the object, then V了 + count." },
         { tiles: ["我", "昨天", "去了", "一趟", "超市"], py: "Wǒ zuótiān qù le yí tàng chāoshì.", en: "I made a trip to the supermarket yesterday.", hint: "Time-when (昨天) before the verb; the trip count after it.", alt: [["昨天", "我", "去了", "一趟", "超市"]] },
         { tiles: ["他", "已经", "三天", "没", "上班", "了"], py: "Tā yǐjīng sān tiān méi shàngbān le.", en: "He hasn't been to work for three days already.", hint: "Negation flip: duration + 没 + verb, final 了 for 'and counting'." },
-        { tiles: ["我们", "以前", "见过", "两次", "面"], py: "Wǒmen yǐqián jiàn guo liǎng cì miàn.", en: "We've met twice before.", hint: "见面 is separable — the count wedges in: 见过两次面." }
+        { tiles: ["我们", "以前", "见过", "两次", "面"], py: "Wǒmen yǐqián jiàn guo liǎng cì miàn.", en: "We've met twice before.", hint: "见面 is separable — the count wedges in: 见过两次面.", alt: [["以前", "我们", "见过", "两次", "面"]] }
       ]
     },
 

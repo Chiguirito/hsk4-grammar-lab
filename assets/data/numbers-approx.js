@@ -70,10 +70,10 @@ Chinese never shrinks with 倍: ✗<span class="zh">减少了两倍</span>. Decr
         { tag: "percent", cn: "这家店打八折，等于便宜了**百分之二十**。", py: "Zhè jiā diàn dǎ bā zhé, děngyú piányi le bǎi fēn zhī èrshí.", en: "This shop gives 20% off — 打八折 means you pay 80%.", note: "折 counts what you PAY: 八折 = 80% of the price. Classic listening trap." },
         { tag: "左右", cn: "那位新老师看起来**三十岁左右**。", py: "Nà wèi xīn lǎoshī kàn qǐlái sānshí suì zuǒyòu.", en: "The new teacher looks about thirty.", note: "左右 = AFTER number + measure. Never 左右三十岁." },
         { tag: "大约", cn: "从我家到公司**大约**需要四十分钟。", py: "Cóng wǒ jiā dào gōngsī dàyuē xūyào sìshí fēnzhōng.", en: "It takes about forty minutes from my home to the office.", note: "大约 = BEFORE the number. Mirror image of 左右." },
-        { tag: "来", cn: "教室里只坐着**十来个**学生。", py: "Jiàoshì li zhǐ zuòzhe shí lái gè xuésheng.", en: "There are only ten or so students sitting in the classroom.", note: "来 after a round ten, before the measure word." },
+        { tag: "来", cn: "教室里只坐着**十来个**学生。", py: "Jiàoshì li zhǐ zuòzhe shí lái ge xuésheng.", en: "There are only ten or so students sitting in the classroom.", note: "来 after a round ten, before the measure word." },
         { tag: "多", cn: "我在北京住了**两年多**了。", py: "Wǒ zài Běijīng zhù le liǎng nián duō le.", en: "I've lived in Beijing for over two years now.", note: "两 is not a round ten → 多 goes AFTER the measure: 两年多 = 2 years + a bit." },
         { tag: "多", cn: "爷爷**八十多**岁了，身体还很好。", py: "Yéye bāshí duō suì le, shēntǐ hái hěn hǎo.", en: "Grandpa is over eighty and still in great health.", note: "八十 IS a round ten → 多 before the measure: 80–89." },
-        { tag: "邻数", cn: "每天有**五六十**个人来这家小饭馆吃饭。", py: "Měitiān yǒu wǔ-liùshí gè rén lái zhè jiā xiǎo fànguǎn chīfàn.", en: "Fifty or sixty people eat at this little restaurant every day.", note: "Adjacent numbers 五六 = 'five-or-six(-ty)'. No extra word needed." },
+        { tag: "邻数", cn: "每天有**五六十**个人来这家小饭馆吃饭。", py: "Měitiān yǒu wǔ-liùshí ge rén lái zhè jiā xiǎo fànguǎn chīfàn.", en: "Fifty or sixty people eat at this little restaurant every day.", note: "Adjacent numbers 五六 = 'five-or-six(-ty)'. No extra word needed." },
         { tag: "好几", cn: "他去过**好几次**上海，对那儿很熟悉。", py: "Tā qù guo hǎo jǐ cì Shànghǎi, duì nàr hěn shúxī.", en: "He's been to Shanghai quite a few times and knows it well.", note: "好几 = 'a good few' — more than the listener might expect." },
         { tag: "一天比一天", cn: "春天到了，天气**一天比一天**暖和。", py: "Chūntiān dào le, tiānqì yìtiān bǐ yìtiān nuǎnhuo.", en: "Spring is here — it's getting warmer by the day.", note: "Built from 比, so NO degree words: ✗一天比一天很暖和." }
       ]
@@ -87,14 +87,14 @@ Chinese never shrinks with 倍: ✗<span class="zh">减少了两倍</span>. Decr
       intro: "This is the money table. The exam tests exactly one thing: which side of the number each word lives on.",
       head: ["Word", "Slot", "Example", "Watch out"],
       rows: [
-        ['<span class="zh">大约 / 大概</span> <span class="py-hint">dàyuē / dàgài</span>', '<b>BEFORE</b> the number', '<span class="zh">大约<b class="hl">五十个</b>人</span> <span class="py-hint">dàyuē wǔshí gè rén</span>', '大概 also = "probably": <span class="zh">他大概忘了</span>'],
+        ['<span class="zh">大约 / 大概</span> <span class="py-hint">dàyuē / dàgài</span>', '<b>BEFORE</b> the number', '<span class="zh">大约<b class="hl">五十个</b>人</span> <span class="py-hint">dàyuē wǔshí ge rén</span>', '大概 also = "probably": <span class="zh">他大概忘了</span>'],
         ['<span class="zh">差不多</span> <span class="py-hint">chàbuduō</span>', '<b>BEFORE</b> the number', '<span class="zh">差不多<b class="hl">一百块</b></span> <span class="py-hint">chàbuduō yìbǎi kuài</span>', 'Also an adjective: <span class="zh">我们水平差不多</span> "about the same"'],
         ['<span class="zh">左右</span> <span class="py-hint">zuǒyòu</span>', '<b>AFTER</b> number + measure', '<span class="zh"><b class="hl">三十岁</b>左右</span> <span class="py-hint">sānshí suì zuǒyòu</span>', 'Never combine: ✗大约三十岁左右'],
         ['<span class="zh">上下</span> <span class="py-hint">shàngxià</span>', '<b>AFTER</b> number + measure', '<span class="zh"><b class="hl">五十岁</b>上下</span> <span class="py-hint">wǔshí suì shàngxià</span>', 'Mostly for age and weight; 左右 is the all-rounder'],
-        ['<span class="zh">多</span> <span class="py-hint">duō</span>', 'round number + <b>多</b> + measure', '<span class="zh">二十<b class="hl">多</b>个</span> = 21–29 <span class="py-hint">èrshí duō gè</span>', 'Non-round number → after the measure: <span class="zh">一块<b class="hl">多</b></span> = 1.x yuan'],
-        ['<span class="zh">来</span> <span class="py-hint">lái</span>', 'round ten/百/千 + <b>来</b> + measure', '<span class="zh">十<b class="hl">来</b>个 · 二十<b class="hl">来</b>岁</span> <span class="py-hint">shí lái gè · èrshí lái suì</span>', '✗九来个 — 来 refuses non-round numbers'],
+        ['<span class="zh">多</span> <span class="py-hint">duō</span>', 'round number + <b>多</b> + measure', '<span class="zh">二十<b class="hl">多</b>个</span> = 21–29 <span class="py-hint">èrshí duō ge</span>', 'Non-round number → after the measure: <span class="zh">一块<b class="hl">多</b></span> = 1.x yuan'],
+        ['<span class="zh">来</span> <span class="py-hint">lái</span>', 'round ten/百/千 + <b>来</b> + measure', '<span class="zh">十<b class="hl">来</b>个 · 二十<b class="hl">来</b>岁</span> <span class="py-hint">shí lái ge · èrshí lái suì</span>', '✗九来个 — 来 refuses non-round numbers'],
         ['<span class="zh">几</span> <span class="py-hint">jǐ</span>', 'replaces one digit', '<span class="zh">十<b class="hl">几</b>个</span> = 11–19 · <span class="zh"><b class="hl">几</b>十个</span> = some tens', 'Position changes meaning: 十几 ≠ 几十!'],
-        ['adjacent numbers', 'two digits side by side', '<span class="zh">三四个 · 五六十岁</span> <span class="py-hint">sān-sì gè · wǔ-liùshí suì</span>', '九+十 is banned (九十 = 90) — say <span class="zh">十来个</span>'],
+        ['adjacent numbers', 'two digits side by side', '<span class="zh">三四个 · 五六十岁</span> <span class="py-hint">sān-sì ge · wǔ-liùshí suì</span>', '九+十 is banned (九十 = 90) — say <span class="zh">十来个</span>'],
         ['<span class="zh">好几</span> <span class="py-hint">hǎo jǐ</span>', 'before measure/number', '<span class="zh">好几年 · 好几百人</span> <span class="py-hint">hǎo jǐ nián · hǎo jǐ bǎi rén</span>', '"quite a few" — subjective emphasis, not just "several"']
       ]
     },
@@ -125,7 +125,7 @@ Chinese never shrinks with 倍: ✗<span class="zh">减少了两倍</span>. Decr
 </ul>
 <p>So <span class="zh">十多块</span> ≈ 15 yuan, but <span class="zh">十块多</span> ≈ 10.50 — both exist, and they are different amounts! The exam usually just checks you don't write ✗<span class="zh">一多块</span>.</p>`,
           examples: [
-            { cn: "我们在门口等了**一个多**小时。", py: "Wǒmen zài ménkǒu děng le yí gè duō xiǎoshí.", en: "We waited at the entrance for over an hour.", note: "一 is not round → 多 after the measure 个: one hour plus a fraction." },
+            { cn: "我们在门口等了**一个多**小时。", py: "Wǒmen zài ménkǒu děng le yí ge duō xiǎoshí.", en: "We waited at the entrance for over an hour.", note: "一 is not round → 多 after the measure 个: one hour plus a fraction." },
             { cn: "这本旧书才卖**十多块**钱。", py: "Zhè běn jiù shū cái mài shí duō kuài qián.", en: "This old book only costs ten-something yuan.", note: "Round 十 → 多 before 块: 11–19 whole yuan." },
             { cn: "行李箱**二十多**公斤，超重了。", py: "Xínglixiāng èrshí duō gōngjīn, chāozhòng le.", en: "The suitcase is over twenty kilos — overweight.", note: "超重 chāozhòng = over the limit (airport word, worth knowing)." },
             { cn: "这条鱼**三公斤多**，够我们全家吃了。", py: "Zhè tiáo yú sān gōngjīn duō, gòu wǒmen quánjiā chī le.", en: "This fish is a bit over three kilos — enough for the whole family.", note: "三 not round → 多 after 公斤: 3.x kilos." }
@@ -137,7 +137,7 @@ Chinese never shrinks with 倍: ✗<span class="zh">减少了两倍</span>. Decr
 <p><span class="zh"><b class="hl">几</b></span> is a wildcard digit. Where it stands is what it replaces: <span class="zh">十<b class="hl">几</b>个</span> = 1X (11–19), <span class="zh">二十<b class="hl">几</b>岁</span> = 2X (21–29), but <span class="zh"><b class="hl">几</b>十个</span> = X0 (some tens: 20–90ish), <span class="zh">几百、几千</span> = hundreds, thousands.</p>
 <p>Size cheat: around 10 → <span class="zh">十来个</span>; clearly 11–19 → <span class="zh">十几个</span> or <span class="zh">十多个</span>; a fuzzy "dozens" → <span class="zh">几十个</span>.</p>`,
           examples: [
-            { cn: "车上只有**十来个**人，很空。", py: "Chē shang zhǐ yǒu shí lái gè rén, hěn kōng.", en: "There are only ten or so people on the bus — really empty.", note: "来 after round 十." },
+            { cn: "车上只有**十来个**人，很空。", py: "Chē shang zhǐ yǒu shí lái ge rén, hěn kōng.", en: "There are only ten or so people on the bus — really empty.", note: "来 after round 十." },
             { cn: "她女儿今年**十几**岁了，已经比妈妈高了。", py: "Tā nǚ'ér jīnnián shí jǐ suì le, yǐjīng bǐ māma gāo le.", en: "Her daughter is in her early-to-mid teens and already taller than her mom.", note: "十几 = 11–19: the digit after 十 is unknown." },
             { cn: "这条街上有**几十**家小商店。", py: "Zhè tiáo jiē shang yǒu jǐ shí jiā xiǎo shāngdiàn.", en: "There are dozens of little shops on this street.", note: "几十 = the TENS digit is unknown. Compare 十几!" }
           ]
@@ -150,7 +150,7 @@ Chinese never shrinks with 倍: ✗<span class="zh">减少了两倍</span>. Decr
           examples: [
             { cn: "我在机场买了**三四本**杂志，路上看。", py: "Wǒ zài jīchǎng mǎi le sān-sì běn zázhì, lùshang kàn.", en: "I bought three or four magazines at the airport to read on the way.", note: "Adjacent digits + measure word, nothing else needed." },
             { cn: "他爷爷**七八十**岁了，还天天打太极拳。", py: "Tā yéye qī-bāshí suì le, hái tiāntiān dǎ tàijíquán.", en: "His grandpa is in his seventies or eighties and still does tai chi every day.", note: "Works with tens too: 七八十 = 70–80ish." },
-            { cn: "办公室里只剩下**九个或者十个**人了。", py: "Bàngōngshì li zhǐ shèngxià jiǔ gè huòzhě shí gè rén le.", en: "Only nine or ten people are left in the office.", note: "The 9–10 workaround: 或者, because ✗九十个 = 90." }
+            { cn: "办公室里只剩下**九个或者十个**人了。", py: "Bàngōngshì li zhǐ shèngxià jiǔ ge huòzhě shí ge rén le.", en: "Only nine or ten people are left in the office.", note: "The 9–10 workaround: 或者, because ✗九十个 = 90." }
           ]
         },
         {
@@ -158,7 +158,7 @@ Chinese never shrinks with 倍: ✗<span class="zh">减少了两倍</span>. Decr
           html: `<p><span class="zh">好几</span> = "a good few / quite a few" — it's <span class="zh">几</span> with feelings. Use it when the amount feels <b>large to you</b>: <span class="zh">好几年</span> "years and years (too long!)", <span class="zh">好几百人</span> "hundreds of people (wow)". Slot: directly before the measure word or before 十/百/千.</p>`,
           examples: [
             { cn: "我**好几天**没看见他了，他去哪儿了？", py: "Wǒ hǎo jǐ tiān méi kànjiàn tā le, tā qù nǎr le?", en: "I haven't seen him for days — where has he gone?", note: "好几天 = several days, and the speaker notices the gap." },
-            { cn: "为了这次面试，他准备了**好几个**星期。", py: "Wèile zhè cì miànshì, tā zhǔnbèi le hǎo jǐ gè xīngqī.", en: "He spent a good few weeks preparing for this interview.", note: "好几 + 个 + noun — the 个 stays." }
+            { cn: "为了这次面试，他准备了**好几个**星期。", py: "Wèile zhè cì miànshì, tā zhǔnbèi le hǎo jǐ ge xīngqī.", en: "He spent a good few weeks preparing for this interview.", note: "好几 + 个 + noun — the 个 stays." }
           ]
         },
         {
@@ -204,7 +204,7 @@ Chinese never shrinks with 倍: ✗<span class="zh">减少了两倍</span>. Decr
         { wrong: "今年的花费比去年减少了一倍。", right: "今年的花费比去年减少了一半。", py: "Jīnnián de huāfèi bǐ qùnián jiǎnshǎo le yíbàn.", en: "This year's spending is half of last year's.", expl: "倍 only multiplies upward — decreases take 一半 or a fraction (减少了三分之一). ✗减少 X 倍 is always wrong." },
         { wrong: "海洋占了地球表面的七分之十。", right: "海洋占了地球表面的十分之七。", py: "Hǎiyáng zhàn le dìqiú biǎomiàn de shí fēn zhī qī.", en: "Oceans cover about seven tenths of the earth's surface.", expl: "Denominator first! 7/10 = 十分之七. 七分之十 would be 10/7 — more ocean than planet. (占 zhàn = to occupy/take up, useful HSK5 preview.)" },
         { wrong: "他的汉语一天比一天很流利。", right: "他的汉语一天比一天流利。", py: "Tā de Hànyǔ yìtiān bǐ yìtiān liúlì.", en: "His Chinese gets more fluent by the day.", expl: "一天比一天 is built on 比, and 比 sentences reject degree adverbs. Bare adjective only." },
-        { wrong: "屋里只有九来个人。", right: "屋里只有八九个人。／屋里只有十来个人。", py: "Wū li zhǐ yǒu bā-jiǔ gè rén. / Wū li zhǐ yǒu shí lái gè rén.", en: "There are only eight or nine (ten or so) people in the room.", expl: "来 attaches only to round tens/hundreds: 十来个 ✓, 九来个 ✗. For single digits use adjacent numbers (八九个)." }
+        { wrong: "屋里只有九来个人。", right: "屋里只有八九个人。／屋里只有十来个人。", py: "Wū li zhǐ yǒu bā-jiǔ ge rén. / Wū li zhǐ yǒu shí lái ge rén.", en: "There are only eight or nine (ten or so) people in the room.", expl: "来 attaches only to round tens/hundreds: 十来个 ✓, 九来个 ✗. For single digits use adjacent numbers (八九个)." }
       ]
     },
 
@@ -217,8 +217,8 @@ Chinese never shrinks with 倍: ✗<span class="zh">减少了两倍</span>. Decr
       items: [
         { tiles: ["今年的收入", "是", "去年的", "两倍"], py: "Jīnnián de shōurù shì qùnián de liǎng bèi.", en: "This year's income is double last year's.", hint: "The 是…的 N倍 frame: A 是 B 的 + multiple." },
         { tiles: ["我们班", "三分之二的", "同学", "都通过了", "考试"], py: "Wǒmen bān sān fēn zhī èr de tóngxué dōu tōngguò le kǎoshì.", en: "Two thirds of our class passed the exam.", hint: "The fraction + 的 works like any quantity phrase before the noun." },
-        { tiles: ["他", "每天", "要工作", "十多个", "小时"], py: "Tā měitiān yào gōngzuò shí duō gè xiǎoshí.", en: "He works more than ten hours every day.", hint: "Round 十 → 多 before the measure 个." },
-        { tiles: ["参加活动的人", "有", "两百个", "左右"], py: "Cānjiā huódòng de rén yǒu liǎngbǎi gè zuǒyòu.", en: "About two hundred people took part in the activity.", hint: "左右 tails the complete number phrase." },
+        { tiles: ["他", "每天", "要工作", "十多个", "小时"], py: "Tā měitiān yào gōngzuò shí duō ge xiǎoshí.", en: "He works more than ten hours every day.", hint: "Round 十 → 多 before the measure 个." },
+        { tiles: ["参加活动的人", "有", "两百个", "左右"], py: "Cānjiā huódòng de rén yǒu liǎngbǎi ge zuǒyòu.", en: "About two hundred people took part in the activity.", hint: "左右 tails the complete number phrase." },
         { tiles: ["这个城市的人口", "增加了", "百分之十五"], py: "Zhège chéngshì de rénkǒu zēngjiā le bǎi fēn zhī shíwǔ.", en: "The city's population grew by fifteen percent.", hint: "百分之 + number sits where any amount would, after 增加了." },
         { tiles: ["天气", "一天比一天", "暖和了"], py: "Tiānqì yìtiān bǐ yìtiān nuǎnhuo le.", en: "The weather is getting warmer day by day.", hint: "一天比一天 slides in right before the adjective — no 很!" },
         { tiles: ["我", "认识他", "好几年了"], py: "Wǒ rènshi tā hǎo jǐ nián le.", en: "I've known him for a good few years.", hint: "好几年 works exactly like 三年 — a duration after the verb phrase." },

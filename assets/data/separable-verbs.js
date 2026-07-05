@@ -33,24 +33,24 @@ Three quick tests: ① Does the second syllable feel like a NOUN (面 face, 觉 
       head: ["Verb", "Literally", "Means", "Split in action"],
       rows: [
         ['<span class="zh">见面</span> <span class="py-hint">jiànmiàn</span>', 'see + face', 'to meet', '<span class="zh">见<b class="hl">过两次</b>面</span> <span class="py-hint">jiàn guo liǎng cì miàn</span>'],
-        ['<span class="zh">帮忙</span> <span class="py-hint">bāngmáng</span>', 'help + busyness', 'to help', '<span class="zh">帮<b class="hl">个</b>忙 · 帮<b class="hl">我的</b>忙</span> <span class="py-hint">bāng gè máng</span>'],
+        ['<span class="zh">帮忙</span> <span class="py-hint">bāngmáng</span>', 'help + busyness', 'to help', '<span class="zh">帮<b class="hl">个</b>忙 · 帮<b class="hl">我的</b>忙</span> <span class="py-hint">bāng ge máng</span>'],
         ['<span class="zh">结婚</span> <span class="py-hint">jiéhūn</span>', 'tie + marriage', 'to marry', '<span class="zh">结<b class="hl">过</b>婚</span> <span class="py-hint">jié guo hūn</span>'],
         ['<span class="zh">请假</span> <span class="py-hint">qǐngjià</span>', 'request + leave', 'to take leave', '<span class="zh">请<b class="hl">了三天</b>假</span> <span class="py-hint">qǐng le sān tiān jià</span>'],
         ['<span class="zh">聊天（儿）</span> <span class="py-hint">liáotiān(r)</span>', 'chat + sky', 'to chat', '<span class="zh">聊<b class="hl">了一会儿</b>天</span> <span class="py-hint">liáo le yíhuìr tiān</span>'],
-        ['<span class="zh">睡觉</span> <span class="py-hint">shuìjiào</span>', 'sleep + a-sleep', 'to sleep', '<span class="zh">睡<b class="hl">了八个小时</b>觉</span> <span class="py-hint">shuì le bā gè xiǎoshí jiào</span>'],
-        ['<span class="zh">洗澡</span> <span class="py-hint">xǐzǎo</span>', 'wash + bath', 'to bathe', '<span class="zh">洗<b class="hl">个</b>澡</span> <span class="py-hint">xǐ gè zǎo</span>'],
-        ['<span class="zh">游泳</span> <span class="py-hint">yóuyǒng</span>', 'swim + a-swim', 'to swim', '<span class="zh">游<b class="hl">了一个小时</b>泳</span> <span class="py-hint">yóu le yí gè xiǎoshí yǒng</span>'],
+        ['<span class="zh">睡觉</span> <span class="py-hint">shuìjiào</span>', 'sleep + a-sleep', 'to sleep', '<span class="zh">睡<b class="hl">了八个小时</b>觉</span> <span class="py-hint">shuì le bā ge xiǎoshí jiào</span>'],
+        ['<span class="zh">洗澡</span> <span class="py-hint">xǐzǎo</span>', 'wash + bath', 'to bathe', '<span class="zh">洗<b class="hl">个</b>澡</span> <span class="py-hint">xǐ ge zǎo</span>'],
+        ['<span class="zh">游泳</span> <span class="py-hint">yóuyǒng</span>', 'swim + a-swim', 'to swim', '<span class="zh">游<b class="hl">了一个小时</b>泳</span> <span class="py-hint">yóu le yí ge xiǎoshí yǒng</span>'],
         ['<span class="zh">生气</span> <span class="py-hint">shēngqì</span>', 'produce + anger', 'to get angry', '<span class="zh">生<b class="hl">他的</b>气</span> <span class="py-hint">shēng tā de qì</span>'],
         ['<span class="zh">毕业</span> <span class="py-hint">bìyè</span>', 'finish + studies', 'to graduate', '<span class="zh">毕<b class="hl">了</b>业</span>（从大学毕业）<span class="py-hint">bì le yè</span>'],
         ['<span class="zh">上课</span> <span class="py-hint">shàngkè</span>', 'attend + class', 'to have class', '<span class="zh">上<b class="hl">了一天</b>课</span> <span class="py-hint">shàng le yì tiān kè</span>'],
-        ['<span class="zh">报名</span> <span class="py-hint">bàomíng</span>', 'report + name', 'to sign up', '<span class="zh">报<b class="hl">个</b>名 · 报<b class="hl">了</b>名</span> <span class="py-hint">bào gè míng</span>'],
-        ['<span class="zh">排队</span> <span class="py-hint">páiduì</span>', 'line up + queue', 'to queue', '<span class="zh">排<b class="hl">了半个小时</b>队</span> <span class="py-hint">pái le bàn gè xiǎoshí duì</span>'],
+        ['<span class="zh">报名</span> <span class="py-hint">bàomíng</span>', 'report + name', 'to sign up', '<span class="zh">报<b class="hl">个</b>名 · 报<b class="hl">了</b>名</span> <span class="py-hint">bào ge míng</span>'],
+        ['<span class="zh">排队</span> <span class="py-hint">páiduì</span>', 'line up + queue', 'to queue', '<span class="zh">排<b class="hl">了半个小时</b>队</span> <span class="py-hint">pái le bàn ge xiǎoshí duì</span>'],
         ['<span class="zh">打折</span> <span class="py-hint">dǎzhé</span>', 'strike + discount', 'to give a discount', '<span class="zh">打<b class="hl">八</b>折</span>（20% off!）<span class="py-hint">dǎ bā zhé</span>'],
-        ['<span class="zh">加班</span> <span class="py-hint">jiābān</span>', 'add + shift', 'to work overtime', '<span class="zh">加<b class="hl">了三个小时</b>班</span> <span class="py-hint">jiā le sān gè xiǎoshí bān</span>'],
+        ['<span class="zh">加班</span> <span class="py-hint">jiābān</span>', 'add + shift', 'to work overtime', '<span class="zh">加<b class="hl">了三个小时</b>班</span> <span class="py-hint">jiā le sān ge xiǎoshí bān</span>'],
         ['<span class="zh">出差</span> <span class="py-hint">chūchāi</span>', 'go out + errand', 'to go on a business trip', '<span class="zh">出<b class="hl">过两次</b>差</span> <span class="py-hint">chū guo liǎng cì chāi</span>'],
         ['<span class="zh">吵架</span> <span class="py-hint">chǎojià</span>', 'quarrel + fight', 'to argue', '<span class="zh">吵<b class="hl">了一</b>架</span> <span class="py-hint">chǎo le yí jià</span>'],
         ['<span class="zh">散步</span> <span class="py-hint">sànbù</span>', 'scatter + steps', 'to take a walk', '<span class="zh">散<b class="hl">散</b>步 · 散<b class="hl">个</b>步</span> <span class="py-hint">sànsan bù</span>'],
-        ['<span class="zh">开玩笑</span> <span class="py-hint">kāi wánxiào</span>', 'open + joke', 'to joke', '<span class="zh">开<b class="hl">个</b>玩笑 · 开<b class="hl">他的</b>玩笑</span> <span class="py-hint">kāi gè wánxiào</span>'],
+        ['<span class="zh">开玩笑</span> <span class="py-hint">kāi wánxiào</span>', 'open + joke', 'to joke', '<span class="zh">开<b class="hl">个</b>玩笑 · 开<b class="hl">他的</b>玩笑</span> <span class="py-hint">kāi ge wánxiào</span>'],
         ['<span class="zh">发脾气</span> <span class="py-hint">fā píqi</span>', 'emit + temper', 'to lose one\'s temper', '<span class="zh">发<b class="hl">了一顿</b>脾气</span> <span class="py-hint">fā le yí dùn píqi</span>']
       ]
     },
@@ -75,9 +75,9 @@ Three quick tests: ① Does the second syllable feel like a NOUN (面 face, 觉 
           label: "Duration",
           html: `<p>How long you did it goes inside, usually with an optional <span class="zh">的</span>: <span class="zh">睡了八个小时<b class="hl">（的）</b>觉</span>. Compare the duration-complements topic: same rule as 学了三年（的）汉语 — the time phrase sits before the object.</p>`,
           examples: [
-            { cn: "我昨天**游了一个小时泳**。", py: "Wǒ zuótiān yóu le yí gè xiǎoshí yǒng.", en: "I swam for an hour yesterday.", note: "游 + 了 + duration + 泳. Saying ✗游泳了一个小时 is THE classic slip." },
+            { cn: "我昨天**游了一个小时泳**。", py: "Wǒ zuótiān yóu le yí ge xiǎoshí yǒng.", en: "I swam for an hour yesterday.", note: "游 + 了 + duration + 泳. Saying ✗游泳了一个小时 is THE classic slip." },
             { cn: "她向公司**请了三天假**。", py: "Tā xiàng gōngsī qǐng le sān tiān jià.", en: "She took three days off from the company.", note: "三天 wedges between 请 and 假." },
-            { cn: "昨晚我只**睡了五个小时觉**。", py: "Zuówǎn wǒ zhǐ shuì le wǔ gè xiǎoshí jiào.", en: "I only slept five hours last night." }
+            { cn: "昨晚我只**睡了五个小时觉**。", py: "Zuówǎn wǒ zhǐ shuì le wǔ ge xiǎoshí jiào.", en: "I only slept five hours last night." }
           ]
         },
         {
@@ -93,7 +93,7 @@ Three quick tests: ① Does the second syllable feel like a NOUN (面 face, 觉 
           html: `<p>For 生气, 帮忙 and 开玩笑, the person affected slips in with <span class="zh">的</span>: <span class="zh">生<b class="hl">我的</b>气</span> “be angry at me”, <span class="zh">帮<b class="hl">你的</b>忙</span>, <span class="zh">开<b class="hl">他的</b>玩笑</span>. For a favour, natives usually prefer the even lighter <span class="zh">帮我<b class="hl">一个</b>忙</span> / <span class="zh">帮我<b class="hl">个</b>忙</span>.</p>`,
           examples: [
             { cn: "别**生我的气**了，我不是故意的。", py: "Bié shēng wǒ de qì le, wǒ bú shì gùyì de.", en: "Stop being mad at me — I didn't do it on purpose.", note: "The target of the anger is INSIDE: 生+我的+气. ✗生气我 doesn't exist." },
-            { cn: "你能**帮我一个忙**吗？", py: "Nǐ néng bāng wǒ yí gè máng ma?", en: "Could you do me a favour?", note: "帮我一个忙 — person + measure phrase both inside. More natural than 帮我的忙 for requests." },
+            { cn: "你能**帮我一个忙**吗？", py: "Nǐ néng bāng wǒ yí ge máng ma?", en: "Could you do me a favour?", note: "帮我一个忙 — person + measure phrase both inside. More natural than 帮我的忙 for requests." },
             { cn: "同学们都喜欢**开他的玩笑**。", py: "Tóngxuémen dōu xǐhuan kāi tā de wánxiào.", en: "The classmates all like teasing him." }
           ]
         },
@@ -101,8 +101,8 @@ Three quick tests: ① Does the second syllable feel like a NOUN (面 face, 觉 
           label: "个 & friends",
           html: `<p>A tiny <span class="zh">个</span> (sometimes with an adjective) softens the action: <span class="zh">帮<b class="hl">个</b>忙、开<b class="hl">个</b>玩笑、洗<b class="hl">个</b>澡、睡<b class="hl">个好</b>觉</span> — “do a quick X / have a nice X”. Pure spoken-Chinese charm, and HSK 4 listening loves it.</p>`,
           examples: [
-            { cn: "我先去**洗个澡**，你们等我一下。", py: "Wǒ xiān qù xǐ gè zǎo, nǐmen děng wǒ yíxià.", en: "Let me grab a quick shower — wait for me.", note: "洗个澡 = casual 'take a shower'." },
-            { cn: "祝你**睡个好觉**！", py: "Zhù nǐ shuì gè hǎo jiào!", en: "Sleep well!", note: "Even an adjective (好) fits inside: sleep + a good sleep." }
+            { cn: "我先去**洗个澡**，你们等我一下。", py: "Wǒ xiān qù xǐ ge zǎo, nǐmen děng wǒ yíxià.", en: "Let me grab a quick shower — wait for me.", note: "洗个澡 = casual 'take a shower'." },
+            { cn: "祝你**睡个好觉**！", py: "Zhù nǐ shuì ge hǎo jiào!", en: "Sleep well!", note: "Even an adjective (好) fits inside: sleep + a good sleep." }
           ]
         },
         {
@@ -123,12 +123,12 @@ Three quick tests: ① Does the second syllable feel like a NOUN (面 face, 觉 
       short: "Examples",
       intro: "Tap to listen. In each one, find the crack: what got wedged in, or which preposition rescued the extra person?",
       items: [
-        { tag: "个", cn: "我们好久没见了，这个周末**见个面**吧！", py: "Wǒmen hǎojiǔ méi jiàn le, zhège zhōumò jiàn gè miàn ba!", en: "We haven't seen each other for ages — let's meet up this weekend!", note: "见个面 = casual 'meet up'. The 个 softens it." },
-        { tag: "跟", cn: "他去年**跟**一个中学同学**结婚**了。", py: "Tā qùnián gēn yí gè zhōngxué tóngxué jiéhūn le.", en: "Last year he married a middle-school classmate.", note: "The partner arrives via 跟, BEFORE the verb. ✗结婚了一个同学 is impossible." },
-        { tag: "duration", cn: "我昨天**游了一个小时泳**，今天胳膊疼得抬不起来。", py: "Wǒ zuótiān yóu le yí gè xiǎoshí yǒng, jīntiān gēbo téng de tái bu qǐlái.", en: "I swam for an hour yesterday — today my arms are too sore to lift.", note: "Duration inside 游…泳; bonus 得-complement at the end." },
+        { tag: "个", cn: "我们好久没见了，这个周末**见个面**吧！", py: "Wǒmen hǎojiǔ méi jiàn le, zhège zhōumò jiàn ge miàn ba!", en: "We haven't seen each other for ages — let's meet up this weekend!", note: "见个面 = casual 'meet up'. The 个 softens it." },
+        { tag: "跟", cn: "他去年**跟**一个中学同学**结婚**了。", py: "Tā qùnián gēn yí ge zhōngxué tóngxué jiéhūn le.", en: "Last year he married a middle-school classmate.", note: "The partner arrives via 跟, BEFORE the verb. ✗结婚了一个同学 is impossible." },
+        { tag: "duration", cn: "我昨天**游了一个小时泳**，今天胳膊疼得抬不起来。", py: "Wǒ zuótiān yóu le yí ge xiǎoshí yǒng, jīntiān gēbo téng de tái bu qǐlái.", en: "I swam for an hour yesterday — today my arms are too sore to lift.", note: "Duration inside 游…泳; bonus 得-complement at the end." },
         { tag: "向", cn: "她**向**经理**请了两天假**，回老家看父母。", py: "Tā xiàng jīnglǐ qǐng le liǎng tiān jià, huí lǎojiā kàn fùmǔ.", en: "She asked the manager for two days off to visit her parents back home.", note: "Person you ask = 向/跟 + person + 请假; the days go inside." },
         { tag: "的+person", cn: "你还在**生我的气**吗？", py: "Nǐ hái zài shēng wǒ de qì ma?", en: "Are you still mad at me?", note: "生…的气 — the person is possessive-marked inside the compound." },
-        { tag: "个", cn: "这个箱子太重了，你能**帮我个忙**吗？", py: "Zhège xiāngzi tài zhòng le, nǐ néng bāng wǒ gè máng ma?", en: "This suitcase is too heavy — can you give me a hand?", note: "帮 + 我 + 个 + 忙: person AND measure word inside the crack." },
+        { tag: "个", cn: "这个箱子太重了，你能**帮我个忙**吗？", py: "Zhège xiāngzi tài zhòng le, nǐ néng bāng wǒ ge máng ma?", en: "This suitcase is too heavy — can you give me a hand?", note: "帮 + 我 + 个 + 忙: person AND measure word inside the crack." },
         { tag: "frequency", cn: "我**跟**他只**见过两次面**，不算朋友。", py: "Wǒ gēn tā zhǐ jiàn guo liǎng cì miàn, bú suàn péngyou.", en: "I've only met him twice — I wouldn't call us friends.", note: "跟 rescues the partner; 过两次 stuffs the crack. Full machinery in one sentence." },
         { tag: "VVO", cn: "吃完晚饭，我们去湖边**散散步**吧。", py: "Chī wán wǎnfàn, wǒmen qù hú biān sànsan bù ba.", en: "After dinner, let's stroll by the lake.", note: "Reduplication = double the verb half only." },
         { tag: "打折", cn: "这家店今天**打八折**，我们进去看看吧。", py: "Zhè jiā diàn jīntiān dǎ bā zhé, wǒmen jìnqù kànkan ba.", en: "This shop has 20% off today — let's take a look.", note: "Even the discount number goes inside! 打八折 = pay 80%." },
@@ -147,7 +147,7 @@ Three quick tests: ① Does the second syllable feel like a NOUN (面 face, 觉 
 <p class="zh" style="font-size:1.15rem">✗ 他想<b class="hl">结婚她</b>。 → ✓ 他想<b class="hl">跟她结婚</b>。<br>✗ 我明天<b class="hl">见面朋友</b>。 → ✓ 我明天<b class="hl">跟朋友见面</b>。</p>
 <p>English lets you “meet <i>someone</i>” and “marry <i>someone</i>” — Chinese physically has no slot for that noun. The extra person must be introduced <b>before the verb</b> by a preposition (next section) or wedged inside with 的 (生我的气).</p>
 <h3>2 · No 把, no 被</h3>
-<p>离合词 are grammatically <b>intransitive</b> — there is no free object for 把 to grab or 被 to promote: ✗<span class="zh">把觉睡了</span>, ✗<span class="zh">他被生气了</span>. If an exam option puts a 离合词 after 把/被, it's wrong, full stop.</p>
+<p>离合词 are grammatically <b>intransitive</b> — there is no free object for 把 to grab or 被 to promote: ✗<span class="zh">把觉睡了</span>, ✗<span class="zh">他被生气了</span>. In standard (exam) grammar, a 离合词 after 把/被 is wrong. You will hear colloquial exceptions in real life (把澡洗了、把婚结了) — but never pick them on the HSK.</p>
 <h3>3 · Nothing attaches to the whole compound</h3>
 <p>了/过/counts never follow the object half: ✗<span class="zh">见面<b class="hl">过</b></span>, ✗<span class="zh">游泳<b class="hl">了一个小时</b></span>. Suffixes attach to the <b>verb half</b>: <span class="zh">见<b class="hl">过</b>面、游<b class="hl">了</b>一个小时泳</span>.</p>
 <div class="callout warn"><span class="co-title">⚠️ The English trap in one line</span>
@@ -172,7 +172,7 @@ Every time your brain proposes <i>verb + person</i> (“meet her”, “marry hi
         ['<span class="zh">生气</span>', '<span class="zh">生 + person + 的气</span>', '<span class="zh">她还在生男朋友的气。</span> <span class="py-hint">Tā hái zài shēng nánpéngyou de qì.</span>'],
         ['<span class="zh">开玩笑</span>', '<span class="zh"><b class="hl">跟</b>…开玩笑 / 开…的玩笑</span>', '<span class="zh">我是跟你开玩笑的，别当真。</span> <span class="py-hint">Wǒ shì gēn nǐ kāi wánxiào de, bié dàngzhēn.</span>'],
         ['<span class="zh">毕业</span>', '<span class="zh"><b class="hl">从</b>…毕业</span>', '<span class="zh">她去年从北京大学毕业了。</span> <span class="py-hint">Tā qùnián cóng Běijīng Dàxué bìyè le.</span>'],
-        ['<span class="zh">打电话</span>', '<span class="zh"><b class="hl">给</b>…打电话</span>', '<span class="zh">到了以后请给我打个电话。</span> <span class="py-hint">Dào le yǐhòu qǐng gěi wǒ dǎ gè diànhuà.</span>']
+        ['<span class="zh">打电话</span>', '<span class="zh"><b class="hl">给</b>…打电话</span>', '<span class="zh">到了以后请给我打个电话。</span> <span class="py-hint">Dào le yǐhòu qǐng gěi wǒ dǎ ge diànhuà.</span>']
       ]
     },
 
@@ -188,7 +188,7 @@ Every time your brain proposes <i>verb + person</i> (“meet her”, “marry hi
         { q: '“I swam for an hour.”', choices: ['<span class="zh">我游泳了一个小时。</span>', '<span class="zh">我游了一个小时泳。</span>', '<span class="zh">我一个小时游泳了。</span>', '<span class="zh">我游泳一个小时了。</span>'], a: 1, expl: "Duration wedges inside: 游 + 了 + 一个小时 + 泳. Option A is the classic English-order slip." },
         { q: '“Don\'t be mad at me!”', choices: ['<span class="zh">别生气我！</span>', '<span class="zh">别我生气！</span>', '<span class="zh">别生我的气！</span>', '<span class="zh">别生气我的！</span>'], a: 2, expl: "The target of 生气 slips inside with 的: 生+我的+气. ✗生气我 hangs an object where no seat exists." },
         { q: 'Which of these is NOT separable?', choices: ['<span class="zh">帮忙</span>', '<span class="zh">帮助</span>', '<span class="zh">见面</span>', '<span class="zh">请假</span>'], a: 1, expl: "帮助 is a regular transitive verb — 帮助我 ✓. Its twin 帮忙 is V+O, so ✗帮忙我 → 帮我的忙/帮我个忙. Knowing which twin you're holding is the whole game." },
-        { q: 'Which sentence is WRONG?', choices: ['<span class="zh">我们见了个面。</span>', '<span class="zh">他把婚结了。</span>', '<span class="zh">她请了半天假。</span>', '<span class="zh">我们聊了一会儿天。</span>'], a: 1, expl: "离合词 are intransitive — 把 has nothing to grab. ✗把婚结了 fails; the others all stuff the crack correctly." }
+        { q: 'Which sentence is WRONG?', choices: ['<span class="zh">我们见了个面。</span>', '<span class="zh">他把婚结了。</span>', '<span class="zh">她请了半天假。</span>', '<span class="zh">我们聊了一会儿天。</span>'], a: 1, expl: "In exam grammar 离合词 are intransitive — 把 has nothing to grab, so ✗把婚结了 fails (colloquial speech allows it, but the HSK doesn't). The others all stuff the crack correctly." }
       ]
     },
 
@@ -200,11 +200,11 @@ Every time your brain proposes <i>verb + person</i> (“meet her”, “marry hi
       intro: "Eight patients, one disease each — usually an object stuck to the back, or stuffing left outside the crack.",
       items: [
         { wrong: "昨天我见面了我的女朋友。", right: "昨天我跟我的女朋友见了面。", py: "Zuótiān wǒ gēn wǒ de nǚpéngyou jiàn le miàn.", en: "Yesterday I met up with my girlfriend.", expl: "见面 can't take an object — the person moves up front with 跟, and 了 slips inside: 见了面." },
-        { wrong: "他结婚了一个漂亮的医生。", right: "他跟一个漂亮的医生结婚了。", py: "Tā gēn yí gè piàoliang de yīshēng jiéhūn le.", en: "He married a beautiful doctor.", expl: "婚 already fills the object seat. The spouse arrives via 跟…结婚 — never behind the verb." },
-        { wrong: "我们聊天了一个多小时。", right: "我们聊了一个多小时天。", py: "Wǒmen liáo le yí gè duō xiǎoshí tiān.", en: "We chatted for over an hour.", expl: "Duration goes INSIDE: 聊 + 了 + 一个多小时 + 天. Attaching 了+duration to the whole compound is the standard slip." },
+        { wrong: "他结婚了一个漂亮的医生。", right: "他跟一个漂亮的医生结婚了。", py: "Tā gēn yí ge piàoliang de yīshēng jiéhūn le.", en: "He married a beautiful doctor.", expl: "婚 already fills the object seat. The spouse arrives via 跟…结婚 — never behind the verb." },
+        { wrong: "我们聊天了一个多小时。", right: "我们聊了一个多小时天。", py: "Wǒmen liáo le yí ge duō xiǎoshí tiān.", en: "We chatted for over an hour.", expl: "Duration goes INSIDE: 聊 + 了 + 一个多小时 + 天. Attaching 了+duration to the whole compound is the standard slip." },
         { wrong: "她生气我了。", right: "她生我的气了。", py: "Tā shēng wǒ de qì le.", en: "She got angry at me.", expl: "The person you're angry at is marked with 的 inside the compound: 生+我的+气." },
         { wrong: "我想请假三天。", right: "我想请三天假。", py: "Wǒ xiǎng qǐng sān tiān jià.", en: "I'd like to take three days off.", expl: "三天 belongs between 请 and 假 — the leave-duration is stuffing, not a trailer." },
-        { wrong: "昨晚我只睡觉了五个小时。", right: "昨晚我只睡了五个小时觉。", py: "Zuówǎn wǒ zhǐ shuì le wǔ gè xiǎoshí jiào.", en: "I only slept five hours last night.", expl: "睡觉 splits: 睡 + 了 + duration + 觉. The compound never stays glued when a duration arrives." },
+        { wrong: "昨晚我只睡觉了五个小时。", right: "昨晚我只睡了五个小时觉。", py: "Zuówǎn wǒ zhǐ shuì le wǔ ge xiǎoshí jiào.", en: "I only slept five hours last night.", expl: "睡觉 splits: 睡 + 了 + duration + 觉. The compound never stays glued when a duration arrives." },
         { wrong: "老师帮忙了我很多。", right: "老师帮了我很多忙。", py: "Lǎoshī bāng le wǒ hěn duō máng.", en: "The teacher helped me a lot.", expl: "帮忙 opens up: 帮 + 了 + 我 + 很多 + 忙. Person and amount both live inside the crack." },
         { wrong: "我们见过面两次。", right: "我们见过两次面。", py: "Wǒmen jiàn guo liǎng cì miàn.", en: "We've met twice.", expl: "The count 两次 must sit before the object half 面, not after it. 见过两次面 — stuffing stays inside." }
       ]
@@ -218,11 +218,11 @@ Every time your brain proposes <i>verb + person</i> (“meet her”, “marry hi
       intro: "Find the separable verb, decide what goes inside and what goes up front — then build.",
       items: [
         { tiles: ["我", "跟他", "见过", "两次", "面"], py: "Wǒ gēn tā jiàn guo liǎng cì miàn.", en: "I've met him twice.", hint: "Partner up front with 跟, count inside the crack." },
-        { tiles: ["请", "你", "帮", "我", "一个", "忙"], py: "Qǐng nǐ bāng wǒ yí gè máng.", en: "Please do me a favour.", hint: "Person + measure phrase both wedge between 帮 and 忙." },
+        { tiles: ["请", "你", "帮", "我", "一个", "忙"], py: "Qǐng nǐ bāng wǒ yí ge máng.", en: "Please do me a favour.", hint: "Person + measure phrase both wedge between 帮 and 忙." },
         { tiles: ["她", "向老师", "请了", "两天", "假"], py: "Tā xiàng lǎoshī qǐng le liǎng tiān jià.", en: "She asked the teacher for two days off.", hint: "向 + person before the verb; days inside." },
-        { tiles: ["昨晚", "我", "只", "睡了", "五个小时", "觉"], py: "Zuówǎn wǒ zhǐ shuì le wǔ gè xiǎoshí jiào.", en: "I only slept five hours last night.", hint: "睡 and 觉 frame the duration." },
+        { tiles: ["昨晚", "我", "只", "睡了", "五个小时", "觉"], py: "Zuówǎn wǒ zhǐ shuì le wǔ ge xiǎoshí jiào.", en: "I only slept five hours last night.", hint: "睡 and 觉 frame the duration.", alt: [["我", "昨晚", "只", "睡了", "五个小时", "觉"]] },
         { tiles: ["别", "生", "我的", "气", "了"], py: "Bié shēng wǒ de qì le.", en: "Stop being angry at me.", hint: "的 + person inside; 别…了 wraps the whole thing." },
-        { tiles: ["吃完饭", "我们", "去", "散散步", "吧"], py: "Chī wán fàn wǒmen qù sànsan bù ba.", en: "Let's take a little walk after eating.", hint: "Reduplicated verb half: 散散 + 步." },
+        { tiles: ["吃完饭", "我们", "去", "散散步", "吧"], py: "Chī wán fàn wǒmen qù sànsan bù ba.", en: "Let's take a little walk after eating.", hint: "Reduplicated verb half: 散散 + 步.", alt: [["我们", "吃完饭", "去", "散散步", "吧"]] },
         { tiles: ["他", "跟", "女朋友", "吵了", "一架"], py: "Tā gēn nǚpéngyou chǎo le yí jià.", en: "He had a fight with his girlfriend.", hint: "跟 + partner up front; 一架 (one round) inside." }
       ]
     },

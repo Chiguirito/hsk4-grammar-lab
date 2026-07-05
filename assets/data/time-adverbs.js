@@ -90,7 +90,7 @@ registerPage({
       intro: "Three ways to be 'on time' plus one way to beat the clock. This triple contrast is an HSK 4 vocabulary-section favourite — the sentences differ by exactly one word.",
       head: ["Word", "Core idea", "Grammar notes", "Example"],
       rows: [
-        ['<span class="zh hl">及时</span> <span class="py-hint">jíshí</span>', '<b>In time / just when needed</b> — before it\'s too late. About need, not clocks.', 'Adverb AND adjective: <span class="zh">及时赶到 · 来得很及时 · 及时的帮助</span>', '<span class="zh">幸亏医生来得<b class="hl">及时</b>，奶奶已经没事了。</span> <span class="py-hint">Xìngkuī yīshēng lái de jíshí, nǎinai yǐjīng méi shì le.</span>'],
+        ['<span class="zh hl">及时</span> <span class="py-hint">jíshí</span>', '<b>In time / just when needed</b> — before it\'s too late. About need, not clocks.', 'Adverb AND adjective: <span class="zh">及时赶到 · 来得很及时 · 及时的帮助</span>', '<span class="zh">幸亏医生来得<b class="hl">及时</b>，奶奶已经没事了。</span> <span class="py-hint">Xìngkuī yīshēng lái de jíshí, nǎinai yǐjīng méi shì le.</span> (幸亏 xìngkuī = luckily, HSK5)'],
         ['<span class="zh hl">准时</span> <span class="py-hint">zhǔnshí</span>', '<b>Punctual, on the dot</b> — exactly at the agreed clock time.', 'Adverb + adjective-ish: <span class="zh">准时到 · 很准时</span>; often with a stated clock time', '<span class="zh">请大家八点<b class="hl">准时</b>到机场门口。</span> <span class="py-hint">Qǐng dàjiā bā diǎn zhǔnshí dào jīchǎng ménkǒu.</span>'],
         ['<span class="zh hl">按时</span> <span class="py-hint">ànshí</span>', '<b>As scheduled / as prescribed</b> — following a set plan, usually repeatedly.', 'Adverb only — ✗<span class="zh">很按时</span>. Loves duties: <span class="zh">按时吃药 · 按时交作业 · 按时睡觉</span>', '<span class="zh">医生让他<b class="hl">按时</b>吃药，多喝水。</span> <span class="py-hint">Yīshēng ràng tā ànshí chī yào, duō hē shuǐ.</span>'],
         ['<span class="zh hl">提前</span> <span class="py-hint">tíqián</span>', '<b>Ahead of schedule</b> — do it early, often by a stated margin.', '<span class="zh">提前 (+ amount) + V</span>: <span class="zh">提前十分钟到</span>; also “move X earlier”: <span class="zh">会议提前到三点了</span>', '<span class="zh">春节的火车票要<b class="hl">提前</b>预订。</span> <span class="py-hint">Chūnjié de huǒchēpiào yào tíqián yùdìng.</span>']
@@ -106,13 +106,13 @@ registerPage({
       items: [
         { tag: "刚…就", cn: "我**刚**到公司，会议**就**开始了。", py: "Wǒ gāng dào gōngsī, huìyì jiù kāishǐ le.", en: "The meeting started the moment I got to the office.", note: "刚 A 就 B: barely-in-time drama." },
         { tag: "刚才", cn: "**刚才**你说什么？我没听清楚。", py: "Gāngcái nǐ shuō shénme? Wǒ méi tīng qīngchu.", en: "What did you say just now? I didn't catch it.", note: "Time noun opening the sentence — 刚 could never." },
-        { tag: "及时", cn: "谢谢你**及时**提醒我，要不然我就忘了今天的面试。", py: "Xièxie nǐ jíshí tíxǐng wǒ, yàoburán wǒ jiù wàng le jīntiān de miànshì.", en: "Thanks for reminding me in time — otherwise I'd have forgotten today's interview.", note: "及时 = the reminder landed exactly when needed. No clock mentioned — that's the point." },
+        { tag: "及时", cn: "谢谢你**及时**提醒我，要不然我就忘了今天的面试。", py: "Xièxie nǐ jíshí tíxǐng wǒ, yàobùrán wǒ jiù wàng le jīntiān de miànshì.", en: "Thanks for reminding me in time — otherwise I'd have forgotten today's interview.", note: "及时 = the reminder landed exactly when needed. No clock mentioned — that's the point." },
         { tag: "准时", cn: "火车八点半出发，从来不等人，请**准时**到。", py: "Huǒchē bā diǎn bàn chūfā, cónglái bù děng rén, qǐng zhǔnshí dào.", en: "The train leaves at 8:30 and waits for no one — please be there on time.", note: "A clock time is stated → 准时, on the dot." },
         { tag: "按时", cn: "这种药一天三次，必须**按时**吃。", py: "Zhè zhǒng yào yì tiān sān cì, bìxū ànshí chī.", en: "This medicine is three times a day — you must take it as prescribed.", note: "A repeated schedule → 按时. The exam's favourite of the trio." },
-        { tag: "提前", cn: "我们**提前**半个小时到了电影院，先买了点儿吃的。", py: "Wǒmen tíqián bàn gè xiǎoshí dào le diànyǐngyuàn, xiān mǎi le diǎnr chī de.", en: "We got to the cinema half an hour early and bought some snacks first.", note: "提前 + amount + verb: beat the schedule by a stated margin." },
+        { tag: "提前", cn: "我们**提前**半个小时到了电影院，先买了点儿吃的。", py: "Wǒmen tíqián bàn ge xiǎoshí dào le diànyǐngyuàn, xiān mǎi le diǎnr chī de.", en: "We got to the cinema half an hour early and bought some snacks first.", note: "提前 + amount + verb: beat the schedule by a stated margin." },
         { tag: "马上", cn: "你等我一下，我**马上**就到。", py: "Nǐ děng wǒ yíxià, wǒ mǎshàng jiù dào.", en: "Wait a second — I'll be right there.", note: "马上(就) = immediately. Colloquial and everywhere." },
         { tag: "立刻", cn: "一听到这个消息，她**立刻**给家里打了个电话。", py: "Yì tīngdào zhège xiāoxi, tā lìkè gěi jiāli dǎ le ge diànhuà.", en: "The moment she heard the news, she immediately called home.", note: "立刻 = instant reaction, slightly more formal than 马上." },
-        { tag: "正好", cn: "你来得**正好**，我们**正好**缺一个人。", py: "Nǐ lái de zhènghǎo, wǒmen zhènghǎo quē yí gè rén.", en: "Perfect timing — we happen to be exactly one person short.", note: "正好 = by happy coincidence / exactly right. Don't confuse with ongoing 正在." },
+        { tag: "正好", cn: "你来得**正好**，我们**正好**缺一个人。", py: "Nǐ lái de zhènghǎo, wǒmen zhènghǎo quē yí ge rén.", en: "Perfect timing — we happen to be exactly one person short.", note: "正好 = by happy coincidence / exactly right. Don't confuse with ongoing 正在." },
         { tag: "从来", cn: "我**从来**没吃过这么辣的菜。", py: "Wǒ cónglái méi chī guo zhème là de cài.", en: "I've never eaten food this spicy in my life.", note: "从来 + 没…过: never in all my experience. 从来 refuses positive sentences." },
         { tag: "一直", cn: "雨**一直**下到半夜才停。", py: "Yǔ yìzhí xià dào bànyè cái tíng.", en: "The rain kept falling until midnight before it finally stopped.", note: "一直 = continuously, without interruption — one long unbroken line." },
         { tag: "后来", cn: "他先在北京工作了两年，**后来**去了上海。", py: "Tā xiān zài Běijīng gōngzuò le liǎng nián, hòulái qù le Shànghǎi.", en: "He first worked in Beijing for two years; later on he moved to Shanghai.", note: "后来 = 'later on' in a PAST story. For future plans you'd need 然后/以后." }
@@ -159,7 +159,7 @@ registerPage({
 <p><span class="zh hl">恰好</span> is its bookish twin (reading texts love it). And don't confuse either with HSK 3's <span class="zh">正在</span>: 正在 = action in progress; 正好 = the stars aligned.</p>`,
           examples: [
             { cn: "我**正好**也要去银行，我们一起走吧。", py: "Wǒ zhènghǎo yě yào qù yínháng, wǒmen yìqǐ zǒu ba.", en: "I happen to be going to the bank too — let's walk together." },
-            { cn: "那天**恰好**是我的生日，所以我记得特别清楚。", py: "Nà tiān qiàhǎo shì wǒ de shēngri, suǒyǐ wǒ jìde tèbié qīngchu.", en: "That day happened to be my birthday, which is why I remember it so clearly.", note: "恰好 = written-flavored 正好." }
+            { cn: "那天**恰好**是我的生日，所以我记得特别清楚。", py: "Nà tiān qiàhǎo shì wǒ de shēngrì, suǒyǐ wǒ jìde tèbié qīngchu.", en: "That day happened to be my birthday, which is why I remember it so clearly.", note: "恰好 = written-flavored 正好." }
           ]
         },
         {
@@ -259,14 +259,14 @@ No personal intentions (✗<span class="zh">我往往去健身房</span> → <sp
       short: "Builder",
       intro: "Arrange each sentence. Watch where the adverb sits: time nouns roam, adverbs hug the verb.",
       items: [
-        { tiles: ["请", "大家", "明天", "八点", "准时", "到"], py: "Qǐng dàjiā míngtiān bā diǎn zhǔnshí dào.", en: "Everyone please arrive punctually at eight tomorrow.", hint: "Clock time first, then 准时 right before the verb." },
+        { tiles: ["请", "大家", "明天", "八点", "准时", "到"], py: "Qǐng dàjiā míngtiān bā diǎn zhǔnshí dào.", en: "Everyone please arrive punctually at eight tomorrow.", hint: "Clock time first, then 准时 right before the verb.", alt: [["明天", "八点", "请", "大家", "准时", "到"], ["明天", "请", "大家", "八点", "准时", "到"]] },
         { tiles: ["爷爷", "每天", "都", "按时", "吃药"], py: "Yéye měitiān dōu ànshí chī yào.", en: "Grandpa takes his medicine on schedule every day.", hint: "每天 + 都, then the manner adverb 按时 + verb." },
-        { tiles: ["我们", "最好", "提前", "半个小时", "出发"], py: "Wǒmen zuìhǎo tíqián bàn gè xiǎoshí chūfā.", en: "We'd better set off half an hour early.", hint: "提前 + amount + verb." },
+        { tiles: ["我们", "最好", "提前", "半个小时", "出发"], py: "Wǒmen zuìhǎo tíqián bàn ge xiǎoshí chūfā.", en: "We'd better set off half an hour early.", hint: "提前 + amount + verb." },
         { tiles: ["她", "从来", "没", "坐过", "飞机"], py: "Tā cónglái méi zuò guo fēijī.", en: "She has never been on a plane.", hint: "从来 + 没 + V过 — the no-experience chain." },
-        { tiles: ["他", "刚", "来", "中国", "一个星期"], py: "Tā gāng lái Zhōngguó yí gè xīngqī.", en: "He's only been in China for a week.", hint: "刚 + verb + duration — the thing 刚才 can never do." },
-        { tiles: ["听到", "这个", "好消息", "他", "立刻", "跳了起来"], py: "Tīngdào zhège hǎo xiāoxi, tā lìkè tiào le qǐlái.", en: "Hearing the good news, he immediately jumped up.", hint: "Trigger first, then subject + 立刻 + reaction." },
+        { tiles: ["他", "刚", "来", "中国", "一个星期"], py: "Tā gāng lái Zhōngguó yí ge xīngqī.", en: "He's only been in China for a week.", hint: "刚 + verb + duration — the thing 刚才 can never do." },
+        { tiles: ["听到", "这个", "好消息", "他", "立刻", "跳了起来"], py: "Tīngdào zhège hǎo xiāoxi, tā lìkè tiào le qǐlái.", en: "Hearing the good news, he immediately jumped up.", hint: "Trigger first, then subject + 立刻 + reaction.", alt: [["他", "听到", "这个", "好消息", "立刻", "跳了起来"]] },
         { tiles: ["昨天的", "雨", "一直", "下到", "半夜"], py: "Zuótiān de yǔ yìzhí xià dào bànyè.", en: "Yesterday's rain kept falling until midnight.", hint: "一直 draws the unbroken line right before the verb." },
-        { tiles: ["飞机", "十点半", "就要", "起飞", "了"], py: "Fēijī shí diǎn bàn jiù yào qǐfēi le.", en: "The plane takes off at ten thirty.", hint: "Time word + 就要 + V + 了 — the frame 快 can't copy." }
+        { tiles: ["飞机", "十点半", "就要", "起飞", "了"], py: "Fēijī shí diǎn bàn jiù yào qǐfēi le.", en: "The plane is about to take off at ten thirty.", hint: "Time word + 就要 + V + 了 — the frame 快 can't copy." }
       ]
     },
 

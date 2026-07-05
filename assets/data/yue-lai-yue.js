@@ -47,16 +47,16 @@ The escalator can carry negative feelings down: <span class="zh">我越来越<b 
       short: "Examples",
       intro: "Tap to listen. Watch for the pattern's three friends: change-了 at the end, psych-verbs after 越来越, and the two 越's of 越…越.",
       items: [
-        { tag: "adj", cn: "天气**越来越**冷了，你多穿点儿衣服。", py: "Tiānqì yuè lái yuè lěng le, nǐ duō chuān diǎnr yīfu.", en: "It's getting colder and colder — put on some more clothes.", note: "The classic frame: Subject + 越来越 + adjective + change-了." },
-        { tag: "psych-V", cn: "我**越来越**喜欢这个城市了。", py: "Wǒ yuè lái yuè xǐhuan zhège chéngshì le.", en: "I like this city more and more.", note: "喜欢 is a feeling verb — no 很 needed, no 很 allowed." },
-        { tag: "in 得", cn: "他汉语说得**越来越**流利了。", py: "Tā Hànyǔ shuō de yuè lái yuè liúlì le.", en: "His Chinese is getting more and more fluent.", note: "Inside a 得-complement, 越来越 sits right before the adjective: 说得越来越流利." },
+        { tag: "adj", cn: "天气**越来越**冷了，你多穿点儿衣服。", py: "Tiānqì yuèláiyuè lěng le, nǐ duō chuān diǎnr yīfu.", en: "It's getting colder and colder — put on some more clothes.", note: "The classic frame: Subject + 越来越 + adjective + change-了." },
+        { tag: "psych-V", cn: "我**越来越**喜欢这个城市了。", py: "Wǒ yuèláiyuè xǐhuan zhège chéngshì le.", en: "I like this city more and more.", note: "喜欢 is a feeling verb — no 很 needed, no 很 allowed." },
+        { tag: "in 得", cn: "他汉语说得**越来越**流利了。", py: "Tā Hànyǔ shuō de yuèláiyuè liúlì le.", en: "His Chinese is getting more and more fluent.", note: "Inside a 得-complement, 越来越 sits right before the adjective: 说得越来越流利." },
         { tag: "多+noun", cn: "**越来越**多的年轻人选择在网上工作。", py: "Yuè lái yuè duō de niánqīngrén xuǎnzé zài wǎngshàng gōngzuò.", en: "More and more young people choose to work online.", note: "越来越多 + 的 + noun = 'more and more X'. Or flip it: 在网上工作的年轻人越来越多了." },
-        { tag: "negative", cn: "这个电视节目**越来越**没意思了。", py: "Zhège diànshì jiémù yuè lái yuè méi yìsi le.", en: "This TV show is getting more and more boring.", note: "越来越 + 没意思/不方便/不耐烦 — trends can go downhill too." },
+        { tag: "negative", cn: "这个电视节目**越来越**没意思了。", py: "Zhège diànshì jiémù yuèláiyuè méi yìsi le.", en: "This TV show is getting more and more boring.", note: "越来越 + 没意思/不方便/不耐烦 — trends can go downhill too." },
         { tag: "越…越", cn: "雨**越**下**越**大，我们只好在门口等着。", py: "Yǔ yuè xià yuè dà, wǒmen zhǐhǎo zài ménkǒu děng zhe.", en: "The rain kept getting heavier, so we had no choice but to wait at the entrance.", note: "Same subject 雨: the more it falls, the bigger it gets. 越 + verb, 越 + adjective." },
         { tag: "越…越", cn: "你**越**解释，我**越**糊涂。", py: "Nǐ yuè jiěshì, wǒ yuè hútu.", en: "The more you explain, the more confused I get.", note: "Two subjects, one 越 each, each 越 right before its own verb/adjective. 糊涂 (hútu) = muddled, confused." },
         { tag: "fixed", cn: "这份材料什么时候要？——**越快越好**！", py: "Zhè fèn cáiliào shénme shíhou yào? — Yuè kuài yuè hǎo!", en: "When do you need this document? — The sooner the better!", note: "越…越好 is a productive mini-pattern: 越多越好, 越便宜越好, 越早越好…" },
         { tag: "fixed", cn: "我**越**想**越**生气，一晚上没睡好。", py: "Wǒ yuè xiǎng yuè shēngqì, yì wǎnshang méi shuì hǎo.", en: "The more I thought about it, the angrier I got — I barely slept all night.", note: "越想越气 / 越想越生气 — a beloved native gem. Also 越看越喜欢, 越吃越想吃." },
-        { tag: "trend", cn: "来这儿旅游的人**越来越**多了。", py: "Lái zhèr lǚyóu de rén yuè lái yuè duō le.", en: "More and more people are coming here to travel.", note: "多 works as the predicate adjective: 人越来越多 = 'people are ever more numerous'." },
+        { tag: "trend", cn: "来这儿旅游的人**越来越**多了。", py: "Lái zhèr lǚyóu de rén yuèláiyuè duō le.", en: "More and more people are coming here to travel.", note: "多 works as the predicate adjective: 人越来越多 = 'people are ever more numerous'." },
         { tag: "一天比一天", cn: "爷爷的身体**一天比一天**好。", py: "Yéye de shēntǐ yì tiān bǐ yì tiān hǎo.", en: "Grandpa's health is getting better day by day.", note: "一天比一天 ≈ 越来越, but it counts the days one by one — see the edge cases section." }
       ]
     },
@@ -147,11 +147,11 @@ See a 越来越 tile? Glue it immediately in front of the adjective/psych-verb t
       short: "Error clinic",
       intro: "One bug per patient. All six are mistakes that German/Spanish/English speakers actually make — diagnose before you peek.",
       items: [
-        { wrong: "他的中文越来越很好。", right: "他的中文越来越好了。", py: "Tā de Zhōngwén yuè lái yuè hǎo le.", en: "His Chinese is getting better and better.", expl: "Ban 1: 越来越 already carries the degree — 很 must go. (English 'more and more' never takes 'very' either!)" },
-        { wrong: "我的头越来越疼一点儿了。", right: "我的头越来越疼了。", py: "Wǒ de tóu yuè lái yuè téng le.", en: "My headache is getting worse and worse.", expl: "Ban 2: no measured amounts (一点儿/得多) after the adjective. 越来越 is an open-ended trend, not a comparison result." },
+        { wrong: "他的中文越来越很好。", right: "他的中文越来越好了。", py: "Tā de Zhōngwén yuèláiyuè hǎo le.", en: "His Chinese is getting better and better.", expl: "Ban 1: 越来越 already carries the degree — 很 must go. (English 'more and more' never takes 'very' either!)" },
+        { wrong: "我的头越来越疼一点儿了。", right: "我的头越来越疼了。", py: "Wǒ de tóu yuèláiyuè téng le.", en: "My headache is getting worse and worse.", expl: "Ban 2: no measured amounts (一点儿/得多) after the adjective. 越来越 is an open-ended trend, not a comparison result." },
         { wrong: "越雨下越大。", right: "雨越下越大。", py: "Yǔ yuè xià yuè dà.", en: "The rain kept getting heavier.", expl: "越 is an adverb: it must follow the subject and hug the verb. Subject 雨 stands outside the whole 越…越 machine." },
-        { wrong: "他越来越跑得快了。", right: "他跑得越来越快了。", py: "Tā pǎo de yuè lái yuè kuài le.", en: "He's running faster and faster.", expl: "When the change lives inside a 得-complement, 越来越 moves in there with it: V + 得 + 越来越 + adjective. It modifies 快, not 跑." },
-        { wrong: "今天比昨天越来越热。", right: "今天比昨天更热。／天气越来越热了。", py: "Jīntiān bǐ zuótiān gèng rè. / Tiānqì yuè lái yuè rè le.", en: "Today is even hotter than yesterday. / The weather keeps getting hotter.", expl: "比 (two-point snapshot) and 越来越 (ongoing trend) are incompatible. Pick one: 比…更热, or drop 比 and keep 越来越." },
+        { wrong: "他越来越跑得快了。", right: "他跑得越来越快了。", py: "Tā pǎo de yuèláiyuè kuài le.", en: "He's running faster and faster.", expl: "When the change lives inside a 得-complement, 越来越 moves in there with it: V + 得 + 越来越 + adjective. It modifies 快, not 跑." },
+        { wrong: "今天比昨天越来越热。", right: "今天比昨天更热。／天气越来越热了。", py: "Jīntiān bǐ zuótiān gèng rè. / Tiānqì yuèláiyuè rè le.", en: "Today is even hotter than yesterday. / The weather keeps getting hotter.", expl: "比 (two-point snapshot) and 越来越 (ongoing trend) are incompatible. Pick one: 比…更热, or drop 比 and keep 越来越." },
         { wrong: "越多的人开始学汉语了。", right: "越来越多的人开始学汉语了。", py: "Yuè lái yuè duō de rén kāishǐ xué Hànyǔ le.", en: "More and more people are starting to learn Chinese.", expl: "A single 越 can't work alone — 'more and more + noun' is 越来越多(的) + noun. A lone 越 only exists in the paired 越 A 越 B." }
       ]
     },
@@ -163,13 +163,13 @@ See a 越来越 tile? Glue it immediately in front of the adjective/psych-verb t
       short: "Builder",
       intro: "Arrange the tiles. Every item hides one position rule — subject outside, 越 hugging its verb, 了 at the end.",
       items: [
-        { tiles: ["天气", "越来越", "暖和", "了"], py: "Tiānqì yuè lái yuè nuǎnhuo le.", en: "The weather is getting warmer and warmer.", hint: "Subject + 越来越 + adjective + change-了." },
-        { tiles: ["我", "越来越", "习惯", "这里的生活", "了"], py: "Wǒ yuè lái yuè xíguàn zhèlǐ de shēnghuó le.", en: "I'm getting more and more used to life here.", hint: "习惯 is a psych-verb — it follows 越来越 directly." },
+        { tiles: ["天气", "越来越", "暖和", "了"], py: "Tiānqì yuèláiyuè nuǎnhuo le.", en: "The weather is getting warmer and warmer.", hint: "Subject + 越来越 + adjective + change-了." },
+        { tiles: ["我", "越来越", "习惯", "这里的生活", "了"], py: "Wǒ yuèláiyuè xíguàn zhèlǐ de shēnghuó le.", en: "I'm getting more and more used to life here.", hint: "习惯 is a psych-verb — it follows 越来越 directly." },
         { tiles: ["雨", "越", "下", "越", "大"], py: "Yǔ yuè xià yuè dà.", en: "The rain kept getting heavier.", hint: "Subject first, then 越 + verb, 越 + adjective." },
         { tiles: ["你", "越", "着急", "我", "越", "紧张"], py: "Nǐ yuè zháojí, wǒ yuè jǐnzhāng.", en: "The more anxious you get, the more nervous I get.", hint: "Two subjects — each one stands before its own 越." },
-        { tiles: ["他", "跑得", "越来越", "快", "了"], py: "Tā pǎo de yuè lái yuè kuài le.", en: "He's running faster and faster.", hint: "越来越 lives inside the 得-complement, right before 快." },
-        { tiles: ["学", "汉语", "的", "人", "越来越", "多", "了"], py: "Xué Hànyǔ de rén yuè lái yuè duō le.", en: "More and more people are learning Chinese.", hint: "Build the big subject (学汉语的人) first, then 越来越多了." },
-        { tiles: ["这件事", "你", "越早", "解决", "越好"], py: "Zhè jiàn shì nǐ yuè zǎo jiějué yuè hǎo.", en: "The sooner you solve this, the better.", hint: "Topic first; 越早 grabs the whole verb phrase 解决; 越好 closes." }
+        { tiles: ["他", "跑得", "越来越", "快", "了"], py: "Tā pǎo de yuèláiyuè kuài le.", en: "He's running faster and faster.", hint: "越来越 lives inside the 得-complement, right before 快." },
+        { tiles: ["学", "汉语", "的", "人", "越来越", "多", "了"], py: "Xué Hànyǔ de rén yuèláiyuè duō le.", en: "More and more people are learning Chinese.", hint: "Build the big subject (学汉语的人) first, then 越来越多了." },
+        { tiles: ["这件事", "你", "越早", "解决", "越好"], py: "Zhè jiàn shì nǐ yuè zǎo jiějué yuè hǎo.", en: "The sooner you solve this, the better.", hint: "Topic first; 越早 grabs the whole verb phrase 解决; 越好 closes.", alt: [["你", "越早", "解决", "这件事", "越好"]] }
       ]
     },
 
@@ -182,7 +182,7 @@ See a 越来越 tile? Glue it immediately in front of the adjective/psych-verb t
 <h3>1 · 越来越 vs 一天比一天</h3>
 <p><span class="zh">一天比一天</span> (“day by day”) is 越来越's poetic cousin — it stacks daily snapshots into a trend: <span class="zh">天气<b class="hl">一天比一天</b>暖和了。</span> Use it when the change is noticeable <i>each day</i> (health, weather, skills). It follows the same bans: ✗<span class="zh">一天比一天<s>很</s>好</span>. Siblings: <span class="zh">一年比一年</span>, <span class="zh">一次比一次</span>. Difference from 越来越: 一天比一天 needs day-sized, observable change — for slow social trends (<span class="zh">学汉语的人越来越多</span>), stick with 越来越.</p>
 <h3>2 · 越来越多 + noun vs noun + 越来越多</h3>
-<p>Both orders work, different flavor: <span class="zh"><b class="hl">越来越多的</b>人骑车上班</span> (spotlight on the people) vs <span class="zh">骑车上班的人<b class="hl">越来越多</b>了</span> (spotlight on the trend). But only 多/少 can stand before the noun — ✗<span class="zh">越来越冷的天气来了</span> sounds off; say <span class="zh">天气越来越冷了</span>.</p>
+<p>Both orders work, different flavor: <span class="zh"><b class="hl">越来越多的</b>人骑车上班</span> (spotlight on the people) vs <span class="zh">骑车上班的人<b class="hl">越来越多</b>了</span> (spotlight on the trend). In everyday speech 多/少 are the usual choices before a noun; written Chinese allows others too (<span class="zh">越来越大的压力 · 越来越激烈的竞争</span>). But ✗<span class="zh">越来越冷的天气来了</span> sounds off — say <span class="zh">天气越来越冷了</span>.</p>
 <h3>3 · 越 grabs a whole verb phrase</h3>
 <p><span class="zh">你<b class="hl">越</b>不理他，他<b class="hl">越</b>要跟你说话。</span> — 越 can scope over 不理他 and 要跟你说话, negation and modal included. The rule is still “越 right after the subject”.</p>
 <h3>4 · 越来越 in the past</h3>

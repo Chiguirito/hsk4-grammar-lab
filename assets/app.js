@@ -20,6 +20,9 @@
     if (html !== undefined) e.innerHTML = html;
     return e;
   };
+  // mark Chinese text for screen readers / font selection (html lang="en")
+  const zhLang = root => root.querySelectorAll(".zh, .ex-cn, .er-wrong, .er-right, .tile, .zh-big, .u-zh, .c-zh, .p-zh")
+    .forEach(e => { if (!e.lang) e.lang = "zh-Hans"; });
   function shuffled(arr) {
     const a = arr.slice();
     for (let i = a.length - 1; i > 0; i--) {
@@ -84,14 +87,14 @@
   /* ---------------- toggles ---------------- */
   function initToggles(container) {
     const prefs = { py: localStorage.getItem("hsk4lab-py") !== "off", en: localStorage.getItem("hsk4lab-en") !== "off" };
-    document.body.classList.toggle("hide-py", !prefs.py);
-    document.body.classList.toggle("hide-en", !prefs.en);
+    document.documentElement.classList.toggle("hide-py", !prefs.py);
+    document.documentElement.classList.toggle("hide-en", !prefs.en);
     const mk = (key, label) => {
       const b = el("button", "toggle-btn" + (prefs[key] ? " on" : ""), label + ": " + (prefs[key] ? "ON" : "OFF"));
       b.onclick = () => {
         prefs[key] = !prefs[key];
         localStorage.setItem("hsk4lab-" + key, prefs[key] ? "on" : "off");
-        document.body.classList.toggle(key === "py" ? "hide-py" : "hide-en", !prefs[key]);
+        document.documentElement.classList.toggle(key === "py" ? "hide-py" : "hide-en", !prefs[key]);
         b.classList.toggle("on", prefs[key]);
         b.textContent = label + ": " + (prefs[key] ? "ON" : "OFF");
       };
@@ -112,6 +115,7 @@
     if (item.py) card.appendChild(el("div", "ex-py", fmt(item.py)));
     if (item.en) card.appendChild(el("div", "ex-en", fmt(item.en)));
     if (item.note) card.appendChild(el("div", "ex-note", "💡 " + item.note));
+    zhLang(card);
     return card;
   }
 
@@ -184,8 +188,8 @@
           const ok = ci === item.a;
           wrap.querySelectorAll("button").forEach((x, xi) => {
             x.disabled = true;
-            if (xi === item.a) x.classList.add("correct");
-            else if (xi === ci) x.classList.add("wrong");
+            if (xi === item.a) { x.classList.add("correct"); x.insertAdjacentText("afterbegin", "✓ "); }
+            else if (xi === ci) { x.classList.add("wrong"); x.insertAdjacentText("afterbegin", "✗ "); }
             else x.classList.add("dim");
           });
           if (item.expl) expl.classList.remove("hidden");
@@ -198,6 +202,7 @@
       });
       q.appendChild(wrap);
       q.appendChild(expl);
+      zhLang(q);
       quiz.appendChild(q);
     });
     function showScore() {
@@ -233,7 +238,9 @@
       const feedback = el("div", "b-feedback");
       let fails = 0, solved = false;
       const mkTile = (txt) => {
-        const t = el("span", "tile", esc(txt));
+        const t = el("button", "tile", esc(txt));
+        t.type = "button";
+        t.lang = "zh-Hans";
         t.onclick = () => {
           if (solved) return;
           answer.classList.remove("ok", "bad");
@@ -357,7 +364,8 @@
     });
     markVisited(page.id);
 
-    document.title = stripMarks(page.zh) + " — " + page.title + " · HSK 4 Grammar Lab";
+    const zhTitle = stripMarks(page.zh);
+    document.title = (page.title.includes(zhTitle) ? page.title : zhTitle + " — " + page.title) + " · HSK 4 Grammar Lab";
     const app = document.getElementById("app");
     const wrap = el("div", "wrap");
     app.appendChild(wrap);
@@ -420,6 +428,7 @@
     }
     wrap.appendChild(pager);
     wrap.appendChild(el("div", "site-footer", "HSK 4 Grammar Lab · 加油，Paul！ · Tap any Chinese sentence to hear it"));
+    zhLang(wrap);
   };
 
   /* ---------------- index page ---------------- */
@@ -473,5 +482,6 @@
       wrap.appendChild(unit);
     });
     wrap.appendChild(el("div", "site-footer", "Best score per topic is saved in your browser. 🏅 = 80%+ · Built for the HSK 3 → HSK 4 jump."));
+    zhLang(wrap);
   };
 })();

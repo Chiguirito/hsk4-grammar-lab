@@ -20,7 +20,7 @@ registerPage({
 </ul>
 <div class="pattern">…<span class="slot">的</span> + NOUN &nbsp;·&nbsp; …<span class="slot">地</span> + VERB &nbsp;·&nbsp; VERB/ADJ + <span class="slot">得</span> + comment<small>的 and 地 introduce; 得 follows up. That asymmetry is the whole system.</small></div>
 <div class="callout cmp"><span class="co-title">🇬🇧 The adjective/adverb instinct you already have</span>
-English splits the same jobs by word shape: <i>a <b>quick</b> answer</i> (adjective before noun → 的) vs <i>he answered <b>quickly</b></i> (adverb, -ly → 地). And <i>“he speaks <b>so fluently that…</b>”</i> — a comment after the verb — is 得-land. Spanish and German don't even mark the difference (<i>schnell</i>/<i>rápido</i> do both jobs), so anchor yourself to the English -ly test.</div>
+English splits the same jobs by word shape: <i>a <b>quick</b> answer</i> (adjective before noun → 的) vs <i>he answered <b>quickly</b></i> (adverb, -ly → 地). And <i>“he speaks <b>so fluently that…</b>”</i> — a comment after the verb — is 得-land. German doesn't mark the difference (<i>schnell</i> does both jobs), and colloquial Spanish often lets <i>rápido</i> stand in for <i>rápidamente</i> — so anchor yourself to the English -ly test.</div>
 <div class="callout rule"><span class="co-title">Why HSK 4 cares</span>
 Native children drill 的/地/得 in school — which tells you it's about rules, not vocabulary. The exam plants the wrong de in Reading, and in Writing you lose marks for 慢慢<s>得</s>走. One algorithm (next sections) fixes all of it.</div>`
     },
@@ -110,7 +110,7 @@ The word after 地 is a verb, but the word after 的 can ALSO be missing: <span 
 <li><b>True adverbs never take 地:</b> <span class="zh">已经、马上、忽然、常常</span> go straight before the verb — they're born adverbs and need no badge.</li>
 </ul>`,
           examples: [
-            { cn: "她小声**地**告诉我一个秘密。", py: "Tā xiǎo shēng de gàosu wǒ yí gè mìmì.", en: "She quietly told me a secret.", note: "小声 'in a low voice' + 地 + 告诉." },
+            { cn: "她小声**地**告诉我一个秘密。", py: "Tā xiǎo shēng de gàosu wǒ yí ge mìmì.", en: "She quietly told me a secret.", note: "小声 'in a low voice' + 地 + 告诉." },
             { cn: "大家慢慢**（地）**吃，不着急。", py: "Dàjiā mànmàn (de) chī, bù zháojí.", en: "Everyone eat slowly, no rush.", note: "After reduplicated 慢慢, the 地 is optional — with or without, both are exam-safe." },
             { cn: "他很快**地**穿好衣服出门了。", py: "Tā hěn kuài de chuān hǎo yīfu chūmén le.", en: "He got dressed quickly and headed out.", note: "很 + 快 makes the phrase heavy enough to carry 地." }
           ]
@@ -197,7 +197,7 @@ Both exist! <span class="zh">她高兴<b class="hl">地</b>说：“谢谢！”
         { tiles: ["你", "汉语", "说", "得", "越来越", "流利", "了"], py: "Nǐ Hànyǔ shuō de yuèláiyuè liúlì le.", en: "Your Chinese is getting more and more fluent.", hint: "Topic first (汉语), then V + 得 + comment." },
         { tiles: ["这", "是", "我", "在中国", "买", "的", "茶"], py: "Zhè shì wǒ zài Zhōngguó mǎi de chá.", en: "This is tea I bought in China.", hint: "The whole clause 我在中国买 + 的 modifies 茶." },
         { tiles: ["孩子们", "安安静静", "地", "听", "老师", "讲故事"], py: "Háizimen ān'ānjìngjìng de tīng lǎoshī jiǎng gùshi.", en: "The children listened quietly to the teacher telling a story.", hint: "Reduplicated manner + 地 before the verb 听." },
-        { tiles: ["今天", "我", "累", "得", "什么", "都", "不想做"], py: "Jīntiān wǒ lèi de shénme dōu bù xiǎng zuò.", en: "Today I'm so tired I don't want to do anything.", hint: "Adjective 累 + 得 + the extreme result." }
+        { tiles: ["今天", "我", "累", "得", "什么", "都", "不想做"], py: "Jīntiān wǒ lèi de shénme dōu bù xiǎng zuò.", en: "Today I'm so tired I don't want to do anything.", hint: "Adjective 累 + 得 + the extreme result.", alt: [["我", "今天", "累", "得", "什么", "都", "不想做"]] }
       ]
     },
 

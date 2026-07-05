@@ -58,13 +58,13 @@ Reading part 2 (sentence ordering) almost always contains one 因果 pair, and t
         { tag: "由于", cn: "**由于**天气原因，今天的航班全部推迟。", py: "Yóuyú tiānqì yuányīn, jīntiān de hángbān quánbù tuīchí.", en: "Due to weather conditions, all of today's flights are delayed.", note: "Airport-announcement register. 由于 + noun phrase works too — like English 'due to'." },
         { tag: "由于…因此", cn: "**由于**他工作认真负责，**因此**公司决定给他涨工资。", py: "Yóuyú tā gōngzuò rènzhēn fùzé, yīncǐ gōngsī juédìng gěi tā zhǎng gōngzī.", en: "Since he works conscientiously, the company decided to give him a raise.", note: "由于…因此 is the formal power couple. 涨工资 = raise a salary." },
         { tag: "因此", cn: "这家饭馆的菜又好吃又便宜，**因此**总是坐满了人。", py: "Zhè jiā fànguǎn de cài yòu hǎochī yòu piányi, yīncǐ zǒngshì zuò mǎn le rén.", en: "This restaurant's food is both tasty and cheap; therefore it's always packed.", note: "因此 alone = 'therefore', drawing a logical conclusion in writing." },
-        { tag: "于是", cn: "他听说那部电影特别感人，**于是**马上买了两张票。", py: "Tā tīngshuō nà bù diànyǐng tèbié gǎnrén, yúshì mǎshàng mǎi le liǎng zhāng piào.", en: "He heard the movie was really touching, and so he immediately bought two tickets.", note: "于是 narrates what happened NEXT — story mode, camera rolling." },
+        { tag: "于是", cn: "他听说那部电影特别感人，**于是**马上买了两张票。", py: "Tā tīngshuō nà bù diànyǐng tèbié gǎnrén, yúshì mǎshàng mǎi le liǎng zhāng piào.", en: "He heard the movie was really touching, and so he immediately bought two tickets.", note: "于是 narrates what happened NEXT — story mode, camera rolling. (感人 gǎnrén = touching, moving — HSK5.)" },
         { tag: "于是②", cn: "我发现忘带钥匙了，**于是**只好在门口等妻子回来。", py: "Wǒ fāxiàn wàng dài yàoshi le, yúshì zhǐhǎo zài ménkǒu děng qīzi huílái.", en: "I realized I'd forgotten my key, so I had no choice but to wait at the door for my wife.", note: "Event A, then event B as a consequence — that's 于是's whole job." },
         { tag: "既然", cn: "**既然**你身体不舒服，**就**早点儿回家休息吧。", py: "Jìrán nǐ shēntǐ bù shūfu, jiù zǎodiǎnr huí jiā xiūxi ba.", en: "Since you're not feeling well, go home early and rest.", note: "The premise is already known to both speakers; the second clause draws a suggestion with 就 + 吧." },
         { tag: "既然②", cn: "**既然**大家都同意，**那**我们**就**这么决定了。", py: "Jìrán dàjiā dōu tóngyì, nà wǒmen jiù zhème juédìng le.", en: "Since everyone agrees, then that's what we'll do.", note: "既然…那(么)…就 — very common combo in meetings and dialogues." },
-        { tag: "为了", cn: "**为了**提高听力水平，她每天听半个小时的中文广播。", py: "Wèile tígāo tīnglì shuǐpíng, tā měitiān tīng bàn gè xiǎoshí de Zhōngwén guǎngbō.", en: "In order to improve her listening, she listens to Chinese radio for half an hour every day.", note: "为了 marks the GOAL (still in the future), not the cause. It loves the first slot of the sentence." },
+        { tag: "为了", cn: "**为了**提高听力水平，她每天听半个小时的中文广播。", py: "Wèile tígāo tīnglì shuǐpíng, tā měitiān tīng bàn ge xiǎoshí de Zhōngwén guǎngbō.", en: "In order to improve her listening, she listens to Chinese radio for half an hour every day.", note: "为了 marks the GOAL (still in the future), not the cause. It loves the first slot of the sentence." },
         { tag: "让", cn: "这个好消息**让**大家都很兴奋。", py: "Zhège hǎo xiāoxi ràng dàjiā dōu hěn xīngfèn.", en: "This good news got everyone excited.", note: "Cause and effect in ONE clause: A 让 B + feeling. No 所以 needed." },
-        { tag: "使", cn: "长时间看手机会**使**眼睛越来越干。", py: "Cháng shíjiān kàn shǒujī huì shǐ yǎnjing yuè lái yuè gān.", en: "Looking at your phone for long periods makes your eyes drier and drier.", note: "使 = formal 让. 令 is even more formal/literary: 令人感动." }
+        { tag: "使", cn: "长时间看手机会**使**眼睛越来越干。", py: "Cháng shíjiān kàn shǒujī huì shǐ yǎnjing yuèláiyuè gān.", en: "Looking at your phone for long periods makes your eyes drier and drier.", note: "使 = formal 让. 令 is even more formal/literary: 令人感动." }
       ]
     },
 
@@ -93,7 +93,7 @@ Reading part 2 (sentence ordering) almost always contains one 因果 pair, and t
           label: "既然 premise",
           html: `<p>Now the lateness is <b>known to both speakers</b>, and we build on it. 既然 doesn't explain — it says “given this fact we both accept, here's the conclusion.”</p>`,
           examples: [
-            { cn: "**既然**已经迟到了，**就**先给经理发个短信说明一下吧。", py: "Jìrán yǐjīng chídào le, jiù xiān gěi jīnglǐ fā gè duǎnxìn shuōmíng yíxià ba.", en: "Since you're already late anyway, first send the manager a text to explain.", note: "The conclusion is a suggestion (就…吧) — 既然's favourite follow-up." }
+            { cn: "**既然**已经迟到了，**就**先给经理发个短信说明一下吧。", py: "Jìrán yǐjīng chídào le, jiù xiān gěi jīnglǐ fā ge duǎnxìn shuōmíng yíxià ba.", en: "Since you're already late anyway, first send the manager a text to explain.", note: "The conclusion is a suggestion (就…吧) — 既然's favourite follow-up." }
           ]
         },
         {
@@ -143,8 +143,8 @@ German <i>„<b>Da</b> es regnet, bleiben wir zu Hause“</i> presents the reaso
 <p>If <b>both clauses share the subject</b>, the conjunction usually comes after it: <span class="zh">他<b class="hl">因为</b>生病，没来上课。</span><br>If the <b>subjects differ</b>, the conjunction must come first, before its subject: <span class="zh"><b class="hl">因为</b>他生病了，我们把会议改到了明天。</span></p>
 <h3>2 · Adverbs (就 / 才 / 都) — welded after the subject</h3>
 <p class="zh" style="font-size:1.15rem">既然大家都到了，我们<b class="hl">就</b>开始吧。 ✓ &nbsp;&nbsp; ✗ 既然大家都到了，<s>就我们</s>开始吧。</p>
-<h3>3 · Result-clause connectors (所以 / 因此 / 于是) — clause-initial</h3>
-<p>They stand at the head of the second clause, before its subject: <span class="zh">…，<b class="hl">所以</b>我们迟到了。</span></p>
+<h3>3 · Result-clause connectors (所以 / 因此 / 于是) — where they stand</h3>
+<p><span class="zh">所以</span> and <span class="zh">于是</span> stand at the head of the second clause, before its subject: <span class="zh">…，<b class="hl">所以</b>我们迟到了。</span> <span class="zh">因此</span> is more flexible — clause-initial or right after the subject (<span class="zh">小李<b class="hl">因此</b>未能按时到达</span>), a pattern formal writing likes.</p>
 <h3>4 · Clause order</h3>
 <ul>
 <li><span class="zh">因为</span>-clause: first OR second — <span class="zh">我没去，<b class="hl">因为</b>我病了</span> ✓ (afterthought reason, very spoken).</li>
@@ -182,7 +182,7 @@ German <i>„<b>Da</b> es regnet, bleiben wir zu Hause“</i> presents the reaso
         { wrong: "因为他经常迟到，因此经理批评了他。", right: "由于他经常迟到，因此经理批评了他。／因为他经常迟到，所以经理批评了他。", py: "Yóuyú tā jīngcháng chídào, yīncǐ jīnglǐ pīpíng le tā.", en: "Because he was often late, the manager criticized him.", expl: "因此 refuses 因为. Keep 因此 and upgrade the first half to 由于, or keep 因为 and use 所以." },
         { wrong: "我很累，由于昨天晚上没睡好。", right: "我很累，因为昨天晚上没睡好。", py: "Wǒ hěn lèi, yīnwèi zuótiān wǎnshang méi shuì hǎo.", en: "I'm really tired, because I slept badly last night.", expl: "Only a 因为-clause may trail after the result. 由于 insists on going first: 由于昨晚没睡好，我很累。" },
         { wrong: "既然明天有考试，所以你今天别玩儿游戏了。", right: "既然明天有考试，你今天就别玩儿游戏了。", py: "Jìrán míngtiān yǒu kǎoshì, nǐ jīntiān jiù bié wánr yóuxì le.", en: "Since you have an exam tomorrow, don't play games today.", expl: "既然's partner is 就 (after the subject), not 所以. 既然…所以 is a pair the exam plants again and again." },
-        { wrong: "为了他想家了，所以他给妈妈打了个电话。", right: "因为他想家了，所以他给妈妈打了个电话。", py: "Yīnwèi tā xiǎng jiā le, suǒyǐ tā gěi māma dǎ le gè diànhuà.", en: "Because he was homesick, he called his mom.", expl: "为了 marks a GOAL you're aiming at; 想家 is a cause that already happened → 因为. Purpose looks forward, cause looks back." },
+        { wrong: "为了他想家了，所以他给妈妈打了个电话。", right: "因为他想家了，所以他给妈妈打了个电话。", py: "Yīnwèi tā xiǎng jiā le, suǒyǐ tā gěi māma dǎ le ge diànhuà.", en: "Because he was homesick, he called his mom.", expl: "为了 marks a GOAL you're aiming at; 想家 is a cause that already happened → 因为. Purpose looks forward, cause looks back." },
         { wrong: "为了学好口语，所以我每天跟中国朋友聊天儿。", right: "为了学好口语，我每天跟中国朋友聊天儿。", py: "Wèile xué hǎo kǒuyǔ, wǒ měitiān gēn Zhōngguó péngyou liáotiānr.", en: "To improve my spoken Chinese, I chat with Chinese friends every day.", expl: "为了 never takes 所以 — the purpose phrase plugs straight into the main clause. (为了…所以 is a Spanish-speaker favourite: 'para…, por eso…')." },
         { wrong: "天太热了，于是我们别出去了。", right: "天太热了，我们就别出去了。／天太热了，咱们别出去了吧。", py: "Tiān tài rè le, wǒmen jiù bié chūqù le.", en: "It's too hot — let's not go out.", expl: "于是 only reports what DID happen next in a narrative; it can't introduce suggestions or commands. For 'so let's…', use 就 or nothing." },
         { wrong: "这个消息使大家都很高兴，所以大家都很高兴。", right: "这个消息使大家都很高兴。", py: "Zhège xiāoxi shǐ dàjiā dōu hěn gāoxìng.", en: "This news made everyone very happy.", expl: "使/让/令 already contain the whole cause→effect arrow in one clause — adding a 所以-clause just repeats the result. One arrow per sentence." }
@@ -196,13 +196,13 @@ German <i>„<b>Da</b> es regnet, bleiben wir zu Hause“</i> presents the reaso
       short: "Builder",
       intro: "Arrange the tiles. Watch two slots: the connector's position relative to the subject, and 就 after the subject.",
       items: [
-        { tiles: ["他", "因为", "感冒了", "没来", "上课"], py: "Tā yīnwèi gǎnmào le méi lái shàngkè.", en: "He didn't come to class because he had a cold.", hint: "Same subject in both halves → 因为 slips in AFTER 他." },
+        { tiles: ["他", "因为", "感冒了", "没来", "上课"], py: "Tā yīnwèi gǎnmào le méi lái shàngkè.", en: "He didn't come to class because he had a cold.", hint: "Same subject in both halves → 因为 slips in AFTER 他.", alt: [["因为", "他", "感冒了", "没来", "上课"]] },
         { tiles: ["由于", "天气", "不好", "运动会", "改到", "下周了"], py: "Yóuyú tiānqì bù hǎo, yùndònghuì gǎi dào xià zhōu le.", en: "Because of the bad weather, the sports meet was moved to next week.", hint: "Different subjects (天气 / 运动会) → 由于 leads the whole sentence." },
         { tiles: ["既然", "你不舒服", "就", "早点儿", "回家", "吧"], py: "Jìrán nǐ bù shūfu, jiù zǎodiǎnr huí jiā ba.", en: "Since you're not feeling well, go home early.", hint: "既然 + known fact, then 就 + suggestion + 吧." },
-        { tiles: ["为了", "通过", "考试", "他", "每天", "都", "复习", "两个小时"], py: "Wèile tōngguò kǎoshì, tā měitiān dōu fùxí liǎng gè xiǎoshí.", en: "In order to pass the exam, he reviews for two hours every day.", hint: "Purpose phrase 为了… takes the very front seat." },
+        { tiles: ["为了", "通过", "考试", "他", "每天", "都", "复习", "两个小时"], py: "Wèile tōngguò kǎoshì, tā měitiān dōu fùxí liǎng ge xiǎoshí.", en: "In order to pass the exam, he reviews for two hours every day.", hint: "Purpose phrase 为了… takes the very front seat.", alt: [["他", "为了", "通过", "考试", "每天", "都", "复习", "两个小时"]] },
         { tiles: ["他", "没带", "雨伞", "于是", "在商店门口", "等", "雨停"], py: "Tā méi dài yǔsǎn, yúshì zài shāngdiàn ménkǒu děng yǔ tíng.", en: "He hadn't brought an umbrella, and so he waited at the shop entrance for the rain to stop.", hint: "Event one, then 于是 + what he did next." },
         { tiles: ["这个", "消息", "让", "大家", "都", "很", "高兴"], py: "Zhège xiāoxi ràng dàjiā dōu hěn gāoxìng.", en: "This news made everyone very happy.", hint: "Cause 让 person + feeling — the one-clause causative." },
-        { tiles: ["既然", "大家", "都", "累了", "我们", "就", "休息", "一会儿", "吧"], py: "Jìrán dàjiā dōu lèi le, wǒmen jiù xiūxi yíhuìr ba.", en: "Since everyone's tired, let's rest for a bit.", hint: "Two subjects: 大家 in the premise, 我们 + 就 in the conclusion." }
+        { tiles: ["既然", "大家", "都", "累了", "我们", "就", "休息", "一会儿", "吧"], py: "Jìrán dàjiā dōu lèi le, wǒmen jiù xiūxi yíhuìr ba.", en: "Since everyone's tired, let's rest for a bit.", hint: "Two subjects: 大家 in the premise, 我们 + 就 in the conclusion.", alt: [["大家", "既然", "都", "累了", "我们", "就", "休息", "一会儿", "吧"]] }
       ]
     },
 
