@@ -1,0 +1,13 @@
+{
+  "name": "HSK 4 Grammar Lab",
+  "short_name": "HSK4 Lab",
+  "description": "Interactive grammar course covering exactly the delta from HSK 3 to HSK 4.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#faf7f1",
+  "theme_color": "#b3352c",
+  "icons": [
+    { "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

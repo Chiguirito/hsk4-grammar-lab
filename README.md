@@ -4,10 +4,10 @@ An interactive site that teaches **exactly the delta from HSK 3 to HSK 4**: ever
 structure, pattern and trap — with ~470 quiz questions, 570+ example sentences (all with pinyin,
 translation and text-to-speech), sentence builders, error clinics and progress tracking.
 
-**26 topics in 6 units:** Complements (result, directional, potential, degree/state, duration/frequency) ·
+**27 topics in 6 units:** Complements (result, directional, potential, degree/state, duration/frequency) ·
 Core patterns (把, 被, comparisons, 是…的, 连…都, question-word indefinites) · Adverbs (就/才, 又/再/还,
 time & attitude adverbs, 越来越) · Connectors (cause/effect, conditionals, contrast, addition) ·
-Words & structures (的/地/得, separable verbs, prepositions, numbers, confusables) · Exam room (mixed drills).
+Words & structures (的/地/得, separable verbs, 着/reduplication/是否, prepositions, numbers, confusables) · Exam room (mixed drills).
 
 ## Run it in GitHub Codespaces
 

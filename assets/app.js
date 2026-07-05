@@ -42,13 +42,17 @@
     pickVoice();
     speechSynthesis.onvoiceschanged = pickVoice;
   }
+  let lastSpoken = { text: null, t: 0 };
   function speak(text) {
     if (!window.speechSynthesis) return;
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(stripMarks(text).replace(/[（(].*?[)）]/g, ""));
     u.lang = "zh-CN";
     if (zhVoice) u.voice = zhVoice;
-    u.rate = 0.85;
+    // tapping the same sentence again shortly after replays it slowly
+    const now = Date.now();
+    u.rate = (lastSpoken.text === text && now - lastSpoken.t < 6000) ? 0.6 : 0.85;
+    lastSpoken = { text: text, t: now };
     speechSynthesis.speak(u);
   }
 
@@ -63,6 +67,7 @@
   // counts, so quiz retries can neither inflate nor re-score progress.
   const tracker = { total: 0, results: {}, pageId: null };
   function recordAnswer(key, ok) {
+    if (!tracker.pageId) return; // review page: no per-topic progress to update
     if (key in tracker.results) return;
     tracker.results[key] = ok;
     const store = loadStore();
@@ -77,6 +82,21 @@
     store[tracker.pageId] = prev;
     saveStore(store);
   }
+  // ---- missed-question store (drives review.html) ----
+  const MISS_KEY = "hsk4lab-misses";
+  function loadMisses() {
+    try { return JSON.parse(localStorage.getItem(MISS_KEY)) || {}; } catch (e) { return {}; }
+  }
+  function saveMisses(m) { try { localStorage.setItem(MISS_KEY, JSON.stringify(m)); } catch (e) {} }
+  // ok=false → remember this question; ok=true (first-try correct) → forget it
+  function recordMiss(id, ok) {
+    if (!id) return;
+    const m = loadMisses();
+    if (ok) { if (!(id in m)) return; delete m[id]; }
+    else m[id] = (m[id] || 0) + 1;
+    saveMisses(m);
+  }
+
   function markVisited(pageId) {
     const store = loadStore();
     store[pageId] = store[pageId] || {};
@@ -174,28 +194,34 @@
     let done = 0, right = 0;
     const scoreBox = el("div", "quiz-score hidden");
     sec.items.forEach((item, idx) => {
+      const missId = item._src || (tracker.pageId ? tracker.pageId + "/" + sec._qkey + ":" + idx : null);
       const q = el("div", "q");
-      q.appendChild(el("div", "q-num", "QUESTION " + (idx + 1) + " / " + sec.items.length));
+      q.appendChild(el("div", "q-num", "QUESTION " + (idx + 1) + " / " + sec.items.length +
+        (item._srcLabel ? " · from “" + esc(item._srcLabel) + "”" : "")));
       q.appendChild(el("div", "q-text", fmtHtml(item.q)));
       const wrap = el("div", "q-choices" + (item.choices.every(c => plain(c).length <= 14) ? " cols" : ""));
       const expl = el("div", "q-expl hidden", item.expl ? fmtHtml(item.expl) : "");
       let answeredThis = false;
-      item.choices.forEach((c, ci) => {
+      // render choices in a shuffled order so positions can't be memorized
+      shuffled(item.choices.map((_, i) => i)).forEach(ci => {
+        const c = item.choices[ci];
         const b = el("button", null, fmtHtml(c));
+        b.dataset.ci = ci;
         b.onclick = () => {
           if (answeredThis) return;
           answeredThis = true;
           const ok = ci === item.a;
-          wrap.querySelectorAll("button").forEach((x, xi) => {
+          wrap.querySelectorAll("button").forEach(x => {
             x.disabled = true;
-            if (xi === item.a) { x.classList.add("correct"); x.insertAdjacentText("afterbegin", "✓ "); }
-            else if (xi === ci) { x.classList.add("wrong"); x.insertAdjacentText("afterbegin", "✗ "); }
+            if (+x.dataset.ci === item.a) { x.classList.add("correct"); x.insertAdjacentText("afterbegin", "✓ "); }
+            else if (x === b) { x.classList.add("wrong"); x.insertAdjacentText("afterbegin", "✗ "); }
             else x.classList.add("dim");
           });
           if (item.expl) expl.classList.remove("hidden");
           done++;
           if (ok) right++;
           recordAnswer(sec._qkey + ":" + idx, ok);
+          recordMiss(missId, ok);
           if (done === sec.items.length) showScore();
         };
         wrap.appendChild(b);
@@ -228,9 +254,12 @@
       holder.innerHTML = "";
       const item = sec.items[idx];
       const qkey = sec._qkey + ":" + idx;
+      const missId = item._src || (tracker.pageId ? tracker.pageId + "/" + qkey : null);
       const box = el("div", "builder");
       box.appendChild(el("div", "b-prompt",
-        "<b>" + (idx + 1) + " / " + sec.items.length + "</b> · Arrange the tiles into a correct sentence" +
+        "<b>" + (idx + 1) + " / " + sec.items.length + "</b>" +
+        (item._srcLabel ? ' · from “' + esc(item._srcLabel) + '”' : "") +
+        " · Arrange the tiles into a correct sentence" +
         (item.en ? ' — <i>“' + esc(item.en) + '”</i>' : "") +
         (item.hint ? '<br><span style="color:var(--muted)">Hint: ' + item.hint + "</span>" : "")));
       const answer = el("div", "b-answer");
@@ -277,13 +306,17 @@
         const altWant = (item.alt || []).map(a => a.join(""));
         if (got === want || altWant.includes(got)) {
           recordAnswer(qkey, firstTry);
+          if (firstTry) recordMiss(missId, true);
           success(false);
         } else {
+          if (firstTry) recordMiss(missId, false);
           firstTry = false;
           fails++;
           answer.classList.add("bad");
           feedback.innerHTML = '<span style="color:var(--bad)">Not yet — ' +
-            (fails >= 2 ? "you can reveal the answer, or keep trying." : "check what comes right after the subject.") + "</span>";
+            (fails >= 2 ? "you can reveal the answer, or keep trying."
+              : item.hint ? "hint: " + item.hint
+              : "compare with the pattern boxes above.") + "</span>";
           if (fails >= 2) reveal.classList.remove("hidden");
         }
       };
@@ -353,6 +386,7 @@
 
   /* ---------------- page assembly ---------------- */
   window.registerPage = function (page) {
+    if (window.COLLECT_PAGES) { window.COLLECT_PAGES.push(page); return; } // review.html: collect, don't render
     tracker.pageId = page.id;
     tracker.results = {};
     tracker.total = 0;
@@ -427,7 +461,76 @@
       pager.appendChild(a);
     }
     wrap.appendChild(pager);
-    wrap.appendChild(el("div", "site-footer", "HSK 4 Grammar Lab · 加油，Paul！ · Tap any Chinese sentence to hear it"));
+    wrap.appendChild(el("div", "site-footer", "HSK 4 Grammar Lab · 加油，Paul！ · Tap any Chinese sentence to hear it — tap again for slow"));
+    // Chinese in tables is speakable too
+    wrap.querySelectorAll(".tbl .zh").forEach(z => {
+      z.style.cursor = "pointer";
+      z.title = "Listen";
+      z.onclick = () => speak(z.textContent);
+    });
+    zhLang(wrap);
+  };
+
+  /* ---------------- review page (错题本) ---------------- */
+  window.renderReview = function () {
+    const pages = window.COLLECT_PAGES || [];
+    const misses = loadMisses();
+    document.title = "Review your misses · HSK 4 Grammar Lab";
+    const app = document.getElementById("app");
+    const wrap = el("div", "wrap");
+    app.appendChild(wrap);
+
+    const top = el("div", "site-top");
+    top.appendChild(el("a", "home-link", '<span class="dot"></span> HSK 4 Grammar Lab')).href = "index.html";
+    const toggles = el("div", "toggles");
+    initToggles(toggles);
+    top.appendChild(toggles);
+    wrap.appendChild(top);
+
+    const hero = el("div", "hero");
+    hero.appendChild(el("span", "unit-chip", "复习 · Review"));
+    hero.appendChild(el("div", "zh-big", '错题<span class="accent">本</span>'));
+    hero.appendChild(el("h1", null, "Review your misses"));
+    wrap.appendChild(hero);
+
+    const mcqItems = [], builderItems = [];
+    let stale = false;
+    for (const id of Object.keys(misses)) {
+      const m = id.match(/^(.+)\/s(\d+):(\d+)$/);
+      const page = m && pages.find(p => p.id === m[1]);
+      const sec = page && page.sections[+m[2]];
+      const item = sec && sec.items && sec.items[+m[3]];
+      if (!item || (sec.type !== "mcq" && sec.type !== "builder")) {
+        delete misses[id]; stale = true; continue; // content moved since the miss was saved
+      }
+      const copy = Object.assign({}, item, { _src: id, _srcLabel: stripMarks(page.zh) });
+      (sec.type === "mcq" ? mcqItems : builderItems).push(copy);
+    }
+    if (stale) saveMisses(misses);
+
+    if (!mcqItems.length && !builderItems.length) {
+      hero.appendChild(el("p", "subtitle", "Nothing to review — 太棒了！ Miss a question anywhere on the site and it lands here for another round."));
+      wrap.appendChild(el("p", null, '<a href="index.html">← Back to all topics</a>'));
+      zhLang(wrap);
+      return;
+    }
+    hero.appendChild(el("p", "subtitle", "Every question you missed on a first try, from every topic. Answer one correctly here and it leaves the list — reload to see it gone."));
+
+    let n = 0;
+    const addSection = (title, type, items) => {
+      if (!items.length) return;
+      n++;
+      const s = el("section", "block");
+      s.appendChild(el("div", "sec-kicker", "Round " + n));
+      s.appendChild(el("h2", null, title));
+      const body = el("div");
+      s.appendChild(body);
+      RENDERERS[type]({ type: type, items: items, _qkey: "review" + n }, body);
+      wrap.appendChild(s);
+    };
+    addSection("Missed questions (" + mcqItems.length + ")", "mcq", shuffled(mcqItems));
+    addSection("Missed sentence builds (" + builderItems.length + ")", "builder", shuffled(builderItems));
+    wrap.appendChild(el("div", "site-footer", "First-try correct answers are removed from this list. 加油！"));
     zhLang(wrap);
   };
 
@@ -450,13 +553,20 @@
     hero.appendChild(el("h1", "zh-big", '从三级<span class="accent">到四级</span>'));
     hero.appendChild(el("p", "lead", "You passed HSK 3. This site teaches <b>exactly the delta</b> to HSK 4 — every new structure, pattern and trap, with hundreds of interactive exam-level exercises."));
     const nPages = window.ALL_PAGES.length;
-    let nQ = 0;
     const stats = el("div", "idx-stats");
     stats.innerHTML = '<div class="idx-stat"><div class="n">' + M.units.length + '</div><div class="l">Units</div></div>' +
       '<div class="idx-stat"><div class="n">' + nPages + '</div><div class="l">Topics</div></div>' +
-      '<div class="idx-stat"><div class="n">600+</div><div class="l">Examples & exercises</div></div>';
+      '<div class="idx-stat"><div class="n">1400+</div><div class="l">Examples & exercises</div></div>';
     hero.appendChild(stats);
     wrap.appendChild(hero);
+
+    // review strip (错题本)
+    const missCount = Object.keys(loadMisses()).length;
+    const rev = el("a", "review-link");
+    rev.href = "review.html";
+    rev.innerHTML = '<span class="rl-zh">错题本</span><b>Review your misses</b>' +
+      (missCount ? '<span class="rl-count">' + missCount + "</span>" : '<span class="rl-empty">questions you miss collect here</span>');
+    wrap.appendChild(rev);
 
     M.units.forEach(u => {
       const unit = el("div", "unit");
@@ -471,6 +581,7 @@
         const pct = Math.min(100, st.best || 0);
         const a = el("a", "card");
         a.href = "topics/" + p.id + ".html";
+        if (st.total) a.title = (st.answered || 0) + " of " + st.total + " questions answered · best first-try score " + pct + "%";
         a.innerHTML = '<span class="c-zh">' + esc(p.zh) + "</span>" +
           '<span class="c-title">' + esc(p.title) + "</span>" +
           '<span class="c-blurb">' + esc(p.blurb) + "</span>" +

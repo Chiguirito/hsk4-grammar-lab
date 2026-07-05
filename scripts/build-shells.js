@@ -30,6 +30,9 @@ function head({ title, description, url, rel, ogType }) {
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${url}">
 <link rel="icon" href="${FAVICON}">
+<link rel="manifest" href="${rel}manifest.webmanifest">
+<meta name="theme-color" content="#faf7f1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#191713" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="${FONTS}" rel="stylesheet">
@@ -39,7 +42,7 @@ function head({ title, description, url, rel, ogType }) {
 
 const NOSCRIPT = `<noscript><p style="max-width:640px;margin:80px auto;text-align:center;font-family:sans-serif">HSK 4 Grammar Lab is an interactive site and needs JavaScript to render its lessons and quizzes. Please enable JavaScript and reload.</p></noscript>`;
 
-function shell(headHtml, scripts) {
+function shell(headHtml, scripts, rel) {
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -49,6 +52,7 @@ ${headHtml}
 ${NOSCRIPT}
 <div id="app"></div>
 ${scripts}
+<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("${rel}sw.js").catch(function () {});</script>
 </body>
 </html>
 `;
@@ -59,12 +63,13 @@ const out = {};
 out["index.html"] = shell(
   head({
     title: "HSK 4 Grammar Lab — from HSK 3 to HSK 4",
-    description: "Free interactive grammar course covering exactly the delta from HSK 3 to HSK 4: 26 topics, 570+ example sentences with audio, and 800+ exam-level quizzes, sentence builders and error clinics.",
+    description: "Free interactive grammar course covering exactly the delta from HSK 3 to HSK 4: 27 topics, 600+ example sentences with audio, and 900+ exam-level quizzes, sentence builders and error clinics.",
     url: SITE, rel: "", ogType: "website"
   }),
   `<script src="assets/manifest.js"></script>
 <script src="assets/app.js"></script>
-<script>renderIndex();</script>`
+<script>renderIndex();</script>`,
+  ""
 );
 
 for (const p of pages) {
@@ -76,9 +81,24 @@ for (const p of pages) {
     }),
     `<script src="../assets/manifest.js"></script>
 <script src="../assets/app.js"></script>
-<script src="../assets/data/${p.id}.js"></script>`
+<script src="../assets/data/${p.id}.js"></script>`,
+    "../"
   );
 }
+
+out["review.html"] = shell(
+  head({
+    title: "Review your misses (错题本) · HSK 4 Grammar Lab",
+    description: "Your personal wrong-answer notebook: every HSK 4 quiz question and sentence build you missed, collected from all topics for another round.",
+    url: SITE + "review.html", rel: "", ogType: "website"
+  }),
+  `<script>window.COLLECT_PAGES = [];</script>
+<script src="assets/manifest.js"></script>
+<script src="assets/app.js"></script>
+${pages.map(p => `<script src="assets/data/${p.id}.js"></script>`).join("\n")}
+<script>renderReview();</script>`,
+  ""
+);
 
 out["404.html"] = shell(
   head({
@@ -90,7 +110,8 @@ out["404.html"] = shell(
   '<div style="max-width:560px;margin:100px auto;text-align:center">' +
   '<div style="font-size:4rem" lang="zh-Hans">找不到</div>' +
   '<h1 style="font-size:1.3rem">Page not found (404)</h1>' +
-  '<p><a href="/hsk4-grammar-lab/">← Back to all 26 grammar topics</a></p></div>';</script>`
+  '<p><a href="/hsk4-grammar-lab/">← Back to all grammar topics</a></p></div>';</script>`,
+  "/hsk4-grammar-lab/"
 );
 
 let stale = 0;
