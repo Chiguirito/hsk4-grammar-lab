@@ -225,7 +225,7 @@ Plus ~30 more time-word/subject swaps and topicalizations across every unit (ful
 
 ## Prioritized action plan
 
-**P0 (an afternoon):** fix builder tile-return (§1.2, one line) · fix progress accounting (§1.1) · fix the 5 broken/ambiguous quiz keys in §1.3 · strip `**` from titles (§3.1).
+**P0 (an afternoon):** fix builder tile-return (§1.2, one line) · fix progress accounting (§1.1) · fix the 5 broken/ambiguous quiz keys in §1.3 · strip `**` from titles (§3.1). — ✅ **Done in this PR** (all verified in-browser: retries no longer inflate scores, legacy >100% values are clamped on display and healed on the next answer, tiles click back to the pool, titles are clean, and the five quiz items were rewritten to have exactly one defensible answer).
 
 **P1 (a weekend):** add the Appendix `alt` orders · fix the 4 clinic items and 8 softened claims (§2.3-2.4) · polish nits (§2.5) · `lang="zh-Hans"` + button tiles (§3.2) · shell generator for titles/descriptions/OG/favicon (§3.3) · run validate.js in CI (§3.5) · fonts preconnect + toggle-flash fix (§3.4).
 
