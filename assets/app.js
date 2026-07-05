@@ -56,17 +56,21 @@
   }
   function saveStore(s) { try { localStorage.setItem(STORE_KEY, JSON.stringify(s)); } catch (e) {} }
   // page-level question tracking (first-try correct across all interactive sections)
-  const tracker = { total: 0, answered: 0, correct: 0, pageId: null };
-  function recordAnswer(ok) {
-    tracker.answered++;
-    if (ok) tracker.correct++;
+  // Each mcq/builder item has a stable key; only its first answer this visit
+  // counts, so quiz retries can neither inflate nor re-score progress.
+  const tracker = { total: 0, results: {}, pageId: null };
+  function recordAnswer(key, ok) {
+    if (key in tracker.results) return;
+    tracker.results[key] = ok;
     const store = loadStore();
-    const prev = store[tracker.pageId] || { best: 0, total: tracker.total, visited: true };
-    const pct = tracker.total ? Math.round((tracker.correct / tracker.total) * 100) : 0;
+    const prev = store[tracker.pageId] || {};
+    const keys = Object.keys(tracker.results);
+    const correct = keys.filter(k => tracker.results[k]).length;
+    const pct = tracker.total ? Math.min(100, Math.round((correct / tracker.total) * 100)) : 0;
     prev.total = tracker.total;
     prev.visited = true;
-    prev.answered = Math.max(prev.answered || 0, tracker.answered);
-    prev.best = Math.max(prev.best || 0, pct);
+    prev.answered = Math.max(prev.answered || 0, keys.length);
+    prev.best = Math.min(100, Math.max(prev.best || 0, pct));
     store[tracker.pageId] = prev;
     saveStore(store);
   }
@@ -187,7 +191,7 @@
           if (item.expl) expl.classList.remove("hidden");
           done++;
           if (ok) right++;
-          recordAnswer(ok);
+          recordAnswer(sec._qkey + ":" + idx, ok);
           if (done === sec.items.length) showScore();
         };
         wrap.appendChild(b);
@@ -218,6 +222,7 @@
     function draw() {
       holder.innerHTML = "";
       const item = sec.items[idx];
+      const qkey = sec._qkey + ":" + idx;
       const box = el("div", "builder");
       box.appendChild(el("div", "b-prompt",
         "<b>" + (idx + 1) + " / " + sec.items.length + "</b> · Arrange the tiles into a correct sentence" +
@@ -227,16 +232,16 @@
       const pool = el("div", "b-pool");
       const feedback = el("div", "b-feedback");
       let fails = 0, solved = false;
-      const mkTile = (txt, from) => {
+      const mkTile = (txt) => {
         const t = el("span", "tile", esc(txt));
         t.onclick = () => {
           if (solved) return;
           answer.classList.remove("ok", "bad");
-          (from === pool ? answer : pool).appendChild(t);
+          (t.parentNode === pool ? answer : pool).appendChild(t);
         };
         return t;
       };
-      shuffled(item.tiles).forEach(txt => pool.appendChild(mkTile(txt, pool)));
+      shuffled(item.tiles).forEach(txt => pool.appendChild(mkTile(txt)));
       // fix rare case shuffle === answer
       if ([...pool.children].map(c => c.textContent).join("") === item.tiles.join("") && item.tiles.length > 2) {
         pool.appendChild(pool.firstChild);
@@ -264,7 +269,7 @@
         const want = item.tiles.join("");
         const altWant = (item.alt || []).map(a => a.join(""));
         if (got === want || altWant.includes(got)) {
-          recordAnswer(firstTry);
+          recordAnswer(qkey, firstTry);
           success(false);
         } else {
           firstTry = false;
@@ -280,7 +285,7 @@
         [...answer.children].forEach(c => pool.appendChild(c));
         feedback.innerHTML = "";
       };
-      reveal.onclick = () => { recordAnswer(false); success(true); };
+      reveal.onclick = () => { recordAnswer(qkey, false); success(true); };
       next.onclick = () => {
         if (idx < sec.items.length - 1) { idx++; draw(); }
         else { holder.querySelector(".b-controls").innerHTML = "<b>🎉 Builder complete!</b>"; }
@@ -342,11 +347,17 @@
   /* ---------------- page assembly ---------------- */
   window.registerPage = function (page) {
     tracker.pageId = page.id;
-    tracker.total = page.sections.reduce((n, s) =>
-      n + ((s.type === "mcq" || s.type === "builder") ? s.items.length : 0), 0);
+    tracker.results = {};
+    tracker.total = 0;
+    page.sections.forEach((s, i) => {
+      if (s.type === "mcq" || s.type === "builder") {
+        s._qkey = "s" + i;
+        tracker.total += s.items.length;
+      }
+    });
     markVisited(page.id);
 
-    document.title = page.zh + " — " + page.title + " · HSK 4 Grammar Lab";
+    document.title = stripMarks(page.zh) + " — " + page.title + " · HSK 4 Grammar Lab";
     const app = document.getElementById("app");
     const wrap = el("div", "wrap");
     app.appendChild(wrap);
@@ -448,7 +459,7 @@
       const cards = el("div", "cards");
       u.pages.forEach(p => {
         const st = store[p.id] || {};
-        const pct = st.best || 0;
+        const pct = Math.min(100, st.best || 0);
         const a = el("a", "card");
         a.href = "topics/" + p.id + ".html";
         a.innerHTML = '<span class="c-zh">' + esc(p.zh) + "</span>" +
