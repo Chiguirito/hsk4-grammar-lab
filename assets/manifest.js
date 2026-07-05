@@ -58,6 +58,7 @@ window.MANIFEST = {
       pages: [
         { id: "de-particles", zh: "的・地・得", title: "The three de: 的 地 得", blurb: "One sound, three jobs — and a Writing-section favourite" },
         { id: "separable-verbs", zh: "离合词", title: "Separable verbs", blurb: "见面 → 见过一次面 — verbs that split open" },
+        { id: "zhe-reduplication", zh: "着・重叠・是否", title: "着, reduplication & 是否", blurb: "门开着 / 商量商量 / 是否同意 — the small machines HSK 4 assumes you know" },
         { id: "prepositions", zh: "介词", title: "Prepositions & coverbs", blurb: "随着・通过・由・对/对于/关于・按照・以…为" },
         { id: "numbers-approx", zh: "数字表达", title: "Numbers, multiples & approximation", blurb: "倍・分之・左右・大概・差不多・一天比一天" },
         { id: "confusables", zh: "近义词辨析", title: "Confusable pairs", blurb: "适合/合适・常常/往往・一定/肯定/确定・以为/认为・反而/相反" }
