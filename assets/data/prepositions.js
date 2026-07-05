@@ -34,10 +34,10 @@ The Writing section hands you a prepositional block as ONE tile (在图书馆 / 
         { tag: "通过", cn: "**通过**朋友的介绍，我找到了现在的工作。", py: "Tōngguò péngyou de jièshào, wǒ zhǎodào le xiànzài de gōngzuò.", en: "Through a friend's introduction, I found my current job.", note: "通过 = by means of — the introduction is the tool." },
         { tag: "经过", cn: "**经过**两年的努力，他终于**通过**了HSK四级考试。", py: "Jīngguò liǎng nián de nǔlì, tā zhōngyú tōngguò le HSK sì jí kǎoshì.", en: "After two years of hard work, he finally passed the HSK 4 exam.", note: "经过 + a process you went THROUGH; and 通过 here is a full verb: 'to pass'." },
         { tag: "由", cn: "这次活动**由**学生会负责安排。", py: "Zhè cì huódòng yóu xuéshēnghuì fùzé ānpái.", en: "The student union is in charge of organizing this event.", note: "由 assigns the job formally — no suffering, no drama, just responsibility." },
-        { tag: "对", cn: "王老师**对**每个学生都很热情。", py: "Wáng lǎoshī duì měi gè xuésheng dōu hěn rèqíng.", en: "Teacher Wang is warm toward every student.", note: "对 + person + attitude — people and feelings take 对, not 对于." },
+        { tag: "对", cn: "王老师**对**每个学生都很热情。", py: "Wáng lǎoshī duì měi ge xuésheng dōu hěn rèqíng.", en: "Teacher Wang is warm toward every student.", note: "对 + person + attitude — people and feelings take 对, not 对于." },
         { tag: "关于", cn: "**关于**这个问题，我们明天再讨论吧。", py: "Guānyú zhège wèntí, wǒmen míngtiān zài tǎolùn ba.", en: "As for this question, let's discuss it tomorrow.", note: "关于 introduces the topic and stands before the subject." },
-        { tag: "按照", cn: "**按照**医生的要求，他每天散步半个小时。", py: "Ànzhào yīshēng de yāoqiú, tā měi tiān sànbù bàn gè xiǎoshí.", en: "Following the doctor's instructions, he walks for half an hour every day.", note: "按照 + rules/requirements — you follow them like a recipe." },
-        { tag: "为了", cn: "**为了**不迟到，我提前一个小时就出门了。", py: "Wèile bù chídào, wǒ tíqián yí gè xiǎoshí jiù chūmén le.", en: "In order not to be late, I left home an hour early.", note: "为了 + purpose, fronted before the whole clause." },
+        { tag: "按照", cn: "**按照**医生的要求，他每天散步半个小时。", py: "Ànzhào yīshēng de yāoqiú, tā měi tiān sànbù bàn ge xiǎoshí.", en: "Following the doctor's instructions, he walks for half an hour every day.", note: "按照 + rules/requirements — you follow them like a recipe." },
+        { tag: "为了", cn: "**为了**不迟到，我提前一个小时就出门了。", py: "Wèile bù chídào, wǒ tíqián yí ge xiǎoshí jiù chūmén le.", en: "In order not to be late, I left home an hour early.", note: "为了 + purpose, fronted before the whole clause." },
         { tag: "除了", cn: "**除了**小王**以外**，我们都参加了昨天的会议。", py: "Chúle Xiǎo Wáng yǐwài, wǒmen dōu cānjiā le zuótiān de huìyì.", en: "Everyone except Xiao Wang attended yesterday's meeting.", note: "除了…以外 + 都 = exclusion. The three logics get their own section below." }
       ]
     },
@@ -68,7 +68,7 @@ The Writing section hands you a prepositional block as ONE tile (在图书馆 / 
 <p>Test: can you swap in English “by using X”? → 通过. “After going through X”? → 经过.</p>`,
           examples: [
             { cn: "我是**通过**手机软件学发音的。", py: "Wǒ shì tōngguò shǒujī ruǎnjiàn xué fāyīn de.", en: "I learned pronunciation by means of a phone app.", note: "The app is a tool → 通过. 软件 = software/app." },
-            { cn: "**经过**认真的讨论，我们决定下个月出发。", py: "Jīngguò rènzhēn de tǎolùn, wǒmen juédìng xià gè yuè chūfā.", en: "After careful discussion, we decided to set off next month.", note: "The discussion is a process lived through → 经过." },
+            { cn: "**经过**认真的讨论，我们决定下个月出发。", py: "Jīngguò rènzhēn de tǎolùn, wǒmen juédìng xià ge yuè chūfā.", en: "After careful discussion, we decided to set off next month.", note: "The discussion is a process lived through → 经过." },
             { cn: "去杭州的火车会**经过**上海。", py: "Qù Hángzhōu de huǒchē huì jīngguò Shànghǎi.", en: "The train to Hangzhou passes through Shanghai.", note: "Physical passing → only 经过 works. ✗通过上海." }
           ]
         },
@@ -81,7 +81,7 @@ The Writing section hands you a prepositional block as ONE tile (在图书馆 / 
 </ul>
 <p>Test: is the sentence about <b>who's in charge</b> (由) or about <b>what happened to something</b> (被)? Meeting agendas take 由; broken windows take 被.</p>`,
           examples: [
-            { cn: "今天的晚饭**由**我来做，你们休息！", py: "Jīntiān de wǎnfàn yóu wǒ lái zuò, nǐmen xiūxi!", en: "Tonight's dinner is on me — you all rest!", note: "Volunteering for a duty → 由. 被我做 would sound like the dinner is a victim." },
+            { cn: "今天的晚饭**由**我来做，你们休息！", py: "Jīntiān de wǎnfàn yóu wǒ lái zuò, nǐmen xiūxi!", en: "I'll make dinner tonight — you all rest!", note: "Volunteering for a duty → 由. 被我做 would sound like the dinner is a victim." },
             { cn: "代表团**由**二十名学生组成。", py: "Dàibiǎotuán yóu èrshí míng xuésheng zǔchéng.", en: "The delegation is made up of twenty students.", note: "由…组成 'composed of' — a fixed formal frame. 代表团 = delegation (HSK5, glossed)." }
           ]
         },
@@ -96,7 +96,7 @@ The Writing section hands you a prepositional block as ONE tile (在图书馆 / 
 <p>Quick filter: person or attitude → 对; formal “regarding this topic” → 对于; “about (contents)” → 关于.</p>`,
           examples: [
             { cn: "他**对**中国文化很感兴趣。", py: "Tā duì Zhōngguó wénhuà hěn gǎn xìngqù.", en: "He is very interested in Chinese culture.", note: "感兴趣 always pairs with 对 — never 关于." },
-            { cn: "**对于**刚来的留学生**来说**，点菜是个大问题。", py: "Duìyú gāng lái de liúxuéshēng lái shuō, diǎn cài shì gè dà wèntí.", en: "For newly arrived international students, ordering food is a big problem.", note: "对于…来说 — the ready-made 'for X' frame." },
+            { cn: "**对于**刚来的留学生**来说**，点菜是个大问题。", py: "Duìyú gāng lái de liúxuéshēng lái shuō, diǎn cài shì ge dà wèntí.", en: "For newly arrived international students, ordering food is a big problem.", note: "对于…来说 — the ready-made 'for X' frame." },
             { cn: "**关于**长城，有很多有趣的故事。", py: "Guānyú Chángchéng, yǒu hěn duō yǒuqù de gùshi.", en: "There are many interesting stories about the Great Wall.", note: "关于 hands you the topic before the sentence even starts." }
           ]
         },
@@ -221,10 +221,10 @@ Learners stare at 除了 and guess; natives scan for 都/还/只. On the exam, c
         { tiles: ["我", "在北京", "学了", "两年", "中文"], py: "Wǒ zài Běijīng xué le liǎng nián Zhōngwén.", en: "I studied Chinese in Beijing for two years.", hint: "在-block before the verb; duration after it." },
         { tiles: ["随着", "天气", "的", "变化", "感冒的人", "越来越多"], py: "Suízhe tiānqì de biànhuà, gǎnmào de rén yuèláiyuè duō.", en: "With the change in weather, more and more people are catching colds.", hint: "随着 + noun-of-change first, 越来越 clause second." },
         { tiles: ["这次会议", "由", "王经理", "负责", "安排"], py: "Zhè cì huìyì yóu Wáng jīnglǐ fùzé ānpái.", en: "Manager Wang is in charge of arranging this meeting.", hint: "Topic first, then 由 + the responsible person + duty." },
-        { tiles: ["除了", "面条", "以外", "我", "还", "点了", "一个汤"], py: "Chúle miàntiáo yǐwài, wǒ hái diǎn le yí gè tāng.", en: "Besides noodles, I also ordered a soup.", hint: "还 in the second half = addition logic." },
-        { tiles: ["为了", "提高口语", "他", "每天", "跟中国朋友", "聊天"], py: "Wèile tígāo kǒuyǔ, tā měi tiān gēn Zhōngguó péngyou liáotiān.", en: "To improve his spoken Chinese, he chats with Chinese friends every day.", hint: "Purpose fronted; the 跟-block also parks before 聊天." },
+        { tiles: ["除了", "面条", "以外", "我", "还", "点了", "一个汤"], py: "Chúle miàntiáo yǐwài, wǒ hái diǎn le yí ge tāng.", en: "Besides noodles, I also ordered a soup.", hint: "还 in the second half = addition logic." },
+        { tiles: ["为了", "提高口语", "他", "每天", "跟中国朋友", "聊天"], py: "Wèile tígāo kǒuyǔ, tā měi tiān gēn Zhōngguó péngyou liáotiān.", en: "To improve his spoken Chinese, he chats with Chinese friends every day.", hint: "Purpose fronted; the 跟-block also parks before 聊天.", alt: [["他", "为了", "提高口语", "每天", "跟中国朋友", "聊天"]] },
         { tiles: ["请", "大家", "按照", "顺序", "上车"], py: "Qǐng dàjiā ànzhào shùnxù shàng chē.", en: "Everyone please board in order.", hint: "按照 + the rule, before the verb 上车." },
-        { tiles: ["通过", "这次比赛", "我", "认识了", "很多朋友"], py: "Tōngguò zhè cì bǐsài, wǒ rènshi le hěn duō péngyou.", en: "Through this competition, I got to know many friends.", hint: "通过 + the means, fronted." }
+        { tiles: ["通过", "这次比赛", "我", "认识了", "很多朋友"], py: "Tōngguò zhè cì bǐsài, wǒ rènshi le hěn duō péngyou.", en: "Through this competition, I got to know many friends.", hint: "通过 + the means, fronted.", alt: [["我", "通过", "这次比赛", "认识了", "很多朋友"]] }
       ]
     },
 

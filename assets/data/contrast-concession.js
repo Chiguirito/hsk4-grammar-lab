@@ -104,7 +104,7 @@ Before a noun predicate you'll see <span class="zh">却是</span> (<span class="
 </ul>`,
           examples: [
             { cn: "**就算**没有人支持我，我**也**要坚持下去。", py: "Jiùsuàn méiyǒu rén zhīchí wǒ, wǒ yě yào jiānchí xiàqù.", en: "Even if nobody backs me, I'll keep going.", note: "坚持下去 — directional complement 下去 = 'keep on'." },
-            { cn: "**哪怕**每天只睡五个小时，他**也**要把小说写完。", py: "Nǎpà měitiān zhǐ shuì wǔ gè xiǎoshí, tā yě yào bǎ xiǎoshuō xiě wán.", en: "Even if it means sleeping just five hours a night, he's determined to finish the novel.", note: "哪怕 + extreme sacrifice; a 把-sentence rides in the second clause." }
+            { cn: "**哪怕**每天只睡五个小时，他**也**要把小说写完。", py: "Nǎpà měitiān zhǐ shuì wǔ ge xiǎoshí, tā yě yào bǎ xiǎoshuō xiě wán.", en: "Even if it means sleeping just five hours a night, he's determined to finish the novel.", note: "哪怕 + extreme sacrifice; a 把-sentence rides in the second clause." }
           ]
         }
       ]
@@ -190,11 +190,11 @@ Before a noun predicate you'll see <span class="zh">却是</span> (<span class="
       short: "Builder",
       intro: "Arrange the tiles. Watch the slots: conjunctions at the door, 却/也/还是 behind the subject.",
       items: [
-        { tiles: ["虽然", "这道菜", "有点儿", "辣", "但是", "味道", "很不错"], py: "Suīrán zhè dào cài yǒudiǎnr là, dànshì wèidào hěn búcuò.", en: "Although this dish is a bit spicy, it tastes great.", hint: "虽然 opens clause 1; 但是 opens clause 2." },
+        { tiles: ["虽然", "这道菜", "有点儿", "辣", "但是", "味道", "很不错"], py: "Suīrán zhè dào cài yǒudiǎnr là, dànshì wèidào hěn búcuò.", en: "Although this dish is a bit spicy, it tastes great.", hint: "虽然 opens clause 1; 但是 opens clause 2.", alt: [["这道菜", "虽然", "有点儿", "辣", "但是", "味道", "很不错"]] },
         { tiles: ["我", "给他", "发了", "三条短信", "他", "却", "一直", "没回"], py: "Wǒ gěi tā fā le sān tiáo duǎnxìn, tā què yìzhí méi huí.", en: "I sent him three texts, yet he never replied.", hint: "却 snaps between 他 and 一直没回." },
         { tiles: ["尽管", "工作", "很忙", "他", "还是", "每天", "坚持", "跑步"], py: "Jǐnguǎn gōngzuò hěn máng, tā háishi měitiān jiānchí pǎobù.", en: "Even though work is busy, he still runs every day.", hint: "尽管 + fact; 还是 after the subject 他." },
         { tiles: ["即使", "大家", "都", "反对", "我", "也", "要", "试一试"], py: "Jíshǐ dàjiā dōu fǎnduì, wǒ yě yào shì yi shì.", en: "Even if everyone objects, I still want to try.", hint: "即使's partner 也 lives after 我." },
-        { tiles: ["有", "什么", "需要", "帮忙的", "你", "尽管", "开口"], py: "Yǒu shénme xūyào bāngmáng de, nǐ jǐnguǎn kāikǒu.", en: "If there's anything you need help with, don't hesitate to say so.", hint: "尽管 meaning 2: 'feel free to' + verb — after the subject 你." },
+        { tiles: ["有", "什么", "需要", "帮忙的", "你", "尽管", "开口"], py: "Yǒu shénme xūyào bāngmáng de, nǐ jǐnguǎn kāikǒu.", en: "If there's anything you need help with, don't hesitate to say so.", hint: "尽管 meaning 2: 'feel free to' + verb — after the subject 你.", alt: [["你", "有", "什么", "需要", "帮忙的", "尽管", "开口"]] },
         { tiles: ["就算", "考试", "没考好", "也", "别", "太", "难过"], py: "Jiùsuàn kǎoshì méi kǎo hǎo, yě bié tài nánguò.", en: "Even if the exam didn't go well, don't be too sad.", hint: "Imperative second clause: 也 + 别 + adjective, no subject needed." },
         { tiles: ["他", "个子", "不高", "而", "他哥哥", "却", "特别高"], py: "Tā gèzi bù gāo, ér tā gēge què tèbié gāo.", en: "He's not tall, whereas his older brother is really tall.", hint: "而 at the door of clause 2, 却 behind the new subject 他哥哥 — both at once." }
       ]

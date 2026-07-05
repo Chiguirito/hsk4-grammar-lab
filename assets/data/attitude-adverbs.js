@@ -82,7 +82,7 @@ Listening asks 说话人是什么意思/态度 ("what does the speaker mean/feel
 <p><b>Seat:</b> after the subject, before the verb phrase. Setup phrase <span class="zh">没想到…</span> in front is near-obligatory in exam sentences.</p>
 <p><b>Trap:</b> don't front it before the subject (✗<span class="zh">竟然他忘了</span> → ✓<span class="zh">他竟然忘了</span>). And it marks genuine surprise — not for expected results, however pleasing.</p>`,
           examples: [
-            { cn: "他才学了三个月汉语，**竟然**通过了HSK四级。", py: "Tā cái xué le sān gè yuè Hànyǔ, jìngrán tōngguò le HSK sì jí.", en: "He'd studied Chinese for only three months, yet actually passed HSK 4.", note: "才 + 竟然: small input, shocking output — two topics teaming up." },
+            { cn: "他才学了三个月汉语，**竟然**通过了HSK四级。", py: "Tā cái xué le sān ge yuè Hànyǔ, jìngrán tōngguò le HSK sì jí.", en: "He'd studied Chinese for only three months, yet actually passed HSK 4.", note: "才 + 竟然: small input, shocking output — two topics teaming up." },
             { cn: "都十二月了，**居然**还这么暖和。", py: "Dōu shí'èr yuè le, jūrán hái zhème nuǎnhuo.", en: "It's already December, yet it's still unbelievably warm.", note: "Works on states too, not just actions." }
           ]
         },
@@ -144,7 +144,7 @@ Listening asks 说话人是什么意思/态度 ("what does the speaker mean/feel
         {
           label: "几乎",
           html: `<p><b>Meaning:</b> “almost, nearly” — cooler and more formal than 差点儿, at home with <b>quantities and states</b>: <span class="zh">几乎所有 · 几乎都 · 几乎没</span>.</p>
-<p><b>vs 差点儿:</b> 差点儿 narrates single near-miss EVENTS with emotion; 几乎 measures how close a quantity/state gets to 100% or 0%. And 几乎 never plays the 没-flip game — 几乎没 always just means “hardly/almost none”.</p>`,
+<p><b>vs 差点儿:</b> 差点儿 narrates single near-miss EVENTS with emotion; 几乎 measures how close a quantity/state gets to 100% or 0%. And 几乎's 没 is usually literal — 几乎没 mostly means “hardly/almost none”. (The relief reading 几乎没赶上 = “barely made it” does occur, but that flip is really 差点儿's specialty.)</p>`,
           examples: [
             { cn: "会议室里**几乎**所有的人都举手同意了。", py: "Huìyìshì li jīhū suǒyǒu de rén dōu jǔ shǒu tóngyì le.", en: "Almost everyone in the meeting room raised their hand in agreement.", note: "几乎所有…都 — the signature chain." },
             { cn: "这个月太忙了，我**几乎**没休息过。", py: "Zhège yuè tài máng le, wǒ jīhū méi xiūxi guo.", en: "This month has been so busy I've hardly rested at all.", note: "几乎没 = hardly any — no hidden flip, unlike 差点儿没." }
@@ -222,7 +222,7 @@ Listening asks 说话人是什么意思/态度 ("what does the speaker mean/feel
         { wrong: "太好了，我差点儿通过了考试！", right: "太好了，我差点儿没通过考试！", py: "Tài hǎo le, wǒ chàdiǎnr méi tōngguò kǎoshì!", en: "Thank goodness — I only just scraped through the exam!", expl: "The matrix: passing is desirable, so 差点儿通过 = failed (nothing to celebrate!), while 差点儿没通过 = barely passed. The 太好了 forces the second." },
         { wrong: "尤其我喜欢秋天的北京。", right: "我尤其喜欢秋天的北京。", py: "Wǒ yóuqí xǐhuan qiūtiān de Běijīng.", en: "I especially love Beijing in autumn.", expl: "尤其 sits inside the clause, before the verb — never in front of the subject. (Ideally the set '北京' or 'seasons' was mentioned just before.)" },
         { wrong: "他专门去超市的时候帮我买了咖啡。", right: "他去超市的时候顺便帮我买了咖啡。", py: "Tā qù chāoshì de shíhou shùnbiàn bāng wǒ mǎi le kāfēi.", en: "He picked up coffee for me while he was at the supermarket.", expl: "The coffee rode along on an existing trip → 顺便. 专门 would claim he went to the supermarket solely for your coffee." },
-        { wrong: "他连甚至自己的生日都忘了。", right: "他甚至连自己的生日都忘了。", py: "Tā shènzhì lián zìjǐ de shēngri dōu wàng le.", en: "He even forgot his own birthday.", expl: "Fixed order: 甚至 + 连 + X + 都. 甚至 introduces the escalation, 连 clamps onto the extreme item — they don't swap." },
+        { wrong: "他连甚至自己的生日都忘了。", right: "他甚至连自己的生日都忘了。", py: "Tā shènzhì lián zìjǐ de shēngrì dōu wàng le.", en: "He even forgot his own birthday.", expl: "Fixed order: 甚至 + 连 + X + 都. 甚至 introduces the escalation, 连 clamps onto the extreme item — they don't swap." },
         { wrong: "竟然他把我的名字忘了。", right: "他竟然把我的名字忘了。", py: "Tā jìngrán bǎ wǒ de míngzi wàng le.", en: "He actually forgot my name.", expl: "竟然/居然 take the standard adverb seat: after the subject, before the verb phrase (here, before the whole 把-machine)." }
       ]
     },
@@ -235,9 +235,9 @@ Listening asks 说话人是什么意思/态度 ("what does the speaker mean/feel
       intro: "Arrange the tiles. The attitude adverb almost always slots right after the subject — but watch 千万, 恐怕 and the fixed chains.",
       items: [
         { tiles: ["你", "千万", "别", "把", "护照", "弄丢", "了"], py: "Nǐ qiānwàn bié bǎ hùzhào nòng diū le.", en: "Whatever you do, don't lose your passport.", hint: "千万 + 别 + the 把-machine." },
-        { tiles: ["他", "竟然", "忘了", "妻子的", "生日"], py: "Tā jìngrán wàng le qīzi de shēngri.", en: "He actually forgot his wife's birthday.", hint: "Subject + 竟然 + verb phrase." },
+        { tiles: ["他", "竟然", "忘了", "妻子的", "生日"], py: "Tā jìngrán wàng le qīzi de shēngrì.", en: "He actually forgot his wife's birthday.", hint: "Subject + 竟然 + verb phrase." },
         { tiles: ["你", "到底", "同意", "不同意", "这个", "计划"], py: "Nǐ dàodǐ tóngyì bu tóngyì zhège jìhuà?", en: "Do you agree with this plan or not?!", hint: "到底 + V不V — and notice: no 吗 tile exists." },
-        { tiles: ["今天", "恐怕", "要", "加班", "到", "很晚"], py: "Jīntiān kǒngpà yào jiābān dào hěn wǎn.", en: "I'm afraid I'll have to work overtime till late today.", hint: "恐怕 colors the whole clause — right after the time word here." },
+        { tiles: ["今天", "恐怕", "要", "加班", "到", "很晚"], py: "Jīntiān kǒngpà yào jiābān dào hěn wǎn.", en: "I'm afraid I'll have to work overtime till late today.", hint: "恐怕 colors the whole clause — right after the time word here.", alt: [["恐怕", "今天", "要", "加班", "到", "很晚"]] },
         { tiles: ["我", "差点儿", "把", "这件事", "忘了"], py: "Wǒ chàdiǎnr bǎ zhè jiàn shì wàng le.", en: "I almost forgot about this.", hint: "差点儿 before the 把-phrase; forgetting = undesirable, so it didn't happen." },
         { tiles: ["回来的路上", "顺便", "买", "一点儿", "水果", "吧"], py: "Huílái de lùshang shùnbiàn mǎi yìdiǎnr shuǐguǒ ba.", en: "Pick up some fruit on your way back.", hint: "Trip first, 顺便 + errand second." },
         { tiles: ["这个蛋糕", "是", "我", "专门", "为你", "做的"], py: "Zhège dàngāo shì wǒ zhuānmén wèi nǐ zuò de.", en: "This cake — I made it specially for you.", hint: "是…的 spotlight + 专门为你 + verb." },
@@ -256,7 +256,7 @@ Listening asks 说话人是什么意思/态度 ("what does the speaker mean/feel
 <h3>2 · 恐怕 about yourself is fine</h3>
 <p><span class="zh">我<b class="hl">恐怕</b>去不了了。</span> — “I'm afraid I can't make it.” The ban is only on noun objects (✗恐怕狗), not on first-person subjects.</p>
 <h3>3 · 差点儿 vs 几乎 head-to-head</h3>
-<p>For dramatic single events both work: <span class="zh">差点儿哭了 ≈ 几乎哭了</span>. But only 差点儿 plays the 没-flip (<span class="zh">差点儿没赶上 = 赶上了</span>), and only 几乎 handles quantities (<span class="zh">几乎所有人</span>, ✗差点儿所有人). When an MCQ offers both, look for a quantity word or a 没-flip — that's the tiebreaker.</p>
+<p>For dramatic single events both work: <span class="zh">差点儿哭了 ≈ 几乎哭了</span>. But the 没-flip is 差点儿's home game (<span class="zh">差点儿没赶上 = 赶上了</span>; you'll occasionally hear 几乎没 flipped the same way), and only 几乎 handles quantities (<span class="zh">几乎所有人</span>, ✗差点儿所有人). When an MCQ offers both, look for a quantity word or a 没-flip — that's the tiebreaker.</p>
 <h3>4 · 千万 + 要/记住 is positive</h3>
 <p>千万 isn't only for 别: <span class="zh"><b class="hl">千万</b>记住，密码别告诉任何人。</span> Positive urgent reminders are equally at home.</p>
 <h3>5 · 竟然 vs 居然</h3>

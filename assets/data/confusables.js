@@ -154,9 +154,9 @@ After 不但没, before the verb → 反而. After 正好／跟…, or starting 
 <div class="callout rule"><span class="co-title">Mini-rule</span>
 考试/检查 to be PASSED → 通过. Duration or effort to be LIVED THROUGH → 经过. A tool or channel → 通过. Bonus: 经过 is also a noun — 事情的经过 "how it all happened".</div>`,
           examples: [
-            { cn: "**经过**几个月的练习，他的发音标准多了。", py: "Jīngguò jǐ gè yuè de liànxí, tā de fāyīn biāozhǔn duō le.", en: "After months of practice, his pronunciation is much more standard.", note: "A stretch of effort passed through → 经过." },
+            { cn: "**经过**几个月的练习，他的发音标准多了。", py: "Jīngguò jǐ ge yuè de liànxí, tā de fāyīn biāozhǔn duō le.", en: "After months of practice, his pronunciation is much more standard.", note: "A stretch of effort passed through → 经过." },
             { cn: "她顺利地**通过**了这次考试。", py: "Tā shùnlì de tōngguò le zhè cì kǎoshì.", en: "She passed the exam without a hitch.", note: "通过考试 — THE collocation. ✗经过了考试 in this meaning." },
-            { cn: "我们是**通过**一个朋友认识的。", py: "Wǒmen shì tōngguò yí gè péngyou rènshi de.", en: "We met through a friend.", note: "By means of a channel → 通过. Note the 是…的 spotlight on the means." },
+            { cn: "我们是**通过**一个朋友认识的。", py: "Wǒmen shì tōngguò yí ge péngyou rènshi de.", en: "We met through a friend.", note: "By means of a channel → 通过. Note the 是…的 spotlight on the means." },
             { cn: "去学校的路上会**经过**一家书店。", py: "Qù xuéxiào de lùshang huì jīngguò yì jiā shūdiàn.", en: "On the way to school you pass a bookstore.", note: "Physically passing a place → 经过." }
           ]
         },
@@ -175,7 +175,7 @@ Could you put it on a poster with a date? → 举行. Is it something you DO for
           label: "感到 vs 觉得",
           html: `<p><span class="zh"><b class="hl">感到</b></span> <span class="py-hint">gǎndào</span> takes an <b>emotion word</b>: <span class="zh">感到高兴／失望／吃惊／骄傲</span>. It's the formal, written-flavour "feel". <span class="zh"><b class="hl">觉得</b></span> <span class="py-hint">juéde</span> takes a whole <b>opinion clause</b>: <span class="zh">觉得<b>这本书不错</b></span>, <span class="zh">觉得<b>他不会来</b></span> — and also handles casual feelings: <span class="zh">觉得有点儿冷</span>.</p>
 <div class="callout rule"><span class="co-title">Mini-rule</span>
-One emotion word after the blank → both work, 感到 sounds formal. A full sentence after the blank → 觉得 only. ✗感到这个电影很有意思.</div>`,
+One emotion word after the blank → both work, 感到 sounds formal. A full opinion sentence after the blank → 觉得 (✗感到这个电影很有意思). 感到 does accept short feeling-clauses (感到自己错了), but opinions and judgments belong to 觉得.</div>`,
           examples: [
             { cn: "听到这个消息，大家都**感到**非常吃惊。", py: "Tīngdào zhège xiāoxi, dàjiā dōu gǎndào fēicháng chījīng.", en: "Everyone was very surprised to hear the news.", note: "感到 + degree + emotion word — the formal frame." },
             { cn: "我**觉得**这家饭馆的菜有点儿咸。", py: "Wǒ juéde zhè jiā fànguǎn de cài yǒudiǎnr xián.", en: "I think the food at this restaurant is a bit salty.", note: "A full opinion clause follows → only 觉得." },
@@ -190,7 +190,7 @@ Learn them as fixed phrases — the exam only ever tests the lists above. Overla
           examples: [
             { cn: "这位作家的新书**受到**了读者的欢迎。", py: "Zhè wèi zuòjiā de xīn shū shòudào le dúzhě de huānyíng.", en: "The writer's new book has been well received by readers.", note: "受到…的欢迎 — set phrase, the welcome lands ON the book." },
             { cn: "他因为上班迟到，**受到**了批评。", py: "Tā yīnwèi shàngbān chídào, shòudào le pīpíng.", en: "He was criticized for being late to work.", note: "Bad treatment also lands ON you → 受到批评, never 得到批评." },
-            { cn: "他**得到**了一个去国外学习的机会。", py: "Tā dédào le yí gè qù guówài xuéxí de jīhuì.", en: "He got an opportunity to study abroad.", note: "A wanted thing ends up in his hands → 得到机会." },
+            { cn: "他**得到**了一个去国外学习的机会。", py: "Tā dédào le yí ge qù guówài xuéxí de jīhuì.", en: "He got an opportunity to study abroad.", note: "A wanted thing ends up in his hands → 得到机会." },
             { cn: "**通过**这次活动，孩子们**得到**了锻炼。", py: "Tōngguò zhè cì huódòng, háizimen dédào le duànliàn.", en: "Through this activity, the kids got some good exercise (in life skills).", note: "Two duels in one sentence: 通过 (channel) + 得到 (gain)." }
           ]
         }
@@ -261,7 +261,7 @@ Don't read the passage first. Read the WORD BANK, tag each word's POS and its tw
         { wrong: "欢迎你以后往往来我家做客。", right: "欢迎你以后常常来我家做客。", py: "Huānyíng nǐ yǐhòu chángcháng lái wǒ jiā zuòkè.", en: "You're welcome to come visit me often.", expl: "Invitation + future → 往往 fails the time test. It only describes patterns already observed." },
         { wrong: "我认为今天是星期六，原来已经星期天了。", right: "我以为今天是星期六，原来已经星期天了。", py: "Wǒ yǐwéi jīntiān shì xīngqīliù, yuánlái yǐjīng xīngqītiān le.", en: "I thought it was Saturday — turns out it's already Sunday.", expl: "原来 exposes the belief as wrong → 以为. 认为 states an opinion you still stand behind." },
         { wrong: "他的离开太忽然了。", right: "他的离开太突然了。", py: "Tā de líkāi tài tūrán le.", en: "His departure was very sudden.", expl: "太…了 needs an adjective, and 忽然 is adverb-only. Degree words (很/太/得) always point to 突然." },
-        { wrong: "我们下午要进行一个会议。", right: "我们下午要举行一个会议。", py: "Wǒmen xiàwǔ yào jǔxíng yí gè huìyì.", en: "We're holding a meeting this afternoon.", expl: "会议 is an event with a time and a room → 举行. 进行 pairs with process nouns: 进行讨论/研究/检查." },
+        { wrong: "我们下午要进行一个会议。", right: "我们下午要举行一个会议。", py: "Wǒmen xiàwǔ yào jǔxíng yí ge huìyì.", en: "We're holding a meeting this afternoon.", expl: "会议 is an event with a time and a room → 举行. 进行 pairs with process nouns: 进行讨论/研究/检查." },
         { wrong: "他经过了这次汉语考试，特别高兴。", right: "他通过了这次汉语考试，特别高兴。", py: "Tā tōngguò le zhè cì Hànyǔ kǎoshì, tèbié gāoxìng.", en: "He passed the Chinese exam and was thrilled.", expl: "Passing an exam = 通过考试, the fixed collocation. 经过 would just mean he walked past the exam room." },
         { wrong: "遇到困难时，他受到了朋友们的帮助。", right: "遇到困难时，他得到了朋友们的帮助。", py: "Yùdào kùnnan shí, tā dédào le péngyoumen de bāngzhù.", en: "When he ran into difficulties, he got help from his friends.", expl: "帮助 lives on the 得到 list (things you gain). 受到 takes treatment that lands on you: 影响/批评/欢迎." },
         { wrong: "问题不但没解决，而且更复杂了。", right: "问题不但没解决，反而更复杂了。", py: "Wèntí búdàn méi jiějué, fǎn'ér gèng fùzá le.", en: "Not only wasn't the problem solved — it actually got more complicated.", expl: "After 不但没 the second clause reverses expectation → 反而. 而且 only stacks same-direction information." }
@@ -276,9 +276,9 @@ Don't read the passage first. Read the WORD BANK, tag each word's POS and its tw
       intro: "Arrange the tiles. The chosen twin is already in there — notice which frame it drags along.",
       items: [
         { tiles: ["这种运动", "不适合", "年纪大的", "人"], py: "Zhè zhǒng yùndòng bú shìhé niánjì dà de rén.", en: "This sport isn't suitable for older people.", hint: "适合 needs its object right behind it." },
-        { tiles: ["放假的时候", "火车票", "往往", "很难买"], py: "Fàngjià de shíhou, huǒchēpiào wǎngwǎng hěn nán mǎi.", en: "During the holidays, train tickets tend to be hard to get.", hint: "Condition first, then 往往 before the predicate." },
+        { tiles: ["放假的时候", "火车票", "往往", "很难买"], py: "Fàngjià de shíhou, huǒchēpiào wǎngwǎng hěn nán mǎi.", en: "During the holidays, train tickets tend to be hard to get.", hint: "Condition first, then 往往 before the predicate.", alt: [["火车票", "放假的时候", "往往", "很难买"]] },
         { tiles: ["我以为", "你早就", "回国了", "呢"], py: "Wǒ yǐwéi nǐ zǎo jiù huíguó le ne.", en: "I thought you'd gone back home ages ago!", hint: "以为 + wrong belief + 呢 — the classic surprised apology." },
-        { tiles: ["学校", "下个月", "要举行", "运动会"], py: "Xuéxiào xià gè yuè yào jǔxíng yùndònghuì.", en: "The school is holding a sports meet next month.", hint: "Time phrase before the verb; 举行 + event." },
+        { tiles: ["学校", "下个月", "要举行", "运动会"], py: "Xuéxiào xià ge yuè yào jǔxíng yùndònghuì.", en: "The school is holding a sports meet next month.", hint: "Time phrase before the verb; 举行 + event.", alt: [["下个月", "学校", "要举行", "运动会"]] },
         { tiles: ["他的建议", "得到了", "大家的", "支持"], py: "Tā de jiànyì dédào le dàjiā de zhīchí.", en: "His suggestion won everyone's support.", hint: "得到 + 支持: gaining something wanted." },
         { tiles: ["通过", "这件事", "我明白了", "很多道理"], py: "Tōngguò zhè jiàn shì, wǒ míngbai le hěn duō dàolǐ.", en: "Through this experience I came to understand a lot.", hint: "通过 + channel sits up front, before the subject." },
         { tiles: ["这个消息", "来得", "太突然了"], py: "Zhège xiāoxi lái de tài tūrán le.", en: "This news came out of nowhere.", hint: "得-complement + 太…了 → the adjective twin." }

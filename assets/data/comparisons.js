@@ -28,10 +28,10 @@ The exam loves comparison sentences because one misplaced word ruins them. Expec
       short: "The 很 trap",
       html: `
 <p>This is the single most common learner error in all of HSK 4. In a 比 sentence, the adjective may NOT take <span class="zh">很 / 非常 / 太 / 真 / 特别</span>:</p>
-<p style="text-align:center" class="zh" style="font-size:1.2rem">✗ 他比我<b class="hl">很</b>高。 &nbsp;&nbsp;→&nbsp;&nbsp; ✓ 他比我高。 ／ 他比我高<b class="hl">得多</b>。</p>
+<p class="zh" style="text-align:center;font-size:1.2rem">✗ 他比我<b class="hl">很</b>高。 &nbsp;&nbsp;→&nbsp;&nbsp; ✓ 他比我高。 ／ 他比我高<b class="hl">得多</b>。</p>
 <p>Why? <span class="zh">很</span> measures against a general standard (“tall for a person”), but 比 already measures against B. Two measuring sticks can't fit in one sentence. If you want intensity, put it <b>after</b> the adjective: <span class="zh">高得多 / 高多了</span>.</p>
-<h3>The only two intensifiers allowed in front: 更 and 还</h3>
-<p><span class="zh">更</span> and <span class="zh">还</span> are special because they <i>build on the comparison</i> instead of replacing it:</p>
+<h3>The intensifiers the exam allows in front: 更 and 还</h3>
+<p><span class="zh">更</span> and <span class="zh">还</span> are special because they <i>build on the comparison</i> instead of replacing it (real usage also allows <span class="zh">稍微</span> 'slightly' — but <span class="zh">很/非常/特别</span> never work, and that's the trap the exam sets):</p>
 <ul>
 <li><span class="zh">我很高，但是他比我<b class="hl">更</b>高。</span> — “even taller (than already-tall me)”. Implies B already has the quality.</li>
 <li><span class="zh">今天比昨天<b class="hl">还</b>热。</span> — “even hotter than yesterday” — with a flavour of surprise: yesterday was already extreme.</li>
@@ -172,7 +172,7 @@ In the word-arrangement task, a 得 tile plus a 比 tile means a verb comparison
       items: [
         { wrong: "他比我很高。", right: "他比我高。／他比我高得多。", py: "Tā bǐ wǒ gāo. / Tā bǐ wǒ gāo de duō.", en: "He is taller than me. / He is much taller than me.", expl: "The #1 trap: 很 may not modify the adjective in a 比 sentence. Intensity goes AFTER the adjective (得多/多了)." },
         { wrong: "这本书比那本一点儿贵。", right: "这本书比那本贵一点儿。", py: "Zhè běn shū bǐ nà běn guì yìdiǎnr.", en: "This book is a bit more expensive than that one.", expl: "一点儿 is a degree tail, not a pre-adjective adverb. Adjective first, difference second — the mirror image of Spanish 'un poco más caro'." },
-        { wrong: "今天比昨天冷很多了。", right: "今天比昨天冷多了。", py: "Jīntiān bǐ zuótiān lěng duō le.", en: "Today is much colder than yesterday.", expl: "The set phrases are 得多 and 多了 — there is no ✗很多了 tail. Pick one: 冷得多 or 冷多了." },
+        { wrong: "今天比昨天冷很多了。", right: "今天比昨天冷多了。", py: "Jīntiān bǐ zuótiān lěng duō le.", en: "Today is much colder than yesterday.", expl: "The bug is the tail 很多了 — that combination doesn't exist. The set phrases are 冷得多 and 冷多了. (Bare 冷很多 without 了 is fine in real usage, but the exam's favorites are 得多／多了.)" },
         { wrong: "我不比他高，他比我高多了。", right: "我没有他高，他比我高多了。", py: "Wǒ méiyǒu tā gāo, tā bǐ wǒ gāo duō le.", en: "I'm not as tall as he is — he's much taller.", expl: "不比他高 claims 'about the same height' — which the second half contradicts. For a clear 'less than', use 没有…高." },
         { wrong: "今天没有昨天很冷。", right: "今天没有昨天那么冷。", py: "Jīntiān méiyǒu zuótiān nàme lěng.", en: "Today isn't as cold as yesterday.", expl: "很 is just as illegal in 没有-comparisons. The optional filler before the adjective is 这么/那么, nothing else." },
         { wrong: "他比我看了多两本书。", right: "他比我多看了两本书。", py: "Tā bǐ wǒ duō kàn le liǎng běn shū.", en: "He read two more books than I did.", expl: "In quantity-of-action comparisons, 多/少 stands BEFORE the verb: 多看了两本. The amount trails after the object." },
@@ -194,7 +194,7 @@ In the word-arrangement task, a 得 tile plus a 比 tile means a verb comparison
         { tiles: ["他", "跑得", "比", "我", "快"], py: "Tā pǎo de bǐ wǒ kuài.", en: "He runs faster than I do.", hint: "Two orders are correct — this builder accepts both.", alt: [["他", "比", "我", "跑得", "快"]] },
         { tiles: ["今年", "冬天", "没有", "去年", "那么", "冷"], py: "Jīnnián dōngtiān méiyǒu qùnián nàme lěng.", en: "This winter isn't as cold as last year.", hint: "没有…那么 + adjective = 'not as … as'." },
         { tiles: ["堵车的时候", "开车", "不如", "坐地铁", "方便"], py: "Dǔchē de shíhou, kāichē bùrú zuò dìtiě fāngbiàn.", en: "When traffic is bad, driving isn't as convenient as taking the subway.", hint: "A 不如 B + adjective — B wins." },
-        { tiles: ["他", "今天", "比", "平时", "早", "到了", "十分钟"], py: "Tā jīntiān bǐ píngshí zǎo dào le shí fēnzhōng.", en: "Today he arrived ten minutes earlier than usual.", hint: "早 + verb + amount: 'earlier by ten minutes'." },
+        { tiles: ["他", "今天", "比", "平时", "早", "到了", "十分钟"], py: "Tā jīntiān bǐ píngshí zǎo dào le shí fēnzhōng.", en: "Today he arrived ten minutes earlier than usual.", hint: "早 + verb + amount: 'earlier by ten minutes'.", alt: [["今天", "他", "比", "平时", "早", "到了", "十分钟"]] },
         { tiles: ["这个", "房间", "跟", "那个", "一样", "大"], py: "Zhège fángjiān gēn nàge yíyàng dà.", en: "This room is just as big as that one.", hint: "Equality machine: 跟…一样 + adjective." }
       ]
     },

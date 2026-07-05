@@ -153,10 +153,10 @@ b.hl, .hl { color: var(--accent); font-weight: 700; font-style: normal; }
 .ex-py { color: var(--accent-2); font-size: .95rem; margin-top: 2px; }
 .ex-en { color: var(--ink-soft); font-size: .97rem; margin-top: 2px; }
 .ex-note { color: var(--muted); font-size: .88rem; margin-top: 8px; border-top: 1px dashed var(--border); padding-top: 8px; }
-body.hide-py .ex-py { display: none; }
-body.hide-en .ex-en { display: none; }
+.hide-py .ex-py { display: none; }
+.hide-en .ex-en { display: none; }
 .py-hint { color: var(--accent-2); }
-body.hide-py .py-hint { display: none; }
+.hide-py .py-hint { display: none; }
 
 /* ---------- tables ---------- */
 .tbl-wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
@@ -236,6 +236,7 @@ table.tbl td:first-child { font-family: var(--zh-font); font-weight: 600; white-
 .b-answer.bad { border-color: var(--bad); background: var(--bad-soft); }
 .b-pool { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; min-height: 44px; }
 .tile {
+  appearance: none; color: var(--ink); line-height: inherit;
   font-family: var(--zh-font); font-size: 1.15rem; background: var(--card);
   border: 1.5px solid var(--border); border-radius: 10px; padding: 6px 13px; cursor: pointer;
   box-shadow: 0 2px 0 var(--border); user-select: none; transition: all .1s ease;

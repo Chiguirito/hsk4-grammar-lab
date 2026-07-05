@@ -53,12 +53,12 @@ The vocabulary list is full of frozen potentials (来不及、受不了、看不
         { tag: "懂", cn: "老师说得太快了，我听**不懂**。", py: "Lǎoshī shuō de tài kuài le, wǒ tīng bu dǒng.", en: "The teacher speaks too fast — I can't understand.", note: "Blocking circumstance: speed. 我不能听懂 is what the exam wants you to STOP saying." },
         { tag: "完", cn: "你放心，这点儿作业我今天做**得完**。", py: "Nǐ fàngxīn, zhè diǎnr zuòyè wǒ jīntiān zuò de wán.", en: "Don't worry — this bit of homework I can finish today.", note: "Positive form in a reassurance: its favourite habitat." },
         { tag: "见", cn: "后面的同学看**得见**黑板上的字吗？", py: "Hòumiàn de tóngxué kàn de jiàn hēibǎn shàng de zì ma?", en: "Can the students in the back see the writing on the board?", note: "Question with V得C + 吗 — the standard classroom check." },
-        { tag: "动", cn: "这个箱子太重了，我一个人搬**不动**。", py: "Zhège xiāngzi tài zhòng le, wǒ yí gè rén bān bu dòng.", en: "This suitcase is too heavy — I can't move it alone.", note: "动 = (make it) move. Strength-based feasibility." },
+        { tag: "动", cn: "这个箱子太重了，我一个人搬**不动**。", py: "Zhège xiāngzi tài zhòng le, wǒ yí ge rén bān bu dòng.", en: "This suitcase is too heavy — I can't move it alone.", note: "动 = (make it) move. Strength-based feasibility." },
         { tag: "起", cn: "北京的房子太贵了，我们买**不起**。", py: "Běijīng de fángzi tài guì le, wǒmen mǎi bu qǐ.", en: "Housing in Beijing is too expensive — we can't afford it.", note: "起 = lift (financially). 买不起 = can't afford; 买不到 would mean 'sold out'." },
         { tag: "上", cn: "快点儿，再不走就赶**不上**最后一班地铁了！", py: "Kuài diǎnr, zài bù zǒu jiù gǎn bu shàng zuìhòu yì bān dìtiě le!", en: "Hurry — if we don't leave now we'll miss the last subway!", note: "赶不上 = can't catch (transport, progress, others' level)." },
         { tag: "着", cn: "昨晚我喝了两杯咖啡，怎么也睡**不着**。", py: "Zuówǎn wǒ hē le liǎng bēi kāfēi, zěnme yě shuì bu zháo.", en: "I had two coffees last night and just couldn't fall asleep.", note: "着 zháo = succeed in reaching the state. 怎么也 + V不C = no matter what, no luck." },
-        { tag: "及", cn: "别急，离上课还有半个小时，来**得及**。", py: "Bié jí, lí shàngkè hái yǒu bàn gè xiǎoshí, lái de jí.", en: "Relax — class starts in half an hour, there's still time.", note: "来得及／来不及 — the time-pressure pair. Usually stands alone or before a verb: 来不及吃早饭了." },
-        { tag: "了", cn: "这么多菜，我们两个人吃**不了**。", py: "Zhème duō cài, wǒmen liǎng gè rén chī bu liǎo.", en: "This much food — the two of us can't possibly eat it all.", note: "了 = liǎo! Quantity overwhelms ability. Compare 吃不下 (stomach full) below." },
+        { tag: "及", cn: "别急，离上课还有半个小时，来**得及**。", py: "Bié jí, lí shàngkè hái yǒu bàn ge xiǎoshí, lái de jí.", en: "Relax — class starts in half an hour, there's still time.", note: "来得及／来不及 — the time-pressure pair. Usually stands alone or before a verb: 来不及吃早饭了." },
+        { tag: "了", cn: "这么多菜，我们两个人吃**不了**。", py: "Zhème duō cài, wǒmen liǎng ge rén chī bu liǎo.", en: "This much food — the two of us can't possibly eat it all.", note: "了 = liǎo! Quantity overwhelms ability. Compare 吃不下 (stomach full) below." },
         { tag: "出来", cn: "他一开口，我就听**得出来**他是北方人。", py: "Tā yì kāikǒu, wǒ jiù tīng de chūlái tā shì běifāng rén.", en: "The moment he speaks, I can tell he's a northerner.", note: "Directional 出来 (detect) opened with 得 — the two systems compose." },
         { tag: "下", cn: "房间太小，住**不下**这么多人。", py: "Fángjiān tài xiǎo, zhù bu xià zhème duō rén.", en: "The room is too small to fit this many people.", note: "下 = capacity. 坐不下 / 放不下 / 吃不下 — same logic, different containers." }
       ]
@@ -105,7 +105,7 @@ The vocabulary list is full of frozen potentials (来不及、受不了、看不
 <p class="zh" style="font-size:1.15rem">✗ 我<s>把</s>这本书看不完 → ✓ <b class="hl">这本书</b>我看不完<br>✗ 作业<s>被</s>我做不完 → ✓ 作业我做不完</p>`,
           examples: [
             { cn: "黑板上的字你看**得**清楚看**不**清楚？", py: "Hēibǎn shàng de zì nǐ kàn de qīngchu kàn bu qīngchu?", en: "Can you see the board clearly or not?", note: "Full sandwich: V得C + V不C, object topicalized in front." },
-            { cn: "这么厚的小说，我一个星期**看不完**。", py: "Zhème hòu de xiǎoshuō, wǒ yí gè xīngqī kàn bu wán.", en: "A novel this thick — I can't finish it in a week.", note: "Topic + subject + potential. Note what's absent: no 把 anywhere." },
+            { cn: "这么厚的小说，我一个星期**看不完**。", py: "Zhème hòu de xiǎoshuō, wǒ yí ge xīngqī kàn bu wán.", en: "A novel this thick — I can't finish it in a week.", note: "Topic + subject + potential. Note what's absent: no 把 anywhere." },
             { cn: "中文菜单你看**得懂**吗？", py: "Zhōngwén càidān nǐ kàn de dǒng ma?", en: "Can you read a Chinese menu?", note: "The simpler 吗-question — equally correct, more colloquial." }
           ]
         }
@@ -167,7 +167,7 @@ The vocabulary list is full of frozen potentials (来不及、受不了、看不
         { wrong: "他是有名的大老板，这辆车他当然买不起。", right: "他是有名的大老板，这辆车他当然买得起。", py: "Tā shì yǒumíng de dà lǎobǎn, zhè liàng chē tā dāngrán mǎi de qǐ.", en: "He's a famous big boss — of course he can afford this car.", expl: "Logic check: 当然 + rich boss → the affirmative 买得起. Learners drill 买不起 so hard they forget its positive twin exists." },
         { wrong: "我看不起这篇文章，语法太难了。", right: "我看不懂这篇文章，语法太难了。", py: "Wǒ kàn bu dǒng zhè piān wénzhāng, yǔfǎ tài nán le.", en: "I can't understand this article — the grammar is too hard.", expl: "看不起 is the frozen idiom 'to look down on'. Comprehension failure is 看不懂. Mixing them insults the article." },
         { wrong: "别等我了，我可能来得不及。", right: "别等我了，我可能来不及。", py: "Bié děng wǒ le, wǒ kěnéng lái bu jí.", en: "Don't wait for me — I might not make it in time.", expl: "Frozen forms follow the same rule: negative = 来不及, with 不 replacing 得. 来得不及 doesn't exist." },
-        { wrong: "房间里坐得下不下十个人？", right: "房间里坐得下坐不下十个人？", py: "Fángjiān lǐ zuò de xià zuò bu xià shí gè rén?", en: "Can the room seat ten people or not?", expl: "The affirmative-negative question repeats the ENTIRE V得C / V不C: 坐得下坐不下. You can't clip the second verb." }
+        { wrong: "房间里坐得下不下十个人？", right: "房间里坐得下坐不下十个人？", py: "Fángjiān lǐ zuò de xià zuò bu xià shí ge rén?", en: "Can the room seat ten people or not?", expl: "The affirmative-negative question repeats the ENTIRE V得C / V不C: 坐得下坐不下. You can't clip the second verb." }
       ]
     },
 
@@ -179,12 +179,12 @@ The vocabulary list is full of frozen potentials (来不及、受不了、看不
       intro: "Watch for the topicalized objects — they're the legal replacement for the 把 you're not allowed to use.",
       items: [
         { tiles: ["老师说的话", "你", "都", "听得懂", "吗"], py: "Lǎoshī shuō de huà nǐ dōu tīng de dǒng ma?", en: "Can you understand everything the teacher says?", hint: "Long object up front as topic, 都 before the verb." },
-        { tiles: ["这么多作业", "我", "今天", "肯定", "做不完"], py: "Zhème duō zuòyè wǒ jīntiān kěndìng zuò bu wán.", en: "This much homework — I definitely can't finish it today.", hint: "Topic + time + adverb + potential. No 把 anywhere!" },
-        { tiles: ["再不出发", "我们", "就", "赶不上", "飞机", "了"], py: "Zài bù chūfā wǒmen jiù gǎn bu shàng fēijī le.", en: "If we don't leave now, we'll miss the flight.", hint: "再不…就… frames the threat; 赶不上 takes 飞机 directly." },
-        { tiles: ["我", "怎么也", "想不起来", "他的名字"], py: "Wǒ zěnme yě xiǎng bu qǐlái tā de míngzi.", en: "I just can't recall his name, no matter what.", hint: "怎么也 + negative potential = total failure. Directional 起来 opened by 不." },
-        { tiles: ["她", "舍不得", "扔掉", "这些旧照片"], py: "Tā shě bu de rēng diào zhèxiē jiù zhàopiàn.", en: "She can't bring herself to throw away these old photos.", hint: "Frozen 舍不得 acts like a verb 'hate to' + full verb phrase." },
+        { tiles: ["这么多作业", "我", "今天", "肯定", "做不完"], py: "Zhème duō zuòyè wǒ jīntiān kěndìng zuò bu wán.", en: "This much homework — I definitely can't finish it today.", hint: "Topic + time + adverb + potential. No 把 anywhere!", alt: [["我", "今天", "肯定", "做不完", "这么多作业"], ["今天", "我", "肯定", "做不完", "这么多作业"]] },
+        { tiles: ["再不出发", "我们", "就", "赶不上", "飞机", "了"], py: "Zài bù chūfā wǒmen jiù gǎn bu shàng fēijī le.", en: "If we don't leave now, we'll miss the flight.", hint: "再不…就… frames the threat; 赶不上 takes 飞机 directly.", alt: [["我们", "再不出发", "就", "赶不上", "飞机", "了"]] },
+        { tiles: ["我", "怎么也", "想不起来", "他的名字"], py: "Wǒ zěnme yě xiǎng bu qǐlái tā de míngzi.", en: "I just can't recall his name, no matter what.", hint: "怎么也 + negative potential = total failure. Directional 起来 opened by 不.", alt: [["他的名字", "我", "怎么也", "想不起来"]] },
+        { tiles: ["她", "舍不得", "扔掉", "这些旧照片"], py: "Tā shě bu de rēng diào zhèxiē jiù zhàopiàn.", en: "She can't bring herself to throw away these old photos.", hint: "Frozen 舍不得 acts like a verb 'hate to' + full verb phrase.", alt: [["这些旧照片", "她", "舍不得", "扔掉"]] },
         { tiles: ["声音", "太小了", "后面的人", "听不见"], py: "Shēngyīn tài xiǎo le, hòumiàn de rén tīng bu jiàn.", en: "The volume is too low — the people in the back can't hear.", hint: "Cause first, then who + can't-hear." },
-        { tiles: ["这个房间", "住得下", "四个人", "吗"], py: "Zhège fángjiān zhù de xià sì gè rén ma?", en: "Can this room accommodate four people?", hint: "Capacity 下 in a 吗-question; the place is the subject." }
+        { tiles: ["这个房间", "住得下", "四个人", "吗"], py: "Zhège fángjiān zhù de xià sì ge rén ma?", en: "Can this room accommodate four people?", hint: "Capacity 下 in a 吗-question; the place is the subject." }
       ]
     },
 

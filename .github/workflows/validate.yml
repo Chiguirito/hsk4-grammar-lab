@@ -1,0 +1,13 @@
+name: Validate
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate topic data files
+        run: node scripts/validate.js
+      - name: Check generated shells are up to date
+        run: node scripts/build-shells.js --check

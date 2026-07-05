@@ -108,7 +108,7 @@ English and German keep the object glued to the verb: "speaks <b>Chinese</b> flu
 </ul>`,
           examples: [
             { cn: "他写字写**得很**好。", py: "Tā xiě zì xiě de hěn hǎo.", en: "He writes characters very well.", note: "很 forces the state reading — this is an evaluation of his handwriting." },
-            { cn: "这么难的字，我写**不**好。", py: "Zhème nán de zì, wǒ xiě bù hǎo.", en: "Characters this hard — I just can't write them well.", note: "No 得 in the negative = potential complement: ability, not evaluation." }
+            { cn: "这么难的字，我写**不**好。", py: "Zhème nán de zì, wǒ xiě bu hǎo.", en: "Characters this hard — I just can't write them well.", note: "No 得 in the negative = potential complement: ability, not evaluation." }
           ]
         },
         {
@@ -152,7 +152,7 @@ English and German keep the object glued to the verb: "speaks <b>Chinese</b> flu
         { wrong: "她跑得没快。", right: "她跑得不快。", py: "Tā pǎo de bú kuài.", en: "She doesn't run fast.", expl: "Inside the 得-description you are judging a quality, not denying a past event — so the negation is 不, never 没." },
         { wrong: "今天热得极了。", right: "今天热极了。", py: "Jīntiān rè jí le.", en: "It's boiling hot today.", expl: "极了 attaches DIRECTLY to the adjective — no 得. Only 很/不得了/要命 take the 得 bridge: 热得很、热得要命." },
         { wrong: "拿到奖学金，我高兴透了。", right: "拿到奖学金，我高兴极了。／我高兴死了。", py: "Nádào jiǎngxuéjīn, wǒ gāoxìng jí le.", en: "I was overjoyed to get the scholarship.", expl: "透了 only amplifies negative feelings (糟透了、伤心透了). For joy use 极了、死了、坏了 or 得不得了 — all fine with happiness." },
-        { wrong: "他慢慢得走进了教室。", right: "他慢慢地走进了教室。", py: "Tā mànmān de zǒu jìn le jiàoshì.", en: "He walked slowly into the classroom.", expl: "Manner set BEFORE the verb takes 地, not 得. Rule of thumb: description-VERB → 地; VERB-得-description → 得." },
+        { wrong: "他慢慢得走进了教室。", right: "他慢慢地走进了教室。", py: "Tā mànmàn de zǒu jìn le jiàoshì.", en: "He walked slowly into the classroom.", expl: "Manner set BEFORE the verb takes 地, not 得. Rule of thumb: description-VERB → 地; VERB-得-description → 得." },
         { wrong: "我说得不流利汉语。", right: "我汉语说得不流利。", py: "Wǒ Hànyǔ shuō de bù liúlì.", en: "I don't speak Chinese fluently.", expl: "Nothing may follow the 得-description — the object can't dangle at the end. Park it before the verb: 我汉语说得不流利." }
       ]
     },
@@ -166,7 +166,7 @@ English and German keep the object glued to the verb: "speaks <b>Chinese</b> flu
       items: [
         { tiles: ["他", "汉语", "说得", "很", "流利"], py: "Tā Hànyǔ shuō de hěn liúlì.", en: "He speaks Chinese very fluently.", hint: "Topicalized object: park 汉语 before the verb, then V得 + 很 + Adj.", alt: [["汉语", "他", "说得", "很", "流利"]] },
         { tiles: ["今天", "的", "考试", "难", "极了"], py: "Jīntiān de kǎoshì nán jí le.", en: "Today's exam was insanely hard.", hint: "极了 glues straight onto the adjective — nothing in between." },
-        { tiles: ["我", "昨天晚上", "睡得", "不太好"], py: "Wǒ zuótiān wǎnshang shuì de bú tài hǎo.", en: "I didn't sleep very well last night.", hint: "Negation after 得: 睡得 + 不太好." },
+        { tiles: ["我", "昨天晚上", "睡得", "不太好"], py: "Wǒ zuótiān wǎnshang shuì de bú tài hǎo.", en: "I didn't sleep very well last night.", hint: "Negation after 得: 睡得 + 不太好.", alt: [["昨天晚上", "我", "睡得", "不太好"]] },
         { tiles: ["她", "高兴", "得", "跳了", "起来"], py: "Tā gāoxìng de tiào le qǐlái.", en: "She was so happy she jumped up.", hint: "Adj + 得 + consequence clause." },
         { tiles: ["最近", "天气", "热得", "要命"], py: "Zuìjìn tiānqì rè de yàomìng.", en: "The weather has been unbearably hot lately.", hint: "得要命 is one chunk that follows the adjective." },
         { tiles: ["这里", "的", "东西", "贵得", "不得了"], py: "Zhèli de dōngxi guì de bùdéliǎo.", en: "Things here are outrageously expensive.", hint: "Adj + 得不得了 — the whole 不得了 is the complement." },

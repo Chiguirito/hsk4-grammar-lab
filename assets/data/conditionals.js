@@ -211,11 +211,11 @@ German <i>„<b>egal wie</b> teuer es ist“</i> and Spanish <i>“<b>no importa
       intro: "Arrange the tiles. Match the partners (只要↔就, 只有↔才, 不管↔都) and keep the adverbs after their subjects.",
       items: [
         { tiles: ["只要", "按时", "吃药", "你的病", "就会", "好起来"], py: "Zhǐyào ànshí chī yào, nǐ de bìng jiù huì hǎo qǐlái.", en: "As long as you take the medicine on time, you'll get better.", hint: "只要 + condition, then subject + 就会 + result." },
-        { tiles: ["只有", "多", "练习", "你的发音", "才能", "越来越", "标准"], py: "Zhǐyǒu duō liànxí, nǐ de fāyīn cái néng yuè lái yuè biāozhǔn.", en: "Only with lots of practice can your pronunciation get more and more standard.", hint: "只有…才能 — and a 越来越 cameo." },
+        { tiles: ["只有", "多", "练习", "你的发音", "才能", "越来越", "标准"], py: "Zhǐyǒu duō liànxí, nǐ de fāyīn cái néng yuèláiyuè biāozhǔn.", en: "Only with lots of practice can your pronunciation get more and more standard.", hint: "只有…才能 — and a 越来越 cameo." },
         { tiles: ["除非", "他", "道歉", "否则", "我", "不会", "原谅", "他"], py: "Chúfēi tā dàoqiàn, fǒuzé wǒ bú huì yuánliàng tā.", en: "Unless he apologizes, I won't forgive him.", hint: "除非 opens clause 1; 否则 opens clause 2, before 我." },
-        { tiles: ["万一", "路上", "堵车", "你", "就", "坐", "地铁", "去"], py: "Wànyī lùshang dǔchē, nǐ jiù zuò dìtiě qù.", en: "In case there's a traffic jam, take the subway.", hint: "万一 + bad case, then subject + 就 + plan B." },
-        { tiles: ["不管", "多", "忙", "他", "都", "坚持", "锻炼", "身体"], py: "Bùguǎn duō máng, tā dōu jiānchí duànliàn shēntǐ.", en: "No matter how busy he is, he keeps exercising.", hint: "不管 needs its open variable 多忙; 都 goes after 他." },
-        { tiles: ["无论", "你", "去不去", "我", "都", "要", "去", "看看"], py: "Wúlùn nǐ qù bu qù, wǒ dōu yào qù kànkan.", en: "Whether you go or not, I'm going to have a look.", hint: "A-not-A fills the variable slot; 都 after 我." },
+        { tiles: ["万一", "路上", "堵车", "你", "就", "坐", "地铁", "去"], py: "Wànyī lùshang dǔchē, nǐ jiù zuò dìtiě qù.", en: "In case there's a traffic jam, take the subway.", hint: "万一 + bad case, then subject + 就 + plan B.", alt: [["万一", "路上", "堵车", "你", "就", "去", "坐", "地铁"]] },
+        { tiles: ["不管", "多", "忙", "他", "都", "坚持", "锻炼", "身体"], py: "Bùguǎn duō máng, tā dōu jiānchí duànliàn shēntǐ.", en: "No matter how busy he is, he keeps exercising.", hint: "不管 needs its open variable 多忙; 都 goes after 他.", alt: [["他", "不管", "多", "忙", "都", "坚持", "锻炼", "身体"]] },
+        { tiles: ["无论", "你", "去不去", "我", "都", "要", "去", "看看"], py: "Wúlùn nǐ qù bu qù, wǒ dōu yào qù kànkan.", en: "Whether you go or not, I'm going to have a look.", hint: "A-not-A fills the variable slot; 都 after 我.", alt: [["你", "无论", "去不去", "我", "都", "要", "去", "看看"]] },
         { tiles: ["这本书", "再", "贵", "我", "也", "要", "买"], py: "Zhè běn shū zài guì, wǒ yě yào mǎi.", en: "No matter how expensive this book is, I'm buying it.", hint: "再 + adjective in clause 1, 也 after the subject in clause 2." }
       ]
     },

@@ -50,7 +50,7 @@ In “if…then” threats and promises, 不 + V + C is correct and extremely co
       items: [
         { tag: "完", cn: "作业我已经写**完**了，可以出去玩儿了吧？", py: "Zuòyè wǒ yǐjīng xiě wán le, kěyǐ chūqù wánr le ba?", en: "I've already finished my homework — can I go out and play now?", note: "完 = the quantity is used up: nothing left to write." },
         { tag: "好", cn: "饭做**好**了，大家快来吃吧！", py: "Fàn zuò hǎo le, dàjiā kuài lái chī ba!", en: "Dinner is ready — everyone come eat!", note: "做好 = done AND ready to use. 做完 would only say the cooking activity ended." },
-        { tag: "到", cn: "我等了半个小时，终于买**到**了两张票。", py: "Wǒ děng le bàn gè xiǎoshí, zhōngyú mǎi dào le liǎng zhāng piào.", en: "I waited half an hour and finally got two tickets.", note: "买 = try to buy; 买到 = mission accomplished. 到 marks attainment." },
+        { tag: "到", cn: "我等了半个小时，终于买**到**了两张票。", py: "Wǒ děng le bàn ge xiǎoshí, zhōngyú mǎi dào le liǎng zhāng piào.", en: "I waited half an hour and finally got two tickets.", note: "买 = try to buy; 买到 = mission accomplished. 到 marks attainment." },
         { tag: "见", cn: "你听**见**了吗？好像有人在敲门。", py: "Nǐ tīng jiàn le ma? Hǎoxiàng yǒu rén zài qiāo mén.", en: "Did you hear that? It sounds like someone is knocking.", note: "听 = have your ears open; 听见 = the sound actually registered." },
         { tag: "住", cn: "请大家记**住**这个日期，考试会考。", py: "Qǐng dàjiā jì zhù zhège rìqī, kǎoshì huì kǎo.", en: "Everyone please memorize this date — it'll be on the exam.", note: "住 = fixed in place. 记住 = it stays in your memory instead of slipping away." },
         { tag: "懂", cn: "老师说得很慢，所以我都听**懂**了。", py: "Lǎoshī shuō de hěn màn, suǒyǐ wǒ dōu tīng dǒng le.", en: "The teacher spoke slowly, so I understood everything.", note: "听见 = heard the sound; 听懂 = decoded the meaning. Different results!" },
@@ -136,9 +136,9 @@ In “if…then” threats and promises, 不 + V + C is correct and extremely co
           label: "Adjectives",
           html: `<p>Any fitting adjective can be the result. The HSK 4 core four: <span class="zh hl">干净</span> (clean: 洗干净 打扫干净 擦干净), <span class="zh hl">清楚</span> (clear: 说清楚 看清楚 听清楚 写清楚), <span class="zh hl">饱</span> (full: 吃饱), <span class="zh hl">会</span> (mastered: 学会).</p>`,
           examples: [
-            { cn: "衣服都洗**干净**了，晾在阳台上呢。", py: "Yīfu dōu xǐ gānjìng le, liàng zài yángtái shàng ne.", en: "The clothes are all washed clean — they're drying on the balcony.", note: "洗 = the scrubbing; 干净 = the outcome you were after." },
+            { cn: "衣服都洗**干净**了，晾在阳台上呢。", py: "Yīfu dōu xǐ gānjìng le, liàng zài yángtái shàng ne.", en: "The clothes are all washed clean — they're drying on the balcony.", note: "洗 = the scrubbing; 干净 = the outcome you were after. (晾 liàng = to hang out to dry — HSK6, just recognize it.)" },
             { cn: "吃**饱**了吗？没吃饱再来一碗。", py: "Chī bǎo le ma? Méi chī bǎo zài lái yì wǎn.", en: "Are you full? If not, have another bowl.", note: "饱 describes the eater, not the food — the object is usually dropped." },
-            { cn: "我只用了一个月就学**会**骑摩托车了。", py: "Wǒ zhǐ yòng le yí gè yuè jiù xué huì qí mótuōchē le.", en: "It only took me a month to learn to ride a motorbike.", note: "学 = study; 学会 = studied with the result 'can now do it'." }
+            { cn: "我只用了一个月就学**会**骑摩托车了。", py: "Wǒ zhǐ yòng le yí ge yuè jiù xué huì qí mótuōchē le.", en: "It only took me a month to learn to ride a motorbike.", note: "学 = study; 学会 = studied with the result 'can now do it'." }
           ]
         }
       ]
@@ -189,11 +189,11 @@ When a Listening dialogue hinges on success vs failure, the complement carries A
       items: [
         { wrong: "我做了完今天的作业。", right: "我做完了今天的作业。", py: "Wǒ zuò wán le jīntiān de zuòyè.", en: "I finished today's homework.", expl: "了 can never split verb + result. The unit 做完 stays welded; 了 hangs on after it." },
         { wrong: "我不看懂这个句子。", right: "我没看懂这个句子。", py: "Wǒ méi kàn dǒng zhège jùzi.", en: "I didn't understand this sentence.", expl: "Failed results take 没, not 不. (不看懂 could only survive in a conditional: 不看懂就别做题.)" },
-        { wrong: "他找了一个小时，终于找了他的钱包。", right: "他找了一个小时，终于找到了他的钱包。", py: "Tā zhǎo le yí gè xiǎoshí, zhōngyú zhǎo dào le tā de qiánbāo.", en: "He searched for an hour and finally found his wallet.", expl: "找了 only repeats the searching. 终于 announces success, so you need the attainment tail: 找到了." },
+        { wrong: "他找了一个小时，终于找了他的钱包。", right: "他找了一个小时，终于找到了他的钱包。", py: "Tā zhǎo le yí ge xiǎoshí, zhōngyú zhǎo dào le tā de qiánbāo.", en: "He searched for an hour and finally found his wallet.", expl: "找了 only repeats the searching. 终于 announces success, so you need the attainment tail: 找到了." },
         { wrong: "你说得太快，我没听见懂。", right: "你说得太快，我没听懂。", py: "Nǐ shuō de tài kuài, wǒ méi tīng dǒng.", en: "You speak too fast — I didn't understand.", expl: "One verb, ONE result. 见 (sound registered) and 懂 (meaning decoded) can't stack. Speed is a comprehension problem → 懂." },
         { wrong: "请把房间打扫。", right: "请把房间打扫干净。", py: "Qǐng bǎ fángjiān dǎsǎo gānjìng.", en: "Please clean the room (till it's clean).", expl: "把 forbids a bare final verb — and a result complement is the classic fix. 打扫干净 tells us the state the room must end in." },
         { wrong: "我吃饭饱了。", right: "我吃饱了。", py: "Wǒ chī bǎo le.", en: "I'm full.", expl: "吃饱 is a welded unit and 饱 describes YOU, not the rice — the generic object 饭 is simply dropped. (Topic version 饭我吃饱了 exists but is rare.)" },
-        { wrong: "我在门口等了他两个小时，可是没等。", right: "我在门口等了他两个小时，可是没等到。", py: "Wǒ zài ménkǒu děng le tā liǎng gè xiǎoshí, kěshì méi děng dào.", en: "I waited for him at the door for two hours, but he never showed.", expl: "You DID wait (等了), what failed is the attainment — 没等到. The complement must appear in the negative to say what didn't succeed." },
+        { wrong: "我在门口等了他两个小时，可是没等。", right: "我在门口等了他两个小时，可是没等到。", py: "Wǒ zài ménkǒu děng le tā liǎng ge xiǎoshí, kěshì méi děng dào.", en: "I waited for him at the door for two hours, but he never showed.", expl: "You DID wait (等了), what failed is the attainment — 没等到. The complement must appear in the negative to say what didn't succeed." },
         { wrong: "我听见了你的意思，可是不同意。", right: "我听懂了你的意思，可是不同意。", py: "Wǒ tīng dǒng le nǐ de yìsi, kěshì bù tóngyì.", en: "I understood what you mean, but I don't agree.", expl: "意思 (meaning) is decoded, not heard — comprehension is 懂. 听见 pairs with sounds: 听见敲门声." }
       ]
     },
@@ -205,14 +205,14 @@ When a Listening dialogue hinges on success vs failure, the complement carries A
       short: "Builder",
       intro: "Arrange-the-words, exam style. In every item, find the V+C unit first and treat it as one tile in your head.",
       items: [
-        { tiles: ["我", "终于", "找到", "工作", "了"], py: "Wǒ zhōngyú zhǎo dào gōngzuò le.", en: "I finally found a job.", hint: "终于 before the verb; the object follows the welded 找到." },
+        { tiles: ["我", "终于", "找到", "工作", "了"], py: "Wǒ zhōngyú zhǎo dào gōngzuò le.", en: "I finally found a job.", hint: "终于 before the verb; the object follows the welded 找到.", alt: [["我", "终于", "找到", "了", "工作"]] },
         { tiles: ["外面", "太吵了", "请", "把", "窗户", "关上"], py: "Wàimiàn tài chǎo le, qǐng bǎ chuānghu guān shàng.", en: "It's too noisy outside — please close the window.", hint: "Reason first, then the 把-machine with 关上 as its ending." },
-        { tiles: ["你", "听懂", "老师的话", "了", "吗"], py: "Nǐ tīng dǒng lǎoshī de huà le ma?", en: "Did you understand what the teacher said?", hint: "V+C + object + 了 + 吗." },
-        { tiles: ["我", "还", "没", "写完", "今天的作业"], py: "Wǒ hái méi xiě wán jīntiān de zuòyè.", en: "I still haven't finished today's homework.", hint: "还没 + the intact unit 写完." },
-        { tiles: ["他", "把", "这句话", "翻译成", "英文", "了"], py: "Tā bǎ zhè jù huà fānyì chéng Yīngwén le.", en: "He translated this sentence into English.", hint: "成 needs the new form right after it." },
+        { tiles: ["你", "听懂", "老师的话", "了", "吗"], py: "Nǐ tīng dǒng lǎoshī de huà le ma?", en: "Did you understand what the teacher said?", hint: "V+C + object + 了 + 吗.", alt: [["老师的话", "你", "听懂", "了", "吗"]] },
+        { tiles: ["我", "还", "没", "写完", "今天的作业"], py: "Wǒ hái méi xiě wán jīntiān de zuòyè.", en: "I still haven't finished today's homework.", hint: "还没 + the intact unit 写完.", alt: [["今天的作业", "我", "还", "没", "写完"], ["我", "今天的作业", "还", "没", "写完"]] },
+        { tiles: ["他", "把", "这句话", "翻译成", "英文", "了"], py: "Tā bǎ zhè jù huà fānyì chéng Yīngwén le.", en: "He translated this sentence into English.", hint: "成 needs the new form right after it.", alt: [["他", "把", "这句话", "翻译成", "了", "英文"]] },
         { tiles: ["弟弟", "把", "蛋糕", "都", "吃光", "了"], py: "Dìdi bǎ dàngāo dōu chī guāng le.", en: "Little brother ate up all the cake.", hint: "都 slots in after the object, before the verb — 把 topic déjà vu." },
-        { tiles: ["妹妹", "去年", "考上", "了", "有名的大学"], py: "Mèimei qùnián kǎo shàng le yǒumíng de dàxué.", en: "My little sister got into a famous university last year.", hint: "Time word before the verb; 考上 stays welded." },
-        { tiles: ["我", "没", "看清楚", "黑板上的字"], py: "Wǒ méi kàn qīngchu hēibǎn shàng de zì.", en: "I didn't see the characters on the blackboard clearly.", hint: "没 + 看清楚 — the adjective result rides along in the negative." }
+        { tiles: ["妹妹", "去年", "考上", "了", "有名的大学"], py: "Mèimei qùnián kǎo shàng le yǒumíng de dàxué.", en: "My little sister got into a famous university last year.", hint: "Time word before the verb; 考上 stays welded.", alt: [["去年", "妹妹", "考上", "了", "有名的大学"]] },
+        { tiles: ["我", "没", "看清楚", "黑板上的字"], py: "Wǒ méi kàn qīngchu hēibǎn shàng de zì.", en: "I didn't see the characters on the blackboard clearly.", hint: "没 + 看清楚 — the adjective result rides along in the negative.", alt: [["黑板上的字", "我", "没", "看清楚"]] }
       ]
     },
 

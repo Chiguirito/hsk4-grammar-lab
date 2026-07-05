@@ -143,10 +143,10 @@ In <span class="zh">连他都会</span>, 都 doesn't mean “all” — 他 is o
       intro: "Build the clamp: 连 + extreme case + 都/也 (+ 不/没) + verb. Find the extreme case first, then everything snaps into place.",
       items: [
         { tiles: ["他", "连", "咖啡", "都", "不喝"], py: "Tā lián kāfēi dōu bù hē.", en: "He doesn't even drink coffee.", hint: "Object jumps before the verb." },
-        { tiles: ["这个字", "连", "老师", "也", "不认识"], py: "Zhège zì lián lǎoshī yě bú rènshi.", en: "Even the teacher doesn't know this character.", hint: "Topic first, then 连 + the strongest candidate." },
+        { tiles: ["这个字", "连", "老师", "也", "不认识"], py: "Zhège zì lián lǎoshī yě bú rènshi.", en: "Even the teacher doesn't know this character.", hint: "Topic first, then 连 + the strongest candidate.", alt: [["连", "老师", "也", "不认识", "这个字"]] },
         { tiles: ["我", "忙得", "连", "午饭", "都", "没时间", "吃"], py: "Wǒ máng de lián wǔfàn dōu méi shíjiān chī.", en: "I'm so busy I don't even have time for lunch.", hint: "忙得 + consequence; the clamp lives inside the consequence." },
         { tiles: ["他", "连", "看", "都", "没看", "就", "把信", "扔了"], py: "Tā lián kàn dōu méi kàn jiù bǎ xìn rēng le.", en: "He threw the letter away without even looking at it.", hint: "连V都没V + 就 — and a 把 at the end for old times' sake." },
-        { tiles: ["那时候", "她", "连", "一分钱", "都", "没有"], py: "Nà shíhou tā lián yì fēn qián dōu méiyǒu.", en: "Back then she didn't have a single cent.", hint: "连 + 一 + measure = absolute zero." },
+        { tiles: ["那时候", "她", "连", "一分钱", "都", "没有"], py: "Nà shíhou tā lián yì fēn qián dōu méiyǒu.", en: "Back then she didn't have a single cent.", hint: "连 + 一 + measure = absolute zero.", alt: [["她", "那时候", "连", "一分钱", "都", "没有"]] },
         { tiles: ["这件事", "连", "我妈妈", "都", "知道了"], py: "Zhè jiàn shì lián wǒ māma dōu zhīdào le.", en: "Even my mom knows about this already.", hint: "Positive polarity: even the least-informed person knows → everyone knows." },
         { tiles: ["他", "累得", "连", "眼睛", "都", "睁不开", "了"], py: "Tā lèi de lián yǎnjing dōu zhēng bu kāi le.", en: "He's so tired he can't even keep his eyes open.", hint: "睁 zhēng = to open (eyes); potential complement 睁不开 inside the clamp." }
       ]
