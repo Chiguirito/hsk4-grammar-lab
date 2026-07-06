@@ -34,6 +34,16 @@ python3 -m http.server 8000   # then open http://localhost:8000
 ## Notes
 
 - **Progress** (best score per topic) is stored in your browser's localStorage — no account needed.
+  Use **Export progress / Import** at the bottom of the index page to move it between devices
+  (copies a JSON snapshot to the clipboard; importing merges, never deletes).
+- **AI tutor bridge** (no API calls — the site just writes great prompts): every answered quiz
+  question, sentence build and error-clinic item has a **🤖 Copy for AI** button that copies a
+  self-contained tutoring prompt (question, choices, your answer, the site's explanation) for
+  ChatGPT/Claude/any chatbot. Each topic ends with a **Practice more with AI** card that requests
+  10 fresh exam-style questions, and the review page can export your whole miss list for coaching.
+- **Spaced review (错题本)**: missed questions come back on a Leitner schedule — answer one
+  correctly on its due day and it levels up (due again in 2, then 5 days); three levels and it
+  graduates. Missing it again resets it. The index shows how many are due today.
 - **Audio** uses your device's Chinese text-to-speech voice (install one in your OS settings for best quality).
 - Toggle **Pīnyīn** and **English** off as you get stronger — recommended once a topic hits 80%+.
 - Content architecture: each topic is a data file in `assets/data/`, rendered by the shared engine

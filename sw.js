@@ -1,7 +1,7 @@
 /* HSK 4 Grammar Lab — offline support.
    Network-first with cache fallback: pages are always fresh when online,
    and everything you've visited keeps working offline. */
-const CACHE = "hsk4lab-v1";
+const CACHE = "hsk4lab-v2";
 
 self.addEventListener("install", () => self.skipWaiting());
 

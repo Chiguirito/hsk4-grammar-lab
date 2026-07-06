@@ -56,6 +56,141 @@
     speechSynthesis.speak(u);
   }
 
+  /* ---------------- clipboard + AI tutor bridge ----------------
+     The learner studies with an external AI chatbot; these helpers
+     copy a fully self-contained tutoring prompt (question, choices,
+     their answer, the site's explanation) so the AI has context
+     without the site ever calling an API. */
+  let currentPage = null; // set by registerPage; null on index/review
+  let toastEl = null, toastTimer = 0;
+  function toast(msg) {
+    if (!toastEl) { toastEl = el("div", "toast"); document.body.appendChild(toastEl); }
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2800);
+  }
+  function copyText(text, okMsg) {
+    window.__lastCopy = text; // debug/testing hook
+    const done = ok => toast(ok ? (okMsg || "Copied — paste into your AI chat (ChatGPT, Claude, …)") : "Couldn't copy automatically — try again");
+    const fallback = () => {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.cssText = "position:fixed;top:0;left:0;opacity:0";
+      document.body.appendChild(ta);
+      ta.select();
+      let ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) {}
+      ta.remove();
+      done(ok);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => done(true), fallback);
+    } else fallback();
+  }
+  function aiBtn(label, buildPrompt) {
+    const b = el("button", "ai-btn", "🤖 " + esc(label));
+    b.type = "button";
+    b.title = "Copy a ready-made prompt for ChatGPT, Claude or any AI chatbot";
+    b.onclick = () => copyText(buildPrompt());
+    return b;
+  }
+  const AI_PREAMBLE = "I'm studying for the HSK 4 Chinese exam (I've passed HSK 3) using an offline grammar site, and I'd like your help as a tutor.";
+  function topicLabel(page) {
+    const z = stripMarks(page.zh || "");
+    return page.title && page.title.includes(z) ? page.title : z + (page.title ? " — " + page.title : "");
+  }
+  function topicLine(item) {
+    if (item && item._srcTopic) return "Topic: " + item._srcTopic;
+    if (currentPage) return "Topic: " + topicLabel(currentPage);
+    return "Topic: HSK 4 grammar";
+  }
+  function mcqPrompt(item, chosenIdx) {
+    const wrong = chosenIdx !== item.a;
+    const lines = [AI_PREAMBLE, "", topicLine(item), "",
+      "Multiple-choice question: " + plain(item.q),
+      "Choices:"];
+    item.choices.forEach(c => lines.push("- " + plain(c)));
+    lines.push("Correct answer: " + plain(item.choices[item.a]));
+    if (chosenIdx >= 0) lines.push("My answer: " + plain(item.choices[chosenIdx]) + (wrong ? " (wrong)" : " (correct — but I want to understand it more deeply)"));
+    if (item.expl) lines.push("", "The site's explanation: " + plain(item.expl));
+    lines.push("", "Please:",
+      wrong ? "1. Explain in English why my answer is wrong and why the correct answer works."
+            : "1. Explain in English why the correct answer works, and in which situations the other choices would be right instead.",
+      "2. Give 2-3 minimal-pair example sentences (with pinyin and English) that isolate exactly this grammar point.",
+      "3. Then quiz me with 3 similar HSK 4-level questions, one at a time, and correct my answers.");
+    return lines.join("\n");
+  }
+  function builderPrompt(item, wrongAttempt) {
+    const lines = [AI_PREAMBLE, "", topicLine(item), "",
+      "Word-order exercise: arrange the given tiles into a correct sentence.",
+      "Tiles: " + item.tiles.join(" / ")];
+    if (item.en) lines.push('Intended meaning: "' + plain(item.en) + '"');
+    lines.push("Expected answer: " + item.tiles.join("") + (item.py ? " (" + stripMarks(item.py) + ")" : ""));
+    if (item.alt && item.alt.length) lines.push("Also accepted: " + item.alt.map(a => a.join("")).join(" · "));
+    if (wrongAttempt) lines.push("My attempt: " + wrongAttempt + " (marked wrong)");
+    if (item.hint) lines.push("The site's hint: " + plain(item.hint));
+    lines.push("", "Please:",
+      wrongAttempt
+        ? "1. Explain in English what's wrong with my word order and, step by step, why the expected order is correct."
+        : "1. Explain in English, step by step, which word-order rules produce this sentence.",
+      "2. Give 2-3 more example sentences that use the same pattern (with pinyin and English).",
+      "3. Then give me 2 similar word-order exercises, one at a time, and check my answers.");
+    return lines.join("\n");
+  }
+  function clinicPrompt(item) {
+    const lines = [AI_PREAMBLE, "", topicLine(item), "",
+      "Error-spotting exercise: the sentence below contains exactly one grammar mistake.",
+      "Incorrect: " + stripMarks(item.wrong),
+      "Corrected: " + stripMarks(item.right) + (item.py ? " (" + stripMarks(item.py) + ")" : "")];
+    if (item.en) lines.push('Meaning: "' + plain(item.en) + '"');
+    if (item.expl) lines.push("", "The site's explanation: " + plain(item.expl));
+    lines.push("", "Please:",
+      "1. Explain the underlying grammar rule in more depth than the explanation above (in English).",
+      "2. Show 2-3 more wrong/right sentence pairs that make the same mistake — and its fix — obvious.",
+      "3. Then test me with 2 new find-the-mistake sentences on the same rule, one at a time.");
+    return lines.join("\n");
+  }
+  // serialize cheatsheet-style HTML to readable plain text (tables → "a | b" rows)
+  function htmlToText(html) {
+    const root = document.createElement("div");
+    root.innerHTML = html;
+    const out = [];
+    (function walk(n) {
+      for (const c of n.childNodes) {
+        if (c.nodeType === 3) { out.push(c.nodeValue.replace(/\s+/g, " ")); continue; }
+        if (c.nodeType !== 1) continue;
+        const t = c.tagName;
+        if (t === "TR") out.push([...c.children].map(x => x.textContent.replace(/\s+/g, " ").trim()).join(" | ") + "\n");
+        else if (t === "LI") out.push("- " + c.textContent.replace(/\s+/g, " ").trim() + "\n");
+        else if (t === "BR") out.push("\n");
+        else if (/^(P|DIV|H[1-6]|UL|OL|TABLE)$/.test(t)) { walk(c); out.push("\n"); }
+        else walk(c);
+      }
+    })(root);
+    return out.join("").replace(/[ \t]+\n/g, "\n").replace(/\n{3,}/g, "\n\n").trim();
+  }
+  function topicPrompt(page) {
+    const lines = [AI_PREAMBLE, "",
+      'I just finished studying the topic "' + topicLabel(page) + '".'];
+    if (page.subtitle) lines.push("Topic summary: " + plain(page.subtitle));
+    const cheat = page.sections.find(s => s.type === "cheatsheet");
+    if (cheat) lines.push("", "The topic's cheat sheet:", htmlToText(cheat.html));
+    else lines.push("", "The topic covers: " + page.sections.filter(s => s.title).map(s => plain(s.title)).join("; ") + ".");
+    const exs = [];
+    page.sections.forEach(s => { if (s.type === "examples") (s.items || []).forEach(it => exs.push(it)); });
+    if (exs.length) {
+      lines.push("", "Sample sentences from the topic:");
+      exs.slice(0, 8).forEach(it => lines.push("- " + stripMarks(it.cn) + (it.en ? " — " + stripMarks(it.en) : "")));
+    }
+    lines.push("", "Please act as my HSK 4 tutor for this grammar topic:",
+      "1. Quiz me with 10 new exam-style questions, one at a time — mix fill-in-the-blank multiple choice, word-order (arrange the words) and find-the-mistake questions. Don't reuse the sample sentences above.",
+      "2. After each answer, tell me if I was right and explain why in English.",
+      "3. Keep vocabulary at HSK 4 level or below.",
+      "4. At the end, summarize my weak points on this topic.");
+    return lines.join("\n");
+  }
+
   /* ---------------- progress store ---------------- */
   const STORE_KEY = "hsk4lab-progress";
   function loadStore() {
@@ -83,17 +218,62 @@
     saveStore(store);
   }
   // ---- missed-question store (drives review.html) ----
+  // Spaced repetition, Leitner-style: each miss is {n: times missed, box: 1-3, due: "YYYY-MM-DD"}.
+  // A fresh miss lands in box 1, due immediately. A first-try correct answer promotes it
+  // (box 2 due in 2 days, box 3 due in 5 days, box 3 correct → graduated/removed);
+  // any new miss demotes it back to box 1. Older installs stored a plain count — migrated on read.
   const MISS_KEY = "hsk4lab-misses";
+  const BOX_DAYS = { 2: 2, 3: 5 }; // due-offset after promotion INTO this box
+  function dateStr(offsetDays) {
+    const d = new Date();
+    d.setDate(d.getDate() + (offsetDays || 0));
+    const p = n => (n < 10 ? "0" : "") + n;
+    return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate());
+  }
+  function normMiss(v) {
+    if (typeof v === "number" && v > 0) return { n: v, box: 1, due: dateStr(0) };
+    if (v && typeof v === "object" && typeof v.n === "number" && v.n > 0) {
+      return {
+        n: v.n,
+        box: Math.min(3, Math.max(1, v.box | 0 || 1)),
+        due: /^\d{4}-\d{2}-\d{2}$/.test(v.due) ? v.due : dateStr(0)
+      };
+    }
+    return null;
+  }
   function loadMisses() {
-    try { return JSON.parse(localStorage.getItem(MISS_KEY)) || {}; } catch (e) { return {}; }
+    try {
+      const raw = JSON.parse(localStorage.getItem(MISS_KEY)) || {};
+      const m = {};
+      for (const k of Object.keys(raw)) { const v = normMiss(raw[k]); if (v) m[k] = v; }
+      return m;
+    } catch (e) { return {}; }
   }
   function saveMisses(m) { try { localStorage.setItem(MISS_KEY, JSON.stringify(m)); } catch (e) {} }
-  // ok=false → remember this question; ok=true (first-try correct) → forget it
+  function missStats() {
+    const m = loadMisses(), t = dateStr(0);
+    let due = 0, scheduled = 0, next = null;
+    for (const k of Object.keys(m)) {
+      if (m[k].due <= t) due++;
+      else { scheduled++; if (!next || m[k].due < next) next = m[k].due; }
+    }
+    return { total: due + scheduled, due: due, scheduled: scheduled, next: next };
+  }
+  // Only the FIRST answer per question per visit moves its schedule (same
+  // rule as recordAnswer) — quiz retries can't promote or demote twice.
+  const missRecorded = new Set();
   function recordMiss(id, ok) {
-    if (!id) return;
+    if (!id || missRecorded.has(id)) return;
+    missRecorded.add(id);
     const m = loadMisses();
-    if (ok) { if (!(id in m)) return; delete m[id]; }
-    else m[id] = (m[id] || 0) + 1;
+    if (ok) {
+      const e = m[id];
+      if (!e) return;
+      if (e.box >= 3) delete m[id]; // graduated 🎓
+      else { e.box += 1; e.due = dateStr(BOX_DAYS[e.box]); }
+    } else {
+      m[id] = { n: (m[id] ? m[id].n : 0) + 1, box: 1, due: dateStr(0) };
+    }
     saveMisses(m);
   }
 
@@ -201,7 +381,9 @@
       q.appendChild(el("div", "q-text", fmtHtml(item.q)));
       const wrap = el("div", "q-choices" + (item.choices.every(c => plain(c).length <= 14) ? " cols" : ""));
       const expl = el("div", "q-expl hidden", item.expl ? fmtHtml(item.expl) : "");
-      let answeredThis = false;
+      let answeredThis = false, chosen = -1;
+      const actions = el("div", "q-actions hidden");
+      actions.appendChild(aiBtn("Copy for AI", () => mcqPrompt(item, chosen)));
       // render choices in a shuffled order so positions can't be memorized
       shuffled(item.choices.map((_, i) => i)).forEach(ci => {
         const c = item.choices[ci];
@@ -210,6 +392,8 @@
         b.onclick = () => {
           if (answeredThis) return;
           answeredThis = true;
+          chosen = ci;
+          actions.classList.remove("hidden");
           const ok = ci === item.a;
           wrap.querySelectorAll("button").forEach(x => {
             x.disabled = true;
@@ -228,6 +412,7 @@
       });
       q.appendChild(wrap);
       q.appendChild(expl);
+      q.appendChild(actions);
       zhLang(q);
       quiz.appendChild(q);
     });
@@ -241,6 +426,24 @@
       const rb = el("button", "retry-btn", "↻ Retry");
       rb.onclick = () => { root.innerHTML = ""; renderMcq(sec, root); };
       scoreBox.appendChild(rb);
+      // last quiz of a topic: hand the learner their next step
+      if (sec._last && currentPage) {
+        const extra = el("div", "score-next");
+        const st = missStats();
+        if (st.due) {
+          const a = el("a", null, "Review " + st.due + " missed question" + (st.due > 1 ? "s" : "") + " →");
+          a.href = "../review.html";
+          extra.appendChild(a);
+        }
+        const all = window.ALL_PAGES || [];
+        const nxt = all[all.findIndex(p => p.id === currentPage.id) + 1];
+        if (nxt) {
+          const a = el("a", null, "Next topic: " + stripMarks(nxt.zh) + " →");
+          a.href = nxt.id + ".html";
+          extra.appendChild(a);
+        }
+        if (extra.children.length) scoreBox.appendChild(extra);
+      }
       scoreBox.classList.remove("hidden");
     }
     quiz.appendChild(scoreBox);
@@ -287,7 +490,9 @@
       const reset = el("button", "btn ghost", "Reset");
       const reveal = el("button", "btn ghost hidden", "Show answer");
       const next = el("button", "btn primary hidden", idx < sec.items.length - 1 ? "Next →" : "Done ✓");
-      let firstTry = true;
+      let firstTry = true, lastWrong = "";
+      const ai = aiBtn("Copy for AI", () => builderPrompt(item, lastWrong));
+      ai.classList.add("hidden");
       function success(viaReveal) {
         solved = true;
         answer.classList.add("ok");
@@ -298,6 +503,7 @@
         reveal.classList.add("hidden");
         reset.classList.add("hidden");
         next.classList.remove("hidden");
+        ai.classList.remove("hidden");
         if (!viaReveal) speak(item.tiles.join(""));
       }
       check.onclick = () => {
@@ -312,6 +518,8 @@
           if (firstTry) recordMiss(missId, false);
           firstTry = false;
           fails++;
+          lastWrong = got.replace(/\u0001/g, ""); // got uses the tile-boundary separator; the prompt wants plain text
+          ai.classList.remove("hidden");
           answer.classList.add("bad");
           feedback.innerHTML = '<span style="color:var(--bad)">Not yet — ' +
             (fails >= 2 ? "you can reveal the answer, or keep trying."
@@ -334,6 +542,7 @@
       controls.appendChild(reset);
       controls.appendChild(reveal);
       controls.appendChild(next);
+      controls.appendChild(ai);
       box.appendChild(answer);
       box.appendChild(pool);
       box.appendChild(controls);
@@ -361,6 +570,9 @@
       if (item.py) fix.appendChild(el("div", "ex-py", fmt(item.py)));
       if (item.en) fix.appendChild(el("div", "ex-en", fmt(item.en)));
       fix.appendChild(el("div", "er-expl", "🩺 " + item.expl));
+      const actions = el("div", "q-actions");
+      actions.appendChild(aiBtn("Copy for AI", () => clinicPrompt(item)));
+      fix.appendChild(actions);
       btn.onclick = () => { fix.classList.remove("hidden"); btn.classList.add("hidden"); };
       card.appendChild(btn);
       card.appendChild(fix);
@@ -387,16 +599,21 @@
   /* ---------------- page assembly ---------------- */
   window.registerPage = function (page) {
     if (window.COLLECT_PAGES) { window.COLLECT_PAGES.push(page); return; } // review.html: collect, don't render
+    currentPage = page;
     tracker.pageId = page.id;
     tracker.results = {};
     tracker.total = 0;
+    let lastMcq = null;
     page.sections.forEach((s, i) => {
       if (s.type === "mcq" || s.type === "builder") {
         s._qkey = "s" + i;
         tracker.total += s.items.length;
       }
+      if (s.type === "mcq") lastMcq = s;
     });
+    if (lastMcq) lastMcq._last = true; // final drill gets the "what's next" links
     markVisited(page.id);
+    try { localStorage.setItem("hsk4lab-last", JSON.stringify({ id: page.id, t: Date.now() })); } catch (e) {}
 
     const zhTitle = stripMarks(page.zh);
     document.title = (page.title.includes(zhTitle) ? page.title : zhTitle + " — " + page.title) + " · HSK 4 Grammar Lab";
@@ -444,19 +661,31 @@
       wrap.appendChild(s);
     });
 
+    // AI practice card (the site never calls an API — it hands the learner a prompt)
+    const aiCard = el("div", "ai-topic");
+    const aiTxt = el("div", "ai-topic-text");
+    aiTxt.appendChild(el("b", null, "🤖 Practice more with AI"));
+    aiTxt.appendChild(el("span", null, "Copies this topic's rules plus a request for 10 fresh exam-style questions — paste it into ChatGPT, Claude or any AI chatbot."));
+    aiCard.appendChild(aiTxt);
+    aiCard.appendChild(aiBtn("Copy practice prompt", () => topicPrompt(page)));
+    wrap.appendChild(aiCard);
+
     // pager
     const all = window.ALL_PAGES || [];
     const pos = all.findIndex(p => p.id === page.id);
     const pager = el("div", "pager");
+    const pagerTitle = p => p.title.includes(stripMarks(p.zh))
+      ? '<span class="p-zh">' + esc(p.title) + "</span>"
+      : '<span class="p-zh">' + esc(p.zh) + "</span> · " + esc(p.title);
     if (pos > 0) {
       const p = all[pos - 1];
-      const a = el("a", "prev", '<div class="dir">← Previous</div><div class="p-title"><span class="p-zh">' + esc(p.zh) + "</span> · " + esc(p.title) + "</div>");
+      const a = el("a", "prev", '<div class="dir">← Previous</div><div class="p-title">' + pagerTitle(p) + "</div>");
       a.href = p.id + ".html";
       pager.appendChild(a);
     }
     if (pos >= 0 && pos < all.length - 1) {
       const p = all[pos + 1];
-      const a = el("a", "next", '<div class="dir">Next →</div><div class="p-title"><span class="p-zh">' + esc(p.zh) + "</span> · " + esc(p.title) + "</div>");
+      const a = el("a", "next", '<div class="dir">Next →</div><div class="p-title">' + pagerTitle(p) + "</div>");
       a.href = p.id + ".html";
       pager.appendChild(a);
     }
@@ -472,6 +701,30 @@
   };
 
   /* ---------------- review page (错题本) ---------------- */
+  function missesReviewPrompt(list) {
+    const byTopic = {};
+    list.forEach(r => { (byTopic[r.item._srcTopic] = byTopic[r.item._srcTopic] || []).push(r); });
+    const lines = [AI_PREAMBLE, "",
+      "Below is my current wrong-answer list from the site, grouped by grammar topic (×N = how many times I've missed it)."];
+    for (const topic of Object.keys(byTopic)) {
+      lines.push("", "Topic: " + topic);
+      byTopic[topic].forEach(r => {
+        const it = r.item;
+        if (r.type === "mcq") {
+          lines.push("- [multiple choice] " + plain(it.q) + " | choices: " + it.choices.map(plain).join(" / ") +
+            " | correct: " + plain(it.choices[it.a]) + " | ×" + r.miss.n);
+        } else {
+          lines.push('- [word order] ' + it.tiles.join("") + (it.en ? ' ("' + plain(it.en) + '")' : "") + " | ×" + r.miss.n);
+        }
+      });
+    }
+    lines.push("", "Please:",
+      "1. Look at these misses together and identify the underlying grammar patterns I'm confusing.",
+      "2. Rank my 3 weakest areas, with a one-line diagnosis each.",
+      "3. Coach me on the weakest one: a short, focused explanation first, then 5 new HSK 4-level practice questions, one at a time — correct and explain each of my answers.");
+    return lines.join("\n");
+  }
+
   window.renderReview = function () {
     const pages = window.COLLECT_PAGES || [];
     const misses = loadMisses();
@@ -493,8 +746,9 @@
     hero.appendChild(el("h1", null, "Review your misses"));
     wrap.appendChild(hero);
 
-    const mcqItems = [], builderItems = [];
-    let stale = false;
+    const mcqItems = [], builderItems = [], allResolved = [];
+    let stale = false, scheduled = 0, nextDue = null;
+    const t = dateStr(0);
     for (const id of Object.keys(misses)) {
       const m = id.match(/^(.+)\/s(\d+):(\d+)$/);
       const page = m && pages.find(p => p.id === m[1]);
@@ -503,18 +757,35 @@
       if (!item || (sec.type !== "mcq" && sec.type !== "builder")) {
         delete misses[id]; stale = true; continue; // content moved since the miss was saved
       }
-      const copy = Object.assign({}, item, { _src: id, _srcLabel: stripMarks(page.zh) });
+      const copy = Object.assign({}, item, { _src: id, _srcLabel: stripMarks(page.zh), _srcTopic: topicLabel(page) });
+      allResolved.push({ type: sec.type, item: copy, miss: misses[id] });
+      if (misses[id].due > t) { // scheduled for a later day — spaced repetition at work
+        scheduled++;
+        if (!nextDue || misses[id].due < nextDue) nextDue = misses[id].due;
+        continue;
+      }
       (sec.type === "mcq" ? mcqItems : builderItems).push(copy);
     }
     if (stale) saveMisses(misses);
 
+    if (allResolved.length) {
+      const acts = el("div", "review-actions");
+      acts.appendChild(aiBtn("Copy all my misses for AI (" + allResolved.length + ")", () => missesReviewPrompt(allResolved)));
+      hero.appendChild(acts);
+    }
+
     if (!mcqItems.length && !builderItems.length) {
-      hero.appendChild(el("p", "subtitle", "Nothing to review — 太棒了！ Miss a question anywhere on the site and it lands here for another round."));
+      hero.insertBefore(el("p", "subtitle", scheduled
+        ? "Nothing due today — 太棒了！ " + scheduled + " question" + (scheduled > 1 ? "s are" : " is") + " scheduled to come back on " + nextDue + "."
+        : "Nothing to review — 太棒了！ Miss a question anywhere on the site and it lands here for another round."),
+        hero.querySelector(".review-actions"));
       wrap.appendChild(el("p", null, '<a href="index.html">← Back to all topics</a>'));
       zhLang(wrap);
       return;
     }
-    hero.appendChild(el("p", "subtitle", "Every question you missed on a first try, from every topic. Answer one correctly here and it leaves the list — reload to see it gone."));
+    hero.insertBefore(el("p", "subtitle", "Questions you missed, back on a spaced schedule. Answer one correctly and it levels up (level 3 graduates it for good); miss it again and it starts over." +
+      (scheduled ? " " + scheduled + " more scheduled from " + nextDue + "." : "")),
+      hero.querySelector(".review-actions"));
 
     let n = 0;
     const addSection = (title, type, items) => {
@@ -530,7 +801,7 @@
     };
     addSection("Missed questions (" + mcqItems.length + ")", "mcq", shuffled(mcqItems));
     addSection("Missed sentence builds (" + builderItems.length + ")", "builder", shuffled(builderItems));
-    wrap.appendChild(el("div", "site-footer", "First-try correct answers are removed from this list. 加油！"));
+    wrap.appendChild(el("div", "site-footer", "Correct answers move a question up a level — it comes back after 2, then 5 days, then graduates for good. 加油！"));
     zhLang(wrap);
   };
 
@@ -560,12 +831,34 @@
     hero.appendChild(stats);
     wrap.appendChild(hero);
 
-    // review strip (错题本)
-    const missCount = Object.keys(loadMisses()).length;
+    // today strip: continue where you left off + suggested next topic
+    const lastRaw = (() => { try { return JSON.parse(localStorage.getItem("hsk4lab-last")); } catch (e) { return null; } })();
+    const lastPage = lastRaw && window.ALL_PAGES.find(p => p.id === lastRaw.id);
+    const nextPage = window.ALL_PAGES.find(p =>
+      (!lastPage || p.id !== lastPage.id) && ((store[p.id] || {}).best || 0) < 80);
+    if (lastPage || nextPage) {
+      const strip = el("div", "today-strip");
+      const chip = (dir, p) => {
+        const zh = stripMarks(p.zh);
+        const label = p.title.includes(zh) ? '<span class="t-zh">' + esc(p.title) + "</span>"
+          : '<span class="t-zh">' + esc(zh) + "</span> · " + esc(p.title);
+        const a = el("a", null, '<div class="dir">' + dir + '</div><div class="t-title">' + label + "</div>");
+        a.href = "topics/" + p.id + ".html";
+        strip.appendChild(a);
+      };
+      if (lastPage) chip("▶ Continue", lastPage);
+      if (nextPage) chip(lastPage ? "Next up" : "Start here", nextPage);
+      wrap.appendChild(strip);
+    }
+
+    // review strip (错题本) — shows what's DUE, not just what exists
+    const mStats = missStats();
     const rev = el("a", "review-link");
     rev.href = "review.html";
     rev.innerHTML = '<span class="rl-zh">错题本</span><b>Review your misses</b>' +
-      (missCount ? '<span class="rl-count">' + missCount + "</span>" : '<span class="rl-empty">questions you miss collect here</span>');
+      (mStats.due ? '<span class="rl-count">' + mStats.due + " due</span>" :
+       mStats.scheduled ? '<span class="rl-empty">none due today ✓ · ' + mStats.scheduled + " scheduled for " + mStats.next + "</span>" :
+       '<span class="rl-empty">questions you miss collect here</span>');
     wrap.appendChild(rev);
 
     M.units.forEach(u => {
@@ -592,7 +885,66 @@
       unit.appendChild(cards);
       wrap.appendChild(unit);
     });
+    // backup / cross-device sync: export & import via clipboard (no account, no server)
+    const dataRow = el("div", "data-row");
+    dataRow.appendChild(el("span", null, "Progress is saved in this browser only —"));
+    const exp = el("button", "toggle-btn", "Export progress");
+    exp.onclick = () => copyText(
+      JSON.stringify({ v: 1, exported: dateStr(0), progress: loadStore(), misses: loadMisses() }),
+      "Progress copied — paste it into Import on your other device");
+    const imp = el("button", "toggle-btn", "Import");
+    dataRow.appendChild(exp);
+    dataRow.appendChild(imp);
+    const panel = el("div", "data-import hidden");
+    const ta = el("textarea");
+    ta.placeholder = "Paste an export from your other device here…";
+    const apply = el("button", "btn primary", "Import & merge");
+    apply.onclick = () => {
+      const err = importData(ta.value.trim());
+      if (err) { toast(err); return; }
+      toast("Imported ✓ — reloading…");
+      setTimeout(() => location.reload(), 900);
+    };
+    imp.onclick = () => panel.classList.toggle("hidden");
+    panel.appendChild(ta);
+    panel.appendChild(apply);
+    wrap.appendChild(dataRow);
+    wrap.appendChild(panel);
+
     wrap.appendChild(el("div", "site-footer", "Best score per topic is saved in your browser. 🏅 = 80%+ · Built for the HSK 3 → HSK 4 jump."));
     zhLang(wrap);
   };
+
+  // merge an exported snapshot into this browser's stores (never deletes local data)
+  function importData(text) {
+    let data;
+    try { data = JSON.parse(text); } catch (e) { return "That isn't valid JSON — paste the exact text from Export."; }
+    if (!data || data.v !== 1 || !data.progress || typeof data.progress !== "object" ||
+        !data.misses || typeof data.misses !== "object") return "That doesn't look like an export from this site.";
+    const store = loadStore();
+    for (const id of Object.keys(data.progress)) {
+      const inc = data.progress[id] || {}, cur = store[id] || {};
+      cur.visited = !!(cur.visited || inc.visited);
+      if (inc.total) cur.total = Math.max(cur.total || 0, inc.total);
+      if (inc.answered) cur.answered = Math.max(cur.answered || 0, inc.answered);
+      if (inc.best) cur.best = Math.min(100, Math.max(cur.best || 0, inc.best));
+      store[id] = cur;
+    }
+    const m = loadMisses();
+    for (const id of Object.keys(data.misses)) {
+      const inc = normMiss(data.misses[id]);
+      if (!inc) continue;
+      const cur = m[id];
+      if (!cur) { m[id] = inc; continue; }
+      // keep the more conservative schedule: lower box wins; same box → earlier due
+      m[id] = {
+        n: Math.max(cur.n, inc.n),
+        box: Math.min(cur.box, inc.box),
+        due: cur.box < inc.box ? cur.due : inc.box < cur.box ? inc.due : (cur.due < inc.due ? cur.due : inc.due)
+      };
+    }
+    saveStore(store);
+    saveMisses(m);
+    return null;
+  }
 })();
