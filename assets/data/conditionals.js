@@ -50,7 +50,7 @@ The cloze section plants 只要/只有 blanks constantly, and the wrong partner 
       type: "examples",
       title: "Model sentences — hear the logic",
       short: "Examples",
-      intro: "Tap to listen. For each one, ask the engineer's question: sufficient, necessary, unless, worst case, or all cases?",
+      intro: "Tap 🔊 to listen. For each one, ask the engineer's question: sufficient, necessary, unless, worst case, or all cases?",
       items: [
         { tag: "只要", cn: "**只要**你按时吃药，感冒很快**就**会好的。", py: "Zhǐyào nǐ ànshí chī yào, gǎnmào hěn kuài jiù huì hǎo de.", en: "As long as you take the medicine on time, your cold will get better quickly.", note: "Taking the medicine is enough — sufficient condition, partner 就." },
         { tag: "只要②", cn: "**只要**一有空，他**就**去踢足球。", py: "Zhǐyào yì yǒu kòng, tā jiù qù tī zúqiú.", en: "Whenever he has any free time at all, he goes to play soccer.", note: "只要…就 also covers habitual 'whenever' — any occurrence of A triggers B." },

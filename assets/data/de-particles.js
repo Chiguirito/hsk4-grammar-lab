@@ -63,7 +63,7 @@ The word after 地 is a verb, but the word after 的 can ALSO be missing: <span 
       type: "examples",
       title: "Model sentences — all three in the wild",
       short: "Examples",
-      intro: "Tap to listen. Before reading the note, name which de is used and why.",
+      intro: "Tap 🔊 to listen. Before reading the note, name which de is used and why.",
       items: [
         { tag: "的", cn: "这是谁**的**伞？拿错**的**人请还给我。", py: "Zhè shì shéi de sǎn? Ná cuò de rén qǐng huán gěi wǒ.", en: "Whose umbrella is this? Whoever took the wrong one, please return it to me.", note: "Two 的: possession (谁的) and a whole clause turned into a noun-modifier (拿错的人)." },
         { tag: "的", cn: "我最喜欢喝妈妈做**的**汤。", py: "Wǒ zuì xǐhuan hē māma zuò de tāng.", en: "I love the soup my mom makes most.", note: "妈妈做 is a mini-sentence stuck onto 汤 — Chinese relative clauses always end in 的." },

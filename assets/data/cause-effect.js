@@ -51,7 +51,7 @@ Reading part 2 (sentence ordering) almost always contains one 因果 pair, and t
       type: "examples",
       title: "Model sentences — hear the register shift",
       short: "Examples",
-      intro: "Tap to listen. Same logical arrow (cause → effect), six different flavors — notice which ones feel like a news report and which like a chat.",
+      intro: "Tap 🔊 to listen. Same logical arrow (cause → effect), six different flavors — notice which ones feel like a news report and which like a chat.",
       items: [
         { tag: "因为", cn: "**因为**路上堵车，**所以**我迟到了二十分钟。", py: "Yīnwèi lùshang dǔchē, suǒyǐ wǒ chídào le èrshí fēnzhōng.", en: "I was twenty minutes late because of the traffic jam.", note: "The HSK 3 classic — still correct, still common. Either 因为 or 所以 can be dropped." },
         { tag: "因为②", cn: "我昨天没去上课，**因为**我感冒了。", py: "Wǒ zuótiān méi qù shàngkè, yīnwèi wǒ gǎnmào le.", en: "I didn't go to class yesterday, because I had a cold.", note: "因为 is the ONLY cause word that can trail after the result — 由于/既然 can't do this." },

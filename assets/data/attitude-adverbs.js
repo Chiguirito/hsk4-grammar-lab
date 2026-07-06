@@ -52,7 +52,7 @@ Listening asks 说话人是什么意思/态度 ("what does the speaker mean/feel
       type: "examples",
       title: 'Model sentences — hear the attitude',
       short: "Examples",
-      intro: "One sentence per adverb. Tap to listen and name the feeling before checking the note.",
+      intro: "One sentence per adverb. Tap 🔊 to listen and name the feeling before checking the note.",
       items: [
         { tag: "竟然", cn: "没想到他**竟然**把这件事忘得干干净净。", py: "Méi xiǎngdào tā jìngrán bǎ zhè jiàn shì wàng de gāngānjìngjìng.", en: "I never expected him to forget the whole thing completely.", note: "没想到 + 竟然 = the standard surprise sandwich." },
         { tag: "居然", cn: "这么重要的会议，他**居然**没参加。", py: "Zhème zhòngyào de huìyì, tā jūrán méi cānjiā.", en: "Such an important meeting — and he actually didn't show up.", note: "居然 = 竟然 with the eyebrows slightly higher (more indignant)." },

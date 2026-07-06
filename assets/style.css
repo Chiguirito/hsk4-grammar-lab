@@ -14,7 +14,7 @@
   --accent-soft: #fdeeec;
   --accent-2: #0f766e;        /* teal for pinyin / secondary */
   --accent-2-soft: #e6f4f2;
-  --gold: #b8860b;
+  --gold: #8a6508;          /* AA as small text on --gold-soft (4.9:1) */
   --gold-soft: #fdf6e3;
   --ok: #15803d;
   --ok-soft: #e9f7ee;
@@ -23,14 +23,19 @@
   --border: #e7e0d4;
   --shadow: 0 1px 2px rgba(43,41,38,.05), 0 8px 24px -12px rgba(43,41,38,.18);
   --radius: 14px;
+  --sticky-h: 54px;           /* height of the sticky topbar — anchor jumps land below it */
   --zh-font: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   --ui-font: "Source Sans 3", "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* jumps are instant on purpose: lessons are ~14,500px tall — smooth scrolling
+   a TOC jump animates for seconds and is a vestibular trigger */
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+/* keyboard focus must be visible on the warm palette (UA default is faint) */
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
 }
 /* visually hidden but read by screen readers (live regions, labels) */
 .sr-only {
@@ -54,7 +59,11 @@ body {
   font-size: 17px;
   -webkit-font-smoothing: antialiased;
 }
-.wrap { max-width: 880px; margin: 0 auto; padding: 0 20px 90px; }
+.wrap {
+  max-width: 880px; margin: 0 auto; padding: 0 20px 90px;
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+}
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
@@ -75,7 +84,6 @@ a:hover { text-decoration: underline; }
   transition: all .15s ease;
 }
 .toggle-btn.on { border-color: var(--accent-2); background: var(--accent-2-soft); color: var(--accent-2); }
-.toggle-btn:hover { transform: translateY(-1px); }
 
 .hero { padding: 26px 0 8px; }
 .hero .unit-chip {
@@ -91,24 +99,77 @@ a:hover { text-decoration: underline; }
 .hero h1 { font-size: clamp(1.3rem, 3vw, 1.7rem); margin: 0 0 10px; font-weight: 700; }
 .hero .subtitle { color: var(--ink-soft); font-size: 1.05rem; max-width: 640px; margin: 0; }
 
-/* ---------- section nav chips ---------- */
-.chipnav {
+/* ---------- sticky topbar: section chips + "you are here" ---------- */
+.topbar {
   position: sticky; top: 0; z-index: 50;
-  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  /* 95%: translucency stays visible but dark content scrolling beneath can't
+     drag the Part label below AA contrast */
+  background: color-mix(in srgb, var(--paper) 95%, transparent);
   backdrop-filter: blur(8px);
-  padding: 10px 0; margin: 18px 0 10px;
-  display: flex; gap: 8px; overflow-x: auto; scrollbar-width: thin;
+  padding: 8px 0; padding-top: max(8px, env(safe-area-inset-top));
+  margin: 18px 0 10px;
+  display: flex; align-items: center; gap: 10px;
   border-bottom: 1px solid var(--border);
 }
-.chipnav a {
+.topbar .tb-title {
+  flex: 0 0 auto; max-width: 26%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-weight: 700; font-size: .9rem; opacity: 0; transition: opacity .2s ease;
+}
+.topbar.past-hero .tb-title { opacity: 1; }
+@media (max-width: 640px) { .topbar .tb-title { display: none; } } /* no room — chips + Part label suffice */
+.tb-title .zh { font-family: var(--zh-font); color: var(--accent); }
+.chip-scroll {
+  flex: 1 1 auto; min-width: 0;
+  display: flex; gap: 8px; overflow-x: auto; scrollbar-width: thin;
+}
+/* fade the row's edges so hidden chips are visibly "more", not clipped */
+.chip-scroll.can-r { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); }
+.chip-scroll.can-l { -webkit-mask-image: linear-gradient(90deg, transparent, #000 28px); mask-image: linear-gradient(90deg, transparent, #000 28px); }
+.chip-scroll.can-l.can-r { -webkit-mask-image: linear-gradient(90deg, transparent, #000 28px, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(90deg, transparent, #000 28px, #000 calc(100% - 28px), transparent); }
+.chip-scroll a {
   flex: 0 0 auto; font-size: .82rem; font-weight: 600; color: var(--ink-soft);
   border: 1px solid var(--border); background: var(--card); border-radius: 999px;
-  padding: 4px 12px; white-space: nowrap;
+  padding: 5px 12px; white-space: nowrap;
+  display: inline-flex; align-items: center;
 }
-.chipnav a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+.chip-scroll a.act { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.chip-scroll a .tick { color: var(--ok); margin-right: 4px; }
+.chip-scroll a.act .tick { color: inherit; } /* --ok on accent-soft falls under AA */
+.tb-part {
+  flex: 0 0 auto; font-size: .78rem; font-weight: 600; color: var(--muted);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.tb-progress {
+  position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
+  background: var(--accent); transform-origin: 0 50%; transform: scaleX(0);
+}
+
+/* ---------- sidebar TOC (wide screens; typography-only rail) ---------- */
+.toc { display: none; }
+@media (min-width: 1180px) {
+  .wrap.with-toc { max-width: 1156px; display: grid; grid-template-columns: 200px minmax(0, 880px); column-gap: 36px; align-items: start; }
+  .wrap.with-toc > .content-col { min-width: 0; grid-column: 2; }
+  .wrap.with-toc > .skip-link { grid-column: 2; }
+  .toc {
+    display: block; grid-column: 1; position: sticky; top: 14px;
+    max-height: calc(100dvh - 28px); overflow-y: auto; overscroll-behavior: contain;
+    padding: 12px 0 12px 2px; font-size: .8rem; line-height: 1.4;
+  }
+  .toc .toc-head { font-size: .68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin: 0 0 8px 16px; }
+  .toc a { display: block; color: var(--ink-soft); padding: 5px 10px 5px 14px; border-left: 2px solid var(--border); }
+  .toc a:hover { color: var(--accent); text-decoration: none; }
+  .toc a.act { color: var(--accent); font-weight: 600; border-left-color: var(--accent); }
+  .toc a .tick { color: var(--ok); }
+  .toc .toc-num { color: var(--muted); font-variant-numeric: tabular-nums; margin-right: 6px; }
+  .toc a.act .toc-num { color: inherit; }
+  .toc .toc-pager { margin: 12px 0 0 16px; border-top: 1px dashed var(--border); padding-top: 10px; display: grid; gap: 6px; font-size: .78rem; }
+  /* the rail replaces the chip row up here — one section nav at a time */
+  .wrap.with-toc .chip-scroll { display: none; }
+}
 
 /* ---------- sections ---------- */
-section.block { margin: 44px 0; scroll-margin-top: 70px; }
+section.block { margin: 44px 0; scroll-margin-top: calc(var(--sticky-h) + 12px); }
+section.block:focus { outline: none; } /* programmatic focus target for TOC/chip jumps */
 .sec-kicker { color: var(--accent); font-weight: 700; font-size: .8rem; letter-spacing: 1.2px; text-transform: uppercase; }
 section.block > h2 {
   font-size: clamp(1.35rem, 3vw, 1.7rem); margin: 4px 0 14px; line-height: 1.3;
@@ -116,9 +177,13 @@ section.block > h2 {
 section.block > h2 .zh { font-family: var(--zh-font); }
 .sec-intro { color: var(--ink-soft); margin: 0 0 18px; max-width: 700px; }
 
-/* ---------- prose / concept ---------- */
-.prose { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 22px 26px; }
+/* ---------- prose / concept ----------
+   Reading surfaces are FLAT (border only); interactive surfaces (.q, .builder,
+   .er, .card) keep the shadow — a "read vs do" rhythm on very long pages. */
+.prose { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 26px; }
 .prose p { margin: 0 0 14px; }
+/* comfortable reading measure inside full-width cards */
+.prose p, .prose li, .sec-intro, .q-expl, .er-expl, .callout, .ex-note { max-width: 68ch; }
 .prose p:last-child { margin-bottom: 0; }
 .prose h3 { margin: 20px 0 8px; font-size: 1.08rem; }
 .prose ul, .prose ol { margin: 0 0 14px; padding-left: 22px; }
@@ -149,21 +214,22 @@ b.hl, .hl { color: var(--accent); font-weight: 700; font-style: normal; }
 .ex-list { display: grid; gap: 12px; }
 .ex {
   background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
-  box-shadow: var(--shadow); padding: 16px 20px; position: relative;
+  padding: 16px 20px; position: relative;
 }
 .ex .tag {
   position: absolute; top: -9px; left: 14px; background: var(--accent-fill); color: #fff;
   font-size: .68rem; font-weight: 700; letter-spacing: .6px; border-radius: 999px; padding: 2px 10px;
   text-transform: uppercase;
 }
+/* sentence text is selectable on purpose: long-press Look Up / dictionary
+   lookups must work — audio lives on the 🔊 button only */
 .ex-cn {
-  font-family: var(--zh-font); font-size: 1.38rem; line-height: 1.75; cursor: pointer;
+  font-family: var(--zh-font); font-size: 1.38rem; line-height: 1.75;
   display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
 }
-.ex-cn:hover { color: #000; }
 .spk {
-  border: none; background: transparent; cursor: pointer; font-size: 1rem; opacity: .7;
-  padding: 8px; margin: -6px -2px; min-width: 36px; min-height: 36px; line-height: 1;
+  border: none; background: transparent; cursor: pointer; font-size: 1.15rem; opacity: .8;
+  padding: 8px; margin: -6px -2px; min-width: 40px; min-height: 40px; line-height: 1;
   align-self: center; /* padding+negative margin: a real touch target without layout shift */
 }
 .spk:hover, .spk:focus-visible { opacity: 1; }
@@ -176,7 +242,7 @@ b.hl, .hl { color: var(--accent); font-weight: 700; font-style: normal; }
 .hide-py .py-hint { display: none; }
 
 /* ---------- tables ---------- */
-.tbl-wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+.tbl-wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); }
 table.tbl { border-collapse: collapse; width: 100%; font-size: .95rem; }
 table.tbl th {
   background: var(--paper-2); text-align: left; padding: 10px 14px; font-size: .82rem;
@@ -187,7 +253,7 @@ table.tbl tr:last-child td { border-bottom: none; }
 table.tbl td:first-child { font-family: var(--zh-font); font-weight: 600; white-space: nowrap; }
 
 /* ---------- tabs ---------- */
-.tabs { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.tabs { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
 .tab-bar { display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--border); background: var(--paper-2); }
 .tab-bar button {
   border: none; background: transparent; padding: 12px 18px; font-family: var(--zh-font);
@@ -215,11 +281,11 @@ table.tbl td:first-child { font-family: var(--zh-font); font-weight: 600; white-
   font-family: var(--ui-font); transition: all .12s ease; color: var(--ink);
 }
 .q-choices button .zh { font-size: 1.1rem; }
-.q-choices button:hover:not(:disabled):not([aria-disabled="true"]) { border-color: var(--accent); transform: translateY(-1px); }
 .q-choices button:disabled, .q-choices button[aria-disabled="true"] { cursor: default; }
 .q-choices button.correct { border-color: var(--ok); background: var(--ok-soft); font-weight: 600; }
 .q-choices button.wrong { border-color: var(--bad); background: var(--bad-soft); }
-.q-choices button.dim { opacity: .55; }
+/* eliminated options recede structurally too — opacity alone is weak in dark mode */
+.q-choices button.dim { opacity: .6; border-color: color-mix(in srgb, var(--border) 45%, transparent); }
 .q-result { margin-top: 10px; font-weight: 700; font-size: .95rem; }
 .q-result.good { color: var(--ok); }
 .q-result.bad { color: var(--bad); }
@@ -240,7 +306,6 @@ table.tbl td:first-child { font-family: var(--zh-font); font-weight: 600; white-
   margin-left: auto; border: 1px solid #6b6458; background: transparent; color: #f6f1e7;
   border-radius: 999px; padding: 5px 14px; cursor: pointer; font-size: .85rem;
 }
-.retry-btn:hover { border-color: #f7c948; color: #f7c948; }
 
 /* ---------- sentence builder ---------- */
 .builder {
@@ -262,14 +327,12 @@ table.tbl td:first-child { font-family: var(--zh-font); font-weight: 600; white-
   border: 1.5px solid var(--border); border-radius: 10px; padding: 6px 13px; cursor: pointer;
   box-shadow: 0 2px 0 var(--border); user-select: none; transition: all .1s ease;
 }
-.tile:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
 .tile:active { transform: translateY(1px); box-shadow: none; }
 .b-controls { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; align-items: center; }
 .btn {
   border: none; border-radius: 999px; padding: 8px 20px; font-weight: 700; font-size: .92rem;
   cursor: pointer; font-family: var(--ui-font); transition: transform .1s;
 }
-.btn:hover { transform: translateY(-1px); }
 .btn.primary { background: var(--accent-fill); color: #fff; }
 .btn.ghost { background: transparent; border: 1.5px solid var(--border); color: var(--ink-soft); }
 .b-feedback { margin-top: 12px; font-size: .95rem; }
@@ -308,26 +371,56 @@ table.tbl td:first-child { font-family: var(--zh-font); font-weight: 600; white-
   flex: 1 1 220px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
   box-shadow: var(--shadow); padding: 16px 20px; color: var(--ink); transition: all .15s;
 }
-.pager a:hover { text-decoration: none; border-color: var(--accent); transform: translateY(-2px); }
 .pager .dir { font-size: .75rem; font-weight: 700; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
 .pager .p-title { font-weight: 700; margin-top: 3px; }
 .pager .p-zh { font-family: var(--zh-font); color: var(--accent); }
 .pager a.next { text-align: right; }
 .site-footer { margin-top: 50px; color: var(--muted); font-size: .85rem; text-align: center; }
 
-/* ---------- review link (错题本) ---------- */
-.review-link {
-  display: flex; align-items: center; gap: 12px; margin: 6px 0 8px;
-  background: var(--card); border: 1.5px dashed var(--border); border-radius: var(--radius);
-  padding: 14px 20px; color: var(--ink); transition: all .15s ease;
+/* ---------- Today panel (index) ---------- */
+.today-panel {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 16px 20px; margin: 0 0 18px;
 }
-.review-link:hover { text-decoration: none; border-color: var(--accent); transform: translateY(-2px); }
-.review-link .rl-zh { font-family: var(--zh-font); font-weight: 700; color: var(--accent); font-size: 1.15rem; }
-.review-link .rl-count {
-  margin-left: auto; background: var(--accent-fill); color: #fff; font-weight: 700;
-  border-radius: 999px; padding: 2px 12px; font-size: .9rem;
+.tp-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.tp-kicker { color: var(--accent); font-weight: 700; font-size: .75rem; letter-spacing: 1.2px; text-transform: uppercase; }
+.tp-streak {
+  margin-left: auto; background: var(--gold-soft); color: var(--gold);
+  border-radius: 999px; padding: 2px 12px; font-size: .78rem; font-weight: 700;
 }
-.review-link .rl-empty { margin-left: auto; color: var(--muted); font-size: .85rem; }
+.tp-streak .dots { letter-spacing: 2px; margin-right: 6px; }
+.tp-main { margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.tp-main .btn { text-decoration: none; display: inline-block; }
+.tp-rows { margin-top: 12px; border-top: 1px dashed var(--border); padding-top: 10px; display: flex; gap: 6px 26px; flex-wrap: wrap; font-size: .92rem; }
+.tp-rows a { color: var(--ink); }
+.tp-rows .dir { font-size: .72rem; font-weight: 700; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; margin-right: 6px; }
+.tp-rows .t-zh { font-family: var(--zh-font); color: var(--accent); font-weight: 700; }
+
+/* ---------- resume pill + retest banner (topic pages) ---------- */
+.resume-row { display: flex; align-items: center; gap: 8px; margin: 12px 0 0; flex-wrap: wrap; }
+.resume-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--ink); color: #f6f1e7; border-radius: 999px; padding: 8px 18px;
+  font-size: .9rem; font-weight: 600;
+}
+.resume-pill:hover { text-decoration: none; }
+.resume-dismiss {
+  border: 1.5px solid var(--border); background: var(--card); color: var(--muted);
+  border-radius: 999px; min-width: 36px; min-height: 36px; cursor: pointer; font-size: .9rem;
+}
+.retest-banner {
+  display: inline-flex; align-items: center; gap: 10px; margin: 12px 0 0; flex-wrap: wrap;
+  background: var(--accent-2-soft); border: 1.5px dashed var(--accent-2); border-radius: 999px;
+  padding: 7px 8px 7px 18px; font-size: .9rem;
+}
+.retest-banner a { color: var(--accent-2); font-weight: 700; }
+
+/* ---------- upcoming-review schedule strip (review page) ---------- */
+.sched { display: flex; gap: 6px; margin: 16px 0 2px; max-width: 440px; }
+.sched > div { flex: 1; text-align: center; font-size: .7rem; color: var(--muted); }
+.sched .bar { height: 36px; display: flex; align-items: flex-end; justify-content: center; margin-bottom: 3px; }
+.sched .bar i { width: 14px; background: var(--accent-2); border-radius: 3px 3px 0 0; }
+.sched .n { font-weight: 700; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
 
 /* ---------- AI tutor bridge (copy-for-AI buttons, toast) ---------- */
 .ai-btn {
@@ -335,7 +428,6 @@ table.tbl td:first-child { font-family: var(--zh-font); font-weight: 600; white-
   border-radius: 999px; padding: 6px 14px; font-weight: 700; font-size: .85rem;
   cursor: pointer; font-family: var(--ui-font); transition: all .12s ease;
 }
-.ai-btn:hover { background: var(--accent-2-soft); transform: translateY(-1px); }
 .q-actions { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
 .ai-topic {
   display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;
@@ -347,7 +439,7 @@ table.tbl td:first-child { font-family: var(--zh-font); font-weight: 600; white-
 .ai-topic-text span { color: var(--ink-soft); font-size: .92rem; }
 .review-actions { margin-top: 14px; }
 .toast {
-  position: fixed; left: 50%; bottom: 26px; transform: translate(-50%, 12px);
+  position: fixed; left: 50%; bottom: calc(26px + env(safe-area-inset-bottom)); transform: translate(-50%, 12px);
   background: var(--ink); color: var(--paper); padding: 10px 20px; border-radius: 999px;
   font-size: .9rem; font-weight: 600; opacity: 0; pointer-events: none;
   transition: opacity .25s ease, transform .25s ease; z-index: 200;
@@ -358,17 +450,6 @@ table.tbl td:first-child { font-family: var(--zh-font); font-weight: 600; white-
 /* ---------- quiz-score next-step links ---------- */
 .quiz-score .score-next { flex-basis: 100%; display: flex; gap: 16px; flex-wrap: wrap; }
 .quiz-score .score-next a { color: #f7c948; font-weight: 600; font-size: .9rem; }
-
-/* ---------- today strip (continue / next up) ---------- */
-.today-strip { display: flex; gap: 12px; margin: 0 0 14px; flex-wrap: wrap; }
-.today-strip a {
-  flex: 1 1 240px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
-  box-shadow: var(--shadow); padding: 12px 18px; color: var(--ink); transition: all .15s ease;
-}
-.today-strip a:hover { text-decoration: none; border-color: var(--accent); transform: translateY(-2px); }
-.today-strip .dir { font-size: .72rem; font-weight: 700; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
-.today-strip .t-title { font-weight: 700; margin-top: 2px; }
-.today-strip .t-zh { font-family: var(--zh-font); color: var(--accent); }
 
 /* ---------- progress export / import ---------- */
 .data-row {
@@ -387,10 +468,10 @@ table.tbl td:first-child { font-family: var(--zh-font); font-weight: 600; white-
 .idx-hero .zh-big { font-family: var(--zh-font); font-size: clamp(2.6rem, 7vw, 4rem); font-weight: 700; margin: 0; }
 .idx-hero .zh-big .accent { color: var(--accent); }
 .idx-hero p.lead { color: var(--ink-soft); font-size: 1.12rem; max-width: 620px; margin: 14px auto 0; }
-.idx-stats { display: flex; gap: 26px; justify-content: center; margin-top: 26px; flex-wrap: wrap; }
-.idx-stat { text-align: center; }
-.idx-stat .n { font-size: 1.9rem; font-weight: 800; color: var(--accent); }
-.idx-stat .l { font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+/* accent goes to YOUR numbers; the static content counts are a muted footnote */
+.idx-stats { display: grid; gap: 4px; justify-items: center; margin-top: 22px; }
+.idx-you { color: var(--accent); font-weight: 700; font-size: 1.05rem; }
+.idx-static { color: var(--muted); font-size: .85rem; }
 .unit { margin: 46px 0; }
 .unit-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
 .unit-head .u-zh { font-family: var(--zh-font); font-size: 1.6rem; font-weight: 700; color: var(--accent); }
@@ -402,7 +483,6 @@ table.tbl td:first-child { font-family: var(--zh-font); font-weight: 600; white-
   box-shadow: var(--shadow); padding: 18px 20px; color: var(--ink); position: relative;
   display: flex; flex-direction: column; gap: 6px; transition: all .15s ease;
 }
-.card:hover { text-decoration: none; transform: translateY(-3px); border-color: var(--accent); }
 .card .c-zh { font-family: var(--zh-font); font-size: 1.3rem; font-weight: 700; color: var(--accent); }
 .card .c-title { font-weight: 700; line-height: 1.35; }
 .card .c-blurb { font-size: .88rem; color: var(--ink-soft); flex: 1; }
@@ -417,6 +497,36 @@ table.tbl td:first-child { font-family: var(--zh-font); font-weight: 600; white-
   .prose, .q, .builder, .er { padding: 16px 16px; }
   .ex { padding: 14px 14px; }
   .ex-cn { font-size: 1.22rem; }
+}
+
+/* ---------- hover vs touch ----------
+   Hover affordances only where hover exists: iPadOS emulates :hover and makes
+   it STICK after a tap, so lift effects must never fire on touch. */
+@media (hover: hover) {
+  .toggle-btn:hover { transform: translateY(-1px); }
+  .chip-scroll a:hover, .toc a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+  .q-choices button:hover:not(:disabled):not([aria-disabled="true"]) { border-color: var(--accent); transform: translateY(-1px); }
+  .retry-btn:hover { border-color: #f7c948; color: #f7c948; }
+  .tile:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+  .btn:hover { transform: translateY(-1px); }
+  .pager a:hover { text-decoration: none; border-color: var(--accent); transform: translateY(-2px); }
+  .ai-btn:hover { background: var(--accent-2-soft); transform: translateY(-1px); }
+  .card:hover { text-decoration: none; transform: translateY(-3px); border-color: var(--accent); }
+}
+/* touch gets press-down feedback instead */
+.card:active, .pager a:active, .q-choices button:active:not([aria-disabled="true"]),
+.btn:active, .toggle-btn:active, .ai-btn:active, .chip-scroll a:active, .toc a:active,
+.retry-btn:active, .resume-pill:active { transform: scale(.985); }
+
+/* ---------- touch target sizes (Apple HIG: 44pt) ---------- */
+@media (pointer: coarse) {
+  .toggle-btn { min-height: 40px; padding: 8px 14px; }
+  .chip-scroll a { min-height: 40px; padding: 8px 13px; }
+  .q-choices button { min-height: 48px; }
+  .tile { min-height: 44px; padding: 9px 14px; }
+  .spk { min-width: 44px; min-height: 44px; }
+  .btn, .ai-btn, .retry-btn { min-height: 42px; }
+  .resume-dismiss { min-width: 42px; min-height: 42px; }
 }
 
 /* ---------- dark mode ----------
@@ -449,23 +559,24 @@ table.tbl td:first-child { font-family: var(--zh-font); font-weight: 600; white-
   background-image: radial-gradient(circle at 12% -5%, #221d15 0%, transparent 40%),
                     radial-gradient(circle at 95% 10%, #201c16 0%, transparent 35%);
 }
-[data-theme="dark"] .pattern, [data-theme="dark"] .quiz-score, [data-theme="dark"] .toast { background: #12100d; }
-[data-theme="dark"] .toast { color: #f6f1e7; }
+[data-theme="dark"] .pattern, [data-theme="dark"] .quiz-score, [data-theme="dark"] .toast, [data-theme="dark"] .resume-pill { background: #12100d; }
+[data-theme="dark"] .toast, [data-theme="dark"] .resume-pill { color: #f6f1e7; }
 [data-theme="dark"] .cheat { background: linear-gradient(135deg, #232019, #2c2414); border-color: #4a3f22; }
 [data-theme="dark"] .cheat table.tbl th { background: rgba(217,164,65,.1); }
 [data-theme="dark"] .callout.tip { border-color: #4a3f22; }
 [data-theme="dark"] .callout.warn { border-color: #4a2626; }
 [data-theme="dark"] .callout.cmp { border-color: #1e433e; }
 [data-theme="dark"] .callout.rule { border-color: #4a2a26; }
-[data-theme="dark"] .ex-cn:hover { color: #fff; }
 }
 
 /* ---------- print (lesson reference + cheat sheet) ---------- */
 @media print {
   body { background: #fff; color: #000; font-size: 11pt; }
-  .site-top, .chipnav, .pager, .site-footer, .review-link, .spk,
+  .site-top, .topbar, .toc, .pager, .site-footer, .spk,
   .quiz, .builder, .clinic, .quiz-score,
-  .ai-btn, .ai-topic, .q-actions, .today-strip, .data-row, .data-import, .toast, .review-actions { display: none !important; }
+  .resume-row, .retest-banner, .today-panel, .sched, .idx-you,
+  .ai-btn, .ai-topic, .q-actions, .data-row, .data-import, .toast, .review-actions { display: none !important; }
+  .wrap.with-toc { display: block; max-width: 880px; }
   section.block:has(.quiz), section.block:has(.builder), section.block:has(.clinic) { display: none !important; }
   section.block { margin: 18px 0; }
   .prose, .ex, .tbl-wrap, .tabs, .cheat, .q { box-shadow: none; border-color: #bbb; }

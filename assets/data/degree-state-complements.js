@@ -45,7 +45,7 @@ The Writing section loves dictating a 得-sentence with a full object (说汉语
       type: "examples",
       title: "Model sentences — read, listen, absorb",
       short: "Examples",
-      intro: "Tap to listen. Watch where the intensity sits: always AFTER the adjective or verb, never both front and back at once.",
+      intro: "Tap 🔊 to listen. Watch where the intensity sits: always AFTER the adjective or verb, never both front and back at once.",
       items: [
         { tag: "极了", cn: "今天的天气好**极了**，我们出去走走吧。", py: "Jīntiān de tiānqì hǎo jí le, wǒmen chūqù zǒuzou ba.", en: "The weather today is fantastic — let's go out for a walk.", note: "极了 glues directly onto the adjective. No 得, no 很." },
         { tag: "死了", cn: "我饿**死了**，咱们赶快点菜吧。", py: "Wǒ è sǐ le, zánmen gǎnkuài diǎn cài ba.", en: "I'm starving — let's order right away.", note: "Nobody is dying. 死了 is pure intensity, like English 'starving to death'." },

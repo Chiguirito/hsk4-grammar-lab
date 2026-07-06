@@ -62,7 +62,7 @@ Chinese never shrinks with 倍: ✗<span class="zh">减少了两倍</span>. Decr
       type: "examples",
       title: "Model sentences — the whole toolkit in action",
       short: "Examples",
-      intro: "Tap to listen. For each sentence, name the tool being used (scaling or blurring?) and its slot.",
+      intro: "Tap 🔊 to listen. For each sentence, name the tool being used (scaling or blurring?) and its slot.",
       items: [
         { tag: "倍", cn: "今年的收入是去年的**三倍**。", py: "Jīnnián de shōurù shì qùnián de sān bèi.", en: "This year's income is three times last year's.", note: "是…的 N倍 = direct multiplication, no +1 games." },
         { tag: "倍+1", cn: "我们学校的学生比十年前**增加了一倍**。", py: "Wǒmen xuéxiào de xuésheng bǐ shí nián qián zēngjiā le yí bèi.", en: "Our school has twice as many students as ten years ago.", note: "增加了一倍 = grew BY 1× = doubled. 了, not 到!" },

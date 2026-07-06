@@ -121,7 +121,7 @@ Three quick tests: ① Does the second syllable feel like a NOUN (面 face, 觉 
       type: "examples",
       title: "Model sentences — separable verbs at work",
       short: "Examples",
-      intro: "Tap to listen. In each one, find the crack: what got wedged in, or which preposition rescued the extra person?",
+      intro: "Tap 🔊 to listen. In each one, find the crack: what got wedged in, or which preposition rescued the extra person?",
       items: [
         { tag: "个", cn: "我们好久没见了，这个周末**见个面**吧！", py: "Wǒmen hǎojiǔ méi jiàn le, zhège zhōumò jiàn ge miàn ba!", en: "We haven't seen each other for ages — let's meet up this weekend!", note: "见个面 = casual 'meet up'. The 个 softens it." },
         { tag: "跟", cn: "他去年**跟**一个中学同学**结婚**了。", py: "Tā qùnián gēn yí ge zhōngxué tóngxué jiéhūn le.", en: "Last year he married a middle-school classmate.", note: "The partner arrives via 跟, BEFORE the verb. ✗结婚了一个同学 is impossible." },

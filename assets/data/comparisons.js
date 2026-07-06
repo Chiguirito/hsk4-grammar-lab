@@ -45,7 +45,7 @@ Before the adjective: only <span class="pill">更</span> <span class="pill">还<
       type: "examples",
       title: "Model sentences — the full comparison toolkit",
       short: "Examples",
-      intro: "Tap to listen. Watch the position of every degree word: always after the adjective, never before.",
+      intro: "Tap 🔊 to listen. Watch the position of every degree word: always after the adjective, never before.",
       items: [
         { tag: "一点儿", cn: "这家店的咖啡比那家好喝**一点儿**。", py: "Zhè jiā diàn de kāfēi bǐ nà jiā hǎohē yìdiǎnr.", en: "This shop's coffee is a little better than that one's.", note: "一点儿 = small difference. It NEVER moves in front of 好喝." },
         { tag: "得多", cn: "坐地铁比开车方便**得多**。", py: "Zuò dìtiě bǐ kāichē fāngbiàn de duō.", en: "Taking the subway is much more convenient than driving.", note: "得多 = big difference, neutral tone of voice." },

@@ -50,7 +50,7 @@ Before placing 不但, scan for a second subject in the second half. One subject
       type: "examples",
       title: "Model sentences — hear the pairs click",
       short: "Examples",
-      intro: "Tap to listen. Watch two things in every sentence: which pair is used, and where the subject stands.",
+      intro: "Tap 🔊 to listen. Watch two things in every sentence: which pair is used, and where the subject stands.",
       items: [
         { tag: "不但·same", cn: "这家饭馆的菜**不但**好吃，**而且**很便宜。", py: "Zhè jiā fànguǎn de cài búdàn hǎochī, érqiě hěn piányi.", en: "The food at this restaurant is not only delicious but also cheap.", note: "One subject (的菜) — so 不但 sits after it." },
         { tag: "不但·还", cn: "他**不但**自己学得好，**而且还**经常帮助别的同学。", py: "Tā búdàn zìjǐ xué de hǎo, érqiě hái jīngcháng bāngzhù bié de tóngxué.", en: "He not only studies well himself, he also often helps other classmates.", note: "而且 + 还 — the standard reinforced combo." },

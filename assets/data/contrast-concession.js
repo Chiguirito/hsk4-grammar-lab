@@ -48,7 +48,7 @@ Before a noun predicate you'll see <span class="zh">却是</span> (<span class="
       type: "examples",
       title: "Model sentences — the whole family in action",
       short: "Examples",
-      intro: "Tap to listen. Track two things: which word starts the clause vs hides behind the subject, and whether the concession is a fact or a hypothesis.",
+      intro: "Tap 🔊 to listen. Track two things: which word starts the clause vs hides behind the subject, and whether the concession is a fact or a hypothesis.",
       items: [
         { tag: "不过", cn: "这个房间不太大，**不过**很干净。", py: "Zhège fángjiān bú tài dà, búguò hěn gānjìng.", en: "The room isn't very big, but it's nice and clean.", note: "不过 = the softest 'but'; perfect for gentle corrections and reviews." },
         { tag: "可是", cn: "我真的很想去，**可是**我得加班。", py: "Wǒ zhēn de hěn xiǎng qù, kěshì wǒ děi jiābān.", en: "I really want to go, but I have to work overtime.", note: "可是 — the everyday spoken 'but'." },

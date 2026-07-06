@@ -3,7 +3,7 @@
    Everything is precached at install (all 27 topics work offline from the
    first visit); fetches are network-first with a short timeout so flaky
    connections fall back to cache instead of hanging. */
-const CACHE = "hsk4lab-c89ecc8672";
+const CACHE = "hsk4lab-0e62dfe38b";
 const PRECACHE = [
   "./",
   "index.html",

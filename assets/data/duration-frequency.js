@@ -43,7 +43,7 @@ The arrange-the-words task loves handing you a verb, an object, and a 三年/两
       type: "examples",
       title: "Model sentences — read, listen, absorb",
       short: "Examples",
-      intro: "Tap to listen. In every sentence, ask: where did the duration or the count land, and why?",
+      intro: "Tap 🔊 to listen. In every sentence, ask: where did the duration or the count land, and why?",
       items: [
         { tag: "duration", cn: "我们等**了十分钟**，车才来。", py: "Wǒmen děng le shí fēnzhōng, chē cái lái.", en: "We waited ten minutes before the bus finally came.", note: "No object → duration sits directly after V了. (才 = later than hoped, from the 就/才 topic.)" },
         { tag: "repeat V", cn: "他**学**汉语**学了三年**。", py: "Tā xué Hànyǔ xué le sān nián.", en: "He studied Chinese for three years.", note: "Layout 2: say the verb twice — first with the object, then with the duration." },

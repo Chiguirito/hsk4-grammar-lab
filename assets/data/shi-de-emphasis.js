@@ -43,7 +43,7 @@ English clefts do the same job: “It <b>was yesterday that</b> he came”, “I
       type: "examples",
       title: "Model sentences — spotlight in action",
       short: "Examples",
-      intro: "Tap to listen. In every sentence, ask yourself: what is already known, and what is the spotlight?",
+      intro: "Tap 🔊 to listen. In every sentence, ask yourself: what is already known, and what is the spotlight?",
       items: [
         { tag: "time", cn: "我**是**去年九月开始学汉语**的**。", py: "Wǒ shì qùnián jiǔyuè kāishǐ xué Hànyǔ de.", en: "It was last September that I started learning Chinese.", note: "That you study Chinese is old news — WHEN you started is the point." },
         { tag: "place", cn: "你的普通话真好！**是**在中国学**的**吗？", py: "Nǐ de pǔtōnghuà zhēn hǎo! Shì zài Zhōngguó xué de ma?", en: "Your Mandarin is great! Did you learn it in China?", note: "是…的吗? — yes/no question about the detail, not about the event." },

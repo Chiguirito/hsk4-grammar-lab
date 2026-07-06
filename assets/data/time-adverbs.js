@@ -102,7 +102,7 @@ registerPage({
       type: "examples",
       title: 'Model sentences — the whole toolkit in action',
       short: "Examples",
-      intro: "Twelve sentences, one per tool. Tap to listen, and name the adverb's 'angle' before reading the note.",
+      intro: "Twelve sentences, one per tool. Tap 🔊 to listen, and name the adverb's 'angle' before reading the note.",
       items: [
         { tag: "刚…就", cn: "我**刚**到公司，会议**就**开始了。", py: "Wǒ gāng dào gōngsī, huìyì jiù kāishǐ le.", en: "The meeting started the moment I got to the office.", note: "刚 A 就 B: barely-in-time drama." },
         { tag: "刚才", cn: "**刚才**你说什么？我没听清楚。", py: "Gāngcái nǐ shuō shénme? Wǒ méi tīng qīngchu.", en: "What did you say just now? I didn't catch it.", note: "Time noun opening the sentence — 刚 could never." },

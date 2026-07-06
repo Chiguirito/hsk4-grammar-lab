@@ -42,7 +42,7 @@ const BOOT = `(function(){var d=document.documentElement;var g=function(k){try{r
 
 function head({ title, description, url, rel, ogType }) {
   return `<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta http-equiv="Content-Security-Policy" content="${CSP}">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
@@ -134,6 +134,13 @@ out["review.html"] = shell(
       var pid = k.split("/")[0];
       if (valid[pid] && ids.indexOf(pid) < 0) ids.push(pid);
     });
+    // the mixed drill (#drill) also samples fresh questions from visited topics
+    if (location.hash === "#drill") {
+      var prog = JSON.parse(localStorage.getItem("hsk4lab-progress")) || {};
+      Object.keys(prog).forEach(function (pid) {
+        if (prog[pid] && prog[pid].visited && valid[pid] && ids.indexOf(pid) < 0) ids.push(pid);
+      });
+    }
   } catch (e) {}
   var left = ids.length;
   if (!left) { renderReview(); return; }

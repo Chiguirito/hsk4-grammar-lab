@@ -42,7 +42,7 @@ Listening plants minimal pairs (<span class="zh">开着</span> vs <span class="z
       type: "examples",
       title: 'Model sentences — 着 in the wild',
       short: "着 examples",
-      intro: "Tap to listen. In each one ask: is anything HAPPENING, or is something simply BEING a certain way?",
+      intro: "Tap 🔊 to listen. In each one ask: is anything HAPPENING, or is something simply BEING a certain way?",
       items: [
         { tag: "状态", cn: "教室的门开**着**，可是里面一个人也没有。", py: "Jiàoshì de mén kāizhe, kěshì lǐmiàn yí ge rén yě méiyǒu.", en: "The classroom door is open, but there's nobody inside.", note: "Nobody is opening anything right now — 开着 reports the standing state." },
         { tag: "状态", cn: "外面下**着**大雨，你就别出去了。", py: "Wàimiàn xiàzhe dà yǔ, nǐ jiù bié chūqù le.", en: "It's raining hard outside — don't go out.", note: "Weather as ongoing background: 下着雨 sets the scene for the advice." },
@@ -127,7 +127,7 @@ German <i>mal</i> is VV in one word: <i>„Schau <b>mal</b>“</i> = <span class
       type: "examples",
       title: 'Model sentences — doubling in action',
       short: "Doubling examples",
-      intro: "Tap to listen. Feel how the doubled verb makes requests gentle, and the doubled adjective makes scenes vivid.",
+      intro: "Tap 🔊 to listen. Feel how the doubled verb makes requests gentle, and the doubled adjective makes scenes vivid.",
       items: [
         { tag: "VV", cn: "这是我新买的茶，你**尝尝**吧。", py: "Zhè shì wǒ xīn mǎi de chá, nǐ chángchang ba.", en: "This is tea I just bought — have a taste.", note: "尝尝 + 吧 = maximally gentle offer. The doubled syllable is toneless." },
         { tag: "V一V", cn: "这个词是什么意思？我**查一查**词典。", py: "Zhège cí shì shénme yìsi? Wǒ chá yi chá cídiǎn.", en: "What does this word mean? Let me look it up.", note: "V一V = VV with a visible seam. The 一 is toneless too." },

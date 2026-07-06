@@ -27,7 +27,7 @@ The Writing section hands you a prepositional block as ONE tile (在图书馆 / 
       type: "examples",
       title: "Model sentences — the toolbox in action",
       short: "Examples",
-      intro: "Tap to listen. In every sentence, locate the [prep + noun] block and confirm: it stands before the verb.",
+      intro: "Tap 🔊 to listen. In every sentence, locate the [prep + noun] block and confirm: it stands before the verb.",
       items: [
         { tag: "在", cn: "我**在北京**学了两年中文。", py: "Wǒ zài Běijīng xué le liǎng nián Zhōngwén.", en: "I studied Chinese in Beijing for two years.", note: "The law in its simplest form: [在北京] before 学." },
         { tag: "随着", cn: "**随着**经济的发展，城市里的车越来越多了。", py: "Suízhe jīngjì de fāzhǎn, chéngshì li de chē yuèláiyuè duō le.", en: "With the development of the economy, there are more and more cars in the cities.", note: "随着 + a CHANGING thing, clause-initial; 越来越 answers it in clause two." },

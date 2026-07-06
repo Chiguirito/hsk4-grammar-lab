@@ -213,6 +213,31 @@
     return lines.join("\n");
   }
 
+  /* ---------------- study-day log (drives the Today-panel streak) ----------------
+     A study day = a day with at least one ANSWERED question (quiz, builder or
+     review) — opening the site or re-reading doesn't count. Additive key. */
+  const DAYS_KEY = "hsk4lab-days";
+  function loadDays() {
+    try {
+      const d = JSON.parse(localStorage.getItem(DAYS_KEY));
+      return Array.isArray(d) ? d.filter(x => /^\d{4}-\d{2}-\d{2}$/.test(x)) : [];
+    } catch (e) { return []; }
+  }
+  let dayLogged = false; // one write per visit is plenty
+  function logStudyDay() {
+    if (dayLogged) return;
+    dayLogged = true;
+    try {
+      const days = loadDays();
+      const t = dateStr(0);
+      if (days.indexOf(t) < 0) {
+        days.push(t);
+        days.sort();
+        localStorage.setItem(DAYS_KEY, JSON.stringify(days.slice(-60)));
+      }
+    } catch (e) {}
+  }
+
   /* ---------------- progress store ---------------- */
   const STORE_KEY = "hsk4lab-progress";
   function loadStore() {
@@ -224,6 +249,7 @@
   // counts, so quiz retries can neither inflate nor re-score progress.
   const tracker = { total: 0, results: {}, pageId: null };
   function recordAnswer(key, ok) {
+    logStudyDay(); // any answered question marks today a study day (review page included)
     if (!tracker.pageId) return; // review page: no per-topic progress to update
     if (key in tracker.results) return;
     tracker.results[key] = ok;
@@ -325,6 +351,7 @@
   // rule as recordAnswer) — quiz retries can't promote or demote twice.
   const missRecorded = new Set();
   function recordMiss(id, ok) {
+    logStudyDay(); // builder wrong attempts reach here without recordAnswer
     if (!id || missRecorded.has(id)) return;
     missRecorded.add(id);
     const m = loadMisses();
@@ -369,6 +396,7 @@
     const store = loadStore();
     store[pageId] = store[pageId] || {};
     store[pageId].visited = true;
+    store[pageId].lv = dateStr(0); // last visit — additive field, ignored by import merge
     saveStore(store);
   }
 
@@ -430,8 +458,10 @@
     const card = el("div", "ex");
     if (item.tag) card.appendChild(el("span", "tag", esc(item.tag)));
     const cn = el("div", "ex-cn");
-    cn.innerHTML = fmt(item.cn) + ' <button class="spk" title="Listen" aria-label="listen">🔊</button>';
-    cn.onclick = () => speak(item.cn);
+    // audio lives on the 🔊 button only — the sentence text stays selectable
+    // for long-press Look Up / dictionary lookups on iPad
+    cn.innerHTML = fmt(item.cn) + ' <button type="button" class="spk" title="Listen" aria-label="Listen">🔊</button>';
+    cn.querySelector(".spk").onclick = () => speak(item.cn);
     card.appendChild(cn);
     if (item.py) card.appendChild(el("div", "ex-py", fmt(item.py)));
     if (item.en) card.appendChild(el("div", "ex-en", fmt(item.en)));
@@ -570,6 +600,11 @@
       quiz.appendChild(q);
     });
     function showScore() {
+      // topbar/TOC listen for this to add a "completed this visit" tick
+      document.dispatchEvent(new CustomEvent("hsk4:section-done", { detail: { qkey: sec._qkey } }));
+      // un-hide BEFORE writing: content added while display:none is not
+      // reliably announced by the role="status" live region
+      scoreBox.classList.remove("hidden");
       const pct = Math.round((right / sec.items.length) * 100);
       const msg = pct === 100 ? '<span class="zh">满分！</span>Perfect — exam ready.' :
         pct >= 80 ? '<span class="zh">很棒！</span>Solid — review the misses once and move on.' :
@@ -717,7 +752,10 @@
           draw();
           const t0 = holder.querySelector(".b-pool .tile");
           if (t0) t0.focus(); // keep keyboard focus inside the rebuilt widget
-        } else { holder.querySelector(".b-controls").innerHTML = "<b>🎉 Builder complete!</b>"; }
+        } else {
+          holder.querySelector(".b-controls").innerHTML = "<b>🎉 Builder complete!</b>";
+          document.dispatchEvent(new CustomEvent("hsk4:section-done", { detail: { qkey: sec._qkey } }));
+        }
       };
       controls.appendChild(check);
       controls.appendChild(reset);
@@ -748,8 +786,7 @@
       const fix = el("div", "er-fix hidden");
       fix.tabIndex = -1; // focus target when the Reveal button hides itself
       const r = el("div", "er-right", fmt(item.right) + ' <button type="button" class="spk" title="Listen" aria-label="Listen">🔊</button>');
-      r.style.cursor = "pointer";
-      r.onclick = () => speak(item.right); // the .spk button bubbles here — keyboard path included
+      r.querySelector(".spk").onclick = () => speak(item.right); // 🔊 only — text stays selectable
       fix.appendChild(r);
       if (item.py) fix.appendChild(el("div", "ex-py", fmt(item.py)));
       if (item.en) fix.appendChild(el("div", "ex-en", fmt(item.en)));
@@ -796,14 +833,27 @@
       if (s.type === "mcq") lastMcq = s;
     });
     if (lastMcq) lastMcq._last = true; // final drill gets the "what's next" links
+
+    // prior state is read BEFORE this visit overwrites it (resume + retest offers)
+    const prevStore = loadStore()[page.id] || {};
+    const prevBest = prevStore.best || 0, prevLv = prevStore.lv || null;
+    let prevLast = null;
+    try { prevLast = JSON.parse(localStorage.getItem("hsk4lab-last")); } catch (e) {}
+    const prevSec = prevLast && prevLast.id === page.id && prevLast.sec > 1 ? prevLast.sec : 0;
+    const prevAgeDays = prevLast && prevLast.t ? (Date.now() - prevLast.t) / 864e5 : Infinity;
+
     markVisited(page.id);
     migratePageMisses(page); // upgrade legacy positional miss ids for this page
-    try { localStorage.setItem("hsk4lab-last", JSON.stringify({ id: page.id, t: Date.now() })); } catch (e) {}
+    // {id, sec, t} — sec is additive; the index Continue link deep-links to it
+    const saveLast = sec => { try { localStorage.setItem("hsk4lab-last", JSON.stringify({ id: page.id, sec: sec, t: Date.now() })); } catch (e) {} };
+    // a reload must not lose the saved position — but a STALE one must not be
+    // laundered into "fresh" by rewriting it with t=now
+    saveLast(prevSec && prevAgeDays <= 4 ? prevSec : 1);
 
     const zhTitle = stripMarks(page.zh);
     document.title = (page.title.includes(zhTitle) ? page.title : zhTitle + " — " + page.title) + " · HSK 4 Grammar Lab";
     const app = document.getElementById("app");
-    const wrap = el("div", "wrap");
+    const wrap = el("div", "wrap with-toc");
     app.appendChild(wrap);
 
     // keyboard users shouldn't have to tab through the header on all 27 topics
@@ -811,13 +861,71 @@
     skip.href = "#sec1";
     wrap.appendChild(skip);
 
+    const secLabel = sec => sec.short || String(sec.title || "").replace(/<[^>]+>/g, "");
+
+    // sidebar TOC — typography-only rail, visible ≥1180px (CSS hides it below)
+    const tocNav = el("nav", "toc");
+    tocNav.setAttribute("aria-label", "Lesson contents");
+    tocNav.appendChild(el("div", "toc-head", "In this lesson"));
+    page.sections.forEach((sec, i) => {
+      if (!sec.title) return;
+      const a = el("a", null, '<span class="toc-num">' + (i + 1) + "</span>" + esc(secLabel(sec)));
+      a.href = "#sec" + (i + 1);
+      tocNav.appendChild(a);
+    });
+    wrap.appendChild(tocNav);
+
+    const content = el("div", "content-col");
+    wrap.appendChild(content);
+
     // top bar
-    const top = el("div", "site-top");
+    const top = el("header", "site-top");
     top.appendChild(el("a", "home-link", '<span class="dot"></span> HSK 4 Grammar Lab')).href = "../index.html";
     const toggles = el("div", "toggles");
     initToggles(toggles);
     top.appendChild(toggles);
-    wrap.appendChild(top);
+    content.appendChild(top);
+
+    // everything after the header lives in main, so landmark navigation
+    // reaches the re-entry offers and hero too
+    const main = el("main");
+    content.appendChild(main);
+
+    // re-entry offer: resume a recent mid-lesson position, or nudge a retest on
+    // a mastered/stale topic — at most one, dismissible, never auto-acting
+    if (!location.hash) {
+      const row = el("div", "resume-row");
+      if (prevSec && prevSec <= page.sections.length && prevAgeDays <= 4) {
+        const target = page.sections[prevSec - 1];
+        const a = el("a", "resume-pill", "↩ Resume at Part " + prevSec +
+          (target && target.title ? " — " + esc(secLabel(target)) : ""));
+        a.href = "#sec" + prevSec;
+        row.appendChild(a);
+      } else if (prevBest >= 80 || (prevLv && prevLv <= dateStr(-7))) {
+        const firstQuiz = page.sections.findIndex(s => s.type === "mcq" || s.type === "builder");
+        let shown = false;
+        try { shown = !!sessionStorage.getItem("hsk4lab-retest-" + page.id); } catch (e) {}
+        if (firstQuiz >= 0 && !shown) {
+          const b = el("div", "retest-banner");
+          b.innerHTML = "You’ve studied this" + (prevBest ? " (best " + prevBest + "%)" : "") +
+            ' — <a href="#sec' + (firstQuiz + 1) + '">test yourself first ↓</a>';
+          row.appendChild(b);
+          try { sessionStorage.setItem("hsk4lab-retest-" + page.id, "1"); } catch (e) {}
+        }
+      }
+      if (row.children.length) {
+        const x = el("button", "resume-dismiss", "✕");
+        x.type = "button";
+        x.setAttribute("aria-label", "Dismiss");
+        x.onclick = () => {
+          row.remove();
+          const h = content.querySelector(".home-link");
+          if (h) h.focus(); // don't strand keyboard focus in a removed row
+        };
+        row.appendChild(x);
+        main.appendChild(row);
+      }
+    }
 
     // hero
     const hero = el("div", "hero");
@@ -828,23 +936,34 @@
     hero.appendChild(el("div", "zh-big", fmt(page.zh).replace(/<b class="hl">/g, '<span class="accent">').replace(/<\/b>/g, "</span>")));
     hero.appendChild(el("h1", null, esc(page.title)));
     if (page.subtitle) hero.appendChild(el("p", "subtitle", page.subtitle));
-    wrap.appendChild(hero);
+    main.appendChild(hero);
 
-    // chip nav
-    const nav = el("nav", "chipnav");
+    // sticky topbar: topic name (once the hero is gone) + section chips +
+    // "Part N / M" + reading-progress hairline
+    const topbar = el("div", "topbar");
+    const tbTitle = el("span", "tb-title", '<span class="zh">' + esc(zhTitle) + "</span>");
+    const nav = el("nav", "chip-scroll");
     nav.setAttribute("aria-label", "Lesson sections");
     page.sections.forEach((sec, i) => {
       if (!sec.title) return;
-      const a = el("a", null, (i + 1) + " · " + esc(sec.short || sec.title.replace(/<[^>]+>/g, "")));
+      const a = el("a", null, (i + 1) + " · " + esc(secLabel(sec)));
       a.href = "#sec" + (i + 1);
       nav.appendChild(a);
     });
-    wrap.appendChild(nav);
+    const tbPart = el("span", "tb-part", "Part 1 / " + page.sections.length);
+    const prog = el("div", "tb-progress");
+    prog.setAttribute("aria-hidden", "true"); // decorative — tb-part is the accessible equivalent
+    topbar.appendChild(tbTitle);
+    topbar.appendChild(nav);
+    topbar.appendChild(tbPart);
+    topbar.appendChild(prog);
+    main.appendChild(topbar);
 
     // sections
     page.sections.forEach((sec, i) => {
       const s = el("section", "block");
       s.id = "sec" + (i + 1);
+      s.tabIndex = -1; // TOC/chip jumps move focus here
       s.appendChild(el("div", "sec-kicker", "Part " + (i + 1)));
       s.appendChild(el("h2", null, sec.title));
       if (sec.intro) s.appendChild(el("p", "sec-intro", sec.intro));
@@ -856,7 +975,7 @@
         body.appendChild(el("p", "sec-error", "⚠ This section failed to render — the topic data file may have an error."));
         if (window.console && console.error) console.error('Section ' + (i + 1) + ' ("' + sec.type + '") failed to render:', err);
       }
-      wrap.appendChild(s);
+      main.appendChild(s);
     });
 
     // AI practice card (the site never calls an API — it hands the learner a prompt)
@@ -866,12 +985,13 @@
     aiTxt.appendChild(el("span", null, "Copies this topic's rules plus a request for 10 fresh exam-style questions — paste it into ChatGPT, Claude or any AI chatbot."));
     aiCard.appendChild(aiTxt);
     aiCard.appendChild(aiBtn("Copy practice prompt", () => topicPrompt(page)));
-    wrap.appendChild(aiCard);
+    main.appendChild(aiCard);
 
     // pager
     const all = window.ALL_PAGES || [];
     const pos = all.findIndex(p => p.id === page.id);
-    const pager = el("div", "pager");
+    const pager = el("nav", "pager");
+    pager.setAttribute("aria-label", "Adjacent topics");
     const pagerTitle = p => p.title.includes(stripMarks(p.zh))
       ? '<span class="p-zh">' + esc(p.title) + "</span>"
       : '<span class="p-zh">' + esc(p.zh) + "</span> · " + esc(p.title);
@@ -887,15 +1007,120 @@
       a.href = p.id + ".html";
       pager.appendChild(a);
     }
-    wrap.appendChild(pager);
-    wrap.appendChild(el("div", "site-footer", 'HSK 4 Grammar Lab · <span class="zh">加油，Paul！</span> · Tap any Chinese sentence to hear it — tap again for slow'));
-    // Chinese in tables is speakable too — with a real button for keyboard users
+    content.appendChild(pager);
+    // prev/next also live at the bottom of the sidebar rail
+    if (pager.children.length) {
+      const tp = el("div", "toc-pager");
+      if (pos > 0) { const a = el("a", null, "← " + esc(stripMarks(all[pos - 1].zh))); a.href = all[pos - 1].id + ".html"; tp.appendChild(a); }
+      if (pos >= 0 && pos < all.length - 1) { const a = el("a", null, esc(stripMarks(all[pos + 1].zh)) + " →"); a.href = all[pos + 1].id + ".html"; tp.appendChild(a); }
+      tocNav.appendChild(tp);
+    }
+    content.appendChild(el("div", "site-footer", 'HSK 4 Grammar Lab · <span class="zh">加油，Paul！</span> · Tap 🔊 to hear any sentence — tap again for slow'));
+    // Chinese in tables is speakable too — via the 🔊 button (text stays selectable)
     wrap.querySelectorAll(".tbl .zh").forEach(z => {
       const txt = z.textContent; // captured BEFORE the 🔊 button joins the cell
-      z.style.cursor = "pointer";
-      z.title = "Listen";
-      z.onclick = () => speak(txt);
       z.insertAdjacentHTML("beforeend", ' <button type="button" class="spk" title="Listen" aria-label="Listen">🔊</button>');
+      z.querySelector(".spk").onclick = () => speak(txt);
+    });
+
+    /* ---- wayfinding: scrollspy, Part label, hairline, resume save ---- */
+    const sectionEls = [...main.querySelectorAll("section.block")];
+    const linksFor = i => wrap.querySelectorAll('.chip-scroll a[href="#sec' + (i + 1) + '"], .toc a[href="#sec' + (i + 1) + '"]');
+    const reduced = (() => { try { return matchMedia("(prefers-reduced-motion: reduce)"); } catch (e) { return { matches: false }; } })();
+    let curIdx = -1, rowTouched = false, userScrolled = false;
+    nav.addEventListener("pointerdown", () => { rowTouched = true; });
+    ["pointerup", "pointercancel", "pointerleave"].forEach(ev => nav.addEventListener(ev, () => { rowTouched = false; }));
+    function setActive(i) {
+      if (i === curIdx || i < 0 || i >= sectionEls.length) return;
+      curIdx = i;
+      wrap.querySelectorAll(".chip-scroll a.act, .toc a.act").forEach(a => { a.classList.remove("act"); a.removeAttribute("aria-current"); });
+      linksFor(i).forEach(a => { a.classList.add("act"); a.setAttribute("aria-current", "location"); });
+      tbPart.textContent = "Part " + (i + 1) + " / " + sectionEls.length;
+      // keep the active chip in view — but never yank the row mid-touch
+      const chip = nav.querySelector('a[href="#sec' + (i + 1) + '"]');
+      if (chip && !rowTouched) {
+        const left = chip.offsetLeft - nav.clientWidth / 2 + chip.offsetWidth / 2;
+        try { nav.scrollTo({ left: left, behavior: reduced.matches ? "auto" : "smooth" }); }
+        catch (e) { nav.scrollLeft = left; }
+      }
+      if (userScrolled) saveLast(i + 1); // resume position — only after a real scroll
+    }
+    // sections are taller than the viewport: track which one crosses a band
+    // ~25–35% down the screen instead of naive whole-element intersection
+    if ("IntersectionObserver" in window) {
+      const inBand = new Set();
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { e.isIntersecting ? inBand.add(e.target) : inBand.delete(e.target); });
+        let best = -1;
+        sectionEls.forEach((s, i) => { if (inBand.has(s)) best = i; });
+        if (best >= 0) setActive(best);
+      }, { rootMargin: "-25% 0px -65% 0px" });
+      sectionEls.forEach(s => io.observe(s));
+      // topbar shows the topic name once the hero has scrolled away
+      new IntersectionObserver(es => {
+        es.forEach(e => topbar.classList.toggle("past-hero", !e.isIntersecting));
+      }).observe(hero);
+    } else topbar.classList.add("past-hero");
+    setActive(Math.max(0, (parseInt((location.hash.match(/^#sec(\d+)$/) || [])[1], 10) || 1) - 1));
+
+    // anchor jumps land below the real topbar height
+    const setStickyH = () => document.documentElement.style.setProperty("--sticky-h", topbar.offsetHeight + "px");
+    setStickyH();
+    addEventListener("resize", setStickyH);
+
+    // reading-progress hairline (decorative; rAF-throttled; scaleX composites)
+    let raf = 0;
+    addEventListener("scroll", () => {
+      userScrolled = true;
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const max = document.documentElement.scrollHeight - innerHeight;
+        prog.style.transform = "scaleX(" + (max > 0 ? Math.min(1, scrollY / max) : 0) + ")";
+      });
+    }, { passive: true });
+
+    // chip-row edge fades: only where there actually is hidden overflow
+    const updateFades = () => {
+      const max = nav.scrollWidth - nav.clientWidth;
+      nav.classList.toggle("can-l", nav.scrollLeft > 4);
+      nav.classList.toggle("can-r", max - nav.scrollLeft > 4);
+    };
+    nav.addEventListener("scroll", updateFades, { passive: true });
+    addEventListener("resize", updateFades);
+    updateFades();
+    // a chip tabbed into view must not sit half-faded under the edge mask
+    nav.addEventListener("focusin", e => {
+      const c = e.target.closest("a");
+      if (!c) return;
+      const left = c.offsetLeft - nav.clientWidth / 2 + c.offsetWidth / 2;
+      try { nav.scrollTo({ left: left, behavior: "auto" }); } catch (err) { nav.scrollLeft = left; }
+    });
+
+    // ✓ on chips/TOC when a quiz/builder section is completed this visit
+    document.addEventListener("hsk4:section-done", e => {
+      const m = /^s(\d+)$/.exec((e.detail || {}).qkey || "");
+      if (!m) return;
+      linksFor(+m[1]).forEach(a => {
+        if (a.querySelector(".tick")) return;
+        a.insertAdjacentHTML("afterbegin", '<span class="tick" aria-hidden="true">✓</span><span class="sr-only">completed this visit — </span>');
+      });
+    });
+
+    // section links: instant jump + move focus (don't rely on fragment heuristics)
+    wrap.addEventListener("click", e => {
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; // new-tab etc. stays native
+      const a = e.target.closest('a[href^="#sec"]');
+      if (!a) return;
+      const t = document.getElementById(a.getAttribute("href").slice(1));
+      if (!t) return;
+      e.preventDefault();
+      try { history.pushState(null, "", a.getAttribute("href")); } catch (err) {}
+      userScrolled = true; // a deliberate jump counts as a position
+      t.focus({ preventScroll: true });
+      t.scrollIntoView(); // instant — scroll-margin-top clears the sticky bar
+      // immediate highlight + resume save; also the only path without IntersectionObserver
+      setActive(sectionEls.indexOf(t));
     });
     zhLang(wrap);
   };
@@ -929,12 +1154,16 @@
     const pages = window.COLLECT_PAGES || [];
     pages.forEach(migratePageMisses); // legacy positional ids → content-hash ids
     const misses = loadMisses();
-    document.title = "Review your misses · HSK 4 Grammar Lab";
+    // the drill and the review list load different data files — a hash-only
+    // navigation between them must re-run the shell loader
+    window.addEventListener("hashchange", () => location.reload());
+    const drillMode = location.hash === "#drill";
+    document.title = (drillMode ? "Daily mixed drill" : "Review your misses") + " · HSK 4 Grammar Lab";
     const app = document.getElementById("app");
     const wrap = el("div", "wrap");
     app.appendChild(wrap);
 
-    const top = el("div", "site-top");
+    const top = el("header", "site-top");
     top.appendChild(el("a", "home-link", '<span class="dot"></span> HSK 4 Grammar Lab')).href = "index.html";
     const toggles = el("div", "toggles");
     initToggles(toggles);
@@ -942,10 +1171,18 @@
     wrap.appendChild(top);
 
     const hero = el("div", "hero");
-    hero.appendChild(el("span", "unit-chip", "复习 · Review"));
-    hero.appendChild(el("div", "zh-big", '错题<span class="accent">本</span>'));
-    hero.appendChild(el("h1", null, "Review your misses"));
-    wrap.appendChild(hero);
+    if (drillMode) {
+      hero.appendChild(el("span", "unit-chip", '<span class="zh">每日一练</span> · Mixed drill'));
+      hero.appendChild(el("div", "zh-big", '混合<span class="accent">演练</span>'));
+      hero.appendChild(el("h1", null, "Daily mixed drill"));
+    } else {
+      hero.appendChild(el("span", "unit-chip", "复习 · Review"));
+      hero.appendChild(el("div", "zh-big", '错题<span class="accent">本</span>'));
+      hero.appendChild(el("h1", null, "Review your misses"));
+    }
+    const mainEl = el("main");
+    mainEl.appendChild(hero); // hero inside main — consistent landmark reach
+    wrap.appendChild(mainEl);
 
     // per-page lookup: content-hash id → its section + item
     const known = {};
@@ -989,27 +1226,14 @@
     const revStats = missStats();
     const scheduled = revStats.scheduled, nextDue = revStats.next;
 
-    if (allResolved.length) {
+    if (allResolved.length && !drillMode) {
       const acts = el("div", "review-actions");
       acts.appendChild(aiBtn("Copy all my misses for AI (" + allResolved.length + ")", () => missesReviewPrompt(allResolved)));
       hero.appendChild(acts);
     }
 
-    if (!mcqItems.length && !builderItems.length) {
-      hero.insertBefore(el("p", "subtitle", scheduled
-        ? 'Nothing due today — <span class="zh">太棒了！</span> ' + scheduled + " question" + (scheduled > 1 ? "s are" : " is") + " scheduled to come back on " + nextDue + "."
-        : 'Nothing to review — <span class="zh">太棒了！</span> Miss a question anywhere on the site and it lands here for another round.'),
-        hero.querySelector(".review-actions"));
-      wrap.appendChild(el("p", null, '<a href="index.html">← Back to all topics</a>'));
-      zhLang(wrap);
-      return;
-    }
-    hero.insertBefore(el("p", "subtitle", "Questions you missed, back on a spaced schedule. Answer one correctly and it levels up (level 3 graduates it for good); miss it again and it starts over." +
-      (scheduled ? " " + scheduled + " more scheduled from " + nextDue + "." : "")),
-      hero.querySelector(".review-actions"));
-
     let n = 0;
-    const addSection = (title, type, items) => {
+    const addSection = (title, type, items, stepMode) => {
       if (!items.length) return;
       n++;
       const s = el("section", "block");
@@ -1018,8 +1242,148 @@
       const body = el("div");
       s.appendChild(body);
       RENDERERS[type]({ type: type, items: items, _qkey: "review" + n }, body);
-      wrap.appendChild(s);
+      if (stepMode && type === "mcq") stepQuiz(body);
+      mainEl.appendChild(s);
     };
+    // one-question-at-a-time layer for the drill: answered questions stay
+    // visible for context, the next unanswered one reveals after each answer
+    function stepQuiz(body) {
+      const apply = () => {
+        const qs = [...body.querySelectorAll(".q")];
+        let first = qs.findIndex(q => !q.querySelector('.q-choices button[aria-disabled="true"]'));
+        if (first < 0) first = qs.length;
+        qs.forEach((q, i) => q.classList.toggle("hidden", i > first));
+      };
+      apply();
+      body.addEventListener("click", e => {
+        if (e.target.closest(".q-choices button")) setTimeout(apply, 350);
+        else if (e.target.closest(".retry-btn")) setTimeout(apply, 0);
+      });
+    }
+    // 7-day outlook: how many scheduled questions come due on each coming day
+    function schedStrip() {
+      const counts = [0, 0, 0, 0, 0, 0, 0];
+      let totalWeek = 0, peak = 0;
+      const dayStrs = [];
+      for (let o = 0; o <= 6; o++) dayStrs.push(dateStr(o));
+      for (const id of Object.keys(misses)) {
+        const m = misses[id];
+        if (m.grad) continue;
+        const at = dayStrs.indexOf(m.due);
+        if (at >= 0) { counts[at]++; totalWeek++; peak = Math.max(peak, counts[at]); }
+      }
+      if (!totalWeek) return null;
+      const box = el("div", "sched");
+      const bits = [];
+      for (let o = 0; o <= 6; o++) {
+        const name = o === 0 ? "today" : new Date(dayStrs[o] + "T12:00:00").toLocaleDateString("en", { weekday: "short" });
+        const d = el("div", o === 0 ? "today" : null);
+        d.innerHTML = '<div class="bar"><i style="height:' + (counts[o] ? Math.round(6 + 26 * counts[o] / peak) : 2) + 'px"></i></div>' +
+          (counts[o] ? '<span class="n">' + counts[o] + "</span> " : "") + name;
+        box.appendChild(d);
+        if (counts[o]) bits.push(counts[o] + " due " + name);
+      }
+      box.setAttribute("role", "img");
+      box.setAttribute("aria-label", "Upcoming reviews this week: " + bits.join(", "));
+      return box;
+    }
+
+    /* ---- drill mode: ~10 interleaved questions, misses first ----
+       Fresh items carry their real content-hash id, so the engine's rules
+       apply unchanged: a correct answer on a never-missed question records
+       nothing; missing it files it in 错题本 like anywhere else. */
+    if (drillMode) {
+      const DRILL_N = 10;
+      const store = loadStore();
+      const unitOf = {};
+      (window.ALL_PAGES || []).forEach(p => { unitOf[p.id] = p.unit; });
+      const picked = shuffled(allResolved.filter(r => r.miss.due <= t)).slice(0, DRILL_N);
+      if (picked.length < DRILL_N) {
+        const cand = [];
+        pages.forEach(p => {
+          if (!(store[p.id] || {}).visited) return;
+          const best = (store[p.id] || {}).best || 0;
+          p.sections.forEach(sec => {
+            if (sec.type !== "mcq" && sec.type !== "builder") return;
+            (sec.items || []).forEach(item => {
+              const id = (sec.type === "mcq" ? mcqMissId : builderMissId)(p.id, item);
+              if (misses[id]) return; // active or graduated — not "fresh"
+              cand.push({
+                type: sec.type, unit: unitOf[p.id],
+                _k: best + Math.random() * 40, // weakest topics first, with variety
+                item: Object.assign({}, item, { _src: id, _srcLabel: stripMarks(p.zh), _srcTopic: topicLabel(p) })
+              });
+            });
+          });
+        });
+        cand.sort((a, b) => a._k - b._k);
+        const unitCount = {};
+        for (const c of cand) {
+          if (picked.length >= DRILL_N) break;
+          // interleaving: no unit may dominate the drill
+          if ((unitCount[c.unit] || 0) >= Math.ceil(DRILL_N / 2)) continue;
+          unitCount[c.unit] = (unitCount[c.unit] || 0) + 1;
+          picked.push({ type: c.type, item: c.item });
+        }
+      }
+      if (!picked.length) {
+        hero.appendChild(el("p", "subtitle", "Nothing to drill yet — visit a topic or two first, then come back."));
+        mainEl.appendChild(el("p", null, '<a href="index.html">← Back to all topics</a>'));
+        zhLang(wrap);
+        return;
+      }
+      const nDue = picked.filter(r => r.miss).length;
+      hero.appendChild(el("p", "subtitle", picked.length + " questions across your topics — " +
+        (nDue ? nDue + " due from <span class=\"zh\">错题本</span> first, then " : "") +
+        "fresh questions from your weakest topics. Miss one and it joins the review schedule."));
+      const dm = picked.filter(r => r.type === "mcq").map(r => r.item);
+      const db = picked.filter(r => r.type === "builder").map(r => r.item);
+      addSection("Mixed questions (" + dm.length + ")", "mcq", dm, true);
+      addSection("Word-order builds (" + db.length + ")", "builder", db);
+      mainEl.appendChild(el("p", null, '<a href="review.html">← Review page</a> · <a href="index.html">All topics</a>'));
+      wrap.appendChild(el("div", "site-footer", 'Interleaved practice — mixing topics is harder than drilling one, and that\'s the point. <span class="zh">加油！</span>'));
+      zhLang(wrap);
+      return;
+    }
+
+    if (!mcqItems.length && !builderItems.length) {
+      hero.insertBefore(el("p", "subtitle", scheduled
+        ? 'Nothing due today — <span class="zh">太棒了！</span> ' + scheduled + " question" + (scheduled > 1 ? "s are" : " is") + " scheduled to come back on " + nextDue + "."
+        : 'Nothing to review — <span class="zh">太棒了！</span> Miss a question anywhere on the site and it lands here for another round.'),
+        hero.querySelector(".review-actions"));
+      const strip = schedStrip();
+      if (strip) mainEl.appendChild(strip);
+      // practice ahead: re-drill scheduled items early. Corrects before the due
+      // date leave the schedule untouched (engine rule); misses demote — a
+      // demonstrated failure is new information whatever the calendar says.
+      const ahead = allResolved.filter(r => r.miss.due > t);
+      if (ahead.length) {
+        const b = el("button", "btn ghost", "Practice ahead (" + ahead.length + " scheduled) — schedules stay put");
+        b.type = "button";
+        b.onclick = () => {
+          b.remove();
+          addSection("Practice ahead — early corrects don't advance the schedule (" +
+            ahead.filter(r => r.type === "mcq").length + ")", "mcq",
+            shuffled(ahead.filter(r => r.type === "mcq").map(r => r.item)));
+          addSection("Practice ahead — sentence builds (" +
+            ahead.filter(r => r.type === "builder").length + ")", "builder",
+            shuffled(ahead.filter(r => r.type === "builder").map(r => r.item)));
+          zhLang(mainEl);
+          const s1 = mainEl.querySelector("section.block");
+          if (s1) { s1.tabIndex = -1; s1.focus({ preventScroll: true }); }
+        };
+        mainEl.appendChild(el("div", "review-actions")).appendChild(b);
+      }
+      const anyVisited = Object.keys(loadStore()).length > 0;
+      mainEl.appendChild(el("p", null, '<a href="index.html">← Back to all topics</a>' +
+        (anyVisited ? ' · <a href="review.html#drill">10-question mixed drill</a>' : "")));
+      zhLang(wrap);
+      return;
+    }
+    hero.insertBefore(el("p", "subtitle", "Questions you missed, back on a spaced schedule. Answer one correctly and it levels up (level 3 graduates it for good); miss it again and it starts over." +
+      (scheduled ? " " + scheduled + " more scheduled from " + nextDue + "." : "")),
+      hero.querySelector(".review-actions"));
+
     addSection("Missed questions (" + mcqItems.length + ")", "mcq", shuffled(mcqItems));
     addSection("Missed sentence builds (" + builderItems.length + ")", "builder", shuffled(builderItems));
     wrap.appendChild(el("div", "site-footer", 'Correct answers move a question up a level — it comes back after 2, then 5 days, then graduates for good. <span class="zh">加油！</span>'));
@@ -1034,12 +1398,15 @@
     const wrap = el("div", "wrap");
     app.appendChild(wrap);
 
-    const top = el("div", "site-top");
+    const top = el("header", "site-top");
     top.appendChild(el("span", "home-link", '<span class="dot"></span> HSK 4 Grammar Lab'));
     const toggles = el("div", "toggles");
     initToggles(toggles);
     top.appendChild(toggles);
     wrap.appendChild(top);
+
+    const mainEl = el("main");
+    wrap.appendChild(mainEl);
 
     const hero = el("div", "idx-hero");
     hero.appendChild(el("h1", "zh-big", '从三级<span class="accent">到四级</span>'));
@@ -1047,42 +1414,103 @@
     const nPages = window.ALL_PAGES.length;
     // exact exercise count is computed at build time (see scripts/build-shells.js)
     const nItems = (window.SITE_STATS && window.SITE_STATS.items) || "1400+";
+    // accent goes to YOUR numbers; the static content counts are a footnote
+    const misses0 = loadMisses();
+    let graduated = 0;
+    for (const k of Object.keys(misses0)) if (misses0[k].grad) graduated++;
+    const mastered = window.ALL_PAGES.filter(p => ((store[p.id] || {}).best || 0) >= 80).length;
+    const anyProgress = window.ALL_PAGES.some(p => (store[p.id] || {}).visited);
     const stats = el("div", "idx-stats");
-    stats.innerHTML = '<div class="idx-stat"><div class="n">' + M.units.length + '</div><div class="l">Units</div></div>' +
-      '<div class="idx-stat"><div class="n">' + nPages + '</div><div class="l">Topics</div></div>' +
-      '<div class="idx-stat"><div class="n">' + nItems + '</div><div class="l">Examples & exercises</div></div>';
+    if (anyProgress) {
+      stats.appendChild(el("div", "idx-you", "🏅 " + mastered + " / " + nPages + " topics at 80%+" +
+        (graduated ? ' · 🎓 ' + graduated + ' graduated from <span class="zh">错题本</span>' : "")));
+    }
+    stats.appendChild(el("div", "idx-static", M.units.length + " units · " + nPages + " topics · " + nItems + " examples & exercises"));
     hero.appendChild(stats);
-    wrap.appendChild(hero);
+    mainEl.appendChild(hero);
 
-    // today strip: continue where you left off + suggested next topic
+    /* ---- Today panel: one glance, one filled action ----
+       Slot order is fixed (review due → continue → next) so the page never
+       reshuffles between visits; retrieval outranks new material on purpose. */
+    const mStats = missStats();
     const lastRaw = (() => { try { return JSON.parse(localStorage.getItem("hsk4lab-last")); } catch (e) { return null; } })();
     const lastPage = lastRaw && window.ALL_PAGES.find(p => p.id === lastRaw.id);
+    // deep-link Continue to the saved section — but only while it's fresh (≤4 days)
+    const lastSec = lastPage && lastRaw.sec > 1 && lastRaw.t && (Date.now() - lastRaw.t) / 864e5 <= 4 ? lastRaw.sec : 0;
     const nextPage = window.ALL_PAGES.find(p =>
       (!lastPage || p.id !== lastPage.id) && ((store[p.id] || {}).best || 0) < 80);
-    if (lastPage || nextPage) {
-      const strip = el("div", "today-strip");
-      const chip = (dir, p) => {
-        const zh = stripMarks(p.zh);
-        const label = p.title.includes(zh) ? '<span class="t-zh">' + esc(p.title) + "</span>"
-          : '<span class="t-zh">' + esc(zh) + "</span> · " + esc(p.title);
-        const a = el("a", null, '<div class="dir">' + dir + '</div><div class="t-title">' + label + "</div>");
-        a.href = "topics/" + p.id + ".html";
-        strip.appendChild(a);
-      };
-      if (lastPage) chip("▶ Continue", lastPage);
-      if (nextPage) chip(lastPage ? "Next up" : "Start here", nextPage);
-      wrap.appendChild(strip);
-    }
 
-    // review strip (错题本) — shows what's DUE, not just what exists
-    const mStats = missStats();
-    const rev = el("a", "review-link");
-    rev.href = "review.html";
-    rev.innerHTML = '<span class="rl-zh">错题本</span><b>Review your misses</b>' +
-      (mStats.due ? '<span class="rl-count">' + mStats.due + " due</span>" :
-       mStats.scheduled ? '<span class="rl-empty">none due today ✓ · ' + mStats.scheduled + " scheduled for " + mStats.next + "</span>" :
-       '<span class="rl-empty">questions you miss collect here</span>');
-    wrap.appendChild(rev);
+    const today = el("div", "today-panel");
+    const tpHead = el("div", "tp-head");
+    tpHead.appendChild(el("span", "tp-kicker", '<span class="zh">今天</span> · Today'));
+    // rolling 7-day dots, counted only on days with ≥1 answered question —
+    // deliberately NOT a breakable streak counter
+    const days = loadDays();
+    if (days.length) {
+      let n7 = 0;
+      const dots = [];
+      for (let o = -6; o <= 0; o++) {
+        const hit = days.indexOf(dateStr(o)) >= 0;
+        if (hit) n7++;
+        dots.push(hit ? "●" : "○");
+      }
+      const streak = el("span", "tp-streak");
+      streak.innerHTML = '<span class="dots" aria-hidden="true">' + dots.join("") + "</span>" + n7 +
+        ' of last 7 days<span class="sr-only"> — days with at least one answered question</span>';
+      streak.title = "Days with at least one answered question";
+      tpHead.appendChild(streak);
+    }
+    today.appendChild(tpHead);
+
+    const topicLabelHtml = p => {
+      const zh = stripMarks(p.zh);
+      return p.title.includes(zh) ? '<span class="t-zh">' + esc(p.title) + "</span>"
+        : '<span class="t-zh">' + esc(zh) + "</span> · " + esc(p.title);
+    };
+    const contHref = lastPage ? "topics/" + lastPage.id + ".html" + (lastSec ? "#sec" + lastSec : "") : null;
+    const tpMain = el("div", "tp-main");
+    const tpRows = el("div", "tp-rows");
+    if (mStats.due) {
+      const a = el("a", "btn primary", '<span class="zh">错题本</span> — review ' + mStats.due + " due →");
+      a.href = "review.html";
+      tpMain.appendChild(a);
+    } else if (lastPage) {
+      const a = el("a", "btn primary", "▶ Continue — " + topicLabelHtml(lastPage) + (lastSec ? " · Part " + lastSec : ""));
+      a.href = contHref;
+      tpMain.appendChild(a);
+    } else if (nextPage) {
+      const a = el("a", "btn primary", "Start here — " + topicLabelHtml(nextPage));
+      a.href = "topics/" + nextPage.id + ".html";
+      tpMain.appendChild(a);
+    }
+    // mixed drill: interleaved retrieval across topics (misses first, then
+    // fresh items from your weakest studied topics)
+    if (anyProgress || mStats.due) {
+      const d = el("a", "btn ghost", "10-question mixed drill");
+      d.href = "review.html#drill";
+      tpMain.appendChild(d);
+    }
+    today.appendChild(tpMain);
+
+    if (lastPage && mStats.due) {
+      const a = el("a", null, '<span class="dir">▶ Continue</span>' + topicLabelHtml(lastPage) + (lastSec ? " · Part " + lastSec : ""));
+      a.href = contHref;
+      tpRows.appendChild(a);
+    }
+    if (nextPage && (mStats.due || lastPage)) { // skip when it's already the primary button
+      const a = el("a", null, '<span class="dir">' + (lastPage ? "Next up" : "Start here") + "</span>" + topicLabelHtml(nextPage));
+      a.href = "topics/" + nextPage.id + ".html";
+      tpRows.appendChild(a);
+    }
+    if (!mStats.due) {
+      const a = el("a", null, '<span class="dir"><span class="zh">错题本</span></span>' +
+        (mStats.scheduled ? "none due today ✓ · " + mStats.scheduled + " back on " + mStats.next
+                          : "questions you miss collect here"));
+      a.href = "review.html";
+      tpRows.appendChild(a);
+    }
+    if (tpRows.children.length) today.appendChild(tpRows);
+    mainEl.appendChild(today);
 
     M.units.forEach(u => {
       const unit = el("div", "unit");
@@ -1111,14 +1539,14 @@
         cards.appendChild(a);
       });
       unit.appendChild(cards);
-      wrap.appendChild(unit);
+      mainEl.appendChild(unit);
     });
     // backup / cross-device sync: export & import via clipboard (no account, no server)
     const dataRow = el("div", "data-row");
     dataRow.appendChild(el("span", null, "Progress is saved in this browser only —"));
     const exp = el("button", "toggle-btn", "Export progress");
     exp.onclick = () => copyText(
-      JSON.stringify({ v: 1, exported: dateStr(0), progress: loadStore(), misses: loadMisses() }),
+      JSON.stringify({ v: 1, exported: dateStr(0), progress: loadStore(), misses: loadMisses(), days: loadDays() }),
       "Progress copied — paste it into Import on your other device");
     const imp = el("button", "toggle-btn", "Import");
     dataRow.appendChild(exp);
@@ -1133,11 +1561,18 @@
       toast("Imported ✓ — reloading…");
       setTimeout(() => location.reload(), 900);
     };
-    imp.onclick = () => panel.classList.toggle("hidden");
+    panel.id = "import-panel";
+    imp.setAttribute("aria-expanded", "false");
+    imp.setAttribute("aria-controls", panel.id);
+    imp.onclick = () => {
+      const open = panel.classList.toggle("hidden") === false;
+      imp.setAttribute("aria-expanded", String(open));
+      if (open) ta.focus();
+    };
     panel.appendChild(ta);
     panel.appendChild(apply);
-    wrap.appendChild(dataRow);
-    wrap.appendChild(panel);
+    mainEl.appendChild(dataRow);
+    mainEl.appendChild(panel);
 
     wrap.appendChild(el("div", "site-footer", "Best score per topic is saved in your browser — no account, no server, no tracking. Fonts load from Google Fonts (the site's only third-party request). 🏅 = 80%+ · Built for the HSK 3 → HSK 4 jump."));
     zhLang(wrap);
@@ -1170,6 +1605,14 @@
     }
     saveStore(store);
     saveMisses(m);
+    // study-day log: union merge (older exports simply don't carry `days`)
+    if (Array.isArray(data.days)) {
+      try {
+        const merged = [...new Set(loadDays().concat(
+          data.days.filter(x => /^\d{4}-\d{2}-\d{2}$/.test(x))))].sort();
+        localStorage.setItem(DAYS_KEY, JSON.stringify(merged.slice(-60)));
+      } catch (e) {}
+    }
     return null;
   }
 })();

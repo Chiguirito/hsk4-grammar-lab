@@ -49,7 +49,7 @@ Ask: is X the <i>best</i> candidate or the <i>worst</i> candidate for this verb?
       type: "examples",
       title: "Model sentences — even this, even that",
       short: "Examples",
-      intro: "Tap to listen. For each one, find the invisible scale: what else does the sentence quietly claim?",
+      intro: "Tap 🔊 to listen. For each one, find the invisible scale: what else does the sentence quietly claim?",
       items: [
         { tag: "subject", cn: "这首歌太流行了，**连**我爸爸**都**会唱。", py: "Zhè shǒu gē tài liúxíng le, lián wǒ bàba dōu huì chàng.", en: "This song is so popular that even my dad can sing it.", note: "Dad = least likely pop fan → everyone can sing it." },
         { tag: "object", cn: "他**连**咖啡**都**不喝，更别说酒了。", py: "Tā lián kāfēi dōu bù hē, gèng bié shuō jiǔ le.", en: "He doesn't even drink coffee, let alone alcohol.", note: "The object 咖啡 moves BEFORE the verb — the signature 连 word order. 更别说 'let alone' rides the same scale." },

@@ -47,7 +47,7 @@ Reading loves 被↔把 conversions (same event, camera flipped), Writing plants
       type: "examples",
       title: "Model sentences — read, listen, absorb",
       short: "Examples",
-      intro: "Tap to listen. In each one, find: the receiver up front, the (optional) agent after 被, and the verb's obligatory tail.",
+      intro: "Tap 🔊 to listen. In each one, find: the receiver up front, the (optional) agent after 被, and the verb's obligatory tail.",
       items: [
         { tag: "no agent", cn: "我的自行车**被**偷**了**。", py: "Wǒ de zìxíngchē bèi tōu le.", en: "My bike got stolen.", note: "Agent unknown → simply omitted. 了 supplies the required ending." },
         { tag: "agent", cn: "那本书**被**同学借**走了**。", py: "Nà běn shū bèi tóngxué jiè zǒu le.", en: "That book was borrowed by a classmate.", note: "Receiver 那本书 is definite — like 把-objects, 被-subjects are known things." },

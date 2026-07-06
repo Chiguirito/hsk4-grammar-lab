@@ -59,7 +59,7 @@ A single <span class="zh">了</span> is only enough for simple verbs like <span 
       type: "examples",
       title: 'Model sentences — read, listen, absorb',
       short: "Examples",
-      intro: "Tap any sentence to hear it. Notice in every single one: 把 + object first, verb + ending after.",
+      intro: "Tap 🔊 to hear each sentence. Notice in every single one: 把 + object first, verb + ending after.",
       items: [
         { tag: "在", cn: "我**把**密码写**在**笔记本上了。", py: "Wǒ bǎ mìmǎ xiě zài bǐjìběn shàng le.", en: "I wrote the password down in my notebook.", note: "写 alone would be incomplete — 在笔记本上 tells us where the password ended up." },
         { tag: "到", cn: "师傅，请**把**我送**到**首都机场。", py: "Shīfu, qǐng bǎ wǒ sòng dào Shǒudū Jīchǎng.", en: "Driver, please take me to Capital Airport.", note: "把 + person works too — the passenger is what gets 'moved'." },

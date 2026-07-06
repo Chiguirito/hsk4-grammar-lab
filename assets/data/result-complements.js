@@ -46,7 +46,7 @@ In “if…then” threats and promises, 不 + V + C is correct and extremely co
       type: "examples",
       title: "Model sentences — the ten tails in action",
       short: "Examples",
-      intro: "Tap to listen. In each one, ask yourself: what does the sentence claim beyond the bare action?",
+      intro: "Tap 🔊 to listen. In each one, ask yourself: what does the sentence claim beyond the bare action?",
       items: [
         { tag: "完", cn: "作业我已经写**完**了，可以出去玩儿了吧？", py: "Zuòyè wǒ yǐjīng xiě wán le, kěyǐ chūqù wánr le ba?", en: "I've already finished my homework — can I go out and play now?", note: "完 = the quantity is used up: nothing left to write." },
         { tag: "好", cn: "饭做**好**了，大家快来吃吧！", py: "Fàn zuò hǎo le, dàjiā kuài lái chī ba!", en: "Dinner is ready — everyone come eat!", note: "做好 = done AND ready to use. 做完 would only say the cooking activity ended." },

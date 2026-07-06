@@ -45,7 +45,7 @@ The escalator can carry negative feelings down: <span class="zh">我越来越<b 
       type: "examples",
       title: "Model sentences — feel the escalator",
       short: "Examples",
-      intro: "Tap to listen. Watch for the pattern's three friends: change-了 at the end, psych-verbs after 越来越, and the two 越's of 越…越.",
+      intro: "Tap 🔊 to listen. Watch for the pattern's three friends: change-了 at the end, psych-verbs after 越来越, and the two 越's of 越…越.",
       items: [
         { tag: "adj", cn: "天气**越来越**冷了，你多穿点儿衣服。", py: "Tiānqì yuèláiyuè lěng le, nǐ duō chuān diǎnr yīfu.", en: "It's getting colder and colder — put on some more clothes.", note: "The classic frame: Subject + 越来越 + adjective + change-了." },
         { tag: "psych-V", cn: "我**越来越**喜欢这个城市了。", py: "Wǒ yuèláiyuè xǐhuan zhège chéngshì le.", en: "I like this city more and more.", note: "喜欢 is a feeling verb — no 很 needed, no 很 allowed." },

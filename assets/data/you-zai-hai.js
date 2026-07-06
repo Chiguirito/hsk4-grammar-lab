@@ -44,7 +44,7 @@ The fill-the-blank section almost always contains one 又/再/还 slot, and the 
       type: "examples",
       title: 'Model sentences — stamp, plan, or ongoing?',
       short: "Examples",
-      intro: "Tap to listen. For each one, decide first: did the repeat already happen (又), is it still ahead (再), or is it simply not over (还)?",
+      intro: "Tap 🔊 to listen. For each one, decide first: did the repeat already happen (又), is it still ahead (再), or is it simply not over (还)?",
       items: [
         { tag: "又", cn: "糟糕，我**又**忘带钥匙了。", py: "Zāogāo, wǒ yòu wàng dài yàoshi le.", en: "Oh no, I forgot my keys again.", note: "Already happened → 又…了. The 了 is 又's loyal sidekick." },
         { tag: "再", cn: "这个电影真不错，我想**再**看一遍。", py: "Zhège diànyǐng zhēn búcuò, wǒ xiǎng zài kàn yí biàn.", en: "This movie is great — I'd like to watch it again.", note: "The rewatch hasn't happened yet → 再. Note the position: 想 + 再 + verb." },

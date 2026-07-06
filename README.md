@@ -43,6 +43,12 @@ python3 -m http.server 8000   # then open http://localhost:8000
   self-contained tutoring prompt (question, choices, your answer, the site's explanation) for
   ChatGPT/Claude/any chatbot. Each topic ends with a **Practice more with AI** card that requests
   10 fresh exam-style questions, and the review page can export your whole miss list for coaching.
+- **Today panel**: the index opens with one suggested action — due reviews first, then continue
+  exactly where you left off (down to the lesson section), then the next new topic — plus a
+  **10-question mixed drill** (`review.html#drill`) that interleaves due misses with fresh
+  questions from your weakest studied topics. The small dots count days with at least one
+  answered question in the last week. When nothing is due, the review page shows the coming
+  week's schedule and offers **Practice ahead** (early correct answers leave the schedule alone).
 - **Spaced review (错题本)**: missed questions come back on a Leitner schedule — answer one
   correctly once it's due (on the review page or back in its topic — both count) and it levels up
   (due again in 2, then 5 days); three levels and it graduates. Missing it again resets it.
