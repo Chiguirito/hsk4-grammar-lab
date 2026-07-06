@@ -133,7 +133,7 @@ Spanish stacks negatives happily: <i>“<b>no</b> vi a <b>nadie</b>”</i>. Chin
       items: [
         { q: '<span class="zh">这件事很简单，___都能做好。</span>', choices: ['<span class="zh">谁</span>', '<span class="zh">什么</span>', '<span class="zh">怎么</span>', '<span class="zh">哪儿</span>'], a: 0, expl: "The doer is a person → 谁都 'anyone'. 什么都 would need a thing-slot, 哪儿都 a place-slot. Match the blank's type first." },
         { q: '“I didn\'t eat anything this morning.” Which is correct?', choices: ['我早上什么没吃。', '我早上什么都没吃。', '我早上都什么没吃。', '我早上没吃什么都。'], a: 1, expl: "The full frame is QW + 都/也 + 没 + V: 什么都没吃. Dropping 都 (A) is THE classic learner error; C and D scramble the order." },
-        { q: '<span class="zh">A：你想吃点儿什么吗？ B：___</span> — A is asking:', choices: ["what exactly B wants to eat", "whether B wants to eat something", "why B is hungry", "where to eat"], a: 1, expl: "什么 + 吗 = 'something' inside a yes/no offer. Without 吗 it would ask WHAT. The 吗-test is the fastest way to tell the two jobs apart." },
+        { q: '<span class="zh">A：你想吃点儿什么吗？</span> — A is asking:', choices: ["what exactly B wants to eat", "whether B wants to eat something", "why B is hungry", "where to eat"], a: 1, expl: "什么 + 吗 = 'something' inside a yes/no offer. Without 吗 it would ask WHAT. The 吗-test is the fastest way to tell the two jobs apart." },
         { q: '<span class="zh">这个箱子太重了，我___搬___搬不动。</span>', choices: ['<span class="zh">怎么 / 都</span>', '<span class="zh">什么 / 都</span>', '<span class="zh">怎么 / 就</span>', '<span class="zh">哪儿 / 也</span>'], a: 0, expl: "Method-blank: 怎么搬都搬不动 'no matter how I lift it, it won't budge'. The frame is 怎么 + V + 都 + V不C." },
         { q: 'Which sentence means “Nobody told me”?', choices: ['<span class="zh">谁也没告诉我。</span>', '<span class="zh">谁没也告诉我。</span>', '<span class="zh">也谁没告诉我。</span>', '<span class="zh">谁没告诉我也。</span>'], a: 0, expl: "QW first, then 也, then 没, then verb: 谁也没告诉我. The clamp order never changes." },
         { q: '<span class="zh">我好像在哪儿见过这个词。</span> Here 哪儿 means:', choices: ["where? (a question)", "everywhere", "somewhere (vague memory)", "nowhere"], a: 2, expl: "好像 + 过 + no question mark → vague-memory 'somewhere'. No 都 (so not 'everywhere'), no interrogative force (so not a question)." }
@@ -217,7 +217,7 @@ Spanish stacks negatives happily: <i>“<b>no</b> vi a <b>nadie</b>”</i>. Chin
       short: "Edge cases",
       html: `
 <h3>1 · The 吗-test (your best friend in listening)</h3>
-<p><span class="zh">你想喝什么？</span> = WHAT would you like? · <span class="zh">你想喝点儿什么<b class="hl">吗</b>？</span> = would you like SOMETHING? A question word plus 吗 in the same sentence forces the indefinite reading — the two question engines can't both fire.</p>
+<p><span class="zh">你想喝什么？</span> = WHAT would you like? · <span class="zh">你想喝点儿什么<b class="hl">吗</b>？</span> = would you like SOMETHING? A question word plus 吗 in the same simple clause forces the indefinite reading — the two question engines can't both fire in one clause. One exception: in embedded questions after verbs like 知道 / 记得 / 告诉, the QW keeps its asking job — <span class="zh">你知道他是谁<b class="hl">吗</b>？</span> = “Do you know WHO he is?” (吗 asks about 知道, 谁 still asks “who”).</p>
 <h3>2 · 什么 as dismissal</h3>
 <p>Spoken Chinese uses 什么 to wave things away: <span class="zh">什么呀！根本不是这样。</span> “Nonsense! It's not like that at all.” Also <span class="zh">谢什么呀</span> “oh please, no need to thank me” — the QW mocks the previous word. You only need to recognize it in listening; don't produce it in the exam essay.</p>
 <h3>3 · 哪儿啊 / 哪里哪里 — polite denial</h3>
@@ -267,7 +267,7 @@ Arrangement task with a duplicated question word tile (two 什么, two 哪儿…
 <tr><td>Some-</td><td>bare QW (+吗 / 好像 / 点儿)</td><td>吃点儿什么吗？· 好像在哪儿见过</td></tr>
 <tr><td>Whatever-pair</td><td>…QW… + <b class="hl">就</b> + …<b class="hl">same QW</b>…</td><td>想吃什么就吃什么 · 谁先来谁先吃</td></tr>
 <tr><td>Dismissal (recognize)</td><td>什么呀 · 没什么 · 哪里哪里</td><td>“nonsense” · “it's nothing” · “you flatter me”</td></tr>
-<tr><td>吗-test</td><td>QW + 吗 → QW = “some-”, never a question</td><td>想喝什么吗? = want something?</td></tr>
+<tr><td>吗-test</td><td>QW + 吗 in one simple clause → QW = “some-” (exception: embedded questions after 知道/记得/告诉 keep the QW asking)</td><td>想喝什么吗? = want something? · but 你知道他是谁吗? = do you know WHO he is?</td></tr>
 <tr><td>Partial vs total</td><td><b class="hl">不是</b>谁都… = not everyone · 谁<b class="hl">都不</b>… = nobody</td><td>position of 不 decides</td></tr>
 <tr><td>☠️ Traps</td><td colspan="2">missing 都/也 (✗什么不想吃) · 哪儿…那儿 in pairs ✗ · 都 after the verb ✗</td></tr>
 </table></div>`

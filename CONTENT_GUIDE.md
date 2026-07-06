@@ -33,6 +33,13 @@ registerPage({
 7. `{type:"clinic", title, short, intro, items:[{wrong, right, py, en, expl}]}` — error clinic; exactly ONE bug per item.
 8. `{type:"cheatsheet", title, short, html}` — final section, a screenshot-able summary table.
 
+### Field content rules
+
+- `cn`/`py`/`en`/`q`/`choices`/`expl` support `**…**` accent highlighting; `q`, `choices` and `expl`
+  additionally accept inline HTML like `<span class="zh">`.
+- Builder `hint` and example `note` are plain text with `**…**` highlighting only — HTML in them
+  is escaped and will not render.
+
 ## Required page recipe (adapt, don't skip)
 
 1. concept — the big idea (metaphor/mental model + `pattern` box + `cmp` callout with ES/DE/EN parallels where real ones exist; never force a fake parallel)
@@ -47,7 +54,10 @@ registerPage({
 10. mcq "Final exam drill" — 10-12 items at real HSK4 difficulty (plausible distractors! wrong options must be *tempting*, e.g. the classic confusion, not random)
 11. cheatsheet
 
-Minimum volume per page: **≥28 example sentences** in total across sections, **≥16 mcq items**, **≥6 builder**, **≥6 clinic**.
+Volume per page: aim for **≥20 items combined across examples + builders + clinic**,
+**≥14 mcq items**, **≥5 builder**, **≥5 clinic**, and a cheatsheet. `scripts/validate.js` emits
+warnings below exactly these thresholds. Note that example sentences embedded in tables or prose
+HTML don't count toward the tally — only items in `examples` sections and `tabs` example lists do.
 
 ## Language quality rules (critical)
 

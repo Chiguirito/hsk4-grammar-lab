@@ -204,7 +204,7 @@ In the error-spotting and word-arrangement tasks, <span class="zh">才…了</sp
 <h3>1 · 才 + 就 in one sentence: the contrast machine</h3>
 <p><span class="zh">他<b class="hl">才</b>二十岁，<b class="hl">就</b>开了自己的公司。</span> — “He's ONLY twenty, and ALREADY runs his own company.” 才 shrinks the input, 就 inflates the output. HSK reading passages adore this frame.</p>
 <h3>2 · 就 as “then” in if-sentences — old friend, new label</h3>
-<p>You've written <span class="zh">如果明天下雨，我们<b class="hl">就</b>不去了</span> since HSK 3. That 就 is the same slider: once the condition holds, the result follows <i>without resistance</i>. The resistant version is …才: <span class="zh">要是你不去，他<b class="hl">才</b>不会去呢</span>.</p>
+<p>You've written <span class="zh">如果明天下雨，我们<b class="hl">就</b>不去了</span> since HSK 3. That 就 is the same slider: once the condition holds, the result follows <i>without resistance</i>. The resistant version is 只有…才: <span class="zh">只有你去，他<b class="hl">才</b>会去</span> — “only if YOU go will he go”. The condition is a hard requirement; anything less and the result simply doesn't happen.</p>
 <h3>3 · 才 = “just now / only just”</h3>
 <p><span class="zh">你怎么<b class="hl">才</b>来就要走？</span> — “You only just got here and you're already leaving?” Before a bare verb, 才 can mean “a moment ago, barely”. Pair it with 就 for maximum drama.</p>
 <h3>4 · 就 + 要…了 vs plain 就</h3>

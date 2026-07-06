@@ -238,7 +238,7 @@ English passive → first try topic + result (<span class="zh">写完了</span> 
 <h3 class="zh">被动句 in one card</h3>
 <div class="tbl-wrap"><table class="tbl">
 <tr><th>Rule</th><th>Remember</th></tr>
-<tr><td>Frame</td><td>Receiver + 时间/负词/能愿动词 + <b class="hl">被</b> (+agent) (+给) + V + <b class="hl">tail</b></td></tr>
+<tr><td>Frame</td><td>Receiver + 时间/否定词/能愿动词 + <b class="hl">被</b> (+agent) (+给) + V + <b class="hl">tail</b></td></tr>
 <tr><td>Verb never bare</td><td>被偷<b class="hl">了</b> · 被拿<b class="hl">走了</b> · 被翻译<b class="hl">成</b>英文 · 被感动<b class="hl">得</b>哭了 — ✗被偷</td></tr>
 <tr><td>Agent slot</td><td>被(人)V ✓ agent droppable · <b>让/叫 + agent obligatory</b>: 让人拿走了 · ✗叫拿走了</td></tr>
 <tr><td>Flavour 给</td><td>optional before the verb: 被人<b class="hl">给</b>骗了 — deletable, colloquial</td></tr>

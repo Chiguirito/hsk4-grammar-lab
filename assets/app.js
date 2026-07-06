@@ -20,9 +20,14 @@
     if (html !== undefined) e.innerHTML = html;
     return e;
   };
-  // mark Chinese text for screen readers / font selection (html lang="en")
-  const zhLang = root => root.querySelectorAll(".zh, .ex-cn, .er-wrong, .er-right, .tile, .zh-big, .u-zh, .c-zh, .p-zh")
-    .forEach(e => { if (!e.lang) e.lang = "zh-Hans"; });
+  // mark Chinese text for screen readers / font selection (html lang="en");
+  // only elements that actually contain CJK get tagged, pinyin gets zh-Latn
+  const CJK_RE = /[㐀-鿿豈-﫿]/;
+  const zhLang = root => {
+    root.querySelectorAll(".zh, .ex-cn, .er-wrong, .er-right, .tile, .zh-big, .u-zh, .c-zh, .p-zh, .rl-zh, .t-zh, .pattern .slot")
+      .forEach(e => { if (!e.lang && CJK_RE.test(e.textContent)) e.lang = "zh-Hans"; });
+    root.querySelectorAll(".ex-py, .py-hint").forEach(e => { if (!e.lang) e.lang = "zh-Latn-pinyin"; });
+  };
   function shuffled(arr) {
     const a = arr.slice();
     for (let i = a.length - 1; i > 0; i--) {
@@ -31,6 +36,16 @@
     }
     return a;
   }
+  // stable content-derived miss-store ids: editing or reordering topic content
+  // invalidates a saved miss cleanly instead of silently re-pointing it at a
+  // different question (positional "page/s2:5" ids are migrated on sight)
+  function hashId(str) {
+    let h = 5381;
+    for (let i = 0; i < str.length; i++) h = (((h << 5) + h) ^ str.charCodeAt(i)) >>> 0;
+    return h.toString(36);
+  }
+  const mcqMissId = (pageId, item) => pageId + "/h" + hashId("m|" + plain(item.q) + "|" + item.choices.map(plain).join("|"));
+  const builderMissId = (pageId, item) => pageId + "/h" + hashId("b|" + item.tiles.join("|"));
 
   /* ---------------- speech ---------------- */
   let zhVoice = null;
@@ -43,8 +58,15 @@
     speechSynthesis.onvoiceschanged = pickVoice;
   }
   let lastSpoken = { text: null, t: 0 };
+  let warnedNoVoice = false;
   function speak(text) {
     if (!window.speechSynthesis) return;
+    try { if (localStorage.getItem("hsk4lab-audio") === "off") return; } catch (e) {}
+    if (!zhVoice) pickVoice();
+    if (!zhVoice && !warnedNoVoice) {
+      warnedNoVoice = true;
+      toast("No Chinese voice found — install one in your system's text-to-speech settings for proper audio.");
+    }
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(stripMarks(text).replace(/[（(].*?[)）]/g, ""));
     u.lang = "zh-CN";
@@ -64,7 +86,7 @@
   let currentPage = null; // set by registerPage; null on index/review
   let toastEl = null, toastTimer = 0;
   function toast(msg) {
-    if (!toastEl) { toastEl = el("div", "toast"); document.body.appendChild(toastEl); }
+    if (!toastEl) { toastEl = el("div", "toast"); toastEl.setAttribute("role", "status"); document.body.appendChild(toastEl); }
     toastEl.textContent = msg;
     toastEl.classList.add("show");
     clearTimeout(toastTimer);
@@ -212,7 +234,8 @@
     const pct = tracker.total ? Math.min(100, Math.round((correct / tracker.total) * 100)) : 0;
     prev.total = tracker.total;
     prev.visited = true;
-    prev.answered = Math.max(prev.answered || 0, keys.length);
+    // clamp: an import from a version with more questions must not show "14 of 10 answered"
+    prev.answered = Math.min(tracker.total, Math.max(prev.answered || 0, keys.length));
     prev.best = Math.min(100, Math.max(prev.best || 0, pct));
     store[tracker.pageId] = prev;
     saveStore(store);
@@ -230,14 +253,20 @@
     const p = n => (n < 10 ? "0" : "") + n;
     return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate());
   }
+  // keys that would write onto Object.prototype instead of the store
+  const SAFE_KEY = k => k !== "__proto__" && k !== "constructor" && k !== "prototype";
   function normMiss(v) {
     if (typeof v === "number" && v > 0) return { n: v, box: 1, due: dateStr(0) };
-    if (v && typeof v === "object" && typeof v.n === "number" && v.n > 0) {
-      return {
-        n: v.n,
-        box: Math.min(3, Math.max(1, v.box | 0 || 1)),
-        due: /^\d{4}-\d{2}-\d{2}$/.test(v.due) ? v.due : dateStr(0)
-      };
+    if (v && typeof v === "object") {
+      // graduation tombstone — kept so an import can't resurrect a mastered item
+      if (typeof v.grad === "string" && /^\d{4}-\d{2}-\d{2}$/.test(v.grad)) return { grad: v.grad };
+      if (typeof v.n === "number" && v.n > 0) {
+        return {
+          n: v.n,
+          box: Math.min(3, Math.max(1, v.box | 0 || 1)),
+          due: /^\d{4}-\d{2}-\d{2}$/.test(v.due) ? v.due : dateStr(0)
+        };
+      }
     }
     return null;
   }
@@ -245,7 +274,13 @@
     try {
       const raw = JSON.parse(localStorage.getItem(MISS_KEY)) || {};
       const m = {};
-      for (const k of Object.keys(raw)) { const v = normMiss(raw[k]); if (v) m[k] = v; }
+      const keepGrad = dateStr(-365); // tombstones expire after a year
+      for (const k of Object.keys(raw)) {
+        if (!SAFE_KEY(k)) continue;
+        const v = normMiss(raw[k]);
+        if (!v || (v.grad && v.grad < keepGrad)) continue;
+        m[k] = v;
+      }
       return m;
     } catch (e) { return {}; }
   }
@@ -254,10 +289,37 @@
     const m = loadMisses(), t = dateStr(0);
     let due = 0, scheduled = 0, next = null;
     for (const k of Object.keys(m)) {
+      if (m[k].grad) continue;
       if (m[k].due <= t) due++;
       else { scheduled++; if (!next || m[k].due < next) next = m[k].due; }
     }
     return { total: due + scheduled, due: due, scheduled: scheduled, next: next };
+  }
+  // shift a YYYY-MM-DD string by whole days (noon anchor avoids DST edges)
+  function shiftDateStr(s, days) {
+    const d = new Date(s + "T12:00:00");
+    d.setDate(d.getDate() + days);
+    const p = n => (n < 10 ? "0" : "") + n;
+    return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate());
+  }
+  // approximate the day a schedule was RECORDED: due minus its box offset
+  const recordedOn = e => e.box > 1 ? shiftDateStr(e.due, -BOX_DAYS[e.box]) : e.due;
+  // conservative merge of two schedules for the same question:
+  // between active schedules, lower box wins (same box → earlier due).
+  // A graduation beats any OLDER schedule (imports must not resurrect a
+  // mastered item), but a miss recorded strictly AFTER the graduation is
+  // newer knowledge and wins — same rule recordMiss applies on-device.
+  function mergeMiss(a, b) {
+    if (a.grad && b.grad) return a.grad >= b.grad ? a : b;
+    if (a.grad || b.grad) {
+      const grad = a.grad ? a : b, active = a.grad ? b : a;
+      return recordedOn(active) > grad.grad ? active : grad;
+    }
+    return {
+      n: Math.max(a.n, b.n),
+      box: Math.min(a.box, b.box),
+      due: a.box < b.box ? a.due : b.box < a.box ? b.due : (a.due < b.due ? a.due : b.due)
+    };
   }
   // Only the FIRST answer per question per visit moves its schedule (same
   // rule as recordAnswer) — quiz retries can't promote or demote twice.
@@ -266,15 +328,41 @@
     if (!id || missRecorded.has(id)) return;
     missRecorded.add(id);
     const m = loadMisses();
+    const today = dateStr(0);
     if (ok) {
       const e = m[id];
-      if (!e) return;
-      if (e.box >= 3) delete m[id]; // graduated 🎓
+      if (!e || e.grad) return;
+      // spaced repetition only counts a correct answer once the item is DUE —
+      // re-answering it early (e.g. on its topic page) leaves the schedule alone
+      if (e.due > today) return;
+      if (e.box >= 3) m[id] = { grad: today }; // graduated 🎓
       else { e.box += 1; e.due = dateStr(BOX_DAYS[e.box]); }
     } else {
-      m[id] = { n: (m[id] ? m[id].n : 0) + 1, box: 1, due: dateStr(0) };
+      const prev = m[id];
+      m[id] = { n: (prev && prev.n ? prev.n : 0) + 1, box: 1, due: today };
     }
     saveMisses(m);
+  }
+  // migrate any legacy positional ids ("page/s2:5") for this page to stable
+  // content-hash ids, so content edits can't silently re-point saved misses
+  function migratePageMisses(page) {
+    const m = loadMisses();
+    let changed = false;
+    for (const id of Object.keys(m)) {
+      const match = id.match(/^(.+)\/s(\d+):(\d+)$/);
+      if (!match || match[1] !== page.id) continue;
+      const sec = page.sections[+match[2]];
+      const item = sec && sec.items && sec.items[+match[3]];
+      let nid = null;
+      if (item && sec.type === "mcq") nid = mcqMissId(page.id, item);
+      else if (item && sec.type === "builder") nid = builderMissId(page.id, item);
+      const cur = m[id];
+      delete m[id];
+      changed = true;
+      if (!nid) continue; // content moved since the miss was saved
+      m[nid] = m[nid] ? mergeMiss(m[nid], cur) : cur;
+    }
+    if (changed) saveMisses(m);
   }
 
   function markVisited(pageId) {
@@ -286,22 +374,55 @@
 
   /* ---------------- toggles ---------------- */
   function initToggles(container) {
-    const prefs = { py: localStorage.getItem("hsk4lab-py") !== "off", en: localStorage.getItem("hsk4lab-en") !== "off" };
+    const get = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+    const set = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
+    const prefs = { py: get("hsk4lab-py") !== "off", en: get("hsk4lab-en") !== "off", audio: get("hsk4lab-audio") !== "off" };
     document.documentElement.classList.toggle("hide-py", !prefs.py);
     document.documentElement.classList.toggle("hide-en", !prefs.en);
-    const mk = (key, label) => {
+    const mk = (key, label, apply) => {
       const b = el("button", "toggle-btn" + (prefs[key] ? " on" : ""), label + ": " + (prefs[key] ? "ON" : "OFF"));
+      b.type = "button";
+      b.setAttribute("aria-pressed", String(prefs[key]));
       b.onclick = () => {
         prefs[key] = !prefs[key];
-        localStorage.setItem("hsk4lab-" + key, prefs[key] ? "on" : "off");
-        document.documentElement.classList.toggle(key === "py" ? "hide-py" : "hide-en", !prefs[key]);
+        set("hsk4lab-" + key, prefs[key] ? "on" : "off");
+        if (apply) apply(prefs[key]);
         b.classList.toggle("on", prefs[key]);
+        b.setAttribute("aria-pressed", String(prefs[key]));
         b.textContent = label + ": " + (prefs[key] ? "ON" : "OFF");
       };
       container.appendChild(b);
     };
-    mk("py", "Pīnyīn");
-    mk("en", "English");
+    mk("py", "Pīnyīn", on => document.documentElement.classList.toggle("hide-py", !on));
+    mk("en", "English", on => document.documentElement.classList.toggle("hide-en", !on));
+    mk("audio", "🔊", null); // gates speak() incl. the builder's auto-play
+    // three-state theme override: Auto (follow OS) → Dark → Light
+    const THEMES = ["auto", "dark", "light"];
+    let th = get("hsk4lab-theme");
+    if (THEMES.indexOf(th) < 0) th = "auto";
+    const applyTheme = () => {
+      let dark = th === "dark";
+      if (th === "auto") { try { dark = matchMedia("(prefers-color-scheme: dark)").matches; } catch (e) {} }
+      document.documentElement.dataset.theme = dark ? "dark" : "light";
+      // keep the browser-chrome color in step even when the toggle overrides the OS
+      document.querySelectorAll('meta[name="theme-color"]')
+        .forEach(m => m.setAttribute("content", dark ? "#191713" : "#faf7f1"));
+    };
+    const tb = el("button", "toggle-btn");
+    tb.type = "button";
+    const themeLabel = () => { tb.textContent = "Theme: " + th.charAt(0).toUpperCase() + th.slice(1); };
+    tb.onclick = () => {
+      th = THEMES[(THEMES.indexOf(th) + 1) % THEMES.length];
+      set("hsk4lab-theme", th);
+      applyTheme();
+      themeLabel();
+    };
+    applyTheme();
+    themeLabel();
+    try {
+      matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { if (th === "auto") applyTheme(); });
+    } catch (e) {}
+    container.appendChild(tb);
   }
 
   /* ---------------- renderers ---------------- */
@@ -314,7 +435,7 @@
     card.appendChild(cn);
     if (item.py) card.appendChild(el("div", "ex-py", fmt(item.py)));
     if (item.en) card.appendChild(el("div", "ex-en", fmt(item.en)));
-    if (item.note) card.appendChild(el("div", "ex-note", "💡 " + item.note));
+    if (item.note) card.appendChild(el("div", "ex-note", "💡 " + fmt(item.note))); // plain text + **…** only, per CONTENT_GUIDE
     zhLang(card);
     return card;
   }
@@ -346,25 +467,48 @@
     root.appendChild(wrap);
   }
 
+  let tabSeq = 0;
   function renderTabs(sec, root) {
     const box = el("div", "tabs");
     const bar = el("div", "tab-bar");
+    bar.setAttribute("role", "tablist");
     box.appendChild(bar);
-    const panels = [];
-    sec.tabs.forEach((tab, i) => {
+    const tabs = [];
+    (sec.tabs || []).forEach((tab, i) => {
       const b = el("button", i === 0 ? "active" : "", tab.label);
+      b.type = "button";
+      b.id = "tab" + (++tabSeq);
+      b.setAttribute("role", "tab");
+      b.setAttribute("aria-selected", i === 0 ? "true" : "false");
+      b.tabIndex = i === 0 ? 0 : -1;
       const p = el("div", "tab-panel" + (i === 0 ? " active" : ""));
+      p.setAttribute("role", "tabpanel");
+      p.setAttribute("aria-labelledby", b.id);
       if (tab.html) p.innerHTML = tab.html;
       (tab.examples || []).forEach(exi => p.appendChild(exampleCard(exi)));
-      b.onclick = () => {
-        bar.querySelectorAll("button").forEach(x => x.classList.remove("active"));
-        panels.forEach(x => x.classList.remove("active"));
-        b.classList.add("active");
-        p.classList.add("active");
-      };
+      b.onclick = () => tabs.forEach(t => {
+        const on = t.b === b;
+        t.b.classList.toggle("active", on);
+        t.b.setAttribute("aria-selected", String(on));
+        t.b.tabIndex = on ? 0 : -1;
+        t.p.classList.toggle("active", on);
+      });
       bar.appendChild(b);
       box.appendChild(p);
-      panels.push(p);
+      tabs.push({ b: b, p: p });
+    });
+    bar.addEventListener("keydown", e => {
+      const idx = tabs.findIndex(t => t.b === document.activeElement);
+      if (idx < 0) return;
+      let to = -1;
+      if (e.key === "ArrowRight") to = (idx + 1) % tabs.length;
+      else if (e.key === "ArrowLeft") to = (idx - 1 + tabs.length) % tabs.length;
+      else if (e.key === "Home") to = 0;
+      else if (e.key === "End") to = tabs.length - 1;
+      if (to < 0) return;
+      e.preventDefault();
+      tabs[to].b.focus();
+      tabs[to].b.click();
     });
     root.appendChild(box);
   }
@@ -373,13 +517,16 @@
     const quiz = el("div", "quiz");
     let done = 0, right = 0;
     const scoreBox = el("div", "quiz-score hidden");
+    scoreBox.setAttribute("role", "status"); // announce the final score to screen readers
     sec.items.forEach((item, idx) => {
-      const missId = item._src || (tracker.pageId ? tracker.pageId + "/" + sec._qkey + ":" + idx : null);
+      const missId = item._src || (tracker.pageId ? mcqMissId(tracker.pageId, item) : null);
       const q = el("div", "q");
       q.appendChild(el("div", "q-num", "QUESTION " + (idx + 1) + " / " + sec.items.length +
         (item._srcLabel ? " · from “" + esc(item._srcLabel) + "”" : "")));
       q.appendChild(el("div", "q-text", fmtHtml(item.q)));
       const wrap = el("div", "q-choices" + (item.choices.every(c => plain(c).length <= 14) ? " cols" : ""));
+      const result = el("div", "q-result hidden");
+      result.setAttribute("role", "status"); // announces correctness — the styling on the buttons is silent
       const expl = el("div", "q-expl hidden", item.expl ? fmtHtml(item.expl) : "");
       let answeredThis = false, chosen = -1;
       const actions = el("div", "q-actions hidden");
@@ -388,6 +535,7 @@
       shuffled(item.choices.map((_, i) => i)).forEach(ci => {
         const c = item.choices[ci];
         const b = el("button", null, fmtHtml(c));
+        b.type = "button";
         b.dataset.ci = ci;
         b.onclick = () => {
           if (answeredThis) return;
@@ -396,11 +544,15 @@
           actions.classList.remove("hidden");
           const ok = ci === item.a;
           wrap.querySelectorAll("button").forEach(x => {
-            x.disabled = true;
+            // aria-disabled, not disabled: the clicked button keeps keyboard focus
+            x.setAttribute("aria-disabled", "true");
             if (+x.dataset.ci === item.a) { x.classList.add("correct"); x.insertAdjacentText("afterbegin", "✓ "); }
             else if (x === b) { x.classList.add("wrong"); x.insertAdjacentText("afterbegin", "✗ "); }
             else x.classList.add("dim");
           });
+          result.className = "q-result " + (ok ? "good" : "bad");
+          result.innerHTML = ok ? "✓ Correct!" : '✗ Not quite — the answer is <span class="zh">' + esc(plain(item.choices[item.a])) + "</span>";
+          zhLang(result);
           if (item.expl) expl.classList.remove("hidden");
           done++;
           if (ok) right++;
@@ -411,6 +563,7 @@
         wrap.appendChild(b);
       });
       q.appendChild(wrap);
+      q.appendChild(result);
       q.appendChild(expl);
       q.appendChild(actions);
       zhLang(q);
@@ -418,13 +571,19 @@
     });
     function showScore() {
       const pct = Math.round((right / sec.items.length) * 100);
-      const msg = pct === 100 ? "满分！Perfect — exam ready." :
-        pct >= 80 ? "很棒！Solid — review the misses once and move on." :
-        pct >= 60 ? "不错，但还差一点。Re-read the sections above, then retry." :
-        "别灰心 — go back through the examples, this needs another pass.";
+      const msg = pct === 100 ? '<span class="zh">满分！</span>Perfect — exam ready.' :
+        pct >= 80 ? '<span class="zh">很棒！</span>Solid — review the misses once and move on.' :
+        pct >= 60 ? '<span class="zh">不错，但还差一点。</span>Re-read the sections above, then retry.' :
+        '<span class="zh">别灰心</span> — go back through the examples, this needs another pass.';
       scoreBox.innerHTML = '<span class="big">' + right + " / " + sec.items.length + '</span><span>(' + pct + '%)</span><span class="msg">' + msg + "</span>";
       const rb = el("button", "retry-btn", "↻ Retry");
-      rb.onclick = () => { root.innerHTML = ""; renderMcq(sec, root); };
+      rb.type = "button";
+      rb.onclick = () => {
+        root.innerHTML = "";
+        renderMcq(sec, root);
+        const b1 = root.querySelector(".q-choices button");
+        if (b1) b1.focus(); // the Retry button is gone — don't strand keyboard focus
+      };
       scoreBox.appendChild(rb);
       // last quiz of a topic: hand the learner their next step
       if (sec._last && currentPage) {
@@ -436,7 +595,8 @@
           extra.appendChild(a);
         }
         const all = window.ALL_PAGES || [];
-        const nxt = all[all.findIndex(p => p.id === currentPage.id) + 1];
+        const pos = all.findIndex(p => p.id === currentPage.id);
+        const nxt = pos >= 0 ? all[pos + 1] : null; // findIndex -1 must not alias to all[0]
         if (nxt) {
           const a = el("a", null, "Next topic: " + stripMarks(nxt.zh) + " →");
           a.href = nxt.id + ".html";
@@ -445,6 +605,7 @@
         if (extra.children.length) scoreBox.appendChild(extra);
       }
       scoreBox.classList.remove("hidden");
+      zhLang(scoreBox);
     }
     quiz.appendChild(scoreBox);
     root.appendChild(quiz);
@@ -457,18 +618,29 @@
       holder.innerHTML = "";
       const item = sec.items[idx];
       const qkey = sec._qkey + ":" + idx;
-      const missId = item._src || (tracker.pageId ? tracker.pageId + "/" + qkey : null);
+      const missId = item._src || (tracker.pageId ? builderMissId(tracker.pageId, item) : null);
       const box = el("div", "builder");
       box.appendChild(el("div", "b-prompt",
         "<b>" + (idx + 1) + " / " + sec.items.length + "</b>" +
         (item._srcLabel ? ' · from “' + esc(item._srcLabel) + '”' : "") +
         " · Arrange the tiles into a correct sentence" +
         (item.en ? ' — <i>“' + esc(item.en) + '”</i>' : "") +
-        (item.hint ? '<br><span style="color:var(--muted)">Hint: ' + item.hint + "</span>" : "")));
+        (item.hint ? '<br><span style="color:var(--muted)">Hint: ' + fmt(item.hint) + "</span>" : "")));
       const answer = el("div", "b-answer");
+      answer.setAttribute("role", "group");
+      answer.setAttribute("aria-label", "Your sentence");
       const pool = el("div", "b-pool");
+      pool.setAttribute("role", "group");
+      pool.setAttribute("aria-label", "Available words");
+      const live = el("div", "sr-only"); // announces tile moves to screen readers
+      live.setAttribute("aria-live", "polite");
       const feedback = el("div", "b-feedback");
+      feedback.setAttribute("role", "status");
       let fails = 0, solved = false;
+      // tile-boundary separator (written as an escape on purpose — a raw
+      // control character here is invisible and has misled reviewers before):
+      // 女孩+子 must not be graded the same as 女+孩子
+      const SEP = "\u0001";
       const mkTile = (txt) => {
         const t = el("button", "tile", esc(txt));
         t.type = "button";
@@ -476,13 +648,17 @@
         t.onclick = () => {
           if (solved) return;
           answer.classList.remove("ok", "bad");
-          (t.parentNode === pool ? answer : pool).appendChild(t);
+          const toAnswer = t.parentNode === pool;
+          (toAnswer ? answer : pool).appendChild(t);
+          live.textContent = toAnswer
+            ? txt + " — added to your sentence (position " + answer.children.length + ")"
+            : txt + " — returned to the pool";
         };
         return t;
       };
       shuffled(item.tiles).forEach(txt => pool.appendChild(mkTile(txt)));
       // fix rare case shuffle === answer
-      if ([...pool.children].map(c => c.textContent).join("") === item.tiles.join("") && item.tiles.length > 2) {
+      if ([...pool.children].map(c => c.textContent).join(SEP) === item.tiles.join(SEP) && item.tiles.length > 2) {
         pool.appendChild(pool.firstChild);
       }
       const controls = el("div", "b-controls");
@@ -504,12 +680,13 @@
         reset.classList.add("hidden");
         next.classList.remove("hidden");
         ai.classList.remove("hidden");
+        next.focus(); // Check/Reveal just vanished under the keyboard user
         if (!viaReveal) speak(item.tiles.join(""));
       }
       check.onclick = () => {
-        const got = [...answer.children].map(c => c.textContent).join("");
-        const want = item.tiles.join("");
-        const altWant = (item.alt || []).map(a => a.join(""));
+        const got = [...answer.children].map(c => c.textContent).join(SEP);
+        const want = item.tiles.join(SEP);
+        const altWant = (item.alt || []).map(a => a.join(SEP));
         if (got === want || altWant.includes(got)) {
           recordAnswer(qkey, firstTry);
           if (firstTry) recordMiss(missId, true);
@@ -518,12 +695,12 @@
           if (firstTry) recordMiss(missId, false);
           firstTry = false;
           fails++;
-          lastWrong = got.replace(/\u0001/g, ""); // got uses the tile-boundary separator; the prompt wants plain text
+          lastWrong = got.split(SEP).join(""); // strip the tile separators; the AI prompt wants plain text
           ai.classList.remove("hidden");
           answer.classList.add("bad");
           feedback.innerHTML = '<span style="color:var(--bad)">Not yet — ' +
             (fails >= 2 ? "you can reveal the answer, or keep trying."
-              : item.hint ? "hint: " + item.hint
+              : item.hint ? "hint: " + fmt(item.hint)
               : "compare with the pattern boxes above.") + "</span>";
           if (fails >= 2) reveal.classList.remove("hidden");
         }
@@ -535,8 +712,12 @@
       };
       reveal.onclick = () => { recordAnswer(qkey, false); success(true); };
       next.onclick = () => {
-        if (idx < sec.items.length - 1) { idx++; draw(); }
-        else { holder.querySelector(".b-controls").innerHTML = "<b>🎉 Builder complete!</b>"; }
+        if (idx < sec.items.length - 1) {
+          idx++;
+          draw();
+          const t0 = holder.querySelector(".b-pool .tile");
+          if (t0) t0.focus(); // keep keyboard focus inside the rebuilt widget
+        } else { holder.querySelector(".b-controls").innerHTML = "<b>🎉 Builder complete!</b>"; }
       };
       controls.appendChild(check);
       controls.appendChild(reset);
@@ -545,6 +726,7 @@
       controls.appendChild(ai);
       box.appendChild(answer);
       box.appendChild(pool);
+      box.appendChild(live);
       box.appendChild(controls);
       box.appendChild(feedback);
       holder.appendChild(box);
@@ -562,10 +744,12 @@
       card.appendChild(w);
       card.appendChild(el("div", "er-task", "Diagnose the error, then reveal the fix."));
       const btn = el("button", "btn ghost", "Reveal fix 🩺");
+      btn.type = "button";
       const fix = el("div", "er-fix hidden");
-      const r = el("div", "er-right", fmt(item.right));
+      fix.tabIndex = -1; // focus target when the Reveal button hides itself
+      const r = el("div", "er-right", fmt(item.right) + ' <button type="button" class="spk" title="Listen" aria-label="Listen">🔊</button>');
       r.style.cursor = "pointer";
-      r.onclick = () => speak(item.right);
+      r.onclick = () => speak(item.right); // the .spk button bubbles here — keyboard path included
       fix.appendChild(r);
       if (item.py) fix.appendChild(el("div", "ex-py", fmt(item.py)));
       if (item.en) fix.appendChild(el("div", "ex-en", fmt(item.en)));
@@ -573,7 +757,7 @@
       const actions = el("div", "q-actions");
       actions.appendChild(aiBtn("Copy for AI", () => clinicPrompt(item)));
       fix.appendChild(actions);
-      btn.onclick = () => { fix.classList.remove("hidden"); btn.classList.add("hidden"); };
+      btn.onclick = () => { fix.classList.remove("hidden"); btn.classList.add("hidden"); fix.focus(); };
       card.appendChild(btn);
       card.appendChild(fix);
       list.appendChild(card);
@@ -613,6 +797,7 @@
     });
     if (lastMcq) lastMcq._last = true; // final drill gets the "what's next" links
     markVisited(page.id);
+    migratePageMisses(page); // upgrade legacy positional miss ids for this page
     try { localStorage.setItem("hsk4lab-last", JSON.stringify({ id: page.id, t: Date.now() })); } catch (e) {}
 
     const zhTitle = stripMarks(page.zh);
@@ -620,6 +805,11 @@
     const app = document.getElementById("app");
     const wrap = el("div", "wrap");
     app.appendChild(wrap);
+
+    // keyboard users shouldn't have to tab through the header on all 27 topics
+    const skip = el("a", "skip-link", "Skip to lesson");
+    skip.href = "#sec1";
+    wrap.appendChild(skip);
 
     // top bar
     const top = el("div", "site-top");
@@ -632,7 +822,9 @@
     // hero
     const hero = el("div", "hero");
     const meta = (window.ALL_PAGES || []).find(p => p.id === page.id) || {};
-    hero.appendChild(el("span", "unit-chip", esc(meta.unitZh ? meta.unitZh + " · " + meta.unit : "HSK 4")));
+    hero.appendChild(el("span", "unit-chip", meta.unitZh
+      ? '<span class="zh">' + esc(meta.unitZh) + "</span> · " + esc(meta.unit)
+      : "HSK 4"));
     hero.appendChild(el("div", "zh-big", fmt(page.zh).replace(/<b class="hl">/g, '<span class="accent">').replace(/<\/b>/g, "</span>")));
     hero.appendChild(el("h1", null, esc(page.title)));
     if (page.subtitle) hero.appendChild(el("p", "subtitle", page.subtitle));
@@ -640,6 +832,7 @@
 
     // chip nav
     const nav = el("nav", "chipnav");
+    nav.setAttribute("aria-label", "Lesson sections");
     page.sections.forEach((sec, i) => {
       if (!sec.title) return;
       const a = el("a", null, (i + 1) + " · " + esc(sec.short || sec.title.replace(/<[^>]+>/g, "")));
@@ -657,7 +850,12 @@
       if (sec.intro) s.appendChild(el("p", "sec-intro", sec.intro));
       const body = el("div");
       s.appendChild(body);
-      (RENDERERS[sec.type] || renderConcept)(sec, body);
+      // one malformed section must not take the rest of the page down with it
+      try { (RENDERERS[sec.type] || renderConcept)(sec, body); }
+      catch (err) {
+        body.appendChild(el("p", "sec-error", "⚠ This section failed to render — the topic data file may have an error."));
+        if (window.console && console.error) console.error('Section ' + (i + 1) + ' ("' + sec.type + '") failed to render:', err);
+      }
       wrap.appendChild(s);
     });
 
@@ -690,12 +888,14 @@
       pager.appendChild(a);
     }
     wrap.appendChild(pager);
-    wrap.appendChild(el("div", "site-footer", "HSK 4 Grammar Lab · 加油，Paul！ · Tap any Chinese sentence to hear it — tap again for slow"));
-    // Chinese in tables is speakable too
+    wrap.appendChild(el("div", "site-footer", 'HSK 4 Grammar Lab · <span class="zh">加油，Paul！</span> · Tap any Chinese sentence to hear it — tap again for slow'));
+    // Chinese in tables is speakable too — with a real button for keyboard users
     wrap.querySelectorAll(".tbl .zh").forEach(z => {
+      const txt = z.textContent; // captured BEFORE the 🔊 button joins the cell
       z.style.cursor = "pointer";
       z.title = "Listen";
-      z.onclick = () => speak(z.textContent);
+      z.onclick = () => speak(txt);
+      z.insertAdjacentHTML("beforeend", ' <button type="button" class="spk" title="Listen" aria-label="Listen">🔊</button>');
     });
     zhLang(wrap);
   };
@@ -727,6 +927,7 @@
 
   window.renderReview = function () {
     const pages = window.COLLECT_PAGES || [];
+    pages.forEach(migratePageMisses); // legacy positional ids → content-hash ids
     const misses = loadMisses();
     document.title = "Review your misses · HSK 4 Grammar Lab";
     const app = document.getElementById("app");
@@ -746,27 +947,47 @@
     hero.appendChild(el("h1", null, "Review your misses"));
     wrap.appendChild(hero);
 
+    // per-page lookup: content-hash id → its section + item
+    const known = {};
+    ((window.MANIFEST || {}).units || []).forEach(u => u.pages.forEach(p => { known[p.id] = 1; }));
+    const manifestLoaded = Object.keys(known).length > 0;
+    const maps = {};
+    pages.forEach(p => {
+      const map = {};
+      p.sections.forEach(sec => {
+        if (sec.type !== "mcq" && sec.type !== "builder") return;
+        (sec.items || []).forEach(item => {
+          map[(sec.type === "mcq" ? mcqMissId : builderMissId)(p.id, item)] = { sec: sec, item: item };
+        });
+      });
+      maps[p.id] = map;
+    });
+
     const mcqItems = [], builderItems = [], allResolved = [];
-    let stale = false, scheduled = 0, nextDue = null;
+    let stale = false;
     const t = dateStr(0);
     for (const id of Object.keys(misses)) {
-      const m = id.match(/^(.+)\/s(\d+):(\d+)$/);
-      const page = m && pages.find(p => p.id === m[1]);
-      const sec = page && page.sections[+m[2]];
-      const item = sec && sec.items && sec.items[+m[3]];
-      if (!item || (sec.type !== "mcq" && sec.type !== "builder")) {
-        delete misses[id]; stale = true; continue; // content moved since the miss was saved
-      }
-      const copy = Object.assign({}, item, { _src: id, _srcLabel: stripMarks(page.zh), _srcTopic: topicLabel(page) });
-      allResolved.push({ type: sec.type, item: copy, miss: misses[id] });
-      if (misses[id].due > t) { // scheduled for a later day — spaced repetition at work
-        scheduled++;
-        if (!nextDue || misses[id].due < nextDue) nextDue = misses[id].due;
+      if (misses[id].grad) continue; // graduated tombstone — nothing to review
+      const pid = id.split("/")[0];
+      // only trust "unknown topic" as a delete signal when the manifest actually
+      // loaded — an empty `known` would otherwise wipe the whole store
+      if (!known[pid]) {
+        if (manifestLoaded) { delete misses[id]; stale = true; } // topic no longer exists
         continue;
       }
-      (sec.type === "mcq" ? mcqItems : builderItems).push(copy);
+      const page = pages.find(p => p.id === pid);
+      if (!page) continue; // data file didn't load (offline?) — keep the record, skip for now
+      const hit = maps[pid][id];
+      if (!hit) { delete misses[id]; stale = true; continue; } // content edited since the miss was saved
+      const copy = Object.assign({}, hit.item, { _src: id, _srcLabel: stripMarks(page.zh), _srcTopic: topicLabel(page) });
+      allResolved.push({ type: hit.sec.type, item: copy, miss: misses[id] });
+      if (misses[id].due > t) continue; // scheduled for a later day — spaced repetition at work
+      (hit.sec.type === "mcq" ? mcqItems : builderItems).push(copy);
     }
     if (stale) saveMisses(misses);
+    // aggregate counts come from the one shared implementation
+    const revStats = missStats();
+    const scheduled = revStats.scheduled, nextDue = revStats.next;
 
     if (allResolved.length) {
       const acts = el("div", "review-actions");
@@ -776,8 +997,8 @@
 
     if (!mcqItems.length && !builderItems.length) {
       hero.insertBefore(el("p", "subtitle", scheduled
-        ? "Nothing due today — 太棒了！ " + scheduled + " question" + (scheduled > 1 ? "s are" : " is") + " scheduled to come back on " + nextDue + "."
-        : "Nothing to review — 太棒了！ Miss a question anywhere on the site and it lands here for another round."),
+        ? 'Nothing due today — <span class="zh">太棒了！</span> ' + scheduled + " question" + (scheduled > 1 ? "s are" : " is") + " scheduled to come back on " + nextDue + "."
+        : 'Nothing to review — <span class="zh">太棒了！</span> Miss a question anywhere on the site and it lands here for another round.'),
         hero.querySelector(".review-actions"));
       wrap.appendChild(el("p", null, '<a href="index.html">← Back to all topics</a>'));
       zhLang(wrap);
@@ -801,7 +1022,7 @@
     };
     addSection("Missed questions (" + mcqItems.length + ")", "mcq", shuffled(mcqItems));
     addSection("Missed sentence builds (" + builderItems.length + ")", "builder", shuffled(builderItems));
-    wrap.appendChild(el("div", "site-footer", "Correct answers move a question up a level — it comes back after 2, then 5 days, then graduates for good. 加油！"));
+    wrap.appendChild(el("div", "site-footer", 'Correct answers move a question up a level — it comes back after 2, then 5 days, then graduates for good. <span class="zh">加油！</span>'));
     zhLang(wrap);
   };
 
@@ -824,10 +1045,12 @@
     hero.appendChild(el("h1", "zh-big", '从三级<span class="accent">到四级</span>'));
     hero.appendChild(el("p", "lead", "You passed HSK 3. This site teaches <b>exactly the delta</b> to HSK 4 — every new structure, pattern and trap, with hundreds of interactive exam-level exercises."));
     const nPages = window.ALL_PAGES.length;
+    // exact exercise count is computed at build time (see scripts/build-shells.js)
+    const nItems = (window.SITE_STATS && window.SITE_STATS.items) || "1400+";
     const stats = el("div", "idx-stats");
     stats.innerHTML = '<div class="idx-stat"><div class="n">' + M.units.length + '</div><div class="l">Units</div></div>' +
       '<div class="idx-stat"><div class="n">' + nPages + '</div><div class="l">Topics</div></div>' +
-      '<div class="idx-stat"><div class="n">1400+</div><div class="l">Examples & exercises</div></div>';
+      '<div class="idx-stat"><div class="n">' + nItems + '</div><div class="l">Examples & exercises</div></div>';
     hero.appendChild(stats);
     wrap.appendChild(hero);
 
@@ -872,9 +1095,14 @@
       u.pages.forEach(p => {
         const st = store[p.id] || {};
         const pct = Math.min(100, st.best || 0);
+        const answered = Math.min(st.answered || 0, st.total || 0); // clamped: imports/content changes can leave answered > total
         const a = el("a", "card");
         a.href = "topics/" + p.id + ".html";
-        if (st.total) a.title = (st.answered || 0) + " of " + st.total + " questions answered · best first-try score " + pct + "%";
+        if (st.total) a.title = answered + " of " + st.total + " questions answered · best first-try score " + pct + "%";
+        // the title tooltip is invisible to touch + screen readers; mirror it here
+        a.setAttribute("aria-label", stripMarks(p.zh) + " — " + p.title +
+          (st.total ? " — best first-try score " + pct + "%, " + answered + " of " + st.total + " questions answered"
+                    : st.visited ? " — visited" : ""));
         a.innerHTML = '<span class="c-zh">' + esc(p.zh) + "</span>" +
           '<span class="c-title">' + esc(p.title) + "</span>" +
           '<span class="c-blurb">' + esc(p.blurb) + "</span>" +
@@ -911,7 +1139,7 @@
     wrap.appendChild(dataRow);
     wrap.appendChild(panel);
 
-    wrap.appendChild(el("div", "site-footer", "Best score per topic is saved in your browser. 🏅 = 80%+ · Built for the HSK 3 → HSK 4 jump."));
+    wrap.appendChild(el("div", "site-footer", "Best score per topic is saved in your browser — no account, no server, no tracking. Fonts load from Google Fonts (the site's only third-party request). 🏅 = 80%+ · Built for the HSK 3 → HSK 4 jump."));
     zhLang(wrap);
   };
 
@@ -923,6 +1151,7 @@
         !data.misses || typeof data.misses !== "object") return "That doesn't look like an export from this site.";
     const store = loadStore();
     for (const id of Object.keys(data.progress)) {
+      if (!SAFE_KEY(id)) continue; // "__proto__" here would write onto Object.prototype
       const inc = data.progress[id] || {}, cur = store[id] || {};
       cur.visited = !!(cur.visited || inc.visited);
       if (inc.total) cur.total = Math.max(cur.total || 0, inc.total);
@@ -932,16 +1161,12 @@
     }
     const m = loadMisses();
     for (const id of Object.keys(data.misses)) {
+      if (!SAFE_KEY(id)) continue;
       const inc = normMiss(data.misses[id]);
       if (!inc) continue;
-      const cur = m[id];
-      if (!cur) { m[id] = inc; continue; }
-      // keep the more conservative schedule: lower box wins; same box → earlier due
-      m[id] = {
-        n: Math.max(cur.n, inc.n),
-        box: Math.min(cur.box, inc.box),
-        due: cur.box < inc.box ? cur.due : inc.box < cur.box ? inc.due : (cur.due < inc.due ? cur.due : inc.due)
-      };
+      // mergeMiss keeps the conservative schedule — and a graduation on either
+      // device wins, so an old export can't resurrect a mastered question
+      m[id] = m[id] ? mergeMiss(m[id], inc) : inc;
     }
     saveStore(store);
     saveMisses(m);

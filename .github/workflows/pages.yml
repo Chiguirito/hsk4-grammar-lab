@@ -22,9 +22,14 @@ jobs:
         run: node scripts/validate.js
       - name: Check generated shells are up to date
         run: node scripts/build-shells.js --check
+      - name: Stage site files only (no docs, scripts or CI config on the live site)
+        run: |
+          mkdir dist
+          cp index.html review.html 404.html sw.js manifest.webmanifest dist/
+          cp -R assets topics dist/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: "."
+          path: dist
       - id: deployment
         uses: actions/deploy-pages@v4

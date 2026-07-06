@@ -2,6 +2,10 @@ name: Validate
 on:
   pull_request:
   workflow_dispatch:
+# least privilege — this workflow executes PR-authored data files via node,
+# so it must never carry more than read access (and never any secrets)
+permissions:
+  contents: read
 jobs:
   validate:
     runs-on: ubuntu-latest

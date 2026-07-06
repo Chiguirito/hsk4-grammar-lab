@@ -1,5 +1,10 @@
 # HSK 4 Grammar Lab — Full Site Audit
 
+> **Status (2026-07-06):** Historical audit of commit `f61f949`. All P0/P1/P2 findings below were
+> subsequently fixed; body text, counts and line numbers refer to the pre-fix tree and are NOT
+> current. A second 360° audit was performed on 2026-07-06 and its fixes applied directly to the
+> codebase.
+
 **Site:** https://chiguirito.github.io/hsk4-grammar-lab/
 **Audited:** 2026-07-05, against `main` (`f61f949`). The deployed site matches the repo byte-for-byte.
 **Method:** full static review of the engine (`assets/app.js`, `assets/style.css`, shells, workflow); native-level linguistic audit of all 26 topic data files (every example, pinyin line, MCQ key, builder item, clinic item and grammar claim); live browser testing with Playwright (all 27 pages, quiz/builder/toggle/progress flows, keyboard, 375px mobile viewport).

@@ -3,15 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <title>HSK 4 Grammar Lab — from HSK 3 to HSK 4</title>
-<meta name="description" content="Free interactive grammar course covering exactly the delta from HSK 3 to HSK 4: 27 topics, 600+ example sentences with audio, and 900+ exam-level quizzes, sentence builders and error clinics.">
+<meta name="description" content="Free interactive grammar course covering exactly the delta from HSK 3 to HSK 4: 27 topics, 590+ example sentences with audio, and 890+ exam-level quizzes, sentence builders and error clinics.">
 <link rel="canonical" href="https://chiguirito.github.io/hsk4-grammar-lab/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="HSK 4 Grammar Lab">
 <meta property="og:title" content="HSK 4 Grammar Lab — from HSK 3 to HSK 4">
-<meta property="og:description" content="Free interactive grammar course covering exactly the delta from HSK 3 to HSK 4: 27 topics, 600+ example sentences with audio, and 900+ exam-level quizzes, sentence builders and error clinics.">
+<meta property="og:description" content="Free interactive grammar course covering exactly the delta from HSK 3 to HSK 4: 27 topics, 590+ example sentences with audio, and 890+ exam-level quizzes, sentence builders and error clinics.">
 <meta property="og:url" content="https://chiguirito.github.io/hsk4-grammar-lab/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23b3352c'/%3E%3Ctext x='50' y='74' font-size='60' text-anchor='middle' fill='%23fff' font-family='sans-serif'%3E%E6%B1%89%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#faf7f1" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#191713" media="(prefers-color-scheme: dark)">
@@ -19,11 +21,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
-<script>(function(){try{var c=document.documentElement.classList;if(localStorage.getItem("hsk4lab-py")==="off")c.add("hide-py");if(localStorage.getItem("hsk4lab-en")==="off")c.add("hide-en");}catch(e){}})();</script>
+<script>(function(){var d=document.documentElement;var g=function(k){try{return localStorage.getItem(k)}catch(e){return null}};if(g("hsk4lab-py")==="off")d.classList.add("hide-py");if(g("hsk4lab-en")==="off")d.classList.add("hide-en");var t=g("hsk4lab-theme");if(t!=="dark"&&t!=="light"){try{t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}catch(e){t="light"}}d.dataset.theme=t;})();</script>
 </head>
 <body>
 <noscript><p style="max-width:640px;margin:80px auto;text-align:center;font-family:sans-serif">HSK 4 Grammar Lab is an interactive site and needs JavaScript to render its lessons and quizzes. Please enable JavaScript and reload.</p></noscript>
 <div id="app"></div>
+<script>window.SITE_STATS = { items: 1498 };</script>
 <script src="assets/manifest.js"></script>
 <script src="assets/app.js"></script>
 <script>renderIndex();</script>

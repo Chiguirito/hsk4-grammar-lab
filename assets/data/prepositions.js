@@ -237,7 +237,7 @@ Learners stare at 除了 and guess; natives scan for 都/还/只. On the exam, c
 <h3>1 · The exceptions that go AFTER the verb</h3>
 <p><span class="zh">在/到/给</span> can follow the verb when they mark the <b>result's destination</b>: <span class="zh">放<b class="hl">在</b>桌子上、搬<b class="hl">到</b>楼上、寄<b class="hl">给</b>他</span>. That's complement territory (see 把 and result-complements). Rule of thumb: before the verb = where the action happens; after the verb = where the thing ends up.</p>
 <h3>2 · 给 swings both ways</h3>
-<p><span class="zh"><b class="hl">给</b>他打电话</span> ＝ <span class="zh">打电话<b class="hl">给</b>他</span> — both fine. But once a result matters, only the front position survives: <span class="zh">给他买了一本书</span>.</p>
+<p><span class="zh"><b class="hl">给</b>他打电话</span> ＝ <span class="zh">打电话<b class="hl">给</b>他</span> — both fine. With transfer verbs (送/寄/递/卖/买), 给 + recipient can also follow the verb: <span class="zh">寄<b class="hl">给</b>他</span>, <span class="zh">买了一本书<b class="hl">给</b>他</span>. When in doubt, pre-verbal <span class="zh"><b class="hl">给</b>他</span> + verb is always the safe default: <span class="zh">给他买了一本书</span>.</p>
 <h3>3 · 在…下 for abstract support</h3>
 <p><span class="zh"><b class="hl">在</b>老师的帮助<b class="hl">下</b>，我通过了考试。</span> — “with the teacher's help”. Conditions and help take 在…下, not 用 or 通过…的帮助.</p>
 <h3>4 · 对于…来说 vs 对…来说</h3>

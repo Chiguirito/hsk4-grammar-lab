@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- full-bleed background: launchers crop this into circles/squircles,
+       so the 汉 stays inside the central 80% safe zone -->
+  <rect width="100" height="100" fill="#b3352c"/>
+  <text x="50" y="68" font-size="50" text-anchor="middle" fill="#fff" font-family="sans-serif">汉</text>
+</svg>

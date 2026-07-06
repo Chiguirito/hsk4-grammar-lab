@@ -149,7 +149,7 @@ The vocabulary list is full of frozen potentials (来不及、受不了、看不
         { q: "Which question form is correct?", choices: ['<span class="zh">你看得懂看不懂？</span>', '<span class="zh">你看得懂不懂？</span>', '<span class="zh">你看得懂看得不懂？</span>', '<span class="zh">你不看得懂吗？</span>'], a: 0, expl: "The sandwich repeats the complete unit: V得C + V不C. No shortcuts, no 得+不 hybrid." },
         { q: '<span class="zh">这台电脑太贵了，我___。</span>', choices: ['<span class="zh">不买得起</span>', '<span class="zh">买得不起</span>', '<span class="zh">买不起</span>', '<span class="zh">不能买得起</span>'], a: 2, expl: "To negate a potential, 不 REPLACES 得 inside the seam: 买不起. It never stacks outside (不买得起) or after 得 (买得不起)." },
         { q: "Which sentence is WRONG?", choices: ['<span class="zh">这本小说我看不完。</span>', '<span class="zh">我把这本小说看不完。</span>', '<span class="zh">我看不完这本小说。</span>', '<span class="zh">这么厚的小说谁看得完？</span>'], a: 1, expl: "把 and potential complements never mix — 把 reports handling, potentials discuss possibility. Topicalize instead: 这本小说我看不完." },
-        { q: '<span class="zh">电影三点开始，现在才两点，我们还___。</span>', choices: ['<span class="zh">来不及</span>', '<span class="zh">来得及</span>', '<span class="zh">来得上</span>', '<span class="zh">赶得及</span>'], a: 1, expl: "An hour to spare → 来得及 'there's still time'. 来不及 is the panic version; 来得上/赶得及 are Franken-forms." }
+        { q: '<span class="zh">电影三点开始，现在才两点，我们还___。</span>', choices: ['<span class="zh">来不及</span>', '<span class="zh">来得及</span>', '<span class="zh">来得上</span>', '<span class="zh">来不了</span>'], a: 1, expl: "An hour to spare → 来得及 'there's still time'. 来不及 and 来不了 contradict the situation — there's plenty of time; 来得上 doesn't exist (来 pairs with 及, never 上)." }
       ]
     },
 

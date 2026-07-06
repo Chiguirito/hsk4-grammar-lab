@@ -236,7 +236,7 @@ In the sentence-ordering task, if you see a <span class="zh">把</span> tile: �
 <h3 class="zh">把字句 in one card</h3>
 <div class="tbl-wrap"><table class="tbl">
 <tr><th>Rule</th><th>Remember</th></tr>
-<tr><td>Frame</td><td>Subj + 时间/负词/能愿动词 + <b class="hl">把</b> + definite object (+都) + V + <b class="hl">ending</b></td></tr>
+<tr><td>Frame</td><td>Subj + 时间/否定词/能愿动词 + <b class="hl">把</b> + definite object (+都) + V + <b class="hl">ending</b></td></tr>
 <tr><td>Verb never last</td><td>End with 了 / 完·好·到·错 / 在·到·给·成 + X / direction / V一V / 得 + description</td></tr>
 <tr><td>Negation & modals</td><td><b>Before 把</b>: 别把…忘了 · 没把…带来 · 应该把…打扫干净</td></tr>
 <tr><td>Object</td><td>Definite only: 那本书 ✓ · 一本书 ✗ · plural + 都 before the verb</td></tr>
