@@ -34,7 +34,8 @@ const round10 = n => Math.floor(n / 10) * 10;
 const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const plainZh = s => String(s).replace(/\*\*/g, "");
 const FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23b3352c'/%3E%3Ctext x='50' y='74' font-size='60' text-anchor='middle' fill='%23fff' font-family='sans-serif'%3E%E6%B1%89%3C/text%3E%3C/svg%3E";
-const FONTS = "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap";
+// Noto Serif SC = Song-style (宋体), matching the SimSun body text of the official HSK paper
+const FONTS = "https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap";
 // defense-in-depth: no third-party script can ever load, even if content slips
 const CSP = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'";
 // runs before first paint: pinyin/english visibility + theme (OS pref, overridable via the Theme toggle)
