@@ -866,6 +866,10 @@
     // sidebar TOC — typography-only rail, visible ≥1180px (CSS hides it below)
     const tocNav = el("nav", "toc");
     tocNav.setAttribute("aria-label", "Lesson contents");
+    // way back home without scrolling up (scrolling to the header would move the resume point)
+    const tocHome = el("a", "toc-home", "← All topics");
+    tocHome.href = "../index.html";
+    tocNav.appendChild(tocHome);
     tocNav.appendChild(el("div", "toc-head", "In this lesson"));
     page.sections.forEach((sec, i) => {
       if (!sec.title) return;

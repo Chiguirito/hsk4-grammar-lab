@@ -157,6 +157,11 @@ a:hover { text-decoration: underline; }
     padding: 12px 0 12px 2px; font-size: .8rem; line-height: 1.4;
   }
   .toc .toc-head { font-size: .68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin: 0 0 8px 16px; }
+  .toc a.toc-home {
+    color: var(--muted); font-size: .78rem; border-left: none;
+    padding: 0 10px 10px 16px; margin-bottom: 10px; border-bottom: 1px dashed var(--border);
+  }
+  .toc a.toc-home:hover { color: var(--accent); }
   .toc a { display: block; color: var(--ink-soft); padding: 5px 10px 5px 14px; border-left: 2px solid var(--border); }
   .toc a:hover { color: var(--accent); text-decoration: none; }
   .toc a.act { color: var(--accent); font-weight: 600; border-left-color: var(--accent); }
