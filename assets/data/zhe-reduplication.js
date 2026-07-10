@@ -56,11 +56,6 @@ Listening plants minimal pairs (<span class="zh">开着</span> vs <span class="z
         { tag: "正…着呢", cn: "小声点儿，孩子正睡**着**觉**呢**。", py: "Xiǎo shēng diǎnr, háizi zhèng shuìzhe jiào ne.", en: "Keep it down — the child is sleeping.", note: "正 + V着 + 呢: the full 'right now' sandwich. Any piece can drop; the meaning stays." },
         { tag: "命令", cn: "这把伞你拿**着**，外面还下**着**雨呢。", py: "Zhè bǎ sǎn nǐ názhe, wàimiàn hái xiàzhe yǔ ne.", en: "Take this umbrella — it's still raining out there.", note: "拿着! = take it AND keep holding it. The 着 makes the holding part explicit." },
         { tag: "否定", cn: "商店的灯没开**着**，大概已经关门了。", py: "Shāngdiàn de dēng méi kāizhe, dàgài yǐjīng guānmén le.", en: "The shop's lights aren't on — it's probably closed already.", note: "Negate with 没, and 着 survives: 没 + V着. (✗不开着)" },
-        { tag: "存现", cn: "他家的客厅里摆**着**很多绿色的植物，看起来特别舒服。", py: "Tā jiā de kètīng li bǎizhe hěn duō lǜsè de zhíwù, kàn qǐlái tèbié shūfu.", en: "His living room is full of green plants — it feels wonderful in there.", note: "Existential frame: Place + V**着** + thing. The room is the topic, the plants are the news — nothing is happening, the scene just holds." },
-        { tag: "ABAB", cn: "放暑假了，你先把房间**收拾收拾**，再跟朋友出去游玩。", py: "Fàng shǔjià le, nǐ xiān bǎ fángjiān shōushi shōushi, zài gēn péngyou chūqù yóuwán.", en: "Summer vacation has started — tidy your room up a bit first, then go out and have fun with your friends.", note: "ABAB inside a 把-sentence: 把 + thing + **收拾收拾** = give it a quick once-over. The doubling keeps the parental order light." },
-        { tag: "是否", cn: "参赛之前，你最好先问清楚比赛**是否**限制年龄。", py: "Cānsài zhīqián, nǐ zuìhǎo xiān wèn qīngchu bǐsài shìfǒu xiànzhì niánlíng.", en: "Before entering the competition, you'd better find out whether there's an age limit.", note: "Indirect question after 问清楚: S + **是否** + verb (限制). It already contains the 是不是 — so no 吗 at the end, ever." },
-        { tag: "方式", cn: "赢得了比赛以后，他得意地笑**着**说：“我早就说过我们能赢！”", py: "Yíngdé le bǐsài yǐhòu, tā déyì de xiàozhe shuō: “Wǒ zǎo jiù shuōguo wǒmen néng yíng!”", en: "After winning the match, he said with a smug smile, “I told you we could win!”", note: "Manner frame: 笑**着** + 说 = the smile holds while he speaks. The 着 clings to the posture verb, never to the main verb 说." },
-        { tag: "V着V着", cn: "我昨天晚上做了一个奇怪的梦：在树林里走**着**走**着**，忽然看见一只老虎。", py: "Wǒ zuótiān wǎnshang zuò le yí ge qíguài de mèng: zài shùlín li zǒuzhe zǒuzhe, hūrán kànjiàn yì zhī lǎohǔ.", en: "Last night I had a strange dream: I was walking through a forest when suddenly I saw a tiger.", note: "V**着**V**着** + 忽然/就 = the action rolls on until the story slides into a surprise. Dreams and anecdotes love this frame." },
       ]
     },
 
@@ -80,7 +75,7 @@ One slot, one particle: ✗<span class="zh">挂着了</span>, ✗<span class="zh
 <h3>3 · Negation: 没 + V着</h3>
 <p><span class="zh">窗户<b class="hl">没</b>关<b class="hl">着</b>。</span> — “the window isn't closed.” 没 negates, 着 stays. 不 is reserved for refusals and habits, not for states that simply don't hold.</p>
 <h3>4 · Verbs that refuse 着</h3>
-<p>Mental states are <b>already</b> states — they never take 着: ✗<span class="zh">喜欢着</span>, ✗<span class="zh">知道着</span>, ✗<span class="zh">是着</span>. Same for instant verbs like 到, 死, 结束 — there is no stretchable middle to hold.</p>
+<p>Pure stative verbs are <b>already</b> states with nothing left to stretch — 知道, 认识, 是 refuse 着: ✗<span class="zh">知道着</span>, ✗<span class="zh">是着</span>. (Written Chinese does allow 有着 + abstract noun: 有着悠久的历史.) Same for instant verbs like 到, 死, 结束 — there is no stretchable middle to hold. But don't over-ban: verbs the mind can actively hold take it happily — <span class="zh">想着你</span> “keep thinking of you”, <span class="zh">记着这件事</span> “keep it in mind”.</p>
 <div class="callout tip"><span class="co-title">💡 Exam radar</span>
 The classic listening trap: 门开着 (it's open) vs 门开了 (it just opened) vs 正在开门 (someone is opening it). Three sounds, three pictures — the question hinges on which picture matches the dialogue.</div>`
     },
@@ -94,7 +89,7 @@ The classic listening trap: 门开着 (it's open) vs 门开了 (it just opened) 
       items: [
         { q: '<span class="zh">别___吃饭，对胃不好，坐下吧。</span>', choices: ['<span class="zh">站着</span>', '<span class="zh">站了</span>', '<span class="zh">站在</span>', '<span class="zh">站过</span>'], a: 0, expl: "Posture held while doing something else → V1着 + V2: 站着吃饭. 站在 would need a place after it, and 站了/站过 narrate past events." },
         { q: '<span class="zh">他___衣服呢，你在门口等他一下。</span>', choices: ['<span class="zh">正在换</span>', '<span class="zh">换着</span>', '<span class="zh">换过</span>', '<span class="zh">换完</span>'], a: 0, expl: "Mid-action, blurry photo → 正在 + V. 换着衣服 sounds wrong because 换 is a change, not a holdable state." },
-        { q: 'Which sentence is WRONG?', choices: ['<span class="zh">门开着呢。</span>', '<span class="zh">他穿着一件蓝衬衫。</span>', '<span class="zh">他很喜欢着中国菜。</span>', '<span class="zh">外面下着雨。</span>'], a: 2, expl: "喜欢 is already a state — mental-state verbs (喜欢、知道、觉得、是) never take 着. The other three are textbook 着 frames." },
+        { q: 'Which sentence is WRONG?', choices: ['<span class="zh">门开着呢。</span>', '<span class="zh">他穿着一件蓝衬衫。</span>', '<span class="zh">他很喜欢着中国菜。</span>', '<span class="zh">外面下着雨。</span>'], a: 2, expl: "喜欢 is already a state — plain 很喜欢 says it all, and there's nothing here for 着 to stretch. Pure stative verbs (是、知道、认识) refuse 着 outright. The other three are textbook 着 frames." },
         { q: '<span class="zh">她___跟我说了这件事，好像不太难过。</span>', choices: ['<span class="zh">笑着</span>', '<span class="zh">笑了</span>', '<span class="zh">笑的</span>', '<span class="zh">在笑</span>'], a: 0, expl: "Manner frame: 笑着 + 说 = said it while smiling. 笑了 would be a separate completed event, not a manner." },
         { q: '<span class="zh">孩子看电视，看___看___就睡着了。</span>', choices: ['<span class="zh">着…着</span>', '<span class="zh">了…了</span>', '<span class="zh">过…过</span>', '<span class="zh">完…完</span>'], a: 0, expl: "V着V着 = 'and as the action went on…' — the gradual-slide frame. The final 睡着 (shuìzháo) is a different 着 altogether: a result complement." },
         { q: '<span class="zh">你先拿___这些照片，我一会儿再看。</span>', choices: ['<span class="zh">着</span>', '<span class="zh">了</span>', '<span class="zh">过</span>', '<span class="zh">到</span>'], a: 0, expl: "拿着! = take it and KEEP holding it — the imperative hold. 拿了/拿到 would just mark taking, with no 'hold on to it' instruction." }
@@ -139,6 +134,7 @@ German <i>mal</i> is VV in one word: <i>„Schau <b>mal</b>“</i> = <span class
         { tag: "V了V", cn: "他**想了想**，说：“我们坐地铁去吧。”", py: "Tā xiǎng le xiǎng, shuō: “Wǒmen zuò dìtiě qù ba.”", en: "He thought for a moment and said, “Let's take the subway.”", note: "Past quick action: 了 wedges INSIDE the pair — 想了想, never ✗想想了." },
         { tag: "ABAB", cn: "这个问题我们得**商量商量**再决定。", py: "Zhège wèntí wǒmen děi shāngliang shāngliang zài juédìng.", en: "We need to talk this over before deciding.", note: "Two-syllable verbs double whole: AB→ABAB (商量商量), never ✗AABB (商商量量)." },
         { tag: "ABAB", cn: "你周末别学习了，在家好好儿**休息休息**。", py: "Nǐ zhōumò bié xuéxí le, zài jiā hǎohāor xiūxi xiūxi.", en: "Don't study this weekend — get some proper rest at home.", note: "好好儿 hǎohāor (tone shift with 儿) + ABAB: the caring-parent combo." },
+        { tag: "ABAB", cn: "放暑假了，你先把房间**收拾收拾**，再跟朋友出去游玩。", py: "Fàng shǔjià le, nǐ xiān bǎ fángjiān shōushi shōushi, zài gēn péngyou chūqù yóuwán.", en: "Summer vacation has started — tidy your room up a bit first, then go out and have fun with your friends.", note: "ABAB inside a 把-sentence: 把 + thing + **收拾收拾** = give it a quick once-over. The doubling keeps the parental order light." },
         { tag: "VV", cn: "你去**问问**服务员，火车几点开。", py: "Nǐ qù wènwen fúwùyuán, huǒchē jǐ diǎn kāi.", en: "Go ask the attendant when the train leaves.", note: "问问 = just ask, quick and casual. Perfect for errands." },
         { tag: "AA", cn: "路上有冰，你**慢慢**开。", py: "Lùshang yǒu bīng, nǐ mànmàn kāi.", en: "There's ice on the road — drive slowly.", note: "AA adverbial; after reduplication the 地 is optional: 慢慢(地)开." },
         { tag: "AABB", cn: "他把房间打扫得**干干净净**，像新的一样。", py: "Tā bǎ fángjiān dǎsǎo de gāngānjìngjìng, xiàng xīn de yíyàng.", en: "He cleaned the room spotless — like new.", note: "得 + AABB = state complement. No 很 anywhere near it!" },
@@ -161,7 +157,8 @@ German <i>mal</i> is VV in one word: <i>„Schau <b>mal</b>“</i> = <span class
             { cn: "我不知道他**是否**收到了我的邮件。", py: "Wǒ bù zhīdào tā shìfǒu shōudào le wǒ de yóujiàn.", en: "I don't know whether he received my email.", note: "知道/不知道 + S + 是否 + V — the standard indirect question." },
             { cn: "请在周五以前告诉我们你**是否**参加。", py: "Qǐng zài zhōuwǔ yǐqián gàosu wǒmen nǐ shìfǒu cānjiā.", en: "Please let us know by Friday whether you'll take part.", note: "Formal invitation language — you'll meet this exact frame in HSK reading." },
             { cn: "会议**是否**推迟，还没有决定。", py: "Huìyì shìfǒu tuīchí, hái méiyǒu juédìng.", en: "Whether the meeting will be postponed hasn't been decided yet.", note: "The 是否-clause can be the topic of the whole sentence." },
-            { cn: "这种药**是否**安全，医生也说不清楚。", py: "Zhè zhǒng yào shìfǒu ānquán, yīshēng yě shuō bu qīngchu.", en: "Even the doctors can't say clearly whether this medicine is safe.", note: "是否 + adjective works too — anything A-not-A-able." }
+            { cn: "这种药**是否**安全，医生也说不清楚。", py: "Zhè zhǒng yào shìfǒu ānquán, yīshēng yě shuō bu qīngchu.", en: "Even the doctors can't say clearly whether this medicine is safe.", note: "是否 + adjective works too — anything A-not-A-able." },
+            { cn: "参赛之前，你最好先问清楚比赛**是否**限制年龄。", py: "Cānsài zhīqián, nǐ zuìhǎo xiān wèn qīngchu bǐsài shìfǒu xiànzhì niánlíng.", en: "Before entering the competition, you'd better find out whether there's an age limit.", note: "Indirect question after 问清楚: S + **是否** + verb (限制). It already contains the 是不是 — so no 吗 at the end, ever." }
           ]
         },
         {
@@ -189,7 +186,20 @@ German <i>mal</i> is VV in one word: <i>„Schau <b>mal</b>“</i> = <span class
         { wrong: "他想想了，同意了我们的建议。", right: "他想了想，同意了我们的建议。", py: "Tā xiǎng le xiǎng, tóngyì le wǒmen de jiànyì.", en: "He thought it over for a moment and agreed to our suggestion.", expl: "Past quick action: the 了 wedges INSIDE the doubled verb — 想了想. After the pair (✗想想了) it's illegal." },
         { wrong: "我不知道他是否会来吗。", right: "我不知道他是否会来。", py: "Wǒ bù zhīdào tā shìfǒu huì lái.", en: "I don't know whether he'll come.", expl: "是否 already contains the question (它 = 是不是). Adding 吗 double-marks it — one question marker per clause." },
         { wrong: "这张地图挂着在墙上。", right: "这张地图挂在墙上。", py: "Zhè zhāng dìtú guà zài qiáng shàng.", en: "This map hangs on the wall.", expl: "V着 can't take 在 + place behind it — the one bug is the stacked 着. Either the location result (挂在墙上) or the existential frame (墙上挂着一张地图) — never 挂着在." },
-        { wrong: "我知道着这家店的网址，发给你吧。", right: "我知道这家店的网址，发给你吧。", py: "Wǒ zhīdào zhè jiā diàn de wǎngzhǐ, fā gěi nǐ ba.", en: "I know this shop's web address — let me send it to you.", expl: "知道 is already a state — mental-state verbs (知道、喜欢、是) never take 着, because there's no stretchable result to hold. Delete the 着; the verb alone does the job." },
+        { wrong: "我知道着这家店的网址，发给你吧。", right: "我知道这家店的网址，发给你吧。", py: "Wǒ zhīdào zhè jiā diàn de wǎngzhǐ, fā gěi nǐ ba.", en: "I know this shop's web address — let me send it to you.", expl: "知道 is already a state with nothing left to stretch — pure stative verbs (知道、认识、是) refuse 着. Delete it; the verb alone does the job. (Don't over-apply the ban: 想着 and 记着 are perfectly normal, because the mind can actively hold those.)" },
+      ]
+    },
+
+    /* ------------------------------------------------ consolidation */
+    {
+      type: "examples",
+      title: 'Consolidation — the pattern out in the wild',
+      short: "Consolidation",
+      intro: "A second lap with fresh vocabulary: every sentence below runs on this topic's machinery. Read each one like exam text — spot the pattern first, then tap any dotted word you don't know.",
+      items: [
+        { tag: "存现", cn: "他家的客厅里摆**着**很多绿色的植物，看起来特别舒服。", py: "Tā jiā de kètīng li bǎizhe hěn duō lǜsè de zhíwù, kàn qǐlái tèbié shūfu.", en: "His living room is full of green plants — it feels wonderful in there.", note: "Existential frame: Place + V**着** + thing. The room is the topic, the plants are the news — nothing is happening, the scene just holds." },
+        { tag: "方式", cn: "赢得了比赛以后，他得意地笑**着**说：“我早就说过我们能赢！”", py: "Yíngdé le bǐsài yǐhòu, tā déyì de xiàozhe shuō: “Wǒ zǎo jiù shuō guo wǒmen néng yíng!”", en: "After winning the match, he said with a smug smile, “I told you we could win!”", note: "Manner frame: 笑**着** + 说 = the smile holds while he speaks. The 着 clings to the posture verb, never to the main verb 说." },
+        { tag: "V着V着", cn: "我昨天晚上做了一个奇怪的梦：在树林里走**着**走**着**，忽然看见一只老虎。", py: "Wǒ zuótiān wǎnshang zuò le yí ge qíguài de mèng: zài shùlín li zǒuzhe zǒuzhe, hūrán kànjiàn yì zhī lǎohǔ.", en: "Last night I had a strange dream: I was walking through a forest when suddenly I saw a tiger.", note: "V**着**V**着** + 忽然/就 = the action rolls on until the story slides into a surprise. Dreams and anecdotes love this frame." },
       ]
     },
 
@@ -215,7 +225,7 @@ German <i>mal</i> is VV in one word: <i>„Schau <b>mal</b>“</i> = <span class
       type: "mcq",
       title: "Final exam drill 📝 — HSK 4 level",
       short: "Final drill",
-      intro: "Twelve questions across all three machines. The distractors are the real mistakes — aim for 10+.",
+      intro: "A full lap across all three machines. The distractors are the real mistakes — aim for four out of five or better.",
       items: [
         { q: '<span class="zh">书架上___很多中文书，都是他这几年买的。</span>', choices: ['<span class="zh">放着</span>', '<span class="zh">在放</span>', '<span class="zh">放过</span>', '<span class="zh">放完</span>'], a: 0, expl: "Describing what's there → existential Place + V着. 在放 would mean someone is actively placing books right now." },
         { q: '<span class="zh">他正打___电话呢，你等一会儿再进去。</span>', choices: ['<span class="zh">着</span>', '<span class="zh">了</span>', '<span class="zh">过</span>', '<span class="zh">完</span>'], a: 0, expl: "正 + V着 + 呢 — the full 'right now' sandwich. 了/过/完 all end the call; the sentence needs it ongoing." },
@@ -251,7 +261,7 @@ German <i>mal</i> is VV in one word: <i>„Schau <b>mal</b>“</i> = <span class
 <tr><td>Verb doubling</td><td>VV · V一V · V<b class="hl">了</b>V · ABAB</td><td>看看 · 查一查 · 想<b class="hl">了</b>想 · 商量商量</td></tr>
 <tr><td>Adj doubling</td><td>AA · AABB (no 很!)</td><td>慢慢开 · 打扫得干干净净</td></tr>
 <tr><td>Whether (written)</td><td>是否 / 能否 + V — no 吗</td><td>请告诉我你<b class="hl">是否</b>参加</td></tr>
-<tr><td>Top traps</td><td colspan="2">✗着了 stacked · ✗很 + AABB · ✗想想<b class="hl">了</b> (了 goes inside) · ✗是否…吗 · 喜欢/知道/是 never take 着</td></tr>
+<tr><td>Top traps</td><td colspan="2">✗着了 stacked · ✗很 + AABB · ✗想想<b class="hl">了</b> (了 goes inside) · ✗是否…吗 · 知道/认识/是 refuse 着 (but 想着/记着 are fine)</td></tr>
 </table></div>`
     }
   ]

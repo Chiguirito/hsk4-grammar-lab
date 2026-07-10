@@ -59,11 +59,6 @@ The Writing section loves dictating a 得-sentence with a full object (说汉语
         { tag: "V得", cn: "昨天晚上你睡**得**好不好？", py: "Zuótiān wǎnshang nǐ shuì de hǎo bu hǎo?", en: "Did you sleep well last night?", note: "To ask about a state complement: 得 + 好不好, or 得 + 怎么样." },
         { tag: "Adj得", cn: "我最近忙**得**没有时间锻炼。", py: "Wǒ zuìjìn máng de méiyǒu shíjiān duànliàn.", en: "Lately I've been so busy I have no time to exercise.", note: "After an adjective, 得 + clause = 'so Adj that…'. The clause states the consequence." },
         { tag: "Adj得", cn: "听到这个消息，他高兴**得**跳了起来。", py: "Tīngdào zhège xiāoxi, tā gāoxìng de tiào le qǐlái.", en: "Hearing the news, he jumped up with joy.", note: "The classic exam sentence: emotion + 得 + what it made you do." },
-        { tag: "V得", cn: "我弟弟打乒乓球打**得**特别棒。", py: "Wǒ dìdi dǎ pīngpāngqiú dǎ de tèbié bàng.", en: "My little brother is really good at table tennis.", note: "Full object 乒乓球 blocks 得, so the verb is repeated: 打乒乓球**打得**…. 棒 = 'great', casual praise." },
-        { tag: "Adj得", cn: "她最近减肥，每天晚上都饿**得**睡不着。", py: "Tā zuìjìn jiǎnféi, měitiān wǎnshang dōu è de shuì bu zháo.", en: "She's been dieting lately — every night she's so hungry she can't fall asleep.", note: "Adj + **得** + consequence clause: the hunger is graded by what it causes. 睡不着 is a potential complement living inside the description." },
-        { tag: "死了", cn: "听说你寒假要去亚洲旅行，我羡慕**死了**！", py: "Tīngshuō nǐ hánjià yào qù Yàzhōu lǚxíng, wǒ xiànmù sǐ le!", en: "I heard you're travelling around Asia over winter break — I'm so jealous!", note: "死了 amplifies ANY feeling, envy included: 羡慕**死了**. And remember — no 很 in front of it." },
-        { tag: "得很", cn: "别着急，王老师耐心**得很**，多问几次也没关系。", py: "Bié zháojí, Wáng lǎoshī nàixīn de hěn, duō wèn jǐ cì yě méi guānxi.", en: "Don't worry — Ms. Wang is extremely patient; it's fine to ask her several times.", note: "**得很** hangs off the back of the adjective and sounds reassuring: 'more patient than you'd think'. Typical in comforting replies." },
-        { tag: "V得", cn: "这条江以前污染**得**很严重，现在终于干净多了。", py: "Zhè tiáo jiāng yǐqián wūrǎn de hěn yánzhòng, xiànzài zhōngyú gānjìng duō le.", en: "This river used to be badly polluted; now it's finally much cleaner.", note: "V + **得** + 很 + Adj also grades how far a state has gone: 污染得很严重 = 'polluted to a serious degree'." },
       ]
     },
 
@@ -163,6 +158,21 @@ English and German keep the object glued to the verb: "speaks <b>Chinese</b> flu
       ]
     },
 
+    /* ------------------------------------------------ consolidation */
+    {
+      type: "examples",
+      title: 'Consolidation — the pattern out in the wild',
+      short: "Consolidation",
+      intro: "A second lap with fresh vocabulary: every sentence below runs on this topic's machinery. Read each one like exam text — spot the pattern first, then tap any dotted word you don't know.",
+      items: [
+        { tag: "V得", cn: "我弟弟打乒乓球打**得**特别棒。", py: "Wǒ dìdi dǎ pīngpāngqiú dǎ de tèbié bàng.", en: "My little brother is really good at table tennis.", note: "Full object 乒乓球 blocks 得, so the verb is repeated: 打乒乓球**打得**…. 棒 = 'great', casual praise." },
+        { tag: "Adj得", cn: "她最近减肥，每天晚上都饿**得**睡不着。", py: "Tā zuìjìn jiǎnféi, měitiān wǎnshang dōu è de shuì bu zháo.", en: "She's been dieting lately — every night she's so hungry she can't fall asleep.", note: "Adj + **得** + consequence clause: the hunger is graded by what it causes. 睡不着 is a potential complement living inside the description." },
+        { tag: "死了", cn: "听说你寒假要去亚洲旅行，我羡慕**死了**！", py: "Tīngshuō nǐ hánjià yào qù Yàzhōu lǚxíng, wǒ xiànmù sǐ le!", en: "I heard you're travelling around Asia over winter break — I'm so jealous!", note: "死了 amplifies ANY feeling, envy included: 羡慕**死了**. And remember — no 很 in front of it." },
+        { tag: "得很", cn: "别着急，王老师耐心**得很**，多问几次也没关系。", py: "Bié zháojí, Wáng lǎoshī nàixīn de hěn, duō wèn jǐ cì yě méi guānxi.", en: "Don't worry — Ms. Wang is extremely patient; it's fine to ask her several times.", note: "**得很** hangs off the back of the adjective and sounds reassuring: 'more patient than you'd think'. Typical in comforting replies." },
+        { tag: "V得", cn: "这条江以前污染**得**很严重，现在终于干净多了。", py: "Zhè tiáo jiāng yǐqián wūrǎn de hěn yánzhòng, xiànzài zhōngyú gānjìng duō le.", en: "This river used to be badly polluted; now it's finally much cleaner.", note: "V + **得** + 很 + Adj also grades how far a state has gone: 污染得很严重 = 'polluted to a serious degree'." },
+      ]
+    },
+
     /* ------------------------------------------------ 8 */
     {
       type: "builder",
@@ -205,7 +215,7 @@ See a <span class="zh">得</span> tile in the ordering task? First find the verb
       type: "mcq",
       title: "Final exam drill 📝 — HSK 4 level",
       short: "Final drill",
-      intro: "Eleven questions at real exam difficulty. Aim for 9+.",
+      intro: "Real exam difficulty. Aim for 80% or better.",
       items: [
         { q: '<span class="zh">今天我们玩___真开心。</span>', choices: ['<span class="zh">得</span>', '<span class="zh">地</span>', '<span class="zh">的</span>', '<span class="zh">了</span>'], a: 0, expl: "玩 happened, and now you evaluate it: 玩得真开心. 地 would need the description BEFORE the verb." },
         { q: "Which sentence is WRONG?", choices: ['<span class="zh">我饿死了。</span>', '<span class="zh">他高兴死了。</span>', '<span class="zh">今天很热死了。</span>', '<span class="zh">我累得不得了。</span>'], a: 2, expl: "很 + Adj + 死了 double-intensifies — illegal. Note that 高兴死了 is perfectly fine: 死了 doesn't care whether the feeling is good or bad." },

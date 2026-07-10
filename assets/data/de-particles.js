@@ -75,11 +75,6 @@ The word after 地 is a verb, but the word after 的 can ALSO be missing: <span 
         { tag: "的+得", cn: "老师说**的**话你都听**得**懂吗？", py: "Lǎoshī shuō de huà nǐ dōu tīng de dǒng ma?", en: "Can you understand everything the teacher says?", note: "Both in one sentence: 说的话 (clause + noun), 听得懂 (potential complement — 'can understand')." },
         { tag: "得", cn: "你汉语说**得**越来越流利了！", py: "Nǐ Hànyǔ shuō de yuèláiyuè liúlì le!", en: "Your Chinese is getting more and more fluent!", note: "State complement: the comment (越来越流利) follows 说得." },
         { tag: "真的", cn: "对不起，我真**的**不是故意**的**。", py: "Duìbuqǐ, wǒ zhēn de bú shì gùyì de.", en: "Sorry — I really didn't do it on purpose.", note: "真的 is a fixed word ('really'), and sentence-final 是…的 also takes 的. Never 地/得 here." },
-        { tag: "地", cn: "奶奶耐心**地**教孙女写汉字。", py: "Nǎinai nàixīn de jiāo sūnnǚ xiě Hànzì.", en: "Grandma patiently teaches her granddaughter to write Chinese characters.", note: "Disyllabic adjective 耐心 + **地** + verb 教 — the -ly slot right before the action. With two-syllable adjectives, keep the 地." },
-        { tag: "的", cn: "妈妈烤**的**面包软软**的**，很香。", py: "Māma kǎo de miànbāo ruǎnruǎn de, hěn xiāng.", en: "The bread Mom bakes is nice and soft, and it smells wonderful.", note: "Two 的: 妈妈烤**的** is a clause glued onto the noun 面包, and 软软**的** is a reduplicated adjective + 的 used as the predicate." },
-        { tag: "得", cn: "这种药苦**得**我喝不下去。", py: "Zhè zhǒng yào kǔ de wǒ hē bu xiàqù.", en: "This medicine is so bitter I can't get it down.", note: "Adjective 苦 + **得** + result — 'so bitter that…'. The comment itself holds a potential form (喝不下去 'can't get it down')." },
-        { tag: "得", cn: "他做生意做**得**很成功，朋友们都很尊重他。", py: "Tā zuò shēngyi zuò de hěn chénggōng, péngyoumen dōu hěn zūnzhòng tā.", en: "He runs his business very successfully — his friends all respect him for it.", note: "The object frame: 做生意**做得**很成功 — the verb doubles so 得 can touch it. Never ✗做生意得很成功." },
-        { tag: "地", cn: "虽然很害怕，她还是勇敢**地**敲了敲门。", py: "Suīrán hěn hàipà, tā háishi yǒnggǎn de qiāo le qiāo mén.", en: "Even though she was scared, she still bravely knocked on the door.", note: "勇敢 tells HOW she knocked → **地** before the verb 敲. 敲了敲 is the casual V了V pattern — 地 still comes before the whole verb chunk." },
       ]
     },
 
@@ -191,6 +186,21 @@ Both exist! <span class="zh">她高兴<b class="hl">地</b>说：“谢谢！”
       ]
     },
 
+    /* ------------------------------------------------ consolidation */
+    {
+      type: "examples",
+      title: 'Consolidation — the pattern out in the wild',
+      short: "Consolidation",
+      intro: "A second lap with fresh vocabulary: every sentence below runs on this topic's machinery. Read each one like exam text — spot the pattern first, then tap any dotted word you don't know.",
+      items: [
+        { tag: "地", cn: "奶奶耐心**地**教孙女写汉字。", py: "Nǎinai nàixīn de jiāo sūnnǚ xiě Hànzì.", en: "Grandma patiently teaches her granddaughter to write Chinese characters.", note: "Disyllabic adjective 耐心 + **地** + verb 教 — the -ly slot right before the action. With two-syllable adjectives, keep the 地." },
+        { tag: "的", cn: "妈妈烤**的**面包软软**的**，很香。", py: "Māma kǎo de miànbāo ruǎnruǎn de, hěn xiāng.", en: "The bread Mom bakes is nice and soft, and it smells wonderful.", note: "Two 的: 妈妈烤**的** is a clause glued onto the noun 面包, and 软软**的** is a reduplicated adjective + 的 used as the predicate." },
+        { tag: "得", cn: "这种药苦**得**我喝不下去。", py: "Zhè zhǒng yào kǔ de wǒ hē bu xiàqù.", en: "This medicine is so bitter I can't get it down.", note: "Adjective 苦 + **得** + result — 'so bitter that…'. The comment itself holds a potential form (喝不下去 'can't get it down')." },
+        { tag: "得", cn: "他做生意做**得**很成功，朋友们都很尊重他。", py: "Tā zuò shēngyi zuò de hěn chénggōng, péngyoumen dōu hěn zūnzhòng tā.", en: "He runs his business very successfully — his friends all respect him for it.", note: "The object frame: 做生意**做得**很成功 — the verb doubles so 得 can touch it. Never ✗做生意得很成功." },
+        { tag: "地", cn: "虽然很害怕，她还是勇敢**地**敲了敲门。", py: "Suīrán hěn hàipà, tā háishi yǒnggǎn de qiāo le qiāo mén.", en: "Even though she was scared, she still bravely knocked on the door.", note: "勇敢 tells HOW she knocked → **地** before the verb 敲. 敲了敲 is the casual V了V pattern — 地 still comes before the whole verb chunk." },
+      ]
+    },
+
     /* ------------------------------------------------ 9 */
     {
       type: "builder",
@@ -232,7 +242,7 @@ The dictation task loves four frames: reduplication + <b>地</b> + verb, clause 
       type: "mcq",
       title: "Final drill 📝 — the big 的/地/得 cloze",
       short: "Cloze drill",
-      intro: "Fourteen blanks, three choices each. Run the algorithm every single time: what follows? what precedes? Aim for 13+.",
+      intro: "Three choices per blank. Run the algorithm every single time: what follows? what precedes? Aim to miss no more than one.",
       items: [
         { q: '<span class="zh">她穿了一条漂亮___裙子。</span>', choices: ['<span class="zh">的</span>', '<span class="zh">地</span>', '<span class="zh">得</span>'], a: 0, expl: "裙子 is a noun → 的. Adjective + 的 + noun, the bread-and-butter case." },
         { q: '<span class="zh">他高兴___睡不着觉。</span>', choices: ['<span class="zh">的</span>', '<span class="zh">地</span>', '<span class="zh">得</span>'], a: 2, expl: "睡不着觉 is the RESULT of the joy — 'so happy that…' → degree complement → 得." },

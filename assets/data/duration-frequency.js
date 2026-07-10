@@ -56,11 +56,6 @@ The arrange-the-words task loves handing you a verb, an object, and a 三年/两
         { tag: "趟", cn: "上个月我回**了一趟**老家。", py: "Shàng ge yuè wǒ huí le yí tàng lǎojiā.", en: "Last month I made a trip back to my hometown.", note: "趟 counts round trips — it only pairs with movement verbs like 去、来、回、跑." },
         { tag: "顿", cn: "考完试，我们在饭馆好好儿吃**了一顿**。", py: "Kǎo wán shì, wǒmen zài fànguǎn hǎohāor chī le yí dùn.", en: "After the exam we treated ourselves to a proper meal at a restaurant.", note: "顿 counts meals — and scoldings! 批评了一顿 works exactly the same way." },
         { tag: "pronoun", cn: "我见**过他两次**，但是印象不深。", py: "Wǒ jiàn guo tā liǎng cì, dànshì yìnxiàng bù shēn.", en: "I've met him twice, but I don't remember him well.", note: "Same pronoun privilege with counts: 见过他两次, never ✗见过两次他." },
-        { tag: "habit", cn: "为了减肥，她每天跑步**跑一个小时**，已经瘦了不少。", py: "Wèile jiǎnféi, tā měitiān pǎobù pǎo yí ge xiǎoshí, yǐjīng shòu le bù shǎo.", en: "To lose weight she runs for an hour every day — and she's already slimmed down quite a bit.", note: "Habit (每天) → duration but NO 了 after 跑. 跑步 is separable, so the verb copies: 跑步**跑**一个小时 — never ✗跑步一个小时." },
-        { tag: "pronoun", cn: "我提醒**过他两次**，他还是错过了登机时间。", py: "Wǒ tíxǐng guo tā liǎng cì, tā háishi cuòguò le dēngjī shíjiān.", en: "I reminded him twice, but he still missed his boarding time.", note: "Pronoun privilege with counts: 提醒**过他两次** — pronoun straight after V过, count last. ✗提醒过两次他." },
-        { tag: "duration inside", cn: "他读**了三年**硕士，现在打算继续读博士。", py: "Tā dú le sān nián shuòshì, xiànzài dǎsuàn jìxù dú bóshì.", en: "He did a three-year master's and now plans to go on to a PhD.", note: "Layout 3 with the 的 dropped: V了 + duration + object — 读了三年（的）硕士. The duration sits inside, in front of the noun." },
-        { tag: "negation", cn: "最近烦恼太多，我已经**一个星期没**写日记了。", py: "Zuìjìn fánnǎo tài duō, wǒ yǐjīng yí ge xīngqī méi xiě rìjì le.", en: "I've had so much on my mind lately that I haven't written in my diary for a week.", note: "Negation flip: the week of NOT writing goes BEFORE 没; final 了 = 'and counting'. ✗我没写日记一个星期." },
-        { tag: "遍", cn: "这份招聘广告我仔细看**了两遍**，觉得自己很符合条件。", py: "Zhè fèn zhāopìn guǎnggào wǒ zǐxì kàn le liǎng biàn, juéde zìjǐ hěn fúhé tiáojiàn.", en: "I read the job ad carefully twice and think I'm a good fit for the requirements.", note: "Topicalized object + 看**了两遍**: two full start-to-finish passes through the text → 遍, not 次." },
       ]
     },
 
@@ -160,6 +155,21 @@ Counts and durations use 两: <span class="zh">两次、两遍、两年、两个
       ]
     },
 
+    /* ------------------------------------------------ consolidation */
+    {
+      type: "examples",
+      title: 'Consolidation — the pattern out in the wild',
+      short: "Consolidation",
+      intro: "A second lap with fresh vocabulary: every sentence below runs on this topic's machinery. Read each one like exam text — spot the pattern first, then tap any dotted word you don't know.",
+      items: [
+        { tag: "habit", cn: "为了减肥，她每天跑步**跑一个小时**，已经瘦了不少。", py: "Wèile jiǎnféi, tā měitiān pǎobù pǎo yí ge xiǎoshí, yǐjīng shòu le bù shǎo.", en: "To lose weight she runs for an hour every day — and she's already slimmed down quite a bit.", note: "Habit (每天) → duration but NO 了 after 跑. 跑步 is separable, so the verb copies: 跑步**跑**一个小时 — never ✗跑步一个小时." },
+        { tag: "pronoun", cn: "我提醒**过他两次**，他还是错过了登机时间。", py: "Wǒ tíxǐng guo tā liǎng cì, tā háishi cuòguò le dēngjī shíjiān.", en: "I reminded him twice, but he still missed his boarding time.", note: "Pronoun privilege with counts: 提醒**过他两次** — pronoun straight after V过, count last. ✗提醒过两次他." },
+        { tag: "duration inside", cn: "他读**了三年**硕士，现在打算继续读博士。", py: "Tā dú le sān nián shuòshì, xiànzài dǎsuàn jìxù dú bóshì.", en: "He did a three-year master's and now plans to go on to a PhD.", note: "Layout 3 with the 的 dropped: V了 + duration + object — 读了三年（的）硕士. The duration sits inside, in front of the noun." },
+        { tag: "negation", cn: "最近烦恼太多，我已经**一个星期没**写日记了。", py: "Zuìjìn fánnǎo tài duō, wǒ yǐjīng yí ge xīngqī méi xiě rìjì le.", en: "I've had so much on my mind lately that I haven't written in my diary for a week.", note: "Negation flip: the week of NOT writing goes BEFORE 没; final 了 = 'and counting'. ✗我没写日记一个星期." },
+        { tag: "遍", cn: "这份招聘广告我仔细看**了两遍**，觉得自己很符合条件。", py: "Zhè fèn zhāopìn guǎnggào wǒ zǐxì kàn le liǎng biàn, juéde zìjǐ hěn fúhé tiáojiàn.", en: "I read the job ad carefully twice and think I'm a good fit for the requirements.", note: "Topicalized object + 看**了两遍**: two full start-to-finish passes through the text → 遍, not 次." },
+      ]
+    },
+
     /* ------------------------------------------------ 8 */
     {
       type: "builder",
@@ -205,7 +215,7 @@ Ordering task with a 三年/两次/一趟 tile? ① Find the verb. ② Is there 
       type: "mcq",
       title: "Final exam drill 📝 — HSK 4 level",
       short: "Final drill",
-      intro: "Eleven questions at real exam difficulty. Every distractor is a word-order bug from the clinic.",
+      intro: "Real exam difficulty from here on. Every distractor is a word-order bug from the clinic.",
       items: [
         { q: "Which order is NOT acceptable?", choices: ['<span class="zh">他去过两次北京。</span>', '<span class="zh">他去过北京两次。</span>', '<span class="zh">他两次去过北京。</span>', '<span class="zh">北京他去过两次。</span>'], a: 2, expl: "Counts are complements — in spoken, HSK-level Chinese they follow the verb. Fronting a bare count like 两次 is a formal written pattern (他曾两次访问中国), so it's not the exam answer here; ordinals front freely (第二次去北京). Both post-verb orders and topicalization are fine." },
         { q: '<span class="zh">他上班迟到了，被经理批评了___。</span>', choices: ['<span class="zh">一顿</span>', '<span class="zh">一遍</span>', '<span class="zh">一趟</span>', '<span class="zh">一场</span>'], a: 0, expl: "Scoldings are counted with 顿, the same word as meals: 批评了一顿. 遍 would absurdly mean a complete start-to-finish run-through of the telling-off." },

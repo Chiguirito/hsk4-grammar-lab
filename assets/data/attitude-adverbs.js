@@ -66,11 +66,6 @@ Listening asks 说话人是什么意思/态度 ("what does the speaker mean/feel
         { tag: "顺便", cn: "你去超市的时候，**顺便**帮我买瓶牛奶吧。", py: "Nǐ qù chāoshì de shíhou, shùnbiàn bāng wǒ mǎi píng niúnǎi ba.", en: "When you go to the supermarket, pick up a bottle of milk for me while you're at it.", note: "Main trip + 顺便 + piggyback errand." },
         { tag: "专门", cn: "这些饺子是妈妈**专门**为你包的。", py: "Zhèxiē jiǎozi shì māma zhuānmén wèi nǐ bāo de.", en: "Mom made these dumplings specially for you.", note: "专门为/给 + person + V — the whole action existed for this purpose." },
         { tag: "尤其", cn: "我喜欢中国菜，**尤其是**火锅。", py: "Wǒ xǐhuan Zhōngguó cài, yóuqí shì huǒguō.", en: "I love Chinese food — especially hotpot.", note: "State the set first (中国菜), then 尤其是 spotlights one member." },
-        { tag: "竟然", cn: "他是第一次参赛，没想到**竟然**赢得了第一名。", py: "Tā shì dì yī cì cānsài, méi xiǎngdào jìngrán yíngdé le dì yī míng.", en: "It was his first time competing, and against all expectations he took first place.", note: "第一次参赛 sets the low expectation; 没想到…**竟然** delivers the surprise — the standard sandwich." },
-        { tag: "千万", cn: "前面一百公里都没有加油站，你**千万**记得先把油加满。", py: "Qiánmiàn yìbǎi gōnglǐ dōu méiyǒu jiāyóuzhàn, nǐ qiānwàn jìde xiān bǎ yóu jiā mǎn.", en: "There's no gas station for the next hundred kilometers — make absolutely sure you fill up first.", note: "**千万** + 记得: the positive urgent reminder, same family as 千万别 — it only lives in warnings aimed at the listener." },
-        { tag: "恐怕", cn: "假日路上车太多，**恐怕**要晚两个小时才能到目的地。", py: "Jiàrì lùshang chē tài duō, kǒngpà yào wǎn liǎng ge xiǎoshí cái néng dào mùdìdì.", en: "Holiday traffic is terrible — I'm afraid we'll reach our destination two hours late.", note: "**恐怕** fronts the second clause and colors the whole estimate. The worry is the speaker's; nobody is scared of anything." },
-        { tag: "尤其", cn: "爷爷对谁都很有耐心，**尤其是**教孙女写字的时候。", py: "Yéye duì shéi dōu hěn yǒu nàixīn, yóuqí shì jiāo sūnnǚ xiě zì de shíhou.", en: "Grandpa is patient with everyone — especially when he's teaching his granddaughter to write.", note: "Set first (对谁都有耐心), then **尤其是** spotlights the standout case — here a whole 的时候 phrase, not just a noun." },
-        { tag: "甚至", cn: "他为了做生意，**甚至**把房子都卖了。", py: "Tā wèile zuò shēngyi, shènzhì bǎ fángzi dōu mài le.", en: "To go into business, he even sold his house.", note: "**甚至**…都 escalates to the most extreme proof — selling the house. It rides happily in front of a 把-phrase." },
       ]
     },
 
@@ -219,7 +214,7 @@ Listening asks 说话人是什么意思/态度 ("what does the speaker mean/feel
       type: "clinic",
       title: "Error clinic 🚑 — attitude malpractice",
       short: "Error clinic",
-      intro: "Eight patients, one disease each: a banned combination, a wrong seat, or a feeling pointed the wrong way.",
+      intro: "One disease per patient: a banned combination, a wrong seat, or a feeling pointed the wrong way.",
       items: [
         { wrong: "你到底喜欢她吗？", right: "你到底喜欢不喜欢她？", py: "Nǐ dàodǐ xǐhuan bu xǐhuan tā?", en: "Do you like her or not?!", expl: "到底 never coexists with 吗 — it demands an open question. Switch to V不V (or a question word)." },
         { wrong: "我恐怕狗，别让它过来。", right: "我怕狗，别让它过来。", py: "Wǒ pà gǒu, bié ràng tā guòlái.", en: "I'm scared of dogs — keep it away from me.", expl: "恐怕 = 'I'm afraid THAT…' (a worried guess about a clause). Fear of a thing is 怕/害怕 + noun. 恐怕 can't take an object." },
@@ -230,6 +225,21 @@ Listening asks 说话人是什么意思/态度 ("what does the speaker mean/feel
         { wrong: "他连甚至自己的生日都忘了。", right: "他甚至连自己的生日都忘了。", py: "Tā shènzhì lián zìjǐ de shēngrì dōu wàng le.", en: "He even forgot his own birthday.", expl: "Fixed order: 甚至 + 连 + X + 都. 甚至 introduces the escalation, 连 clamps onto the extreme item — they don't swap." },
         { wrong: "竟然他把我的名字忘了。", right: "他竟然把我的名字忘了。", py: "Tā jìngrán bǎ wǒ de míngzi wàng le.", en: "He actually forgot my name.", expl: "竟然/居然 take the standard adverb seat: after the subject, before the verb phrase (here, before the whole 把-machine)." },
         { wrong: "这次比赛，差点儿所有参赛的同学都拿到了奖。", right: "这次比赛，几乎所有参赛的同学都拿到了奖。", py: "Zhè cì bǐsài, jīhū suǒyǒu cānsài de tóngxué dōu ná dào le jiǎng.", en: "In this competition, almost every student who entered won a prize.", expl: "差点儿 narrates one near-miss EVENT with emotion; quantities creeping toward 100% (所有…都) are 几乎's territory — ✗差点儿所有人. Swap in 几乎 and the headcount reads correctly." },
+      ]
+    },
+
+    /* ------------------------------------------------ consolidation */
+    {
+      type: "examples",
+      title: 'Consolidation — the pattern out in the wild',
+      short: "Consolidation",
+      intro: "A second lap with fresh vocabulary: every sentence below runs on this topic's machinery. Read each one like exam text — spot the pattern first, then tap any dotted word you don't know.",
+      items: [
+        { tag: "竟然", cn: "他是第一次参赛，没想到**竟然**赢得了第一名。", py: "Tā shì dì yī cì cānsài, méi xiǎngdào jìngrán yíngdé le dì yī míng.", en: "It was his first time competing, and against all expectations he took first place.", note: "第一次参赛 sets the low expectation; 没想到…**竟然** delivers the surprise — the standard sandwich." },
+        { tag: "千万", cn: "前面一百公里都没有加油站，你**千万**记得先把油加满。", py: "Qiánmiàn yìbǎi gōnglǐ dōu méiyǒu jiāyóuzhàn, nǐ qiānwàn jìde xiān bǎ yóu jiā mǎn.", en: "There's no gas station for the next hundred kilometers — make absolutely sure you fill up first.", note: "**千万** + 记得: the positive urgent reminder, same family as 千万别 — it only lives in warnings aimed at the listener. (The Conditionals page runs this exact road trip with 万一 — compare: 千万 warns the listener, 万一 plans for the worst case.)" },
+        { tag: "恐怕", cn: "假日路上车太多，**恐怕**要晚两个小时才能到目的地。", py: "Jiàrì lùshang chē tài duō, kǒngpà yào wǎn liǎng ge xiǎoshí cái néng dào mùdìdì.", en: "Holiday traffic is terrible — I'm afraid we'll reach our destination two hours late.", note: "**恐怕** fronts the second clause and colors the whole estimate. The worry is the speaker's; nobody is scared of anything." },
+        { tag: "尤其", cn: "爷爷对谁都很有耐心，**尤其是**教孙女写字的时候。", py: "Yéye duì shéi dōu hěn yǒu nàixīn, yóuqí shì jiāo sūnnǚ xiě zì de shíhou.", en: "Grandpa is patient with everyone — especially when he's teaching his granddaughter to write.", note: "Set first (对谁都有耐心), then **尤其是** spotlights the standout case — here a whole 的时候 phrase, not just a noun." },
+        { tag: "甚至", cn: "他为了做生意，**甚至**把房子都卖了。", py: "Tā wèile zuò shēngyi, shènzhì bǎ fángzi dōu mài le.", en: "To go into business, he even sold his house.", note: "**甚至**…都 escalates to the most extreme proof — selling the house. It rides happily in front of a 把-phrase." },
       ]
     },
 
@@ -278,7 +288,7 @@ Hear 竟然/居然 → answer choice mentions surprise. Hear 恐怕 → worry/es
       type: "mcq",
       title: "Final exam drill 📝 — HSK 4 level",
       short: "Final drill",
-      intro: "Twelve items, including the interpretation traps that real exams love. Slow down on anything with 差点儿.",
+      intro: "The full drill, including the interpretation traps that real exams love. Slow down on anything with 差点儿.",
       items: [
         { q: '<span class="zh">他才学了一年汉语，___能看懂中文小说了。</span>', choices: ['<span class="zh">竟然</span>', '<span class="zh">到底</span>', '<span class="zh">千万</span>', '<span class="zh">恐怕</span>'], a: 0, expl: "One year → reading novels is astonishing → 竟然. 才 sets up the surprise; 竟然 delivers it." },
         { q: '<span class="zh">你___想去哪儿？我们已经讨论一个小时了！</span>', choices: ['<span class="zh">到底</span>', '<span class="zh">顺便</span>', '<span class="zh">专门</span>', '<span class="zh">几乎</span>'], a: 0, expl: "Impatience + open question (哪儿) → 到底. The hour of discussion is the impatience license." },

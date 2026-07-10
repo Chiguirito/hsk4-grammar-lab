@@ -33,11 +33,16 @@ const EXTRA_DICT = ["句型", "语序", "时量", "动量", "补语", "量词", 
   "把字句", "被字句", "疑问句", "反问句", "语气词", "声调", "错题本",
   // everyday determiner compounds the HSK lists don't carry as words — without
   // them the segmenter mis-reads 这种植物 as 这 + 种植 + 物 (false underline)
-  "这种", "那种", "哪种", "每种", "一种"];
+  "这种", "那种", "哪种", "每种", "一种", "有种", "几种", "两种",
+  // boundary-fixers from the 2026-07-10 audit: each stops a verified wrong
+  // underline (睡着觉→睡着 shuìzháo, 锁上门→上门, 马拉松→松, 十分之七→之,
+  // 二十多种→多种, 来得及时→来得及). All verified collateral-free.
+  "着觉", "锁上", "马拉松", "十分之", "二十多", "来得"];
 // hand-curated glosses where CC-CEDICT's entry misleads for THIS site's usage
 // (王 appears in content only as a surname) or is machine junk / a bare
 // cross-reference. Checked against the coverage report — keep this short.
 const GLOSS_OVERRIDES = {
+  "棒": "great; awesome (colloquial praise); (literally) stick, club",
   "王": "Wang (common surname); king",
   "体检": "physical examination; health checkup",
   "没法儿": "no way (to do sth); can't possibly",

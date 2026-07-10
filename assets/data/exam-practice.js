@@ -3,7 +3,7 @@ registerPage({
   id: "exam-practice",
   zh: "**综合**演练",
   title: "Mixed exam practice — the grammar gym",
-  subtitle: "No new grammar on this page — only reps. Everything you trained across this site comes back mixed, disguised, and at real exam speed: sentence ordering, word arranging, error hunting, and a 24-question grand quiz. Treat it like exam day: timer on, no peeking.",
+  subtitle: "No new grammar on this page — only reps. Everything you trained across this site comes back mixed, disguised, and at real exam speed: sentence ordering, word arranging, error hunting, and a grand mixed quiz. Treat it like exam day: timer on, no peeking.",
   sections: [
 
     /* ------------------------------------------------ 1 */
@@ -33,7 +33,7 @@ Same subject in both clauses → subject sits BEFORE the connector, once: <span 
       type: "examples",
       title: "Warm-up — one model sentence per machine",
       short: "Warm-up",
-      intro: "Before the drills: read each sentence and name the pattern it runs on. The tag confirms your answer.",
+      intro: "Before the drills: one model sentence per machine you trained. The tag names the pattern; the bold marks its working parts.",
       items: [
         { tag: "被", cn: "昨天的比赛，我们队**被**他们**打败**了，大家全都很难过。", py: "Zuótiān de bǐsài, wǒmen duì bèi tāmen dǎbài le, dàjiā quándōu hěn nánguò.", en: "Our team got beaten by them in yesterday's game — we were all pretty upset.", note: "被-machine: victim + **被** + doer + verb + result. 打**败** carries its result built in ('hit until defeated') — a bare verb after 被 is dead." },
         { tag: "比", cn: "新修的这条路**比**以前**宽得多**，开车方便多了。", py: "Xīn xiū de zhè tiáo lù bǐ yǐqián kuān de duō, kāichē fāngbiàn duō le.", en: "The newly built road is much wider than before — driving is a lot more convenient now.", note: "比-sentence: size the gap AFTER the adjective with **得多**. Degree adverbs are banned: ✗比以前很宽." },
@@ -106,9 +106,9 @@ The exam pre-glues characters into chunks of 2–4 — and gluing is information
     /* ------------------------------------------------ 5 */
     {
       type: "clinic",
-      title: "改错 — find & fix (10 cross-topic bugs)",
+      title: "改错 — find & fix (cross-topic bugs)",
       short: "Error hunt",
-      intro: "One classic disease per sentence, drawn from ten different topics. Name the topic, then the cure.",
+      intro: "One classic disease per sentence, drawn from all across the site. Name the topic, then the cure.",
       items: [
         { wrong: "幸好出租车开得快，我差点儿赶上了飞机。", right: "幸好出租车开得快，我差点儿没赶上飞机。", py: "Xìnghǎo chūzūchē kāi de kuài, wǒ chàdiǎnr méi gǎnshàng fēijī.", en: "Luckily the taxi was fast — I almost missed my flight (but made it).", expl: "With DESIRED outcomes, 差点儿 + V means you failed (almost caught it… didn't). 'Barely made it' = 差点儿没 + V. (see: attitude adverbs)" },
         { wrong: "哥哥比我很高。", right: "哥哥比我高得多。", py: "Gēge bǐ wǒ gāo de duō.", en: "My brother is much taller than me.", expl: "比-sentences ban 很/非常/太. To size the gap, use 得多/多了/一点儿 AFTER the adjective. (see: comparisons)" },
@@ -150,9 +150,9 @@ Every wrong option in the quiz below is a real learner error — the same ones f
     /* ------------------------------------------------ 7 */
     {
       type: "mcq",
-      title: "Grand mixed quiz 🏁 — 24 questions, every topic",
+      title: "Grand mixed quiz 🏁 — every topic",
       short: "Grand quiz",
-      intro: "The whole site in one sweep. Real exam difficulty or a notch above. 20+ correct = you're ready for test day.",
+      intro: "The whole site in one sweep. Real exam difficulty or a notch above. Four out of five correct = you're ready for test day.",
       items: [
         { q: '<span class="zh">这道题你又做___了，再检查一遍吧。</span>', choices: ['<span class="zh">完</span>', '<span class="zh">错</span>', '<span class="zh">到</span>', '<span class="zh">会</span>'], a: 1, expl: "再检查一遍 implies something's wrong → 做错 'did it wrong'. 做完 only says it's finished — no reason to re-check. (see: result complements)" },
         { q: '<span class="zh">春天了，天气慢慢暖和___了。</span>', choices: ['<span class="zh">起来</span>', '<span class="zh">下去</span>', '<span class="zh">出来</span>', '<span class="zh">过去</span>'], a: 0, expl: "起来 = a state beginning and building: 暖和起来 'starting to warm up'. 下去 continues an existing state; 出来 is for emerging results (看出来). (see: directional complements)" },

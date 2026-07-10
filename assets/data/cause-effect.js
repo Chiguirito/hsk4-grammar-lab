@@ -65,11 +65,6 @@ Reading part 2 (sentence ordering) almost always contains one 因果 pair, and t
         { tag: "为了", cn: "**为了**提高听力水平，她每天听半个小时的中文广播。", py: "Wèile tígāo tīnglì shuǐpíng, tā měitiān tīng bàn ge xiǎoshí de Zhōngwén guǎngbō.", en: "In order to improve her listening, she listens to Chinese radio for half an hour every day.", note: "为了 marks the GOAL (still in the future), not the cause. It loves the first slot of the sentence." },
         { tag: "让", cn: "这个好消息**让**大家都很兴奋。", py: "Zhège hǎo xiāoxi ràng dàjiā dōu hěn xīngfèn.", en: "This good news got everyone excited.", note: "Cause and effect in ONE clause: A 让 B + feeling. No 所以 needed." },
         { tag: "使", cn: "长时间看手机会**使**眼睛越来越干。", py: "Cháng shíjiān kàn shǒujī huì shǐ yǎnjing yuèláiyuè gān.", en: "Looking at your phone for long periods makes your eyes drier and drier.", note: "使 = formal 让. 令 is even more formal/literary: 令人感动." },
-        { tag: "由于…因此", cn: "**由于**电动车又便宜又方便，**因此**购买的人越来越多。", py: "Yóuyú diàndòngchē yòu piányi yòu fāngbiàn, yīncǐ gòumǎi de rén yuèláiyuè duō.", en: "Because electric scooters are cheap and convenient, more and more people are buying them.", note: "**由于…因此** is the formal pairing — swap in 因为 and 因此 refuses to cooperate. 购买 is the written cousin of 买." },
-        { tag: "于是", cn: "我路过公园时看见一只小猫，样子特别可怜，**于是**把它带回了家。", py: "Wǒ lùguò gōngyuán shí kànjiàn yì zhī xiǎomāo, yàngzi tèbié kělián, yúshì bǎ tā dài huí le jiā.", en: "Passing the park I saw a kitten that looked so pitiful, so I took it home.", note: "Story mode: an event, then **于是** + what I did next. It narrates sequence — it could never answer 为什么." },
-        { tag: "既然…就", cn: "**既然**报了名，你**就**勇敢地去参赛吧，别想太多。", py: "Jìrán bào le míng, nǐ jiù yǒnggǎn de qù cānsài ba, bié xiǎng tài duō.", en: "Since you've already signed up, just go and compete bravely — don't overthink it.", note: "Known fact (you signed up) → suggestion: **就** after the subject, softened with 吧. 参赛 = take part in a competition." },
-        { tag: "让", cn: "这次难忘的旅行**让**我们的友谊变得更深了。", py: "Zhè cì nánwàng de lǚxíng ràng wǒmen de yǒuyì biàn de gèng shēn le.", en: "That unforgettable trip deepened our friendship.", note: "**让** packs cause and effect into ONE clause — no 所以 needed. In formal writing, upgrade 让 to 使." },
-        { tag: "为了", cn: "**为了**给学生提供更好的阅读环境，学校决定扩大图书馆的规模。", py: "Wèile gěi xuéshēng tígōng gèng hǎo de yuèdú huánjìng, xuéxiào juédìng kuòdà túshūguǎn de guīmó.", en: "To give students a better reading environment, the school decided to expand the library.", note: "**为了** states the goal up front; the main clause then follows directly — never add 所以 after a 为了-phrase." },
       ]
     },
 
@@ -182,7 +177,7 @@ German <i>„<b>Da</b> es regnet, bleiben wir zu Hause“</i> presents the reaso
       type: "clinic",
       title: "Error clinic 🚑 — real learner mistakes",
       short: "Error clinic",
-      intro: "Seven patients, one disease each: a wrong pairing, a wrong position, or the wrong connector for the job.",
+      intro: "One disease per patient: a wrong pairing, a wrong position, or the wrong connector for the job.",
       items: [
         { wrong: "因为他经常迟到，因此经理批评了他。", right: "由于他经常迟到，因此经理批评了他。／因为他经常迟到，所以经理批评了他。", py: "Yóuyú tā jīngcháng chídào, yīncǐ jīnglǐ pīpíng le tā.", en: "Because he was often late, the manager criticized him.", expl: "因此 refuses 因为. Keep 因此 and upgrade the first half to 由于, or keep 因为 and use 所以." },
         { wrong: "我很累，由于昨天晚上没睡好。", right: "我很累，因为昨天晚上没睡好。", py: "Wǒ hěn lèi, yīnwèi zuótiān wǎnshang méi shuì hǎo.", en: "I'm really tired, because I slept badly last night.", expl: "Only a 因为-clause may trail after the result. 由于 insists on going first: 由于昨晚没睡好，我很累。" },
@@ -192,6 +187,20 @@ German <i>„<b>Da</b> es regnet, bleiben wir zu Hause“</i> presents the reaso
         { wrong: "天太热了，于是我们别出去了。", right: "天太热了，我们就别出去了。／天太热了，咱们别出去了吧。", py: "Tiān tài rè le, wǒmen jiù bié chūqù le.", en: "It's too hot — let's not go out.", expl: "于是 only reports what DID happen next in a narrative; it can't introduce suggestions or commands. For 'so let's…', use 就 or nothing." },
         { wrong: "这个消息使大家都很高兴，所以大家都很高兴。", right: "这个消息使大家都很高兴。", py: "Zhège xiāoxi shǐ dàjiā dōu hěn gāoxìng.", en: "This news made everyone very happy.", expl: "使/让/令 already contain the whole cause→effect arrow in one clause — adding a 所以-clause just repeats the result. One arrow per sentence." },
         { wrong: "既然大家都这么有耐心，就我们再等一会儿吧。", right: "既然大家都这么有耐心，我们就再等一会儿吧。", py: "Jìrán dàjiā dōu zhème yǒu nàixīn, wǒmen jiù zài děng yíhuìr ba.", en: "Since everyone is being so patient, let's wait a little longer.", expl: "就 is an adverb, welded AFTER the subject: 我们**就**再等… Clause-initial 就 is the #1 position error in 既然…就 sentences — the pairing is right, the seat is wrong." },
+      ]
+    },
+
+    /* ------------------------------------------------ consolidation */
+    {
+      type: "examples",
+      title: 'Consolidation — the pattern out in the wild',
+      short: "Consolidation",
+      intro: "A second lap with fresh vocabulary: every sentence below runs on this topic's machinery. Read each one like exam text — spot the pattern first, then tap any dotted word you don't know.",
+      items: [
+        { tag: "由于…因此", cn: "**由于**电动车又便宜又方便，**因此**购买的人越来越多。", py: "Yóuyú diàndòngchē yòu piányi yòu fāngbiàn, yīncǐ gòumǎi de rén yuèláiyuè duō.", en: "Because electric scooters are cheap and convenient, more and more people are buying them.", note: "**由于…因此** is the formal pairing — swap in 因为 and 因此 refuses to cooperate. 购买 is the written cousin of 买." },
+        { tag: "于是", cn: "我路过公园时看见一只小猫，样子特别可怜，**于是**把它带回了家。", py: "Wǒ lùguò gōngyuán shí kànjiàn yì zhī xiǎomāo, yàngzi tèbié kělián, yúshì bǎ tā dài huí le jiā.", en: "Passing the park I saw a kitten that looked so pitiful, so I took it home.", note: "Story mode: an event, then **于是** + what I did next. It narrates sequence — it could never answer 为什么." },
+        { tag: "让", cn: "这次难忘的旅行**让**我们的友谊变得更深了。", py: "Zhè cì nánwàng de lǚxíng ràng wǒmen de yǒuyì biàn de gèng shēn le.", en: "That unforgettable trip deepened our friendship.", note: "**让** packs cause and effect into ONE clause — no 所以 needed. In formal writing, upgrade 让 to 使." },
+        { tag: "为了", cn: "**为了**给学生提供更好的阅读环境，学校决定扩大图书馆的规模。", py: "Wèile gěi xuéshēng tígōng gèng hǎo de yuèdú huánjìng, xuéxiào juédìng kuòdà túshūguǎn de guīmó.", en: "To give students a better reading environment, the school decided to expand the library.", note: "**为了** states the goal up front; the main clause then follows directly — never add 所以 after a 为了-phrase." },
       ]
     },
 
@@ -239,7 +248,7 @@ Both translate as “so”. Ask: does clause 2 merely happen <b>after and becaus
       type: "mcq",
       title: "Final exam drill 📝 — HSK 4 level",
       short: "Final drill",
-      intro: "Ten questions with distractors taken straight from the clinic. Aim for 9+.",
+      intro: "The distractors are taken straight from the clinic. Aim to miss at most one.",
       items: [
         { q: '<span class="zh">___大家都到了，我们就出发吧。</span>', choices: ['<span class="zh">既然</span>', '<span class="zh">由于</span>', '<span class="zh">于是</span>', '<span class="zh">因此</span>'], a: 0, expl: "Shared, visible premise + 就 + suggestion = 既然. 由于 would state a formal cause and doesn't pair with a 吧-suggestion; 于是/因此 head result clauses." },
         { q: '<span class="zh">昨天晚上停电了，我看不了书，___很早就睡了。</span>', choices: ['<span class="zh">于是</span>', '<span class="zh">既然</span>', '<span class="zh">为了</span>', '<span class="zh">由于</span>'], a: 0, expl: "A chain of events in a little story — 'and so I went to bed early'. Narrative sequence = 于是." },

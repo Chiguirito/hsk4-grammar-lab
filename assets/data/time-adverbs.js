@@ -102,7 +102,7 @@ registerPage({
       type: "examples",
       title: 'Model sentences — the whole toolkit in action',
       short: "Examples",
-      intro: "Twelve sentences, one per tool. Tap 🔊 to listen, and name the adverb's 'angle' before reading the note.",
+      intro: "One sentence per tool. Tap 🔊 to listen, and name the adverb's 'angle' before reading the note.",
       items: [
         { tag: "刚…就", cn: "我**刚**到公司，会议**就**开始了。", py: "Wǒ gāng dào gōngsī, huìyì jiù kāishǐ le.", en: "The meeting started the moment I got to the office.", note: "刚 A 就 B: barely-in-time drama." },
         { tag: "刚才", cn: "**刚才**你说什么？我没听清楚。", py: "Gāngcái nǐ shuō shénme? Wǒ méi tīng qīngchu.", en: "What did you say just now? I didn't catch it.", note: "Time noun opening the sentence — 刚 could never." },
@@ -116,11 +116,6 @@ registerPage({
         { tag: "从来", cn: "我**从来**没吃过这么辣的菜。", py: "Wǒ cónglái méi chī guo zhème là de cài.", en: "I've never eaten food this spicy in my life.", note: "从来 + 没…过: never in all my experience. 从来 refuses positive sentences." },
         { tag: "一直", cn: "雨**一直**下到半夜才停。", py: "Yǔ yìzhí xià dào bànyè cái tíng.", en: "The rain kept falling until midnight before it finally stopped.", note: "一直 = continuously, without interruption — one long unbroken line." },
         { tag: "后来", cn: "他先在北京工作了两年，**后来**去了上海。", py: "Tā xiān zài Běijīng gōngzuò le liǎng nián, hòulái qù le Shànghǎi.", en: "He first worked in Beijing for two years; later on he moved to Shanghai.", note: "后来 = 'later on' in a PAST story. For future plans you'd need 然后/以后." },
-        { tag: "按时", cn: "我们公司要求大家每年都得**按时**参加体检。", py: "Wǒmen gōngsī yāoqiú dàjiā měi nián dōu děi ànshí cānjiā tǐjiǎn.", en: "Our company requires everyone to show up for the annual health checkup on schedule.", note: "A repeating duty on a fixed plan (每年…体检) → **按时**. Duties are its favourite food: 按时吃药、按时交作业、按时体检." },
-        { tag: "提前·往往", cn: "乘坐飞机最好**提前**两个小时到机场，因为安检**往往**要排很长的队。", py: "Chéngzuò fēijī zuìhǎo tíqián liǎng ge xiǎoshí dào jīchǎng, yīnwèi ānjiǎn wǎngwǎng yào pái hěn cháng de duì.", en: "When you fly, it's best to get to the airport two hours early — the security check tends to have long lines.", note: "**提前** + amount + verb: beat the schedule by a stated margin. **往往** then states the observed pattern that justifies it." },
-        { tag: "刚…就", cn: "我们**刚**集合好，导游**就**开始点名了。", py: "Wǒmen gāng jíhé hǎo, dǎoyóu jiù kāishǐ diǎnmíng le.", en: "We had barely finished assembling when the guide started calling roll.", note: "刚 A **就** B: B follows on A's heels. The adverb 刚 glues to the verb 集合 — 刚才 could never join this frame." },
-        { tag: "一直没", cn: "我上星期就给负责人发了邮件，可是他**一直**没回复。", py: "Wǒ shàng xīngqī jiù gěi fùzérén fā le yóujiàn, kěshì tā yìzhí méi huífù.", en: "I emailed the person in charge back last week, but he still hasn't replied.", note: "**一直** + 没 = stubborn absence over one specific stretch (since last week). 从来没回复过 would claim 'never once, ever'." },
-        { tag: "从来不", cn: "我**从来不**喝白酒，只是偶尔喝一点儿葡萄酒。", py: "Wǒ cónglái bù hē báijiǔ, zhǐshì ǒu'ěr hē yìdiǎnr pútaojiǔ.", en: "I never touch baijiu — just a little wine once in a while.", note: "**从来不** + V = standing policy. 偶尔 ('occasionally') is its natural counterpart: zero times vs a few scattered times." },
       ]
     },
 
@@ -258,6 +253,21 @@ No personal intentions (✗<span class="zh">我往往去健身房</span> → <sp
       ]
     },
 
+    /* ------------------------------------------------ consolidation */
+    {
+      type: "examples",
+      title: 'Consolidation — the pattern out in the wild',
+      short: "Consolidation",
+      intro: "A second lap with fresh vocabulary: every sentence below runs on this topic's machinery. Read each one like exam text — spot the pattern first, then tap any dotted word you don't know.",
+      items: [
+        { tag: "按时", cn: "我们公司要求大家每年都得**按时**参加体检。", py: "Wǒmen gōngsī yāoqiú dàjiā měi nián dōu děi ànshí cānjiā tǐjiǎn.", en: "Our company requires everyone to show up for the annual health checkup on schedule.", note: "A repeating duty on a fixed plan (每年…体检) → **按时**. Duties are its favourite food: 按时吃药、按时交作业、按时体检." },
+        { tag: "提前·往往", cn: "乘坐飞机最好**提前**两个小时到机场，因为安检**往往**要排很长的队。", py: "Chéngzuò fēijī zuìhǎo tíqián liǎng ge xiǎoshí dào jīchǎng, yīnwèi ānjiǎn wǎngwǎng yào pái hěn cháng de duì.", en: "When you fly, it's best to get to the airport two hours early — the security check tends to have long lines.", note: "**提前** + amount + verb: beat the schedule by a stated margin. **往往** then states the observed pattern that justifies it." },
+        { tag: "刚…就", cn: "我们**刚**集合好，导游**就**开始点名了。", py: "Wǒmen gāng jíhé hǎo, dǎoyóu jiù kāishǐ diǎnmíng le.", en: "We had barely finished assembling when the guide started calling roll.", note: "刚 A **就** B: B follows on A's heels. The adverb 刚 glues to the verb 集合 — 刚才 could never join this frame." },
+        { tag: "一直没", cn: "我上星期就给负责人发了邮件，可是他**一直**没回复。", py: "Wǒ shàng xīngqī jiù gěi fùzérén fā le yóujiàn, kěshì tā yìzhí méi huífù.", en: "I emailed the person in charge back last week, but he still hasn't replied.", note: "**一直** + 没 = stubborn absence over one specific stretch (since last week). 从来没回复过 would claim 'never once, ever'." },
+        { tag: "从来不", cn: "我**从来不**喝白酒，只是偶尔喝一点儿葡萄酒。", py: "Wǒ cónglái bù hē báijiǔ, zhǐshì ǒu'ěr hē yìdiǎnr pútaojiǔ.", en: "I never touch baijiu — just a little wine once in a while.", note: "**从来不** + V = standing policy. 偶尔 ('occasionally') is its natural counterpart: zero times vs a few scattered times." },
+      ]
+    },
+
     /* ------------------------------------------------ 9 */
     {
       type: "builder",
@@ -301,7 +311,7 @@ No personal intentions (✗<span class="zh">我往往去健身房</span> → <sp
       type: "mcq",
       title: "Final exam drill 📝 — HSK 4 level",
       short: "Final drill",
-      intro: "Twelve items mixing all five clusters — exactly how the real exam interleaves them. Aim for 10+.",
+      intro: "A mix of all five clusters — exactly how the real exam interleaves them. Aim for at least four out of five.",
       items: [
         { q: '<span class="zh">___的会议上，经理说了一件很重要的事。</span>', choices: ['<span class="zh">刚</span>', '<span class="zh">刚才</span>', '<span class="zh">马上</span>', '<span class="zh">及时</span>'], a: 1, expl: "___ + 的 + noun: only a noun can own things with 的 → 刚才的会议. 刚 is an adverb and can't touch 的." },
         { q: '<span class="zh">他去年这个时候___大学毕业，还没找到工作。</span>', choices: ['<span class="zh">刚才</span>', '<span class="zh">刚</span>', '<span class="zh">正好</span>', '<span class="zh">按时</span>'], a: 1, expl: "'Had just graduated' relative to LAST YEAR → 刚, the relative anchor. 刚才 only means 'minutes before now'." },

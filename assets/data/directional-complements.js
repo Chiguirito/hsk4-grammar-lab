@@ -57,11 +57,6 @@ Two reasons. Literal: the word-ordering task loves 走进教室去-type chains. 
         { tag: "回去", cn: "天太晚了，我们回**家去**吧。", py: "Tiān tài wǎn le, wǒmen huí jiā qù ba.", en: "It's really late — let's head home.", note: "家 is a place word → it slips in before 去: 回家去, not ✗回去家." },
         { tag: "把", cn: "请把这些椅子搬**过来**，那边不够坐。", py: "Qǐng bǎ zhèxiē yǐzi bān guòlái, nàbiān bú gòu zuò.", en: "Please move these chairs over here — there aren't enough seats over there.", note: "Definite object? 把 + V + directional is the cleanest order." },
         { tag: "出去/回来", cn: "我**出去**买点儿东西，一会儿就**回来**。", py: "Wǒ chūqù mǎi diǎnr dōngxi, yíhuìr jiù huílái.", en: "I'm going out to buy a few things — I'll be right back.", note: "Watch the perspective flip mid-sentence: away (去), then back toward home base (来)." },
-        { tag: "把+起来", cn: "爷爷笑着把孙子抱了**起来**。", py: "Yéye xiàozhe bǎ sūnzi bào le qǐlái.", en: "Grandpa smiled and scooped his grandson up in his arms.", note: "Literal 起来 = up off the ground. The definite object (孙子) is promoted with 把; 了 slips in before the tail: 抱了**起来**." },
-        { tag: "下来", cn: "秋天到了，树上的叶子一片一片地落**下来**了。", py: "Qiūtiān dào le, shù shàng de yèzi yí piàn yí piàn de luò xiàlái le.", en: "Autumn is here — the leaves are drifting down from the trees one by one.", note: "落**下来** = falling down toward the ground where we stand. 落 is the slightly bookish cousin of 掉 — HSK 4 reading loves it." },
-        { tag: "adj+下来", cn: "天逐渐暗了**下来**，我们该回**家去**了。", py: "Tiān zhújiàn àn le xiàlái, wǒmen gāi huí jiā qù le.", en: "It's gradually getting dark — we should head home.", note: "Adjectives take settle-**下来** too: 暗下来, 安静下来 — light or noise winding down to rest. And 家 rides before 去, as always." },
-        { tag: "起…来 split", cn: "客人一到，她就高兴地弹**起**琴**来**。", py: "Kèrén yí dào, tā jiù gāoxìng de tán qǐ qín lái.", en: "The moment the guests arrived, she happily started playing the piano.", note: "Start-起来 wraps around its object: 弹**起**琴**来**, exactly like 下**起**雨**来**. If 起 and 来 come apart, something goes between." },
-        { tag: "下去", cn: "健身虽然很辛苦，但教练总是鼓励我坚持**下去**。", py: "Jiànshēn suīrán hěn xīnkǔ, dàn jiàoliàn zǒngshì gǔlì wǒ jiānchí xiàqù.", en: "Working out is exhausting, but my coach always encourages me to keep at it.", note: "Future-facing **下去**: keep the activity going from now onward. Looking back at a stretch you survived would be 坚持下来." },
       ]
     },
 
@@ -217,7 +212,22 @@ Someone calls you over. English: “I'm <b>coming</b>!” Spanish: <i>“¡Ya <b
         { wrong: "我想起来了一个特别好的新办法。", right: "我想出来了一个特别好的新办法。", py: "Wǒ xiǎng chūlái le yí ge tèbié hǎo de xīn bànfǎ.", en: "I came up with a really good new idea.", expl: "新办法 = it never existed before, so it's produced, not recalled: 想出来. 想起来 needs an old memory." },
         { wrong: "你快回来家吧，晚饭做好了。", right: "你快回家来吧，晚饭做好了。", py: "Nǐ kuài huí jiā lái ba, wǎnfàn zuò hǎo le.", en: "Come on home — dinner's ready.", expl: "家 is a place word → before 来: 回家来. (Speaker is at home cooking, so 来 is right.)" },
         { wrong: "请大家从书包里把课本拿起来。", right: "请大家从书包里把课本拿出来。", py: "Qǐng dàjiā cóng shūbāo lǐ bǎ kèběn ná chūlái.", en: "Everyone take your textbooks out of your bags.", expl: "Out of a container = 出来. 拿起来 is for picking things up off a surface. 从书包里 forces 出来." },
-        { wrong: "表演结束了，观众都热情地鼓掌起来。", right: "表演结束了，观众都热情地鼓起掌来。", py: "Biǎoyǎn jiéshù le, guānzhòng dōu rèqíng de gǔ qǐ zhǎng lái.", en: "When the performance ended, the audience burst into warm applause.", expl: "鼓掌 is a verb-object compound — 掌 is the object, so start-起来 must wrap around it: 鼓起掌来, never ✗鼓掌起来. Same split as 下起雨来 and 聊起天来." },
+        { wrong: "表演结束了，观众都鼓掌起来。", right: "表演结束了，观众都鼓起掌来。", py: "Biǎoyǎn jiéshù le, guānzhòng dōu gǔ qǐ zhǎng lái.", en: "When the performance ended, the audience burst into applause.", expl: "鼓掌 is a verb-object compound — 掌 is the object, so start-起来 must wrap around it: 鼓起掌来, never ✗鼓掌起来. Same split as 下起雨来 and 聊起天来." },
+      ]
+    },
+
+    /* ------------------------------------------------ consolidation */
+    {
+      type: "examples",
+      title: 'Consolidation — the pattern out in the wild',
+      short: "Consolidation",
+      intro: "A second lap with fresh vocabulary: every sentence below runs on this topic's machinery. Read each one like exam text — spot the pattern first, then tap any dotted word you don't know.",
+      items: [
+        { tag: "把+起来", cn: "爷爷笑着把孙子抱了**起来**。", py: "Yéye xiàozhe bǎ sūnzi bào le qǐlái.", en: "Grandpa smiled and scooped his grandson up in his arms.", note: "Literal 起来 = up off the ground. The definite object (孙子) is promoted with 把; 了 slips in before the tail: 抱了**起来**." },
+        { tag: "下来", cn: "秋天到了，树上的叶子一片一片地落**下来**了。", py: "Qiūtiān dào le, shù shàng de yèzi yí piàn yí piàn de luò xiàlái le.", en: "Autumn is here — the leaves are drifting down from the trees one by one.", note: "落**下来** = falling down toward the ground where we stand. 落 is the slightly bookish cousin of 掉 — HSK 4 reading loves it." },
+        { tag: "adj+下来", cn: "天逐渐暗了**下来**，我们该回**家去**了。", py: "Tiān zhújiàn àn le xiàlái, wǒmen gāi huí jiā qù le.", en: "It's gradually getting dark — we should head home.", note: "Adjectives take settle-**下来** too: 暗下来, 安静下来 — light or noise winding down to rest. And 家 rides before 去, as always." },
+        { tag: "起…来 split", cn: "客人一到，她就高兴地弹**起**琴**来**。", py: "Kèrén yí dào, tā jiù gāoxìng de tán qǐ qín lái.", en: "The moment the guests arrived, she happily started playing the piano.", note: "Start-起来 wraps around its object: 弹**起**琴**来**, exactly like 下**起**雨**来**. If 起 and 来 come apart, something goes between." },
+        { tag: "下去", cn: "健身虽然很辛苦，但教练总是鼓励我坚持**下去**。", py: "Jiànshēn suīrán hěn xīnkǔ, dàn jiàoliàn zǒngshì gǔlì wǒ jiānchí xiàqù.", en: "Working out is exhausting, but my coach always encourages me to keep at it.", note: "Future-facing **下去**: keep the activity going from now onward. Looking back at a stretch you survived would be 坚持下来." },
       ]
     },
 
@@ -264,7 +274,7 @@ Word-ordering algorithm: ① verb + path tile first; ② any PLACE glues before 
       type: "mcq",
       title: "Final exam drill 📝 — HSK 4 level",
       short: "Final drill",
-      intro: "Twelve questions, mostly on the abstract senses — exactly where the real exam puts its weight.",
+      intro: "Mostly on the abstract senses — exactly where the real exam puts its weight.",
       items: [
         { q: '<span class="zh">我们在山顶等你呢，你快___吧！</span>', choices: ['<span class="zh">上去</span>', '<span class="zh">上来</span>', '<span class="zh">下来</span>', '<span class="zh">出来</span>'], a: 1, expl: "The speakers are at the summit; the listener moves toward them → 上来. 上去 would mean the speakers are below." },
         { q: '<span class="zh">这个办法不是老师教的，是他自己想___的。</span>', choices: ['<span class="zh">起来</span>', '<span class="zh">下来</span>', '<span class="zh">出来</span>', '<span class="zh">过来</span>'], a: 2, expl: "A method he created himself = produced from nothing → 想出来. 想起来 would mean he'd merely remembered it." },

@@ -76,11 +76,6 @@ Chinese never shrinks with 倍: ✗<span class="zh">减少了两倍</span>. Decr
         { tag: "邻数", cn: "每天有**五六十**个人来这家小饭馆吃饭。", py: "Měitiān yǒu wǔ-liùshí ge rén lái zhè jiā xiǎo fànguǎn chīfàn.", en: "Fifty or sixty people eat at this little restaurant every day.", note: "Adjacent numbers 五六 = 'five-or-six(-ty)'. No extra word needed." },
         { tag: "好几", cn: "他去过**好几次**上海，对那儿很熟悉。", py: "Tā qù guo hǎo jǐ cì Shànghǎi, duì nàr hěn shúxī.", en: "He's been to Shanghai quite a few times and knows it well.", note: "好几 = 'a good few' — more than the listener might expect." },
         { tag: "一天比一天", cn: "春天到了，天气**一天比一天**暖和。", py: "Chūntiān dào le, tiānqì yìtiān bǐ yìtiān nuǎnhuo.", en: "Spring is here — it's getting warmer by the day.", note: "Built from 比, so NO degree words: ✗一天比一天很暖和." },
-        { tag: "percent", cn: "因为今年天气不好，茶叶的价格下降了**百分之三十**。", py: "Yīnwèi jīnnián tiānqì bù hǎo, cháyè de jiàgé xiàjiàng le bǎi fēn zhī sānshí.", en: "Because of this year's bad weather, tea prices have dropped by thirty percent.", note: "下降了 + **百分之三十** = dropped BY 30%. The percent phrase sits right after the verb, where any amount would." },
-        { tag: "多", cn: "他一百米跑了**十三秒多**，是我们班第一名。", py: "Tā yìbǎi mǐ pǎo le shísān miǎo duō, shì wǒmen bān dì-yī míng.", en: "He ran the 100 meters in a bit over thirteen seconds — first place in our class.", note: "十三 isn't a round ten, so 多 follows the measure: 十三秒**多** = 13.x — the surplus is a fraction of one second." },
-        { tag: "来", cn: "爷爷每个月给孙女**一百来块**零花钱。", py: "Yéye měi ge yuè gěi sūnnǚ yìbǎi lái kuài línghuāqián.", en: "Grandpa gives his granddaughter a hundred yuan or so of pocket money every month.", note: "来 attaches to round 百/千 too: 一百**来**块 = around 100, possibly a touch under — that's 来's specialty." },
-        { tag: "邻数", cn: "他路过花店的时候，买了**三四朵**鲜花送给妈妈。", py: "Tā lùguò huādiàn de shíhou, mǎi le sān-sì duǒ xiānhuā sòng gěi māma.", en: "Passing a flower shop, he bought three or four flowers for his mom.", note: "Adjacent digits 三四 + measure 朵 = 'three or four'. No extra word needed — the digit pair itself is the blur." },
-        { tag: "倍", cn: "这家小吃店周末的客人是工作日的**两倍**。", py: "Zhè jiā xiǎochī diàn zhōumò de kèrén shì gōngzuòrì de liǎng bèi.", en: "This snack shop gets twice as many customers on weekends as on workdays.", note: "是…的**两倍** = plain 2×, no +1 games. And it's 两倍, never 二倍 — 两 before measures, 倍 included." },
       ]
     },
 
@@ -138,7 +133,7 @@ Chinese never shrinks with 倍: ✗<span class="zh">减少了两倍</span>. Decr
         },
         {
           label: "来 vs 几",
-          html: `<p><span class="zh"><b class="hl">来</b></span> attaches only to <b>round tens</b> (and 百/千): <span class="zh">十来个、二十来岁、三十来块</span> — "around, often a touch under". It refuses everything else: ✗<span class="zh">九来个</span>, ✗<span class="zh">二十五来个</span>.</p>
+          html: `<p><span class="zh"><b class="hl">来</b></span> attaches only to <b>round tens</b> (and 百/千): <span class="zh">十来个、二十来岁、三十来块</span> — "around, a little more or less". It refuses everything else: ✗<span class="zh">九来个</span>, ✗<span class="zh">二十五来个</span>.</p>
 <p><span class="zh"><b class="hl">几</b></span> is a wildcard digit. Where it stands is what it replaces: <span class="zh">十<b class="hl">几</b>个</span> = 1X (11–19), <span class="zh">二十<b class="hl">几</b>岁</span> = 2X (21–29), but <span class="zh"><b class="hl">几</b>十个</span> = X0 (some tens: 20–90ish), <span class="zh">几百、几千</span> = hundreds, thousands.</p>
 <p>Size cheat: around 10 → <span class="zh">十来个</span>; clearly 11–19 → <span class="zh">十几个</span> or <span class="zh">十多个</span>; a fuzzy "dozens" → <span class="zh">几十个</span>.</p>`,
           examples: [
@@ -214,6 +209,21 @@ Chinese never shrinks with 倍: ✗<span class="zh">减少了两倍</span>. Decr
       ]
     },
 
+    /* ------------------------------------------------ consolidation */
+    {
+      type: "examples",
+      title: 'Consolidation — the pattern out in the wild',
+      short: "Consolidation",
+      intro: "A second lap with fresh vocabulary: every sentence below runs on this topic's machinery. Read each one like exam text — spot the pattern first, then tap any dotted word you don't know.",
+      items: [
+        { tag: "percent", cn: "因为今年天气不好，茶叶的价格下降了**百分之三十**。", py: "Yīnwèi jīnnián tiānqì bù hǎo, cháyè de jiàgé xiàjiàng le bǎi fēn zhī sānshí.", en: "Because of this year's bad weather, tea prices have dropped by thirty percent.", note: "下降了 + **百分之三十** = dropped BY 30%. The percent phrase sits right after the verb, where any amount would." },
+        { tag: "多", cn: "他一百米跑了**十三秒多**，是我们班第一名。", py: "Tā yìbǎi mǐ pǎo le shísān miǎo duō, shì wǒmen bān dì-yī míng.", en: "He ran the 100 meters in a bit over thirteen seconds — first place in our class.", note: "十三 isn't a round ten, so 多 follows the measure: 十三秒**多** = 13.x — the surplus is a fraction of one second." },
+        { tag: "来", cn: "爷爷每个月给孙女**一百来块**零花钱。", py: "Yéye měi ge yuè gěi sūnnǚ yìbǎi lái kuài línghuāqián.", en: "Grandpa gives his granddaughter a hundred yuan or so of pocket money every month.", note: "来 attaches to round 百/千 too: 一百**来**块 = around 100, a little more or a little less." },
+        { tag: "邻数", cn: "他路过花店的时候，买了**三四朵**鲜花送给妈妈。", py: "Tā lùguò huādiàn de shíhou, mǎi le sān-sì duǒ xiānhuā sòng gěi māma.", en: "Passing a flower shop, he bought three or four flowers for his mom.", note: "Adjacent digits 三四 + measure 朵 = 'three or four'. No extra word needed — the digit pair itself is the blur." },
+        { tag: "倍", cn: "这家咖啡馆周末的客人是工作日的**两倍**。", py: "Zhè jiā kāfēiguǎn zhōumò de kèrén shì gōngzuòrì de liǎng bèi.", en: "This café gets twice as many customers on weekends as on workdays.", note: "是…的**两倍** = plain 2×, no +1 games. And it's 两倍, never 二倍 — 两 before measures, 倍 included." },
+      ]
+    },
+
     /* ------------------------------------------------ 9 */
     {
       type: "builder",
@@ -259,7 +269,7 @@ When a cloze blank touches a number, run the slot check in order: ① before the
       type: "mcq",
       title: "Final exam drill 📝 — HSK 4 level",
       short: "Final drill",
-      intro: "Twelve questions at exam difficulty. The 倍 items are worth double-checking with actual arithmetic.",
+      intro: "Exam-difficulty questions. The 倍 items are worth double-checking with actual arithmetic.",
       items: [
         { q: '<span class="zh">这家饭馆的客人比去年多了一倍，去年每天有四十位。</span> How many now?', choices: ["40", "60", "80", "120"], a: 2, expl: "比…多(了)一倍 = twice as many: 40 × 2 = 80. Remember: with 比 the multiple counts the EXTRA part." },
         { q: '<span class="zh">今年报名的人数减少了___，从两百人变成了一百人。</span>', choices: ['<span class="zh">一倍</span>', '<span class="zh">一半</span>', '<span class="zh">两倍</span>', '<span class="zh">百分之百</span>'], a: 1, expl: "200 → 100 is a halving → 减少了一半. 倍 never describes decreases, and 百分之百 would mean nobody signed up." },

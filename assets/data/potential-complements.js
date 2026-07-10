@@ -61,11 +61,6 @@ The vocabulary list is full of frozen potentials (来不及、受不了、看不
         { tag: "了", cn: "这么多菜，我们两个人吃**不了**。", py: "Zhème duō cài, wǒmen liǎng ge rén chī bu liǎo.", en: "This much food — the two of us can't possibly eat it all.", note: "了 = liǎo! Quantity overwhelms ability. Compare 吃不下 (stomach full) below." },
         { tag: "出来", cn: "他一开口，我就听**得出来**他是北方人。", py: "Tā yì kāikǒu, wǒ jiù tīng de chūlái tā shì běifāng rén.", en: "The moment he speaks, I can tell he's a northerner.", note: "Directional 出来 (detect) opened with 得 — the two systems compose." },
         { tag: "下", cn: "房间太小，住**不下**这么多人。", py: "Fángjiān tài xiǎo, zhù bu xià zhème duō rén.", en: "The room is too small to fit this many people.", note: "下 = capacity. 坐不下 / 放不下 / 吃不下 — same logic, different containers." },
-        { tag: "了", cn: "童年的那些快乐回忆，我永远忘**不了**。", py: "Tóngnián de nàxiē kuàilè huíyì, wǒ yǒngyuǎn wàng bu liǎo.", en: "Those happy childhood memories — I'll never be able to forget them.", note: "了 here is **liǎo**, the universal 'manage' complement. Long object promoted to topic up front — no 把 needed or allowed." },
-        { tag: "出", cn: "笔试的最后一道题，我想了半天也想**不出**答案。", py: "Bǐshì de zuìhòu yí dào tí, wǒ xiǎng le bàntiān yě xiǎng bu chū dá'àn.", en: "The last question on the written test — I thought about it forever and still couldn't come up with the answer.", note: "想**不出**(来) = can't produce an idea from scratch; 想不起来 = can't recall something you once knew. The exam loves this pair." },
-        { tag: "进去", cn: "这个车位太窄了，我的车怎么停也停**不进去**。", py: "Zhège chēwèi tài zhǎi le, wǒ de chē zěnme tíng yě tíng bu jìnqù.", en: "This parking spot is too narrow — no matter how I maneuver, I can't get the car in.", note: "Blocking circumstance: width. The compound keeps its whole tail: 停 + **不** + 进去, never 停进不去." },
-        { tag: "上去", cn: "地铁里乘客太多了，后面的人根本挤**不上去**。", py: "Dìtiě lǐ chéngkè tài duō le, hòumiàn de rén gēnběn jǐ bu shàngqù.", en: "The subway car is packed with passengers — the people behind simply can't squeeze on.", note: "挤 jǐ (HSK 5) = to squeeze in — subway survival vocab. Crowding blocks the directional result: 挤 + **不** + 上去, infix right after the verb." },
-        { tag: "完", cn: "放心吧，就这几瓶饮料，我们肯定喝**得完**，别再买了。", py: "Fàngxīn ba, jiù zhè jǐ píng yǐnliào, wǒmen kěndìng hē de wán, bié zài mǎi le.", en: "Relax — it's just these few bottles of drinks, we can definitely finish them. Don't buy any more.", note: "Positive V**得**C in a reassurance — its favourite habitat. 得 is toneless: hē de wán." },
       ]
     },
 
@@ -177,6 +172,21 @@ The vocabulary list is full of frozen potentials (来不及、受不了、看不
       ]
     },
 
+    /* ------------------------------------------------ consolidation */
+    {
+      type: "examples",
+      title: 'Consolidation — the pattern out in the wild',
+      short: "Consolidation",
+      intro: "A second lap with fresh vocabulary: every sentence below runs on this topic's machinery. Read each one like exam text — spot the pattern first, then tap any dotted word you don't know.",
+      items: [
+        { tag: "了", cn: "童年的那些快乐的回忆，我永远忘**不了**。", py: "Tóngnián de nàxiē kuàilè de huíyì, wǒ yǒngyuǎn wàng bu liǎo.", en: "Those happy childhood memories — I'll never be able to forget them.", note: "了 here is **liǎo**, the universal 'manage' complement. Long object promoted to topic up front — no 把 needed or allowed." },
+        { tag: "出", cn: "笔试的最后一道题，我想了半天也想**不出**答案。", py: "Bǐshì de zuìhòu yí dào tí, wǒ xiǎng le bàntiān yě xiǎng bu chū dá'àn.", en: "The last question on the written test — I thought about it forever and still couldn't come up with the answer.", note: "想**不出**(来) = can't produce an idea from scratch; 想不起来 = can't recall something you once knew. The exam loves this pair." },
+        { tag: "进去", cn: "这个车位太窄了，我的车怎么停也停**不进去**。", py: "Zhège chēwèi tài zhǎi le, wǒ de chē zěnme tíng yě tíng bu jìnqù.", en: "This parking spot is too narrow — no matter how I maneuver, I can't get the car in.", note: "Blocking circumstance: width. The compound keeps its whole tail: 停 + **不** + 进去, never 停进不去." },
+        { tag: "上去", cn: "地铁里乘客太多了，后面的人根本挤**不上去**。", py: "Dìtiě lǐ chéngkè tài duō le, hòumiàn de rén gēnběn jǐ bu shàngqù.", en: "The subway car is packed with passengers — the people behind simply can't squeeze on.", note: "挤 jǐ (HSK 5) = to squeeze in — subway survival vocab. Crowding blocks the directional result: 挤 + **不** + 上去, infix right after the verb." },
+        { tag: "完", cn: "放心吧，就这几瓶饮料，我们肯定喝**得完**，别再买了。", py: "Fàngxīn ba, jiù zhè jǐ píng yǐnliào, wǒmen kěndìng hē de wán, bié zài mǎi le.", en: "Relax — it's just these few bottles of drinks, we can definitely finish them. Don't buy any more.", note: "Positive V**得**C in a reassurance — its favourite habitat. 得 is toneless: hē de wán." },
+      ]
+    },
+
     /* ------------------------------------------------ 8 */
     {
       type: "builder",
@@ -219,7 +229,7 @@ See 得/不 sandwiched inside a verb? Instantly check: ① is there a 把/被 ne
       type: "mcq",
       title: "Final exam drill 📝 — HSK 4 level",
       short: "Final drill",
-      intro: "Twelve questions. The frozen set, the near-twins, and the word-order bans — everything the real paper throws at you.",
+      intro: "The frozen set, the near-twins, and the word-order bans — everything the real paper throws at you.",
       items: [
         { q: '<span class="zh">外面一点儿灯都没有，我什么都___。</span>', choices: ['<span class="zh">看不见</span>', '<span class="zh">看不懂</span>', '<span class="zh">看不住</span>', '<span class="zh">看不光</span>'], a: 0, expl: "No light blocks perception itself → 看不见. 看不懂 needs something readable that you saw fine but couldn't decode." },
         { q: '<span class="zh">他说的是上海话，我一句也___。</span>', choices: ['<span class="zh">听不到</span>', '<span class="zh">听不懂</span>', '<span class="zh">听不起</span>', '<span class="zh">听不住</span>'], a: 1, expl: "The audio arrived fine — the dialect blocks comprehension → 听不懂. 听不到 would mean the sound never reached you." },

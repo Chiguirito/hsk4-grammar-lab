@@ -60,11 +60,6 @@ In “if…then” threats and promises, 不 + V + C is correct and extremely co
         { tag: "成", cn: "请把这段话翻译**成**德语。", py: "Qǐng bǎ zhè duàn huà fānyì chéng Déyǔ.", en: "Please translate this paragraph into German.", note: "成 + X = the object turns into X. The X is obligatory." },
         { tag: "adj", cn: "出门以前，妈妈把厨房收拾**干净**了。", py: "Chūmén yǐqián, māma bǎ chúfáng shōushi gānjìng le.", en: "Before going out, Mom tidied the kitchen until it was clean.", note: "A two-syllable adjective works as the result: tidied → with the result 'clean'." },
         { tag: "没", cn: "我没听**清楚**，您能再说一遍吗？", py: "Wǒ méi tīng qīngchu, nín néng zài shuō yí biàn ma?", en: "I didn't catch that clearly — could you say it again?", note: "Negation with 没, and the complement 清楚 survives. Never drop it." },
-        { tag: "好", cn: "她在镜子前面打扮了半个小时，打扮**好**了才出门。", py: "Tā zài jìngzi qiánmiàn dǎban le bàn ge xiǎoshí, dǎban hǎo le cái chūmén.", en: "She spent half an hour in front of the mirror getting ready, and only left once she was all done up.", note: "打扮**好** = styled AND ready — the next step (出门) can start. 打扮完 would only say she stopped fussing." },
-        { tag: "住", cn: "小狗一看见我回家，就跑过来抱**住**我的腿不放。", py: "Xiǎogǒu yí kànjiàn wǒ huí jiā, jiù pǎo guòlai bào zhù wǒ de tuǐ bú fàng.", en: "The moment the puppy sees me come home, it runs over and hugs my leg, refusing to let go.", note: "抱 is just the hugging motion; **住** locks the grip in place — same family as 记住、抓住." },
-        { tag: "光", cn: "牙膏用**光**了，你去超市的时候帮我带一支新的吧。", py: "Yágāo yòng guāng le, nǐ qù chāoshì de shíhou bāng wǒ dài yì zhī xīn de ba.", en: "The toothpaste is all used up — grab me a new tube when you go to the supermarket.", note: "**光** = zero left. 用完 just ends the using; 用光 reports the tube is empty — which is exactly why you need a new one." },
-        { tag: "错", cn: "这次考试我太粗心了，把两道题的答案都写**错**了。", py: "Zhè cì kǎoshì wǒ tài cūxīn le, bǎ liǎng dào tí de dá'àn dōu xiě cuò le.", en: "I was so careless on this exam — I got the answers to two whole questions wrong.", note: "写**错** = the writing happened but with the wrong result. And spot the 把: it demands this result tail — bare 把…写 is illegal." },
-        { tag: "adj", cn: "网上买东西的时候，一定要把地址填写**清楚**，不然快递会送**错**地方。", py: "Wǎngshàng mǎi dōngxi de shíhou, yídìng yào bǎ dìzhǐ tiánxiě qīngchu, bùrán kuàidì huì sòng cuò dìfang.", en: "When you shop online, be sure to fill in your address clearly, or the courier will deliver to the wrong place.", note: "Two tails in one line: the adjective result **清楚** closes the 把-clause, and 送**错** names the wrong outcome you're avoiding." },
       ]
     },
 
@@ -204,6 +199,21 @@ When a Listening dialogue hinges on success vs failure, the complement carries A
       ]
     },
 
+    /* ------------------------------------------------ consolidation */
+    {
+      type: "examples",
+      title: 'Consolidation — the pattern out in the wild',
+      short: "Consolidation",
+      intro: "A second lap with fresh vocabulary: every sentence below runs on this topic's machinery. Read each one like exam text — spot the pattern first, then tap any dotted word you don't know.",
+      items: [
+        { tag: "好", cn: "她在镜子前面打扮了半个小时，打扮**好**了才出门。", py: "Tā zài jìngzi qiánmiàn dǎban le bàn ge xiǎoshí, dǎban hǎo le cái chūmén.", en: "She spent half an hour in front of the mirror getting ready, and only left once she was all done up.", note: "打扮**好** = styled AND ready — the next step (出门) can start. 打扮完 would only say she stopped fussing." },
+        { tag: "住", cn: "小狗一看见我回家，就跑过来抱**住**我的腿不放。", py: "Xiǎogǒu yí kànjiàn wǒ huí jiā, jiù pǎo guòlai bào zhù wǒ de tuǐ bú fàng.", en: "The moment the puppy sees me come home, it runs over and hugs my leg, refusing to let go.", note: "抱 is just the hugging motion; **住** locks the grip in place — same family as 记住、抓住." },
+        { tag: "光", cn: "牙膏用**光**了，你去超市的时候帮我带一支新的吧。", py: "Yágāo yòng guāng le, nǐ qù chāoshì de shíhou bāng wǒ dài yì zhī xīn de ba.", en: "The toothpaste is all used up — grab me a new tube when you go to the supermarket.", note: "**光** = zero left. 用完 just ends the using; 用光 reports the tube is empty — which is exactly why you need a new one." },
+        { tag: "错", cn: "这次考试我太粗心了，把两道题的答案都写**错**了。", py: "Zhè cì kǎoshì wǒ tài cūxīn le, bǎ liǎng dào tí de dá'àn dōu xiě cuò le.", en: "I was so careless on this exam — I got the answers to two whole questions wrong.", note: "写**错** = the writing happened but with the wrong result. And spot the 把: it demands this result tail — bare 把…写 is illegal." },
+        { tag: "adj", cn: "网上买东西的时候，一定要把地址填写**清楚**，不然快递会送**错**地方。", py: "Wǎngshàng mǎi dōngxi de shíhou, yídìng yào bǎ dìzhǐ tiánxiě qīngchu, bùrán kuàidì huì sòng cuò dìfang.", en: "When you shop online, be sure to fill in your address clearly, or the courier will deliver to the wrong place.", note: "Two tails in one line: the adjective result **清楚** closes the 把-clause, and 送**错** names the wrong outcome you're avoiding." },
+      ]
+    },
+
     /* ------------------------------------------------ 8 */
     {
       type: "builder",
@@ -249,7 +259,7 @@ In the word-ordering task, tiles like <span class="zh">翻译成 / 打扫干净 
       type: "mcq",
       title: "Final exam drill 📝 — HSK 4 level",
       short: "Final drill",
-      intro: "Twelve questions at real exam difficulty. The distractors are the mistakes your classmates actually make.",
+      intro: "Real exam difficulty. The distractors are the mistakes your classmates actually make.",
       items: [
         { q: '<span class="zh">房间里太黑了，我什么都没看___。</span>', choices: ['<span class="zh">懂</span>', '<span class="zh">见</span>', '<span class="zh">完</span>', '<span class="zh">错</span>'], a: 1, expl: "Darkness blocks perception itself → 看见. 看懂 would mean you saw fine but couldn't interpret." },
         { q: '<span class="zh">她学了六年汉语，现在能看___中文小说了。</span>', choices: ['<span class="zh">见</span>', '<span class="zh">住</span>', '<span class="zh">懂</span>', '<span class="zh">光</span>'], a: 2, expl: "Novels are decoded, not merely spotted → 看懂. Years of study point at comprehension." },

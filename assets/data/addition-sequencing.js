@@ -62,11 +62,6 @@ Before placing 不但, scan for a second subject in the second half. One subject
         { tag: "先…再", cn: "你**先**把作业写完，**再**去踢足球。", py: "Nǐ xiān bǎ zuòyè xiě wán, zài qù tī zúqiú.", en: "Finish your homework first, then go play football.", note: "Instruction about the future → 先…再. Notice 先 comes AFTER the subject." },
         { tag: "然后", cn: "我们**先**去吃饭，**然后**去看电影，**最后**坐地铁回家。", py: "Wǒmen xiān qù chīfàn, ránhòu qù kàn diànyǐng, zuìhòu zuò dìtiě huí jiā.", en: "First we'll eat, then see a movie, and finally take the subway home.", note: "The full chain: 先…然后…最后. Add 接着 for 'right after that'." },
         { tag: "什么的", cn: "周末我一般在家洗衣服、打扫房间、上网**什么的**。", py: "Zhōumò wǒ yìbān zài jiā xǐ yīfu, dǎsǎo fángjiān, shàngwǎng shénmede.", en: "On weekends I usually stay home doing laundry, cleaning, going online and stuff like that.", note: "什么的 closes an open list in speech — like English '…and stuff'." },
-        { tag: "不但·same", cn: "这家酒店**不但**房间干净，**而且还**提供免费早餐。", py: "Zhè jiā jiǔdiàn búdàn fángjiān gānjìng, érqiě hái tígōng miǎnfèi zǎocān.", en: "Not only are the rooms at this hotel clean — it also provides free breakfast.", note: "One subject (这家酒店) rules both halves → **不但** sits after it, and **而且还** pushes half two one step up." },
-        { tag: "不但·diff", cn: "**不但**孩子们爱看老虎和狮子，大人们**也**看得很开心。", py: "Búdàn háizimen ài kàn lǎohǔ hé shīzi, dàrénmen yě kàn de hěn kāixīn.", en: "Not only do the kids love watching the tigers and lions — the grown-ups enjoy it just as much.", note: "Two subjects (孩子们 / 大人们) → **不但** jumps in front of the first one, and 也 carries the second half." },
-        { tag: "先…再", cn: "你**先**查看一下火车时间表，**再**决定星期几出发。", py: "Nǐ xiān chákàn yíxià huǒchē shíjiānbiǎo, zài juédìng xīngqī jǐ chūfā.", en: "First check the train timetable, then decide which day to leave.", note: "A plan that hasn't happened yet → 先…**再**. Note 先 stands AFTER the subject 你 — it's an adverb." },
-        { tag: "一方面", cn: "多参加比赛**一方面**能积累经验，**另一方面**也能让你更自信。", py: "Duō cānjiā bǐsài yì fāngmiàn néng jīlěi jīngyàn, lìng yì fāngmiàn yě néng ràng nǐ gèng zìxìn.", en: "Entering more competitions builds up experience on one hand, and makes you more confident on the other.", note: "Two ASPECTS of one argument → 一方面…**另一方面**, with the helping 也 opening half two." },
-        { tag: "又…又", cn: "刚烤好的面包**又**软**又**香，我一次买了三个。", py: "Gāng kǎo hǎo de miànbāo yòu ruǎn yòu xiāng, wǒ yí cì mǎi le sān ge.", en: "The freshly baked bread was soft and smelled wonderful — I bought three in one go.", note: "软 and 香 are two qualities true at the same time → **又…又**. Actions would call for 一边…一边 instead." },
       ]
     },
 
@@ -196,6 +191,21 @@ Before placing 不但, scan for a second subject in the second half. One subject
       ]
     },
 
+    /* ------------------------------------------------ consolidation */
+    {
+      type: "examples",
+      title: 'Consolidation — the pattern out in the wild',
+      short: "Consolidation",
+      intro: "A second lap with fresh vocabulary: every sentence below runs on this topic's machinery. Read each one like exam text — spot the pattern first, then tap any dotted word you don't know.",
+      items: [
+        { tag: "而且还", cn: "这家酒店**不但**房间干净，**而且还**提供免费早餐。", py: "Zhè jiā jiǔdiàn búdàn fángjiān gānjìng, érqiě hái tígōng miǎnfèi zǎocān.", en: "Not only are the rooms at this hotel clean — it also provides free breakfast.", note: "One subject (这家酒店) rules both halves → **不但** sits after it, and **而且还** pushes half two one step up." },
+        { tag: "不但·diff", cn: "**不但**孩子们爱看老虎和狮子，大人们**也**看得很开心。", py: "Búdàn háizimen ài kàn lǎohǔ hé shīzi, dàrénmen yě kàn de hěn kāixīn.", en: "Not only do the kids love watching the tigers and lions — the grown-ups enjoy it just as much.", note: "Two subjects (孩子们 / 大人们) → **不但** jumps in front of the first one, and 也 carries the second half." },
+        { tag: "先…再", cn: "你**先**查看一下火车时间表，**再**决定星期几出发。", py: "Nǐ xiān chákàn yíxià huǒchē shíjiānbiǎo, zài juédìng xīngqī jǐ chūfā.", en: "First check the train timetable, then decide which day to leave.", note: "A plan that hasn't happened yet → 先…**再**. Note 先 stands AFTER the subject 你 — it's an adverb." },
+        { tag: "一方面", cn: "多参加比赛**一方面**能积累经验，**另一方面**也能让你更自信。", py: "Duō cānjiā bǐsài yì fāngmiàn néng jīlěi jīngyàn, lìng yì fāngmiàn yě néng ràng nǐ gèng zìxìn.", en: "Entering more competitions builds up experience on one hand, and makes you more confident on the other.", note: "Two ASPECTS of one argument → 一方面…**另一方面**, with the helping 也 opening half two." },
+        { tag: "又…又", cn: "刚烤好的面包**又**软**又**香，我一次买了三个。", py: "Gāng kǎo hǎo de miànbāo yòu ruǎn yòu xiāng, wǒ yí cì mǎi le sān ge.", en: "The freshly baked bread was soft and smelled wonderful — I bought three in one go.", note: "软 and 香 are two qualities true at the same time → **又…又**. Actions would call for 一边…一边 instead." },
+      ]
+    },
+
     /* ------------------------------------------------ 9 */
     {
       type: "builder",
@@ -238,7 +248,7 @@ In the ordering task, pair-words are magnets: find 不但 → look for the tile 
       type: "mcq",
       title: "Final exam drill 📝 — HSK 4 level",
       short: "Final drill",
-      intro: "Eleven questions at exam difficulty. The distractors are the real traps — read every option.",
+      intro: "Questions at exam difficulty. The distractors are the real traps — read every option.",
       items: [
         { q: 'Choose the correct sentence:', choices: ['<span class="zh">不但这家店的蛋糕好吃，而且很好看。</span>', '<span class="zh">这家店的蛋糕不但好吃，而且很好看。</span>', '<span class="zh">这家店的蛋糕好吃不但，而且很好看。</span>', '<span class="zh">这家店的蛋糕不但好吃，很好看而且。</span>'], a: 1, expl: "One subject (蛋糕) rules both halves → 不但 after the subject. 而且 always opens the second clause, never trails it." },
         { q: 'Choose the correct sentence:', choices: ['<span class="zh">他不但没来，连电话也没打。</span>', '<span class="zh">不但他没来，连电话也没打。</span>', '<span class="zh">他没来不但，连电话也没打。</span>', '<span class="zh">不但没来他，连电话也没打。</span>'], a: 0, expl: "Same subject 他 does both (not coming, not calling) → 他不但…. ✗不但他没来 pretends a second subject is coming." },

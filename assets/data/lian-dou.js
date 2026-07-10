@@ -61,11 +61,6 @@ Ask: is X the <i>best</i> candidate or the <i>worst</i> candidate for this verb?
         { tag: "V都不V", cn: "她生气了，**连**想**都**不想就拒绝了我。", py: "Tā shēngqì le, lián xiǎng dōu bù xiǎng jiù jùjué le wǒ.", en: "She was angry — she refused me without even thinking.", note: "拒绝 jùjué = to refuse. The 连V都不V + 就 combo = 'without even X-ing, immediately Y'." },
         { tag: "place", cn: "这个地方**连**地图上**都**找不到。", py: "Zhège dìfang lián dìtú shàng dōu zhǎo bu dào.", en: "You can't find this place even on a map.", note: "If even the MAP (best tool for finding places) fails → seriously remote." },
         { tag: "clause", cn: "**连**孩子**都**懂的道理，难道你不懂吗？", py: "Lián háizi dōu dǒng de dàolǐ, nándào nǐ bù dǒng ma?", en: "Even a child understands this — don't tell me you don't?", note: "连…都 nests inside a 的-phrase and teams up with 难道 for maximum rhetorical damage." },
-        { tag: "amount", cn: "他年轻的时候穷得**连**一个馒头**都**买不起。", py: "Tā niánqīng de shíhou qióng de lián yí gè mántou dōu mǎi bu qǐ.", en: "When he was young he was so poor he couldn't even afford a steamed bun.", note: "得-bridge + clamp: 穷得 + **连**一个馒头**都**买不起. 一 + measure names the cheapest possible thing — if he can't buy THAT, he can buy nothing." },
-        { tag: "subject", cn: "这个法律问题太复杂了，**连**有经验的律师**也**回答不了。", py: "Zhège fǎlǜ wèntí tài fùzá le, lián yǒu jīngyàn de lǜshī yě huídá bu liǎo.", en: "This legal question is so complicated that even an experienced lawyer can't answer it.", note: "有经验的律师 = the strongest candidate on the scale. Even he fails → nobody can answer → the question is extremely hard. 也 works like 都." },
-        { tag: "clause", cn: "这个小伙子很害羞，**连**跟女孩子说话**都**会脸红。", py: "Zhège xiǎohuǒzi hěn hàixiū, lián gēn nǚháizi shuōhuà dōu huì liǎnhóng.", en: "This young guy is so shy he even blushes when he talks to girls.", note: "A whole verb phrase can front: **连**跟女孩子说话**都**…. Talking is the mildest contact on the scale — even that makes him blush." },
-        { tag: "time", cn: "为了准备高考，姐姐**连**暑假**都**在学习。", py: "Wèile zhǔnbèi gāokǎo, jiějie lián shǔjià dōu zài xuéxí.", en: "To get ready for the gaokao, my older sister studies even during summer vacation.", note: "Time fronted: 暑假 is when you'd LEAST expect studying. If even then she studies, she studies all year round." },
-        { tag: "object", cn: "期末考试快到了，我忙得**连**打羽毛球的时间**也**没有了。", py: "Qīmò kǎoshì kuài dào le, wǒ máng de lián dǎ yǔmáoqiú de shíjiān yě méiyǒu le.", en: "Finals are almost here — I'm so busy I don't even have time to play badminton anymore.", note: "The extreme case can be a full noun phrase: 打羽毛球的时间 — the first bit of free time a busy person gives up." },
       ]
     },
 
@@ -138,6 +133,21 @@ In <span class="zh">连他都会</span>, 都 doesn't mean “all” — 他 is o
         { wrong: "这个问题很容易，连老师都不会。", right: "这个问题很难，连老师都不会。", py: "Zhège wèntí hěn nán, lián lǎoshī dōu bú huì.", en: "This problem is really hard — even the teacher can't do it.", expl: "The inference flip: 连 + strongest candidate + 不会 proves difficulty, not ease. Match the frame to the conclusion." },
         { wrong: "他连甚至早饭都没吃。", right: "他甚至连早饭都没吃。／他连早饭都没吃。", py: "Tā shènzhì lián zǎofàn dōu méi chī.", en: "He didn't even eat breakfast.", expl: "甚至 may reinforce 连 but must come BEFORE it: 甚至连…都. Sandwiching 甚至 inside the 连-phrase breaks the clamp." },
         { wrong: "去应聘的时候，她紧张得连一句话不都敢说。", right: "去应聘的时候，她紧张得连一句话都不敢说。", py: "Qù yìngpìn de shíhou, tā jǐnzhāng de lián yí jù huà dōu bù gǎn shuō.", en: "At the job interview she was so nervous she didn't dare say even a single word.", expl: "Negation lives AFTER the clamp: 连 + X + 都/也 + 不/没 + V. ✗不都敢说 puts 不 before 都 — first close the clamp with 都, then negate, then the verb: 都不敢说." },
+      ]
+    },
+
+    /* ------------------------------------------------ consolidation */
+    {
+      type: "examples",
+      title: 'Consolidation — the pattern out in the wild',
+      short: "Consolidation",
+      intro: "A second lap with fresh vocabulary: every sentence below runs on this topic's machinery. Read each one like exam text — spot the pattern first, then tap any dotted word you don't know.",
+      items: [
+        { tag: "amount", cn: "他年轻的时候穷得**连**一个馒头**都**买不起。", py: "Tā niánqīng de shíhou qióng de lián yí ge mántou dōu mǎi bu qǐ.", en: "When he was young he was so poor he couldn't even afford a steamed bun.", note: "得-bridge + clamp: 穷得 + **连**一个馒头**都**买不起. 一 + measure names the cheapest possible thing — if he can't buy THAT, he can buy nothing." },
+        { tag: "subject", cn: "这个法律问题太复杂了，**连**有经验的律师**也**回答不了。", py: "Zhège fǎlǜ wèntí tài fùzá le, lián yǒu jīngyàn de lǜshī yě huídá bu liǎo.", en: "This legal question is so complicated that even an experienced lawyer can't answer it.", note: "有经验的律师 = the strongest candidate on the scale. Even he fails → nobody can answer → the question is extremely hard. 也 works like 都." },
+        { tag: "VP", cn: "这个小伙子很害羞，**连**跟女孩子说话**都**会脸红。", py: "Zhège xiǎohuǒzi hěn hàixiū, lián gēn nǚháizi shuōhuà dōu huì liǎnhóng.", en: "This young guy is so shy he even blushes when he talks to girls.", note: "A whole verb phrase can front: **连**跟女孩子说话**都**…. Talking is the mildest contact on the scale — even that makes him blush (脸红 liǎnhóng = to blush, literally 'face reddens')." },
+        { tag: "time", cn: "为了准备高考，姐姐**连**暑假**都**在学习。", py: "Wèile zhǔnbèi gāokǎo, jiějie lián shǔjià dōu zài xuéxí.", en: "To get ready for the gaokao, my older sister studies even during summer vacation.", note: "Time fronted: 暑假 is when you'd LEAST expect studying. If even then she studies, she studies all year round." },
+        { tag: "object", cn: "期末考试快到了，我忙得**连**打羽毛球的时间**也**没有了。", py: "Qīmò kǎoshì kuài dào le, wǒ máng de lián dǎ yǔmáoqiú de shíjiān yě méiyǒu le.", en: "Finals are almost here — I'm so busy I don't even have time to play badminton anymore.", note: "The extreme case can be a full noun phrase: 打羽毛球的时间 — the first bit of free time a busy person gives up." },
       ]
     },
 
@@ -217,7 +227,7 @@ Word-arrangement: see a 连 tile? Find the extreme case (noun/verb/一+M) to glu
       type: "mcq",
       title: "Final exam drill 📝 — HSK 4 level",
       short: "Final drill",
-      intro: "Twelve questions, including inference items — the exam's way of testing whether you feel the scale. Aim for 10+.",
+      intro: "A mixed set including inference items — the exam's way of testing whether you feel the scale. Aim for at least four out of five.",
       items: [
         { q: '<span class="zh">他刚来北京的时候，___汉语都不会说。</span>', choices: ['<span class="zh">连一句</span>', '<span class="zh">一句连</span>', '<span class="zh">连很多</span>', '<span class="zh">甚至一句都</span>'], a: 0, expl: "连 + 一句 (extreme minimal amount) + 汉语…都不会说. 连 must directly precede the extreme case; 很多 isn't an extreme minimum; D doubles 都." },
         { q: '<span class="zh">她难过得连饭___。</span>', choices: ['<span class="zh">都不想吃</span>', '<span class="zh">不都想吃</span>', '<span class="zh">想都不吃</span>', '<span class="zh">都想不吃</span>'], a: 0, expl: "Clamp order: 连 + 饭 + 都 + 不 + V: negation follows 都, verb phrase stays intact — 都不想吃." },

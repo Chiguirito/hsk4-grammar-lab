@@ -133,11 +133,6 @@ Three quick tests: ① Does the second syllable feel like a NOUN (面 face, 觉 
         { tag: "VVO", cn: "吃完晚饭，我们去湖边**散散步**吧。", py: "Chī wán wǎnfàn, wǒmen qù hú biān sànsan bù ba.", en: "After dinner, let's stroll by the lake.", note: "Reduplication = double the verb half only." },
         { tag: "打折", cn: "这家店今天**打八折**，我们进去看看吧。", py: "Zhè jiā diàn jīntiān dǎ bā zhé, wǒmen jìnqù kànkan ba.", en: "This shop has 20% off today — let's take a look.", note: "Even the discount number goes inside! 打八折 = pay 80%." },
         { tag: "frequency", cn: "他这个月**出了两次差**，累坏了。", py: "Tā zhège yuè chū le liǎng cì chāi, lèi huài le.", en: "He's been on two business trips this month — completely worn out.", note: "出差 splits around 了两次 like any other 离合词." },
-        { tag: "个+adj", cn: "我昨晚**做了个奇怪的梦**，梦见一只老虎在超市排队。", py: "Wǒ zuówǎn zuò le ge qíguài de mèng, mèngjiàn yì zhī lǎohǔ zài chāoshì páiduì.", en: "I had a weird dream last night — I dreamt a tiger was queuing at the supermarket.", note: "做梦 is secretly do + a-dream: 了, 个 AND the adjective all wedge inside — 做**了个奇怪的**梦, same slot as 睡个好觉." },
-        { tag: "duration", cn: "假日的时候想吃这家的小吃，至少得**排一个小时队**。", py: "Jiàrì de shíhou xiǎng chī zhè jiā de xiǎochī, zhìshǎo děi pái yí ge xiǎoshí duì.", en: "On holidays, if you want this place's snacks, you have to queue at least an hour.", note: "Even without 了, a bare duration still goes inside: 排 + **一个小时** + 队. ✗排队一个小时 leaves it stranded outside." },
-        { tag: "着", cn: "我正**洗着澡**呢，突然有人敲门，你说烦不烦！", py: "Wǒ zhèng xǐ zhe zǎo ne, tūrán yǒu rén qiāo mén, nǐ shuō fán bu fán!", en: "I was right in the middle of a shower when someone knocked on the door — how annoying is that!", note: "着 obeys the same rule as 了/过: it sticks to the verb half — 洗**着**澡, never ✗洗澡着." },
-        { tag: "一+measure", cn: "为了最后一块月饼，两个孩子**吵了一架**，大人看了都觉得好笑。", py: "Wèile zuìhòu yí kuài yuèbǐng, liǎng ge háizi chǎo le yí jià, dàren kàn le dōu juéde hǎoxiào.", en: "The two kids had a fight over the last mooncake — the grown-ups couldn't help finding it funny.", note: "吵架 counts its fights with 架, and the measure sits inside the crack: 吵 + 了 + **一架**." },
-        { tag: "frequency", cn: "毕业之后大家都很忙，这五年我们只**见过一次面**，可是友谊一点儿都没变。", py: "Bìyè zhīhòu dàjiā dōu hěn máng, zhè wǔ nián wǒmen zhǐ jiàn guo yí cì miàn, kěshì yǒuyì yìdiǎnr dōu méi biàn.", en: "Everyone's been busy since graduation — we've only met once in five years, but our friendship hasn't changed a bit.", note: "过 + count both wedge in: 见**过一次**面. And 毕业 up front is another 离合词, traveling intact here." },
       ]
     },
 
@@ -202,7 +197,7 @@ Every time your brain proposes <i>verb + person</i> (“meet her”, “marry hi
       type: "clinic",
       title: "Error clinic 🚑 — the ✗见面朋友 ward",
       short: "Error clinic",
-      intro: "Eight patients, one disease each — usually an object stuck to the back, or stuffing left outside the crack.",
+      intro: "One disease per patient — usually an object stuck to the back, or stuffing left outside the crack.",
       items: [
         { wrong: "昨天我见面了我的女朋友。", right: "昨天我跟我的女朋友见了面。", py: "Zuótiān wǒ gēn wǒ de nǚpéngyou jiàn le miàn.", en: "Yesterday I met up with my girlfriend.", expl: "见面 can't take an object — the person moves up front with 跟, and 了 slips inside: 见了面." },
         { wrong: "他结婚了一个漂亮的医生。", right: "他跟一个漂亮的医生结婚了。", py: "Tā gēn yí ge piàoliang de yīshēng jiéhūn le.", en: "He married a beautiful doctor.", expl: "婚 already fills the object seat. The spouse arrives via 跟…结婚 — never behind the verb." },
@@ -213,6 +208,21 @@ Every time your brain proposes <i>verb + person</i> (“meet her”, “marry hi
         { wrong: "老师帮忙了我很多。", right: "老师帮了我很多忙。", py: "Lǎoshī bāng le wǒ hěn duō máng.", en: "The teacher helped me a lot.", expl: "帮忙 opens up: 帮 + 了 + 我 + 很多 + 忙. Person and amount both live inside the crack." },
         { wrong: "我们见过面两次。", right: "我们见过两次面。", py: "Wǒmen jiàn guo liǎng cì miàn.", en: "We've met twice.", expl: "The count 两次 must sit before the object half 面, not after it. 见过两次面 — stuffing stays inside." },
         { wrong: "经理没有耐心，昨天又对大家发脾气了一顿。", right: "经理没有耐心，昨天又对大家发了一顿脾气。", py: "Jīnglǐ méiyǒu nàixīn, zuótiān yòu duì dàjiā fā le yí dùn píqi.", en: "The manager has no patience — yesterday he blew up at everyone again.", expl: "发脾气 is V+O: 了 and the burst-measure 一顿 must wedge between 发 and 脾气 — 发了一顿脾气. Hanging 了一顿 behind the full compound glues the crack shut. (对大家 up front is already correct.)" },
+      ]
+    },
+
+    /* ------------------------------------------------ consolidation */
+    {
+      type: "examples",
+      title: 'Consolidation — the pattern out in the wild',
+      short: "Consolidation",
+      intro: "A second lap with fresh vocabulary: every sentence below runs on this topic's machinery. Read each one like exam text — spot the pattern first, then tap any dotted word you don't know.",
+      items: [
+        { tag: "个+adj", cn: "我昨晚**做了个有意思的梦**，梦见自己在月亮上骑自行车。", py: "Wǒ zuówǎn zuò le ge yǒuyìsi de mèng, mèngjiàn zìjǐ zài yuèliang shang qí zìxíngchē.", en: "I had an interesting dream last night — I dreamt I was riding a bike on the moon.", note: "做梦 is secretly do + a-dream: 了, 个 AND the adjective all wedge inside — 做**了个有意思的**梦, same slot as 睡个好觉." },
+        { tag: "duration", cn: "假日的时候想吃这家的小吃，至少得**排一个小时队**。", py: "Jiàrì de shíhou xiǎng chī zhè jiā de xiǎochī, zhìshǎo děi pái yí ge xiǎoshí duì.", en: "On holidays, if you want this place's snacks, you have to queue at least an hour.", note: "Even without 了, a bare duration still goes inside: 排 + **一个小时** + 队. ✗排队一个小时 leaves it stranded outside." },
+        { tag: "着", cn: "我正**洗着澡**呢，突然有人敲门，你说烦不烦！", py: "Wǒ zhèng xǐzhe zǎo ne, tūrán yǒu rén qiāo mén, nǐ shuō fán bu fán!", en: "I was right in the middle of a shower when someone knocked on the door — how annoying is that!", note: "着 obeys the same rule as 了/过: it sticks to the verb half — 洗**着**澡, never ✗洗澡着." },
+        { tag: "一+measure", cn: "为了最后一块月饼，两个孩子**吵了一架**，大人看了都觉得好笑。", py: "Wèile zuìhòu yí kuài yuèbǐng, liǎng ge háizi chǎo le yí jià, dàren kàn le dōu juéde hǎoxiào.", en: "The two kids had a fight over the last mooncake — the grown-ups couldn't help finding it funny.", note: "吵架 counts its fights with 架, and the measure sits inside the crack: 吵 + 了 + **一架**." },
+        { tag: "frequency", cn: "毕业之后大家都很忙，这五年我们只**见过一次面**，可是友谊一点儿都没变。", py: "Bìyè zhīhòu dàjiā dōu hěn máng, zhè wǔ nián wǒmen zhǐ jiàn guo yí cì miàn, kěshì yǒuyì yìdiǎnr dōu méi biàn.", en: "Everyone's been busy since graduation — we've only met once in five years, but our friendship hasn't changed a bit.", note: "过 + count both wedge in: 见**过一次**面. And 毕业 up front is another 离合词, traveling intact here." },
       ]
     },
 
@@ -260,7 +270,7 @@ In the ordering task, a lone tile like 面/觉/澡/假/泳 is a flashing sign: i
       type: "mcq",
       title: "Final exam drill 📝 — HSK 4 level",
       short: "Final drill",
-      intro: "Eleven questions, exam difficulty. Every distractor is a sentence some learner has actually said.",
+      intro: "Exam difficulty. Every distractor is a sentence some learner has actually said.",
       items: [
         { q: '<span class="zh">这双鞋原来五百，现在___，只要四百。</span>', choices: ['<span class="zh">打二折</span>', '<span class="zh">打八折</span>', '<span class="zh">打折八</span>', '<span class="zh">八打折</span>'], a: 1, expl: "400/500 = you pay 80% → 打八折. The digit names what you PAY, not what you save — and it goes inside the compound." },
         { q: '“She graduated from Peking University.”', choices: ['<span class="zh">她毕业了北京大学。</span>', '<span class="zh">她从北京大学毕业了。</span>', '<span class="zh">她北京大学被毕业了。</span>', '<span class="zh">她毕业从北京大学了。</span>'], a: 1, expl: "毕业 is V+O ('finish studies') — no object slot. The school enters with 从…毕业." },

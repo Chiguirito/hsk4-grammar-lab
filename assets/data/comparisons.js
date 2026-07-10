@@ -57,11 +57,6 @@ Before the adjective: only <span class="pill">更</span> <span class="pill">还<
         { tag: "verb", cn: "他跑**得**比我快，可是我游**得**比他快。", py: "Tā pǎo de bǐ wǒ kuài, kěshì wǒ yóu de bǐ tā kuài.", en: "He runs faster than me, but I swim faster than him.", note: "Comparing how someone does something: V得 + 比 + B + adj." },
         { tag: "time", cn: "他今天比平时早到了**十分钟**。", py: "Tā jīntiān bǐ píngshí zǎo dào le shí fēnzhōng.", en: "Today he arrived ten minutes earlier than usual.", note: "早/晚 + verb + amount: the 'how much earlier' comes after the verb." },
         { tag: "quantity", cn: "这个月他比我**多**看了两本书。", py: "Zhège yuè tā bǐ wǒ duō kàn le liǎng běn shū.", en: "This month he read two more books than I did.", note: "Comparing amounts done: 多/少 + verb + amount. 多 goes BEFORE the verb here." },
-        { tag: "得多", cn: "网上购物比去商店买东西方便**得多**，而且很多店免费送到家。", py: "Wǎngshàng gòuwù bǐ qù shāngdiàn mǎi dōngxi fāngbiàn de duō, érqiě hěn duō diàn miǎnfèi sòng dào jiā.", en: "Shopping online is much more convenient than buying things in a store — and many shops deliver to your door for free.", note: "**得多** hangs after the adjective, never before it — the mirror image of German 'viel bequemer'." },
-        { tag: "exact", cn: "他减肥半年，体重比以前轻了**十公斤**。", py: "Tā jiǎnféi bàn nián, tǐzhòng bǐ yǐqián qīng le shí gōngjīn.", en: "After half a year of dieting, he weighs ten kilos less than before.", note: "Exact amount straight after the bare adjective. The 了 adds 'has become': 轻了十公斤 = 'got 10 kg lighter'." },
-        { tag: "更", cn: "我讨厌排队，但是我**更**讨厌排了半天队，最后什么都没买到。", py: "Wǒ tǎoyàn páiduì, dànshì wǒ gèng tǎoyàn pái le bàntiān duì, zuìhòu shénme dōu méi mǎi dào.", en: "I hate queuing — but what I hate even more is queuing forever and walking away with nothing.", note: "**更** works with feeling verbs (喜欢、讨厌、想) just like with adjectives: the first clause concedes, the second tops it." },
-        { tag: "quantity", cn: "换了工作以后，他每个月比以前**多**赚三千块。", py: "Huàn le gōngzuò yǐhòu, tā měi ge yuè bǐ yǐqián duō zhuàn sānqiān kuài.", en: "Since changing jobs, he earns three thousand kuai more a month than before.", note: "Quantity of action: **多** + verb + amount. 多 stands before 赚, the amount trails after — the reverse of adjective comparisons." },
-        { tag: "没有…那么", cn: "这次的导游**没有**上次那位**那么**幽默，车上大家都很安静。", py: "Zhè cì de dǎoyóu méiyǒu shàng cì nà wèi nàme yōumò, chē shang dàjiā dōu hěn ānjìng.", en: "Our guide this time wasn't as funny as the last one — everyone on the bus was pretty quiet.", note: "**没有…那么** + Adj: the loser stands first, B wins. 那么 is the only filler allowed before the adjective — never 很." },
       ]
     },
 
@@ -183,7 +178,22 @@ In the word-arrangement task, a 得 tile plus a 比 tile means a verb comparison
         { wrong: "他比我看了多两本书。", right: "他比我多看了两本书。", py: "Tā bǐ wǒ duō kàn le liǎng běn shū.", en: "He read two more books than I did.", expl: "In quantity-of-action comparisons, 多/少 stands BEFORE the verb: 多看了两本. The amount trails after the object." },
         { wrong: "我的手机跟你的一样不。", right: "我的手机跟你的不一样。", py: "Wǒ de shǒujī gēn nǐ de bù yíyàng.", en: "My phone is different from yours.", expl: "Negation attaches in front of 一样: 跟…不一样. Nothing may follow 一样 except an adjective." },
         { wrong: "坐火车不如坐飞机得快。", right: "坐火车不如坐飞机快。", py: "Zuò huǒchē bùrú zuò fēijī kuài.", en: "Taking the train isn't as fast as flying.", expl: "不如 takes a bare adjective: 不如B快. The 得 belongs to V得 comparisons (跑得快), not here — one machine at a time." },
-        { wrong: "公园里的这棵树比那棵高得五米。", right: "公园里的这棵树比那棵高五米。", py: "Gōngyuán lǐ de zhè kē shù bǐ nà kē gāo wǔ mǐ.", en: "This tree in the park is five meters taller than that one.", expl: "Exact amounts attach directly to the bare adjective: 高五米. The 得 belongs only to the set tail 得多 ('much taller') — learners blend the two machines into ✗高得五米. One machine at a time." },
+        { wrong: "公园里的这棵树比那棵高得五米。", right: "公园里的这棵树比那棵高五米。", py: "Gōngyuán lǐ de zhè kē shù bǐ nà kē gāo wǔ mǐ.", en: "This tree in the park is five meters taller than that one.", expl: "Exact amounts attach directly to the bare adjective: 高五米. In a 比-sentence the only 得-tail an adjective takes is the set 得多 ('much taller') — learners blend the two machines into ✗高得五米. One machine at a time. (Outside 比-sentences, Adj + 得 + consequence is its own, legal machine: 高兴得跳了起来.)" },
+      ]
+    },
+
+    /* ------------------------------------------------ consolidation */
+    {
+      type: "examples",
+      title: 'Consolidation — the pattern out in the wild',
+      short: "Consolidation",
+      intro: "A second lap with fresh vocabulary: every sentence below runs on this topic's machinery. Read each one like exam text — spot the pattern first, then tap any dotted word you don't know.",
+      items: [
+        { tag: "得多", cn: "网上购物比去商店买东西方便**得多**，而且很多店免费送到家。", py: "Wǎngshàng gòuwù bǐ qù shāngdiàn mǎi dōngxi fāngbiàn de duō, érqiě hěn duō diàn miǎnfèi sòng dào jiā.", en: "Shopping online is much more convenient than buying things in a store — and many shops deliver to your door for free.", note: "**得多** hangs after the adjective, never before it — the mirror image of German 'viel bequemer'." },
+        { tag: "exact", cn: "他减肥半年，体重比以前轻了**十公斤**。", py: "Tā jiǎnféi bàn nián, tǐzhòng bǐ yǐqián qīng le shí gōngjīn.", en: "After half a year of dieting, he weighs ten kilos less than before.", note: "Exact amount straight after the bare adjective. The 了 adds 'has become': 轻了十公斤 = 'got 10 kg lighter'." },
+        { tag: "更", cn: "我讨厌排队，但是我**更**讨厌排了半天队，最后什么都没买到。", py: "Wǒ tǎoyàn páiduì, dànshì wǒ gèng tǎoyàn pái le bàntiān duì, zuìhòu shénme dōu méi mǎi dào.", en: "I hate queuing — but what I hate even more is queuing forever and walking away with nothing.", note: "**更** works with feeling verbs (喜欢、讨厌、想) just like with adjectives: the first clause concedes, the second tops it." },
+        { tag: "quantity", cn: "换了工作以后，他每个月比以前**多**赚三千块。", py: "Huàn le gōngzuò yǐhòu, tā měi ge yuè bǐ yǐqián duō zhuàn sānqiān kuài.", en: "Since changing jobs, he earns three thousand kuai more a month than before.", note: "Quantity of action: **多** + verb + amount. 多 goes before the verb (多赚), unlike 得多 which trails the adjective — but the exact amount trails in both: 贵五十块, 多赚三千块." },
+        { tag: "没有…那么", cn: "这次的导游**没有**上次那位**那么**幽默，车上大家都很安静。", py: "Zhè cì de dǎoyóu méiyǒu shàng cì nà wèi nàme yōumò, chē shang dàjiā dōu hěn ānjìng.", en: "Our guide this time wasn't as funny as the last one — everyone on the bus was pretty quiet.", note: "**没有…那么** + Adj: the loser stands first, B wins. 这么/那么 are the only fillers allowed before the adjective — never 很." },
       ]
     },
 
@@ -235,7 +245,7 @@ When two options differ only by 没有 vs 不比, re-read the context: is the sp
       type: "mcq",
       title: "Final exam drill 📝 — HSK 4 level",
       short: "Final drill",
-      intro: "Twelve questions at real exam difficulty. Every distractor is a mistake someone actually makes. Aim for 10+.",
+      intro: "Real exam difficulty. Every distractor is a mistake someone actually makes. Aim to get at least four out of five right.",
       items: [
         { q: '<span class="zh">这次考试比上次___。</span>', choices: ['<span class="zh">很难</span>', '<span class="zh">难多了</span>', '<span class="zh">多难了</span>', '<span class="zh">非常难</span>'], a: 1, expl: "Degree after the adjective: 难多了 'much harder'. 很/非常 are banned; ✗多难了 reverses the set phrase." },
         { q: '<span class="zh">哥哥比我___喜欢运动。</span>', choices: ['<span class="zh">很</span>', '<span class="zh">最</span>', '<span class="zh">更</span>', '<span class="zh">太</span>'], a: 2, expl: "Before the compared word only 更/还 are allowed — and 更 works with verbs of liking too: 更喜欢." },
@@ -250,7 +260,7 @@ When two options differ only by 没有 vs 不比, re-read the context: is the sp
         { q: '<span class="zh">妈妈做的饺子___饭馆的好吃。</span> The speaker prefers mom\'s. Which fits?', choices: ['<span class="zh">没有</span>', '<span class="zh">不如</span>', '<span class="zh">比</span>', '<span class="zh">跟</span>'], a: 2, expl: "Mom wins → A比B好吃. 没有/不如 would make the restaurant win; 跟 would need 一样 and declare a tie." },
         { q: 'Arrange: <span class="zh">两个小时 / 比我 / 他 / 多 / 工作了</span>', choices: ['<span class="zh">他比我多工作了两个小时。</span>', '<span class="zh">他比我工作了多两个小时。</span>', '<span class="zh">他多比我工作了两个小时。</span>', '<span class="zh">他比我工作了两个小时多。</span>'], a: 0, expl: "Quantity-of-action: 比 + B + 多 + V + amount. 多 stands before the verb — the same skeleton as 多看了两本书." },
         { q: "<span class=\"zh\">节假日有名的景点人太多，___去家附近的森林公园走走。</span>", choices: ["<span class=\"zh\">不如</span>", "<span class=\"zh\">没有</span>", "<span class=\"zh\">不比</span>", "<span class=\"zh\">比</span>"], a: 0, expl: "After a problem statement, **不如** + suggestion means 'it'd be better to…' — B wins, with A ('fighting the crowds') understood and the adjective defaulting to 好. 没有 and 不比 both need a stated A plus a following adjective, and 比 would claim the crowded spot wins." },
-        { q: "<span class=\"zh\">打针、吃药以后，孩子的体温比早上___。</span>", choices: ["<span class=\"zh\">低多了</span>", "<span class=\"zh\">很低了</span>", "<span class=\"zh\">低很多了</span>", "<span class=\"zh\">多低了</span>"], a: 0, expl: "The big-difference tails are 得多 and 多了, glued straight after the adjective: 低**多了** — perfect here because the fever CHANGED. ✗很低了 smuggles in the banned 很; ✗低很多了 mixes 很 into the tail (that combination doesn't exist); ✗多低了 reverses the set phrase." },
+        { q: "<span class=\"zh\">打针、吃药以后，孩子的体温比早上___。</span>", choices: ["<span class=\"zh\">低多了</span>", "<span class=\"zh\">很低了</span>", "<span class=\"zh\">低很多了</span>", "<span class=\"zh\">多低了</span>"], a: 0, expl: "The big-difference tails are 得多 and 多了, glued straight after the adjective: 低**多了** — perfect here because the fever CHANGED. ✗很低了 smuggles in the banned 很; ✗低很多了 misplaces the 了 — with an amount like 很多, 了 goes before it: 低了很多 (fine in real usage, but the exam's set tails are 得多／多了); ✗多低了 reverses the set phrase." },
       ]
     },
 

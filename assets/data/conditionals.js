@@ -65,11 +65,6 @@ The cloze section plants 只要/只有 blanks constantly, and the wrong partner 
         { tag: "不管", cn: "**不管**工作多忙，他**都**坚持每天锻炼。", py: "Bùguǎn gōngzuò duō máng, tā dōu jiānchí měitiān duànliàn.", en: "No matter how busy work is, he still exercises every day.", note: "不管-clause needs an open variable — here the question word 多." },
         { tag: "无论", cn: "**无论**你同意不同意，我**都**决定去留学了。", py: "Wúlùn nǐ tóngyì bu tóngyì, wǒ dōu juédìng qù liúxué le.", en: "Whether you agree or not, I've decided to study abroad.", note: "A-not-A (同意不同意) is another legal 'open variable'. 无论 = written 不管." },
         { tag: "再…也", cn: "这件衣服**再**便宜，我**也**不会买。", py: "Zhè jiàn yīfu zài piányi, wǒ yě bú huì mǎi.", en: "No matter how cheap this piece of clothing gets, I won't buy it.", note: "再 + adjective + 也 = 'no matter how Adj' — a compact one-variable 不管." },
-        { tag: "只要", cn: "**只要**养成每天读书的习惯，知识**就**会慢慢积累起来。", py: "Zhǐyào yǎngchéng měitiān dúshū de xíguàn, zhīshi jiù huì mànmàn jīlěi qǐlái.", en: "As long as you build a daily reading habit, knowledge will pile up bit by bit.", note: "The habit alone is enough — sufficient condition, partner 就. **养成习惯** 'form a habit' is a set phrase worth stealing whole." },
-        { tag: "只有", cn: "**只有**互相尊重，**才**能有真正的友谊。", py: "Zhǐyǒu hùxiāng zūnzhòng, cái néng yǒu zhēnzhèng de yǒuyì.", en: "Only with mutual respect can there be real friendship.", note: "No respect → no friendship: necessary condition, partner 才. 尊重 = to respect, 友谊 = friendship." },
-        { tag: "除非", cn: "**除非**公司提供住的地方，**否则**我不会去那么远的城市工作。", py: "Chúfēi gōngsī tígōng zhù de dìfang, fǒuzé wǒ bú huì qù nàme yuǎn de chéngshì gōngzuò.", en: "Unless the company provides housing, I won't take a job in a city that far away.", note: "除非 names the only escape hatch; 否则 heads clause 2, before the subject 我. 提供 = to provide, supply." },
-        { tag: "万一", cn: "先把油加满吧，**万一**路上没有加油站**就**麻烦了。", py: "Xiān bǎ yóu jiā mǎn ba, wànyī lùshang méiyǒu jiāyóuzhàn jiù máfan le.", en: "Let's fill the tank first — if it turns out there's no gas station on the way, we're in trouble.", note: "Classic 万一: unlikely + unwanted case you plan around, partner 就. 加满 = fill up; 加油站 = gas station." },
-        { tag: "不管", cn: "**不管**是工作日**还是**假日，这家小吃店门口**都**排着长队。", py: "Bùguǎn shì gōngzuòrì háishi jiàrì, zhè jiā xiǎochīdiàn ménkǒu dōu páizhe chángduì.", en: "Workday or holiday, there's always a long line outside this snack shop.", note: "A **还是** B fills the open-variable slot; 都 sits in the result clause. 小吃 = snacks / street food." },
       ]
     },
 
@@ -196,7 +191,7 @@ German <i>„<b>egal wie</b> teuer es ist“</i> and Spanish <i>“<b>no importa
       type: "clinic",
       title: "Error clinic 🚑 — real learner mistakes",
       short: "Error clinic",
-      intro: "Seven patients. Diagnosis hint: check the partner adverb first, then the open variable, then the position.",
+      intro: "Diagnosis hint: check the partner adverb first, then the open variable, then the position.",
       items: [
         { wrong: "只要你来参加，我才高兴。", right: "只要你来参加，我就高兴。", py: "Zhǐyào nǐ lái cānjiā, wǒ jiù gāoxìng.", en: "As long as you come, I'll be happy.", expl: "Partner mismatch: 只要 (sufficient) takes 就. 才 would flip the logic to 'only if' — then you'd need 只有." },
         { wrong: "只有你亲自去请他，他就会来。", right: "只有你亲自去请他，他才会来。", py: "Zhǐyǒu nǐ qīnzì qù qǐng tā, tā cái huì lái.", en: "Only if you invite him in person will he come.", expl: "只有 (necessary) takes 才. ✗只有…就 claims necessity, then delivers it with the 'easy' adverb — the exam's favourite contradiction." },
@@ -206,6 +201,21 @@ German <i>„<b>egal wie</b> teuer es ist“</i> and Spanish <i>“<b>no importa
         { wrong: "除非你早点儿睡，你否则明天起不来。", right: "除非你早点儿睡，否则你明天起不来。", py: "Chúfēi nǐ zǎodiǎnr shuì, fǒuzé nǐ míngtiān qǐ bu lái.", en: "Unless you go to bed earlier, you won't be able to get up tomorrow.", expl: "否则 is a clause-initial connector like 所以 — it stands BEFORE the subject, never after it. (起不来 = potential complement: can't get up.)" },
         { wrong: "万一你通过了HSK四级，我们去饭馆庆祝。", right: "如果你通过了HSK四级，我们就去饭馆庆祝。", py: "Rúguǒ nǐ tōngguò le HSK sì jí, wǒmen jiù qù fànguǎn qìngzhù.", en: "If you pass HSK 4, we'll go celebrate at a restaurant.", expl: "万一 is reserved for unlikely BAD cases. Passing the exam is the hoped-for outcome → plain 如果 (…and a bit more faith in you, please)." },
         { wrong: "不管是儿童还是大人，很喜欢这个公园。", right: "不管是儿童还是大人，都很喜欢这个公园。", py: "Bùguǎn shì értóng háishi dàren, dōu hěn xǐhuan zhège gōngyuán.", en: "Children and adults alike love this park.", expl: "The 不管-clause is healthy (A 还是 B = open variable), but the result clause lost its partner adverb. 不管/无论 must be answered by 都 (or 也) — the couple is as fixed as 只要↔就. Add 都 before 很喜欢." },
+      ]
+    },
+
+    /* ------------------------------------------------ consolidation */
+    {
+      type: "examples",
+      title: 'Consolidation — the pattern out in the wild',
+      short: "Consolidation",
+      intro: "A second lap with fresh vocabulary: every sentence below runs on this topic's machinery. Read each one like exam text — spot the pattern first, then tap any dotted word you don't know.",
+      items: [
+        { tag: "只要", cn: "**只要**养成每天读书的习惯，知识**就**会慢慢积累起来。", py: "Zhǐyào yǎngchéng měitiān dúshū de xíguàn, zhīshi jiù huì mànmàn jīlěi qǐlái.", en: "As long as you build a daily reading habit, knowledge will pile up bit by bit.", note: "The habit alone is enough — sufficient condition, partner 就. **养成习惯** 'form a habit' is a set phrase worth stealing whole." },
+        { tag: "只有", cn: "**只有**互相尊重，**才**能有真正的友谊。", py: "Zhǐyǒu hùxiāng zūnzhòng, cái néng yǒu zhēnzhèng de yǒuyì.", en: "Only with mutual respect can there be real friendship.", note: "No respect → no friendship: necessary condition, partner 才. 尊重 = to respect, 友谊 = friendship." },
+        { tag: "除非", cn: "**除非**公司提供住的地方，**否则**我不会去那么远的城市工作。", py: "Chúfēi gōngsī tígōng zhù de dìfang, fǒuzé wǒ bú huì qù nàme yuǎn de chéngshì gōngzuò.", en: "Unless the company provides housing, I won't take a job in a city that far away.", note: "除非 names the only escape hatch; 否则 heads clause 2, before the subject 我. 提供 = to provide, supply." },
+        { tag: "万一", cn: "先把油加满吧，**万一**路上没有加油站**就**麻烦了。", py: "Xiān bǎ yóu jiā mǎn ba, wànyī lùshang méiyǒu jiāyóuzhàn jiù máfan le.", en: "Let's fill the tank first — if it turns out there's no gas station on the way, we're in trouble.", note: "Classic 万一: unlikely + unwanted case you plan around, partner 就. 加满 = fill up; 加油站 = gas station. Compare the 千万 warning version of this very sentence in Attitude Adverbs — 万一 plans for the bad case, 千万 urges the listener." },
+        { tag: "不管", cn: "**不管**是工作日**还是**假日，这家小吃店门口**都**排着长队。", py: "Bùguǎn shì gōngzuòrì háishi jiàrì, zhè jiā xiǎochīdiàn ménkǒu dōu páizhe chángduì.", en: "Workday or holiday, there's always a long line outside this snack shop.", note: "A **还是** B fills the open-variable slot; 都 sits in the result clause. 小吃 = snacks / street food." },
       ]
     },
 
@@ -251,21 +261,21 @@ Tone check for translation questions: 只要 sounds encouraging (“that's all i
       type: "mcq",
       title: "Final exam drill 📝 — HSK 4 level",
       short: "Final drill",
-      intro: "Eleven questions. The 只要/只有 fork keeps coming back — exactly like the real paper.",
+      intro: "The 只要/只有 fork keeps coming back — exactly like the real paper.",
       items: [
         { q: '<span class="zh">___你把手机静音，就不会打扰到别人。</span>', choices: ['<span class="zh">只要</span>', '<span class="zh">只有</span>', '<span class="zh">除非</span>', '<span class="zh">不管</span>'], a: 0, expl: "Muting the phone is enough to avoid disturbing people, and the partner is 就 → 只要. 只有 would need 才." },
         { q: '<span class="zh">___通过面试的人，才能参加下个月的培训。</span>', choices: ['<span class="zh">只有</span>', '<span class="zh">只要</span>', '<span class="zh">万一</span>', '<span class="zh">要是</span>'], a: 0, expl: "才 + a gate-keeping requirement (interview passed) = necessary condition → 只有. Note 只有 + noun phrase (通过面试的人)." },
         { q: '<span class="zh">你放心，___有我在，就没有解决不了的问题。</span>', choices: ['<span class="zh">只要</span>', '<span class="zh">只有</span>', '<span class="zh">无论</span>', '<span class="zh">除非</span>'], a: 0, expl: "Reassuring tone + 就 → 只要 ('as long as I'm here, that's enough'). 只有…才 would sound like a strict warning, and 无论 needs an open variable." },
         { q: "Which sentence is WRONG?", choices: ['<span class="zh">只要你说，我就帮你。</span>', '<span class="zh">只有你说，我才帮你。</span>', '<span class="zh">只要你说，我才帮你。</span>', '<span class="zh">你不说，我就不帮你。</span>'], a: 2, expl: "✗只要…才 — mismatched couple. 只要 pairs with 就, 只有 with 才; 你不说我就不帮你 expresses the necessary condition with plain negation, which is fine." },
+        { q: "<span class=\"zh\">___你再自信一点儿，就能赢得下次比赛。</span>", choices: ["<span class=\"zh\">只要</span>", "<span class=\"zh\">只有</span>", "<span class=\"zh\">除非</span>", "<span class=\"zh\">不管</span>"], a: 0, expl: "Encouraging tone + partner 就 = low bar = sufficient condition → 只要. 只有 would demand 才, 除非 needs 否则/才, and 不管 needs an open variable plus 都 — none of them can pair with this 就." },
         { q: '<span class="zh">___你在哪儿，我___会找到你。</span>', choices: ['<span class="zh">无论 / 都</span>', '<span class="zh">只要 / 就</span>', '<span class="zh">只有 / 才</span>', '<span class="zh">除非 / 否则</span>'], a: 0, expl: "哪儿 is a question word = open variable → 无论…都: 'wherever you are'. 只要 can't host a bare question word like this." },
         { q: '<span class="zh">带上这张地图吧，___迷路了可以看看。</span>', choices: ['<span class="zh">万一</span>', '<span class="zh">只有</span>', '<span class="zh">既然</span>', '<span class="zh">不管</span>'], a: 0, expl: "Getting lost = unlikely, unwanted, and you're packing a plan B → 万一. 如果 would also work, but of these four only 万一 fits." },
         { q: '<span class="zh">明天你早点儿来，___我们做不完这些工作。</span>', choices: ['<span class="zh">要不然</span>', '<span class="zh">除非</span>', '<span class="zh">才</span>', '<span class="zh">就</span>'], a: 0, expl: "Standalone 'or else' heading the second clause = 要不然/否则. 除非 would have to introduce the CONDITION, and 才/就 can't stand clause-initial." },
+        { q: "<span class=\"zh\">___去哪儿旅行，他都要先查看目的地的天气。</span>", choices: ["<span class=\"zh\">不管</span>", "<span class=\"zh\">只要</span>", "<span class=\"zh\">除非</span>", "<span class=\"zh\">万一</span>"], a: 0, expl: "哪儿 is an open variable and the partner adverb is 都 → unconditional 不管…都: wherever he goes, same habit. 只要/除非 can't host a bare question word, and 万一 is reserved for an unlikely BAD case, not a routine." },
         { q: 'Order these chunks: <span class="zh">才能 / 只有 / 你 / 学会游泳 / 多下水练习</span>', choices: ['<span class="zh">只有多下水练习，你才能学会游泳。</span>', '<span class="zh">你只有才能多下水练习学会游泳。</span>', '<span class="zh">只有你才能多下水练习，学会游泳。</span>', '<span class="zh">多下水练习，只有你才能学会游泳。</span>'], a: 0, expl: "只有 + condition first; then subject 你 + 才能 + result. In ✗只有你才能多下水练习, 才 got separated from the result clause — the partner must live where the result lives." },
         { q: '<span class="zh">再难的汉字，___？</span> Complete naturally:', choices: ['<span class="zh">他也写得出来</span>', '<span class="zh">他就写得出来</span>', '<span class="zh">他才写得出来</span>', '<span class="zh">他都不写了</span>'], a: 0, expl: "再 + Adj pairs with 也: 'no matter how hard the character, he can still write it'. 就/才 belong to other couples; 他都不写了 breaks the concessive logic." },
         { q: '<span class="zh">___是刮风还是下雨，他每天都五点起床去送牛奶。</span>', choices: ['<span class="zh">不管</span>', '<span class="zh">只要</span>', '<span class="zh">除非</span>', '<span class="zh">万一</span>'], a: 0, expl: "A 还是 B fills the open-variable slot, partner 都 → 不管…都. The others can't host 还是-alternatives." },
         { q: "Your friend says: <span class=\"zh\">我怕我口语不好，找不到工作。</span> The encouraging reply:", choices: ['<span class="zh">只要你坚持练习，就一定能找到好工作。</span>', '<span class="zh">只有你坚持练习，就一定能找到好工作。</span>', '<span class="zh">除非你坚持练习，你才找不到好工作。</span>', '<span class="zh">万一你坚持练习，就能找到好工作。</span>'], a: 0, expl: "Encouragement = low bar = 只要…就. 只有…就 is an illegal couple, 除非…才找不到 runs the logic backwards, and 万一 treats practicing as an unlikely disaster." },
-        { q: "<span class=\"zh\">___你再自信一点儿，就能赢得下次比赛。</span>", choices: ["<span class=\"zh\">只要</span>", "<span class=\"zh\">只有</span>", "<span class=\"zh\">除非</span>", "<span class=\"zh\">不管</span>"], a: 0, expl: "Encouraging tone + partner 就 = low bar = sufficient condition → 只要. 只有 would demand 才, 除非 needs 否则/才, and 不管 needs an open variable plus 都 — none of them can pair with this 就." },
-        { q: "<span class=\"zh\">___去哪儿旅行，他都要先查看目的地的天气。</span>", choices: ["<span class=\"zh\">不管</span>", "<span class=\"zh\">只要</span>", "<span class=\"zh\">除非</span>", "<span class=\"zh\">万一</span>"], a: 0, expl: "哪儿 is an open variable and the partner adverb is 都 → unconditional 不管…都: wherever he goes, same habit. 只要/除非 can't host a bare question word, and 万一 is reserved for an unlikely BAD case, not a routine." },
       ]
     },
 

@@ -63,11 +63,6 @@ Before a noun predicate you'll see <span class="zh">却是</span> (<span class="
         { tag: "倒", cn: "外面雨**倒**停了，可是风更大了。", py: "Wàimiàn yǔ dào tíng le, kěshì fēng gèng dà le.", en: "The rain has actually stopped, but the wind has picked up.", note: "倒 = 'contrary to what you'd expect' — here a pleasant surprise. Adverb: after subject." },
         { tag: "倒②", cn: "你说得**倒**容易，你自己来试试！", py: "Nǐ shuō de dào róngyì, nǐ zìjǐ lái shìshi!", en: "Easy for YOU to say — come try it yourself!", note: "倒 as mild reproach: 'oh sure, AS IF it were that easy'. A very native flavor." },
         { tag: "而", cn: "他喜欢安静，**而**我喜欢热闹。", py: "Tā xǐhuan ānjìng, ér wǒ xǐhuan rènao.", en: "He likes peace and quiet, whereas I like a lively scene.", note: "而 = written 'whereas/while' — balanced A-vs-B contrast, no drama." },
-        { tag: "虽然…还是", cn: "**虽然**房间里阳光不多，这些植物**还是**长得不错。", py: "Suīrán fángjiān lǐ yángguāng bù duō, zhèxiē zhíwù háishi zhǎng de búcuò.", en: "The room doesn't get much sun, but these plants are still doing fine.", note: "No 但是 needed: **还是** alone carries the turn — from its adverb slot after the subject 这些植物, never clause-initial." },
-        { tag: "却", cn: "他嘴上说尊重我的决定，心里**却**一直反对。", py: "Tā zuǐshang shuō zūnzhòng wǒ de juédìng, xīnli què yìzhí fǎnduì.", en: "He says he respects my decision, but deep down he's been against it all along.", note: "嘴上 vs 心里 set up the clash; **却** hides behind 心里, right before 一直反对 — it can never take the head of the clause." },
-        { tag: "就算…也", cn: "**就算**这次输了，明年他**也**要再次参赛。", py: "Jiùsuàn zhè cì shū le, míngnián tā yě yào zàicì cānsài.", en: "Even if he loses this time, he'll enter the competition again next year.", note: "The loss hasn't happened — hypothesis → **就算**, and its one legal partner **也** is welded in after the subject 他." },
-        { tag: "不过", cn: "这种小吃闻起来有点儿酸，**不过**吃起来特别香。", py: "Zhè zhǒng xiǎochī wén qǐlái yǒudiǎnr suān, búguò chī qǐlái tèbié xiāng.", en: "This snack smells a little sour, but it tastes amazing.", note: "**不过** = the gentlest rung of the 'but' ladder — perfect for reviews. Like 但是, it opens clause 2, before any subject." },
-        { tag: "然而+却", cn: "为了赢得更多的顾客，商店把价格降低了不少，**然而**生意**却**一直没有变好。", py: "Wèile yíngdé gèng duō de gùkè, shāngdiàn bǎ jiàgé jiàngdī le bùshǎo, rán'ér shēngyi què yìzhí méiyǒu biànhǎo.", en: "To win more customers, the shop slashed its prices — yet business never picked up.", note: "Two slots, no fight: written **然而** takes the doorway of clause 2, **却** the hallway after the subject 生意." },
       ]
     },
 
@@ -176,7 +171,7 @@ Before a noun predicate you'll see <span class="zh">却是</span> (<span class="
       type: "clinic",
       title: "Error clinic 🚑 — real learner mistakes",
       short: "Error clinic",
-      intro: "Seven patients, one bug each: a word in the wrong slot, the wrong partner, or the wrong family member.",
+      intro: "One bug per patient: a word in the wrong slot, the wrong partner, or the wrong family member.",
       items: [
         { wrong: "我等了他很久，却他没来。", right: "我等了他很久，他却没来。", py: "Wǒ děng le tā hěn jiǔ, tā què méi lái.", en: "I waited a long time, yet he didn't come.", expl: "却 is an adverb (family of 就/才/都) — it must follow the subject. The pre-subject doorway belongs to 但是/可是." },
         { wrong: "即使你说什么，我也不会改变主意。", right: "不管你说什么，我都不会改变主意。", py: "Bùguǎn nǐ shuō shénme, wǒ dōu bú huì gǎibiàn zhǔyi.", en: "No matter what you say, I won't change my mind.", expl: "什么 is an open variable — that's 不管/无论's territory. 即使 concedes ONE hypothetical case: 即使你反对，我也不会改变主意 ✓." },
@@ -186,6 +181,21 @@ Before a noun predicate you'll see <span class="zh">却是</span> (<span class="
         { wrong: "雨停倒了，我们出去走走吧。", right: "雨倒停了，我们出去走走吧。", py: "Yǔ dào tíng le, wǒmen chūqù zǒuzou ba.", en: "Oh look, the rain's stopped — let's go out for a walk.", expl: "倒 is an adverb: after the subject 雨, BEFORE the verb 停. Slipping it after the verb is a direct transfer from English 'stopped, though'." },
         { wrong: "他喜欢安静，而且我喜欢热闹。", right: "他喜欢安静，而我喜欢热闹。", py: "Tā xǐhuan ānjìng, ér wǒ xǐhuan rènao.", en: "He likes quiet, whereas I like lively places.", expl: "而且 stacks MORE of the same (moreover); 而 pivots between two different things (whereas). Contrast between him and me → 而." },
         { wrong: "即使这次拿不到奖，但是她不会放弃跳舞。", right: "即使这次拿不到奖，她也不会放弃跳舞。", py: "Jíshǐ zhè cì ná bu dào jiǎng, tā yě bú huì fàngqì tiàowǔ.", en: "Even if she doesn't win a prize this time, she won't give up dancing.", expl: "即使's only legal partner is **也**, welded after the subject of clause 2. ✗即使…但是 welds a hypothesis head onto a fact tail — the classic Franken-couple. Swap 但是 for 她**也**." },
+      ]
+    },
+
+    /* ------------------------------------------------ consolidation */
+    {
+      type: "examples",
+      title: 'Consolidation — the pattern out in the wild',
+      short: "Consolidation",
+      intro: "A second lap with fresh vocabulary: every sentence below runs on this topic's machinery. Read each one like exam text — spot the pattern first, then tap any dotted word you don't know.",
+      items: [
+        { tag: "虽然…还是", cn: "**虽然**房间里阳光不多，这些植物**还是**长得不错。", py: "Suīrán fángjiān lǐ yángguāng bù duō, zhèxiē zhíwù háishi zhǎng de búcuò.", en: "The room doesn't get much sun, but these plants are still doing fine.", note: "No 但是 needed: **还是** alone carries the turn — from its adverb slot after the subject 这些植物, never before it. (Drop the subject and it may open the clause: 他很累，还是把工作做完了.)" },
+        { tag: "却", cn: "他嘴上说尊重我的决定，心里**却**一直反对。", py: "Tā zuǐshang shuō zūnzhòng wǒ de juédìng, xīnli què yìzhí fǎnduì.", en: "He says he respects my decision, but deep down he's been against it all along.", note: "嘴上 vs 心里 set up the clash; **却** hides behind 心里, right before 一直反对 — never before a subject (✗却他). Only with the subject omitted can it head the clause: 他答应帮忙，却没来." },
+        { tag: "就算…也", cn: "**就算**这次输了，明年他**也**要再次参赛。", py: "Jiùsuàn zhè cì shū le, míngnián tā yě yào zàicì cānsài.", en: "Even if he loses this time, he'll enter the competition again next year.", note: "The loss hasn't happened — hypothesis → **就算**, and its one legal partner **也** is welded in after the subject 他." },
+        { tag: "不过", cn: "这种小吃闻起来有点儿酸，**不过**吃起来特别香。", py: "Zhè zhǒng xiǎochī wén qǐlái yǒudiǎnr suān, búguò chī qǐlái tèbié xiāng.", en: "This snack smells a little sour, but it tastes amazing.", note: "**不过** = the gentlest rung of the 'but' ladder — perfect for reviews. Like 但是, it opens clause 2, before any subject." },
+        { tag: "然而+却", cn: "为了赢得更多的顾客，商店把价格降低了不少，**然而**生意**却**一直没有变好。", py: "Wèile yíngdé gèng duō de gùkè, shāngdiàn bǎ jiàgé jiàngdī le bùshǎo, rán'ér shēngyi què yìzhí méiyǒu biànhǎo.", en: "To win more customers, the shop slashed its prices — yet business never picked up.", note: "Two slots, no fight: written **然而** takes the doorway of clause 2, **却** the hallway after the subject 生意." },
       ]
     },
 
@@ -231,7 +241,7 @@ Before a noun predicate you'll see <span class="zh">却是</span> (<span class="
       type: "mcq",
       title: "Final exam drill 📝 — HSK 4 level",
       short: "Final drill",
-      intro: "Ten questions at exam difficulty. Every distractor is a slot violation or a broken couple — hunt them down.",
+      intro: "Exam-difficulty questions. Every distractor is a slot violation or a broken couple — hunt them down.",
       items: [
         { q: '<span class="zh">这家宾馆不算便宜，___离机场特别近。</span>', choices: ['<span class="zh">不过</span>', '<span class="zh">即使</span>', '<span class="zh">尽管</span>', '<span class="zh">哪怕</span>'], a: 0, expl: "A soft redeeming 'but' opening clause 2 = 不过. 即使/尽管/哪怕 all open clause 1 and would leave their partners stranded." },
         { q: '<span class="zh">大家都说这部电影好看，我看完以后___觉得一般。</span>', choices: ['<span class="zh">却</span>', '<span class="zh">但是</span>', '<span class="zh">然而</span>', '<span class="zh">而</span>'], a: 0, expl: "The blank sits after the subject phrase 我看完以后 and directly before 觉得 — an adverb slot. Only 却 fits; the other three demand the clause-front position." },

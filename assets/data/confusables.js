@@ -214,11 +214,6 @@ Learn them as fixed phrases — the exam only ever tests the lists above. Overla
         { tag: "进行", cn: "医生正在给病人**进行**检查。", py: "Yīshēng zhèngzài gěi bìngrén jìnxíng jiǎnchá.", en: "The doctor is examining the patient.", note: "检查 = process noun → 进行. 举行检查 would sound like a checking festival." },
         { tag: "觉得", cn: "我**觉得**坐火车比坐飞机更方便。", py: "Wǒ juéde zuò huǒchē bǐ zuò fēijī gèng fāngbiàn.", en: "I think taking the train is more convenient than flying.", note: "Opinion clause follows → 觉得, not 感到." },
         { tag: "受到", cn: "这部电影**受到**了年轻人的欢迎。", py: "Zhè bù diànyǐng shòudào le niánqīngrén de huānyíng.", en: "This movie is popular with young people.", note: "欢迎 belongs to the 受到 list. 得到欢迎 fails the collocation check." },
-        { tag: "适合", cn: "这种植物喜欢湿润的环境，很**适合**放在洗手间里。", py: "Zhè zhǒng zhíwù xǐhuan shīrùn de huánjìng, hěn shìhé fàng zài xǐshǒujiān li.", en: "This kind of plant likes a humid environment — it's perfect for keeping in the bathroom.", note: "A verb-phrase object follows (放在洗手间里) → verb **适合**. Bare 很___ with nothing after would be 合适; here 很 modifies the whole verb phrase." },
-        { tag: "往往", cn: "刚开始做生意的人，**往往**要吃很多苦。", py: "Gāng kāishǐ zuò shēngyi de rén, wǎngwǎng yào chī hěn duō kǔ.", en: "People just starting out in business usually have to go through a lot of hardship.", note: "Stated condition (刚开始做生意) + pattern observed in the world → **往往**, past/present only. 吃苦 = endure hardship, a set phrase." },
-        { tag: "一定", cn: "只要有耐心，你**一定**能养成早睡早起的习惯。", py: "Zhǐyào yǒu nàixīn, nǐ yídìng néng yǎngchéng zǎo shuì zǎo qǐ de xíguàn.", en: "As long as you're patient, you'll definitely build the habit of going to bed early and getting up early.", note: "Adverb **一定** + modal 能 = firm \"will surely\". 肯定能 would also work (\"I bet\"); 确定 can't modify another verb — it must BE the verb." },
-        { tag: "举行", cn: "市里每年都**举行**一次儿童游泳比赛，今年参赛的孩子特别多。", py: "Shì li měi nián dōu jǔxíng yí cì értóng yóuyǒng bǐsài, jīnnián cānsài de háizi tèbié duō.", en: "The city holds a children's swimming competition every year — this year an especially large number of kids entered.", note: "比赛 = poster-able event with a date → **举行**. 进行 wants a process noun (讨论/检查). 参赛 = enter the competition." },
-        { tag: "以为", cn: "我**以为**她听到这个消息会难过得流泪，没想到她**反而**笑了。", py: "Wǒ yǐwéi tā tīngdào zhège xiāoxi huì nánguò de liúlèi, méi xiǎngdào tā fǎn'ér xiào le.", en: "I thought she'd be so sad she'd cry when she heard the news — I never expected her to laugh instead.", note: "没想到 flags the belief as wrong → **以为**; the outcome flips expectation inside the clause → **反而**. Two duels, one sentence." },
       ]
     },
 
@@ -274,6 +269,21 @@ Don't read the passage first. Read the WORD BANK, tag each word's POS and its tw
       ]
     },
 
+    /* ------------------------------------------------ consolidation */
+    {
+      type: "examples",
+      title: 'Consolidation — the pattern out in the wild',
+      short: "Consolidation",
+      intro: "A second lap with fresh vocabulary: every sentence below runs on this topic's machinery. Read each one like exam text — spot the pattern first, then tap any dotted word you don't know.",
+      items: [
+        { tag: "适合", cn: "这种植物喜欢湿润的环境，很**适合**放在洗手间里。", py: "Zhè zhǒng zhíwù xǐhuan shīrùn de huánjìng, hěn shìhé fàng zài xǐshǒujiān li.", en: "This kind of plant likes a humid environment — it's perfect for keeping in the bathroom.", note: "A verb-phrase object follows (放在洗手间里) → verb **适合**. Bare 很___ with nothing after would be 合适; here 很 modifies the whole verb phrase." },
+        { tag: "往往", cn: "刚开始做生意的人，**往往**要吃很多苦。", py: "Gāng kāishǐ zuò shēngyi de rén, wǎngwǎng yào chī hěn duō kǔ.", en: "People just starting out in business usually have to go through a lot of hardship.", note: "Stated condition (刚开始做生意) + pattern observed in the world → **往往**, past/present only. 吃苦 = endure hardship, a set phrase." },
+        { tag: "一定", cn: "只要有耐心，你**一定**能养成早睡早起的习惯。", py: "Zhǐyào yǒu nàixīn, nǐ yídìng néng yǎngchéng zǎo shuì zǎo qǐ de xíguàn.", en: "As long as you're patient, you'll definitely build the habit of going to bed early and getting up early.", note: "Adverb **一定** + modal 能 = firm \"will surely\". 肯定能 would also work (\"I bet\"); 确定 can't modify another verb — it must BE the verb." },
+        { tag: "举行", cn: "市里每年都**举行**一次儿童游泳比赛，今年参赛的孩子特别多。", py: "Shì li měi nián dōu jǔxíng yí cì értóng yóuyǒng bǐsài, jīnnián cānsài de háizi tèbié duō.", en: "The city holds a children's swimming competition every year — this year an especially large number of kids entered.", note: "比赛 = poster-able event with a date → **举行**. 进行 wants a process noun (讨论/检查). 参赛 = enter the competition." },
+        { tag: "以为", cn: "我**以为**她听到这个消息会难过得流泪，没想到她**反而**笑了。", py: "Wǒ yǐwéi tā tīngdào zhège xiāoxi huì nánguò de liúlèi, méi xiǎngdào tā fǎn'ér xiào le.", en: "I thought she'd be so sad she'd cry when she heard the news — I never expected her to laugh instead.", note: "没想到 flags the belief as wrong → **以为**; the outcome flips expectation inside the clause → **反而**. Two duels, one sentence." },
+      ]
+    },
+
     /* ------------------------------------------------ 9 */
     {
       type: "builder",
@@ -314,9 +324,9 @@ Don't read the passage first. Read the WORD BANK, tag each word's POS and its tw
     /* ------------------------------------------------ 11 */
     {
       type: "mcq",
-      title: "Final exam drill 📝 — fourteen cloze duels",
+      title: "Final exam drill 📝 — cloze duels",
       short: "Final drill",
-      intro: "Real HSK-style cloze sentences, one per duel plus rematches. Aim for 12+.",
+      intro: "Real HSK-style cloze sentences, one per duel plus rematches. Aim to win at least four out of five.",
       items: [
         { q: '<span class="zh">这个电影不___孩子看，里面有太多打斗。</span>', choices: ['<span class="zh">合适</span>', '<span class="zh">适合</span>', '<span class="zh">适应</span>', '<span class="zh">满意</span>'], a: 1, expl: "孩子看 follows the blank → verb 适合 + object. 合适 can't carry an object. (打斗 dǎdòu = fighting — HSK5 word, free gift.)" },
         { q: '<span class="zh">取得成功的人，___是那些坚持到最后的人。</span>', choices: ['<span class="zh">往往</span>', '<span class="zh">常常</span>', '<span class="zh">永远</span>', '<span class="zh">一直</span>'], a: 0, expl: "A general law observed about the world ('those who succeed tend to be…') → 往往. 常常 counts repetitions of an action, but this sentence states a pattern of identity, not a habit." },
@@ -326,13 +336,13 @@ Don't read the passage first. Read the WORD BANK, tag each word's POS and its tw
         { q: '<span class="zh">他走得太___了，我们都没来得及说再见。</span>', choices: ['<span class="zh">忽然</span>', '<span class="zh">马上</span>', '<span class="zh">突然</span>', '<span class="zh">立刻</span>'], a: 2, expl: "太…了 demands an adjective → 突然. 忽然/马上/立刻 are adverbs and melt under degree words (the 很-test)." },
         { q: '<span class="zh">雨不但没停，___下得更大了。</span>', choices: ['<span class="zh">而且</span>', '<span class="zh">反而</span>', '<span class="zh">相反</span>', '<span class="zh">于是</span>'], a: 1, expl: "不但没 A，反而 B — the reversal frame. 而且 is the trap: it stacks same-direction facts and can't flip expectations. 相反 would need its own sentence." },
         { q: '<span class="zh">我的想法跟你的正好___。</span>', choices: ['<span class="zh">反而</span>', '<span class="zh">相反</span>', '<span class="zh">反对</span>', '<span class="zh">相同</span>'], a: 1, expl: "正好相反 = 'exactly opposite', a set phrase. 反而 is an adverb, not a predicate; 反对 = to oppose (verb); 相同 = identical — opposite meaning!" },
-        { q: '<span class="zh">___三年的努力，他的汉语终于达到了四级水平。</span>', choices: ['<span class="zh">通过</span>', '<span class="zh">经过</span>', '<span class="zh">进行</span>', '<span class="zh">举行</span>'], a: 1, expl: "三年的努力 is a stretch of time/effort lived through → 经过. 通过 wants a test to pass or a channel to use, not a duration." },
+        { q: '<span class="zh">___三年的努力，他的汉语终于达到了四级水平。</span>', choices: ['<span class="zh">通过</span>', '<span class="zh">经过</span>', '<span class="zh">进行</span>', '<span class="zh">举行</span>'], a: 1, expl: "三年的努力 is a stretch of time/effort lived through → 经过. 通过 wants a test to pass or a channel to use — and though 通过多年的努力 does show up in native writing, the exam keys duration-fronted effort to 经过." },
         { q: '<span class="zh">她第一次就___了汉语水平考试。</span>', choices: ['<span class="zh">经过</span>', '<span class="zh">得到</span>', '<span class="zh">通过</span>', '<span class="zh">受到</span>'], a: 2, expl: "Pass the exam = 通过考试, non-negotiable collocation. 经过了考试 just means the exam happened along your route." },
         { q: '<span class="zh">关于这个计划，我们下午再___进一步的讨论。</span>', choices: ['<span class="zh">举行</span>', '<span class="zh">进行</span>', '<span class="zh">举办</span>', '<span class="zh">发生</span>'], a: 1, expl: "讨论 is a process noun → 进行讨论, the formal 'carry out' frame. 举行/举办 hold events with dates; 发生 just happens by itself." },
         { q: '<span class="zh">我___这次旅行安排得特别好。</span>', choices: ['<span class="zh">感到</span>', '<span class="zh">觉得</span>', '<span class="zh">以为</span>', '<span class="zh">受到</span>'], a: 1, expl: "A full opinion clause follows → 觉得. 感到 only accepts single emotion words (感到高兴), and nothing here says the opinion was wrong, so no 以为." },
         { q: '<span class="zh">由于大雪，机场的航班___了很大影响。</span>', choices: ['<span class="zh">得到</span>', '<span class="zh">受到</span>', '<span class="zh">感到</span>', '<span class="zh">遇到</span>'], a: 1, expl: "影响 is on the 受到 list — the influence lands ON the flights. 得到影响 fails the collocation check; 遇到 meets people/problems, not 影响." },
         { q: '<span class="zh">在老师的帮助下，他的口语___了很大的提高。</span>', choices: ['<span class="zh">受到</span>', '<span class="zh">得到</span>', '<span class="zh">通过</span>', '<span class="zh">经过</span>'], a: 1, expl: "提高 is a gain you end up with → 得到提高 (like 得到帮助/机会). 受到 would make the improvement sound like an attack." },
-        { q: "<span class=\"zh\">___几年的积累，他终于开了一家自己的小公司。</span>", choices: ["<span class=\"zh\">通过</span>", "<span class=\"zh\">经过</span>", "<span class=\"zh\">进行</span>", "<span class=\"zh\">得到</span>"], a: 1, expl: "几年的积累 is a stretch of time and effort lived through → 经过, exactly like 经过三年的努力. 通过 needs a test to pass or a channel to use; 进行 carries out a process noun as the main verb; 得到 means you end up with a thing, and can't sit in front of a duration." },
+        { q: "<span class=\"zh\">___几年的积累，他终于开了一家自己的小公司。</span>", choices: ["<span class=\"zh\">通过</span>", "<span class=\"zh\">经过</span>", "<span class=\"zh\">进行</span>", "<span class=\"zh\">得到</span>"], a: 1, expl: "几年的积累 is a stretch of time and effort lived through → 经过, exactly like 经过三年的努力. HSK keys 经过 when a duration heads the phrase — 通过几年的积累 does appear in native writing when the accumulation is framed as the means, but on the exam, duration up front → 经过. 进行 carries out a process noun as the main verb; 得到 means you end up with a thing, and can't sit in front of a duration." },
         { q: "<span class=\"zh\">在市区开车，车速会___很多限制。</span>", choices: ["<span class=\"zh\">得到</span>", "<span class=\"zh\">受到</span>", "<span class=\"zh\">感到</span>", "<span class=\"zh\">经过</span>"], a: 1, expl: "限制 is treatment that lands ON you → 受到限制, same list as 受到影响/批评. 得到 gains something wanted — nobody wants 限制; 感到 only takes emotion words; 经过 passes through places and time, not restrictions." },
       ]
     },
