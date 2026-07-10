@@ -83,6 +83,7 @@ for (const id of ids) {
 }
 // orphan data files
 for (const f of fs.readdirSync(path.join(root, "assets/data"))) {
+  if (f === "vocab.js") continue; // generated dictionary (scripts/build-vocab.js), not a topic
   const id = f.replace(/\.js$/, "");
   if (!ids.includes(id)) warnings.push(`orphan data file: ${f}`);
 }

@@ -22,7 +22,7 @@
   };
   // mark Chinese text for screen readers / font selection (html lang="en");
   // only elements that actually contain CJK get tagged, pinyin gets zh-Latn
-  const CJK_RE = /[㐀-鿿豈-﫿]/;
+  const CJK_RE = /[\u3400-\u9fff\uf900-\ufaff]/; // escapes, not literals: U+F900 has a lookalike (U+8C48) that already fooled one copy of this regex
   const zhLang = root => {
     root.querySelectorAll(".zh, .ex-cn, .er-wrong, .er-right, .tile, .zh-big, .u-zh, .c-zh, .p-zh, .rl-zh, .t-zh, .pattern .slot")
       .forEach(e => { if (!e.lang && CJK_RE.test(e.textContent)) e.lang = "zh-Hans"; });
@@ -76,6 +76,231 @@
     u.rate = (lastSpoken.text === text && now - lastSpoken.t < 6000) ? 0.6 : 0.85;
     lastSpoken = { text: text, t: now };
     speechSynthesis.speak(u);
+  }
+
+  /* ---------------- HSK-4 vocabulary: tap-to-translate ----------------
+     assets/data/vocab.js (loaded by topic + review shells) ships the target
+     words — (old ∪ new HSK 4) minus the HSK 1–3 lists the learner already
+     knows — plus a plain list of every other HSK word so longest-match
+     segmentation can't wrap a target word that is really part of a longer
+     known word (小时 inside 小时候). Annotation happens at render time ON
+     PURPOSE: content strings are never edited, so miss-store content hashes
+     stay stable. Never annotates inside links or buttons (quiz choices could
+     leak the answer through a gloss; builder tiles must stay plain; a tap on
+     a pager link must navigate, not open a popover). */
+  let vocabMap = null, vocabMaxLen = 1;
+  function vocabReady() {
+    if (vocabMap) return true;
+    const V = window.HSK4_VOCAB;
+    // hard guard: a missing/malformed vocab.js degrades to "no underlines",
+    // it must never take down page rendering
+    if (!V || V.v !== 1 || !Array.isArray(V.words) || typeof V.dict !== "string") return false;
+    vocabMap = new Map();
+    V.dict.split(" ").forEach(w => vocabMap.set(w, -1));
+    V.words.forEach((e, i) => vocabMap.set(e[0], i));
+    for (const w of vocabMap.keys()) if (w.length > vocabMaxLen) vocabMaxLen = w.length;
+    document.addEventListener("click", e => {
+      const w = e.target.closest(".vw");
+      if (w) vocabPop(w);
+      else if (!e.target.closest(".vw-pop")) hideVocabPop();
+    });
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") { hideVocabPop(true); return; }
+      const w = e.target.closest ? e.target.closest(".vw") : null;
+      if (!w) return;
+      // role="button" spans don't get native Enter/Space activation
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        vocabPop(w);
+      } else if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+        // roving tabindex: one Tab stop per sentence, arrow keys walk its words
+        const box = w.closest("[data-vw]");
+        const list = box ? [...box.querySelectorAll(".vw")] : [];
+        const to = list[list.indexOf(w) + (e.key === "ArrowRight" ? 1 : -1)];
+        if (!to) return;
+        e.preventDefault();
+        w.tabIndex = -1;
+        to.tabIndex = 0;
+        to.focus();
+      }
+    });
+    // the popover follows its word through scrolls of ANY container (capture:
+    // element scrolls don't bubble) and hides only when the word leaves view
+    let vwRaf = 0;
+    addEventListener("scroll", () => {
+      if (!vwFor || vwRaf) return;
+      vwRaf = requestAnimationFrame(() => {
+        vwRaf = 0;
+        if (!vwFor) return;
+        const r = vwFor.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > innerHeight) hideVocabPop();
+        else placeVocabPop(r);
+      });
+    }, { capture: true, passive: true });
+    addEventListener("resize", () => hideVocabPop(), { passive: true });
+    return true;
+  }
+  let vwPop = null, vwFor = null;
+  function hideVocabPop(refocus) {
+    if (!vwFor) return;
+    const w = vwFor;
+    vwFor = null;
+    vwPop.classList.add("hidden");
+    w.setAttribute("aria-expanded", "false");
+    // opening moved focus into the dialog — hand it back to the word (but
+    // never steal it from wherever a click-away already put it)
+    if (refocus || vwPop.contains(document.activeElement)) w.focus({ preventScroll: true });
+  }
+  function placeVocabPop(r) {
+    const pw = vwPop.offsetWidth, ph = vwPop.offsetHeight;
+    vwPop.style.left = Math.max(8, Math.min(r.left + r.width / 2 - pw / 2, innerWidth - pw - 8)) + "px";
+    vwPop.style.top = (r.bottom + 8 + ph > innerHeight - 8 ? Math.max(8, r.top - ph - 8) : r.bottom + 8) + "px";
+  }
+  function vocabPop(span) {
+    const entry = ((window.HSK4_VOCAB || {}).words || [])[+span.dataset.vi];
+    if (!entry) return;
+    if (vwFor === span) { hideVocabPop(); return; } // second tap closes
+    hideVocabPop();
+    if (!vwPop) {
+      vwPop = el("div", "vw-pop hidden");
+      vwPop.setAttribute("role", "dialog");
+      vwPop.setAttribute("aria-label", "Word translation");
+      vwPop.tabIndex = -1; // focus lands here on open so screen readers announce the content
+      document.body.appendChild(vwPop);
+    }
+    // mid-transition the exam version matters — name the list(s) precisely
+    const f = entry[3], lists = [];
+    if (f & 1) lists.push("old");
+    if (f & 4) lists.push("new 2026");
+    else if (f & 2) lists.push("new 2021");
+    const tag = f & 8 ? "HSK 1–3 · assumed on the 2026 exam" : "HSK 4 · " + lists.join(" + ") + " list";
+    vwPop.innerHTML =
+      '<div class="vw-head"><span class="vw-w" lang="zh-Hans">' + esc(entry[0]) + '</span>' +
+      '<button type="button" class="spk" title="Listen" aria-label="Listen">🔊</button></div>' +
+      '<div class="vw-py" lang="zh-Latn-pinyin">' + esc(entry[1]) + "</div>" +
+      '<div class="vw-en">' + esc(entry[2]) + "</div>" +
+      (entry[5] ? '<div class="vw-cl">量词 <span class="zh" lang="zh-Hans">' + esc(entry[5]) + "</span></div>" : "") +
+      '<div class="vw-tag">' + esc(tag) + "</div>";
+    vwPop.querySelector(".spk").onclick = () => speak(entry[0]);
+    // measure hidden, then place near the word, clamped to the viewport
+    vwPop.style.visibility = "hidden";
+    vwPop.classList.remove("hidden");
+    placeVocabPop(span.getBoundingClientRect());
+    vwPop.style.visibility = "";
+    span.setAttribute("aria-expanded", "true");
+    vwFor = span;
+    vwPop.focus({ preventScroll: true });
+  }
+  /* SEGMENTER-BEGIN — bidirectional maximum matching. scripts/vocab-coverage.js
+     executes this exact block (extracted via these markers), so the coverage
+     report can never drift from what the site underlines.
+     Greedy forward alone splits 放进口袋 as 进口+袋; the backward pass finds
+     进+口袋 and the tie-breaks below decide. Returns [{i, len, vi}] segments;
+     vi -1 = known word, -2 = char in no list (still a segment, so both passes
+     are compared over the same ground). */
+  function vocabScan(s, back) {
+    const segs = [];
+    let p = back ? s.length : 0;
+    while (back ? p > 0 : p < s.length) {
+      if (!CJK_RE.test(s[back ? p - 1 : p])) { p += back ? -1 : 1; continue; }
+      let hit = 1, vi = -2;
+      for (let len = Math.min(vocabMaxLen, back ? p : s.length - p); len > 0; len--) {
+        const v = vocabMap.get(s.substr(back ? p - len : p, len));
+        if (v !== undefined) { hit = len; vi = v; break; }
+      }
+      if (back) { p -= hit; segs.unshift({ i: p, len: hit, vi: vi }); }
+      else { segs.push({ i: p, len: hit, vi: vi }); p += hit; }
+    }
+    return segs;
+  }
+  function vocabSegment(s) {
+    const f = vocabScan(s, false), b = vocabScan(s, true);
+    if (f.length !== b.length) return f.length < b.length ? f : b;
+    if (f.every((x, k) => x.i === b[k].i && x.len === b[k].len)) return f;
+    // the passes disagree: fewer single-char words, then fewer target matches
+    // (a false underline is worse than a missed one), then forward — the
+    // symmetric ties left are noun+localizer (阳台+上), where backward steals
+    // the localizer into a fake word (阳+台上)
+    const singles = a => a.filter(x => x.len === 1).length;
+    const targets = a => a.filter(x => x.vi >= 0).length;
+    if (singles(f) !== singles(b)) return singles(f) < singles(b) ? f : b;
+    return targets(f) <= targets(b) ? f : b;
+  }
+  /* SEGMENTER-END */
+  // wrap target words in already-zhLang'd content under root; idempotent
+  function annotateVocab(root) {
+    if (!vocabReady()) return;
+    root.querySelectorAll('[lang="zh-Hans"]').forEach(zEl => {
+      if (zEl.dataset.vw || zEl.closest("a, button, .b-pool, .b-answer, .vw")) return;
+      zEl.dataset.vw = "1";
+      // one malformed element must never take down page rendering
+      try { annotateEl(zEl); } catch (err) {}
+    });
+  }
+  function annotateEl(zEl) {
+    /* Segment the element's WHOLE text, not per text node: a word split
+       across markup (来**得及** renders as text + <b class="hl">) is still
+       found and each piece gets wrapped. Skipped subtrees (links, buttons
+       like the 🔊) insert a separator so no word can match across them. */
+    const tw = document.createTreeWalker(zEl, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    let s = "", tn;
+    while ((tn = tw.nextNode())) {
+      if (tn.parentElement.closest("a, button, .vw")) { s += "\u0001"; continue; } // escape on purpose — a raw control char is invisible (see builder SEP)
+      nodes.push({ node: tn, start: s.length, end: s.length + tn.nodeValue.length });
+      s += tn.nodeValue;
+    }
+    if (!CJK_RE.test(s)) return;
+    const perNode = new Map(); // node record → [{from, to, vi}] local ranges, in order
+    vocabSegment(s).forEach(seg => {
+      if (seg.vi < 0) return; // known word — only needed to place boundaries
+      const end = seg.i + seg.len;
+      const hits = nodes.filter(n => n.end > seg.i && n.start < end);
+      // a word that IS the accent highlight (**却** on the 却-lesson) is the
+      // page's own subject, explained right above — underlining every
+      // occurrence is noise, not signal
+      if (hits.length === 1) {
+        const hl = hits[0].node.parentElement.closest(".hl");
+        if (hl && hl.textContent === s.substr(seg.i, seg.len)) return;
+      }
+      hits.forEach(n => {
+        if (!perNode.has(n)) perNode.set(n, []);
+        perNode.get(n).push({ from: Math.max(seg.i, n.start) - n.start, to: Math.min(end, n.end) - n.start, vi: seg.vi });
+      });
+    });
+    let firstTab = true; // roving tabindex: one Tab stop per sentence, arrows do the rest
+    perNode.forEach((ranges, n) => {
+      const txt = n.node.nodeValue;
+      const frag = document.createDocumentFragment();
+      let last = 0;
+      ranges.forEach(r => {
+        if (r.from > last) frag.appendChild(document.createTextNode(txt.slice(last, r.from)));
+        const w = el("span", "vw", esc(txt.slice(r.from, r.to)));
+        w.dataset.vi = r.vi;
+        w.setAttribute("role", "button");
+        w.setAttribute("tabindex", firstTab ? "0" : "-1");
+        w.setAttribute("aria-expanded", "false");
+        w.setAttribute("aria-haspopup", "dialog");
+        firstTab = false;
+        frag.appendChild(w);
+        last = r.to;
+      });
+      if (last < txt.length) frag.appendChild(document.createTextNode(txt.slice(last)));
+      n.node.parentNode.replaceChild(frag, n.node);
+    });
+    if (perNode.size) vocabHint();
+  }
+  // one-shot discoverability toast — a title tooltip never shows on touch and
+  // makes VoiceOver read an English sentence inside every Chinese one
+  let vwHinted = false;
+  function vocabHint() {
+    if (vwHinted) return;
+    vwHinted = true;
+    try {
+      if (localStorage.getItem("hsk4lab-vw-hint")) return;
+      localStorage.setItem("hsk4lab-vw-hint", "1");
+    } catch (e) { return; }
+    toast("Dotted-underlined words are new HSK 4 vocabulary — tap one for a translation");
   }
 
   /* ---------------- clipboard + AI tutor bridge ----------------
@@ -467,6 +692,7 @@
     if (item.en) card.appendChild(el("div", "ex-en", fmt(item.en)));
     if (item.note) card.appendChild(el("div", "ex-note", "💡 " + fmt(item.note))); // plain text + **…** only, per CONTENT_GUIDE
     zhLang(card);
+    annotateVocab(card); // builder feedback cards render after the page-level pass
     return card;
   }
 
@@ -583,6 +809,7 @@
           result.className = "q-result " + (ok ? "good" : "bad");
           result.innerHTML = ok ? "✓ Correct!" : '✗ Not quite — the answer is <span class="zh">' + esc(plain(item.choices[item.a])) + "</span>";
           zhLang(result);
+          annotateVocab(result); // answer is revealed now — a gloss can't leak anything anymore
           if (item.expl) expl.classList.remove("hidden");
           done++;
           if (ok) right++;
@@ -597,6 +824,7 @@
       q.appendChild(expl);
       q.appendChild(actions);
       zhLang(q);
+      annotateVocab(q); // choices are buttons — skipped, so glosses can't leak answers; Retry re-renders outside the page-level pass
       quiz.appendChild(q);
     });
     function showScore() {
@@ -1127,6 +1355,10 @@
       setActive(sectionEls.indexOf(t));
     });
     zhLang(wrap);
+    annotateVocab(wrap);
+    // topic shells load vocab.js AFTER the topic data so the dictionary can't
+    // delay first paint on an uncached visit — annotate once it has arrived
+    if (!vocabMap) addEventListener("load", () => annotateVocab(wrap), { once: true });
   };
 
   /* ---------------- review page (错题本) ---------------- */
@@ -1347,6 +1579,7 @@
       mainEl.appendChild(el("p", null, '<a href="review.html">← Review page</a> · <a href="index.html">All topics</a>'));
       wrap.appendChild(el("div", "site-footer", 'Interleaved practice — mixing topics is harder than drilling one, and that\'s the point. <span class="zh">加油！</span>'));
       zhLang(wrap);
+      annotateVocab(wrap);
       return;
     }
 
@@ -1373,6 +1606,7 @@
             ahead.filter(r => r.type === "builder").length + ")", "builder",
             shuffled(ahead.filter(r => r.type === "builder").map(r => r.item)));
           zhLang(mainEl);
+          annotateVocab(mainEl);
           const s1 = mainEl.querySelector("section.block");
           if (s1) { s1.tabIndex = -1; s1.focus({ preventScroll: true }); }
         };
@@ -1392,6 +1626,7 @@
     addSection("Missed sentence builds (" + builderItems.length + ")", "builder", shuffled(builderItems));
     wrap.appendChild(el("div", "site-footer", 'Correct answers move a question up a level — it comes back after 2, then 5 days, then graduates for good. <span class="zh">加油！</span>'));
     zhLang(wrap);
+    annotateVocab(wrap);
   };
 
   /* ---------------- index page ---------------- */

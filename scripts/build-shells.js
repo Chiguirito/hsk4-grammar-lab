@@ -107,7 +107,8 @@ for (const p of pages) {
     }),
     `<script src="../assets/manifest.js"></script>
 <script src="../assets/app.js"></script>
-<script src="../assets/data/${p.id}.js"></script>`,
+<script src="../assets/data/${p.id}.js"></script>
+<script src="../assets/data/vocab.js"></script>`,
     "../"
   );
 }
@@ -123,6 +124,7 @@ out["review.html"] = shell(
   `<script>window.COLLECT_PAGES = [];</script>
 <script src="assets/manifest.js"></script>
 <script src="assets/app.js"></script>
+<script src="assets/data/vocab.js"></script>
 <script>
 (function () {
   var ids = [];
@@ -173,7 +175,7 @@ out["404.html"] = shell(
 /* ---------- service worker: precache everything, content-hashed version ---------- */
 const PRECACHE = [
   "./", "index.html", "review.html", "404.html", "manifest.webmanifest",
-  "assets/style.css", "assets/app.js", "assets/manifest.js",
+  "assets/style.css", "assets/app.js", "assets/manifest.js", "assets/data/vocab.js",
   "assets/icon.svg", "assets/icon-192.png", "assets/icon-512.png",
   "assets/icon-maskable-512.png", "assets/apple-touch-icon.png",
   ...pages.map(p => "topics/" + p.id + ".html"),
@@ -182,7 +184,7 @@ const PRECACHE = [
 // version = hash of everything the SW serves → any content change busts the cache
 const h = crypto.createHash("sha256");
 for (const k of Object.keys(out).sort()) h.update(k + "\n" + out[k]);
-for (const f of ["assets/style.css", "assets/app.js", "assets/manifest.js", "assets/icon.svg", "manifest.webmanifest"]) {
+for (const f of ["assets/style.css", "assets/app.js", "assets/manifest.js", "assets/data/vocab.js", "assets/icon.svg", "manifest.webmanifest"]) {
   const fp = path.join(root, f);
   if (fs.existsSync(fp)) h.update(f + "\n" + fs.readFileSync(fp, "utf8"));
 }
