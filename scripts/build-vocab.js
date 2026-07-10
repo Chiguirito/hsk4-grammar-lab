@@ -30,7 +30,10 @@ const OLD4 = 1, NEW4 = 2, NEWEST4 = 4, ASSUMED13 = 8; // flag bits on each targe
 // e.g. 句型 can't be split into 句 + target word 型; extend as content needs
 const EXTRA_DICT = ["句型", "语序", "时量", "动量", "补语", "量词", "动词", "名词",
   "形容词", "副词", "介词", "连词", "代词", "主语", "谓语", "宾语", "定语", "状语",
-  "把字句", "被字句", "疑问句", "反问句", "语气词", "声调", "错题本"];
+  "把字句", "被字句", "疑问句", "反问句", "语气词", "声调", "错题本",
+  // everyday determiner compounds the HSK lists don't carry as words — without
+  // them the segmenter mis-reads 这种植物 as 这 + 种植 + 物 (false underline)
+  "这种", "那种", "哪种", "每种", "一种"];
 // hand-curated glosses where CC-CEDICT's entry misleads for THIS site's usage
 // (王 appears in content only as a surname) or is machine junk / a bare
 // cross-reference. Checked against the coverage report — keep this short.
