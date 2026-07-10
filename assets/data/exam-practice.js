@@ -28,6 +28,21 @@ registerPage({
 Same subject in both clauses → subject sits BEFORE the connector, once: <span class="zh"><b class="hl">他</b>不但会开车，而且开得很好</span>. Different subjects → each clause keeps its own, after the connector: <span class="zh">不但<b class="hl">他</b>会，<b class="hl">他妹妹</b>也会</span>. Ordering items exploit this constantly.</div>`
     },
 
+    /* ------------------------------------------------ warm-up examples */
+    {
+      type: "examples",
+      title: "Warm-up — one model sentence per machine",
+      short: "Warm-up",
+      intro: "Before the drills: read each sentence and name the pattern it runs on. The tag confirms your answer.",
+      items: [
+        { tag: "被", cn: "昨天的比赛，我们队**被**他们**打败**了，大家全都很难过。", py: "Zuótiān de bǐsài, wǒmen duì bèi tāmen dǎbài le, dàjiā quándōu hěn nánguò.", en: "Our team got beaten by them in yesterday's game — we were all pretty upset.", note: "被-machine: victim + **被** + doer + verb + result. 打**败** carries its result built in ('hit until defeated') — a bare verb after 被 is dead." },
+        { tag: "比", cn: "新修的这条路**比**以前**宽得多**，开车方便多了。", py: "Xīn xiū de zhè tiáo lù bǐ yǐqián kuān de duō, kāichē fāngbiàn duō le.", en: "The newly built road is much wider than before — driving is a lot more convenient now.", note: "比-sentence: size the gap AFTER the adjective with **得多**. Degree adverbs are banned: ✗比以前很宽." },
+        { tag: "连…都", cn: "期中考试他太紧张了，**连**最简单的填空题**都**做错了。", py: "Qīzhōng kǎoshì tā tài jǐnzhāng le, lián zuì jiǎndān de tiánkòngtí dōu zuò cuò le.", en: "He was so nervous in the midterm that he even got the easiest fill-in-the-blank questions wrong.", note: "**连** X **都** names the extreme case — if even the easiest goes wrong, everything did. The 都 is mandatory, not decoration." },
+        { tag: "把", cn: "会议开始前，工作人员**把**大厅里的椅子**排列得**整整齐齐。", py: "Huìyì kāishǐ qián, gōngzuò rényuán bǎ dàtīng li de yǐzi páiliè de zhěngzhěngqíqí.", en: "Before the meeting began, the staff arranged the chairs in the hall in perfectly neat rows.", note: "把-machine with a 得-complement: the state description (**排列得**整整齐齐) counts as the required something-after-the-verb." },
+        { tag: "是…的", cn: "这份传真**是**今天早上从上海发过来**的**。", py: "Zhè fèn chuánzhēn shì jīntiān zǎoshang cóng Shànghǎi fā guolai de.", en: "This fax was sent over from Shanghai this morning.", note: "**是…的** spotlights the time and place of a known past event; the lonely **的** closes the sentence, and no 了 is allowed in." },
+      ]
+    },
+
     /* ------------------------------------------------ 2 */
     {
       type: "mcq",
@@ -104,7 +119,8 @@ The exam pre-glues characters into chunks of 2–4 — and gluing is information
         { wrong: "他今天早上十点才到了公司。", right: "他今天早上十点才到公司。", py: "Tā jīntiān zǎoshang shí diǎn cái dào gōngsī.", en: "He didn't get to the office until ten this morning.", expl: "才 ('as late as') rejects 了 — lateness is presented as bare fact. Its twin 就 happily takes 了: 八点就到了. (see: 就 vs 才)" },
         { wrong: "这个电影真好看，我想明天又看一遍。", right: "这个电影真好看，我想明天再看一遍。", py: "Zhège diànyǐng zhēn hǎokàn, wǒ xiǎng míngtiān zài kàn yí biàn.", en: "This movie is great — I want to watch it again tomorrow.", expl: "Future repetition (not yet happened) → 再. 又 stamps repetitions that already happened: 昨天又看了一遍. (see: 又·再·还)" },
         { wrong: "无论天气怎么样，他每天跑步。", right: "无论天气怎么样，他每天都跑步。", py: "Wúlùn tiānqì zěnmeyàng, tā měitiān dōu pǎobù.", en: "No matter the weather, he runs every day.", expl: "无论/不管 clauses must be answered by 都/也 in the main clause — the pair is grammar, not decoration. (see: conditionals & indefinites)" },
-        { wrong: "我的钱包被小偷偷。", right: "我的钱包被小偷偷走了。", py: "Wǒ de qiánbāo bèi xiǎotōu tōu zǒu le.", en: "My wallet was stolen by a pickpocket.", expl: "Same golden rule as 把: after 被 the verb can't stand bare — it needs a result (偷走了/偷了). (see: passives with 被)" }
+        { wrong: "我的钱包被小偷偷。", right: "我的钱包被小偷偷走了。", py: "Wǒ de qiánbāo bèi xiǎotōu tōu zǒu le.", en: "My wallet was stolen by a pickpocket.", expl: "Same golden rule as 把: after 被 the verb can't stand bare — it needs a result (偷走了/偷了). (see: passives with 被)" },
+        { wrong: "打扫完教室以后，他把桶里的脏水倒。", right: "打扫完教室以后，他把桶里的脏水倒掉了。", py: "Dǎsǎo wán jiàoshì yǐhòu, tā bǎ tǒng li de zāng shuǐ dào diào le.", en: "After cleaning the classroom, he dumped out the dirty water in the bucket.", expl: "Classic 把-machine breakdown: the verb can never stand bare at the end. 把 promises a completed outcome, so 倒 needs a result — 倒掉了 (or at least 倒了). (see: the 把 construction)" },
       ]
     },
 
@@ -161,7 +177,9 @@ Every wrong option in the quiz below is a real learner error — the same ones f
         { q: '<span class="zh">他的表演___了观众的欢迎。</span>', choices: ['<span class="zh">受到</span>', '<span class="zh">得到</span>', '<span class="zh">感到</span>', '<span class="zh">收到</span>'], a: 0, expl: "欢迎 belongs to the 受到 collocation list (受到欢迎/影响/批评). 收到 takes parcels and emails; 感到 takes emotions. (see: confusable pairs)" },
         { q: '<span class="zh">今天路上特别堵，我___迟到了。</span>', choices: ['<span class="zh">差点儿</span>', '<span class="zh">到底</span>', '<span class="zh">千万</span>', '<span class="zh">顺便</span>'], a: 0, expl: "差点儿 + bad thing = it nearly happened but didn't — I was NOT late. 到底 demands answers, 千万 gives warnings, 顺便 does things in passing. (see: attitude adverbs)" },
         { q: '<span class="zh">无论工作多忙，他___坚持每天锻炼。</span>', choices: ['<span class="zh">就</span>', '<span class="zh">都</span>', '<span class="zh">才</span>', '<span class="zh">却</span>'], a: 1, expl: "无论 must be answered by 都/也 — the pair is non-negotiable. 就/才 answer conditions (只要/只有), not 无论. (see: conditionals)" },
-        { q: '<span class="zh">他认真___回答了老师___问题。</span>', choices: ['<span class="zh">地 / 的</span>', '<span class="zh">的 / 地</span>', '<span class="zh">得 / 的</span>', '<span class="zh">地 / 得</span>'], a: 0, expl: "认真 modifies the verb ahead of it → 地; 老师 modifies the noun 问题 → 的. Adverb-de before the verb, noun-de before the noun, 得 only after verbs. (see: the three de)" }
+        { q: '<span class="zh">他认真___回答了老师___问题。</span>', choices: ['<span class="zh">地 / 的</span>', '<span class="zh">的 / 地</span>', '<span class="zh">得 / 的</span>', '<span class="zh">地 / 得</span>'], a: 0, expl: "认真 modifies the verb ahead of it → 地; 老师 modifies the noun 问题 → 的. Adverb-de before the verb, noun-de before the noun, 得 only after verbs. (see: the three de)" },
+        { q: "<span class=\"zh\">我上个星期就给他发了邮件，他今天___回信。</span>", choices: ["<span class=\"zh\">才</span>", "<span class=\"zh\">就</span>", "<span class=\"zh\">再</span>", "<span class=\"zh\">又</span>"], a: 0, expl: "A whole week's wait → later than hoped → **才**. Double check: the verb stays bare (回信, no 了) — 才 rejects 了. The first clause's 就 (上个星期就发了 = 'as early as last week') sets up the contrast; 再/又 mark repetition, but this is his first reply. (see: 就 vs 才)" },
+        { q: "<span class=\"zh\">刚跑完三公里，他热___满头都是汗。</span>", choices: ["<span class=\"zh\">得</span>", "<span class=\"zh\">的</span>", "<span class=\"zh\">地</span>", "<span class=\"zh\">了</span>"], a: 0, expl: "满头都是汗 states the DEGREE of 热 → degree complement → **得** (热得 + result), same skeleton as 忙得连饭都忘了吃. 地 would need a verb following it, 的 a noun; 了 leaves 满头都是汗 dangling with nothing to attach it. (see: the three de + degree complements)" },
       ]
     },
 
