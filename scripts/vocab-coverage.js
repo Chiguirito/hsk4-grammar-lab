@@ -174,12 +174,27 @@ console.log("per topic (distinct target words · tappable occurrences):");
 perTopic.slice().sort((a, b) => b.words - a.words)
   .forEach(t => console.log(`  ${String(t.words).padStart(4)} · ${String(t.occurrences).padStart(4)}  ${t.id}`));
 
-// single-character/literary function words can't enter an example naturally —
-// list the authorable content words first, and the singles as a footnote
-const multi = missing.filter(m => m.w.length > 1), single = missing.filter(m => m.w.length === 1);
-console.log(`\ntop ${Math.min(N_MISSING, multi.length)} missing content words (most common first · [list]) — reach for these in new examples:`);
-multi.slice(0, N_MISSING).forEach(m =>
-  console.log(`  ${m.w}  ${m.py}  — ${m.en}  [${m.list}]`));
-console.log(`\n(${missing.length} missing total, of which ${single.length} single-character/function words` +
-  (single.length ? ` (${single.slice(0, 12).map(m => m.w).join(" ")} …)` : "") +
-  ` — see --missing N / --json for everything)`);
+// The missing list IS the authoring priority list: exam value first (words on
+// both lists > old-only > 2026 syllabus), 2021-only words are a footnote (the
+// 2026 revision dropped them from band 4 — don't chase them), and
+// single-character/literary function words trail their tier (hard to place
+// naturally; never bend a sentence for one).
+const N_TIER = parseInt(argAfter("--missing"), 10) || 15; // per tier
+const TIERS = [
+  ["both", "T1 · on BOTH lists — highest value"],
+  ["old", "T2 · old list only"],
+  ["new26", "T3 · 2026 syllabus"],
+  ["assumed", "T0 · assumed known by the 2026 exam"],
+];
+console.log("\nmissing words by exam value (most common first) — reach for these in new examples:");
+TIERS.forEach(([k, label]) => {
+  const tier = missing.filter(m => m.list === k);
+  if (!tier.length) return;
+  const multi = tier.filter(m => m.w.length > 1), single = tier.filter(m => m.w.length === 1);
+  console.log(`\n${label} — ${tier.length} missing:`);
+  multi.slice(0, N_TIER).forEach(m => console.log(`  ${m.w}  ${m.py}  — ${m.en}`));
+  if (multi.length > N_TIER) console.log(`  … +${multi.length - N_TIER} more (raise --missing)`);
+  if (single.length) console.log(`  single-char, place only where natural: ${single.map(m => m.w).join(" ")}`);
+});
+const t4 = missing.filter(m => m.list === "new21").length;
+console.log(`\n(${t4} further missing words are 2021-list-only — dropped from band 4 by the 2026 revision; cover them incidentally, not deliberately. --json lists everything.)`);
